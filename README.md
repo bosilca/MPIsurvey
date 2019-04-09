@@ -9,8 +9,6 @@ The information gathered will be used to publish a comprehensive report of the d
 
 For anyone interested in participating in the survey, we sincerely appreciate your feedback.  The survey is rather short (about 30 easy questions), and should not take more than 15 minutes to complete.  In addition to your participation, we would appreciate if you re-distribute this e-mail to your domestic/local communities.
 
-Important Date -- This survey will be closed by the end of __February 2019__.
-
 Questions? -- Please send any queries about this MPI survey as an issue on the github repository.
 
 
