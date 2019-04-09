@@ -20,8 +20,8 @@ from matplotlib.dates import date2num
 
 PREPROCESS = '' # if specified, then the csv file is preprocessed
 REGION_COUNTRY = True # if True, major countries will also be appear
-#FILE_TYPE = 'pdf' # if specified, then graphs are saved in this format
-FILE_TYPE = '' # if file type is not specified, then graphs will be shown
+FILE_TYPE = 'pdf' # if specified, then graphs are saved in this format
+#FILE_TYPE = '' # if file type is not specified, then graphs will be shown
 EVENT_SHOW = True # if True, events are wshown in TimeSeries graph
 
 event_list = [ # [ year, month, day, event-name, text-height ]
