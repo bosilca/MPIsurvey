@@ -14,7 +14,7 @@ Questions? -- Please send any queries about this MPI survey as an issue on the g
 
 Thank you on behalf of the International MPI Survey,
 - [George Bosilca](https://github.com/bosilca) (UT/ICL)
-- Geoffroy Vallee (ORNL)
+- ~~Geoffroy Vallee (ORNL)~~
 - [Emmanuel Jeannot](https://github.com/ejeannot) (Inria)
 - [Atsushi Hori](https://github.com/ahori) (RIKEN)
 - Takahiro Ogura (RIKEN)
