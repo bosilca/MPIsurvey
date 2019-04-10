@@ -20,8 +20,8 @@ from matplotlib.dates import date2num
 
 PREPROCESS = '' # if specified, then the csv file is preprocessed
 REGION_COUNTRY = True # if True, major countries will also be appear
-FILE_TYPE = 'pdf' # if specified, then graphs are saved in this format
-#FILE_TYPE = '' # if file type is not specified, then graphs will be shown
+#FILE_TYPE = 'pdf' # if specified, then graphs are saved in this format
+FILE_TYPE = '' # if file type is not specified, then graphs will be shown
 EVENT_SHOW = True # if True, events are wshown in TimeSeries graph
 
 event_list = [ # [ year, month, day, event-name, text-height ]
@@ -474,8 +474,9 @@ graph_percentage( df_whole,
                     3 : '3',
                     4 : '4',
                     5 : '5',
-                    6 : 'High' },
-                  order = 'reverse' )
+                    6 : 'High' 
+                    }
+                  )
 
 graph_percentage( df_whole,
                   'Q4',
@@ -484,8 +485,9 @@ graph_percentage( df_whole,
                     3 : '3',
                     4 : '4',
                     5 : '5',
-                    6 : 'High' },
-                  order = 'reverse' )
+                    6 : 'High' 
+                    } 
+                  )
 
 graph_percentage( df_whole,
                   'Q5',
@@ -501,8 +503,8 @@ graph_percentage( df_whole,
                   { 'more than 10 years' : '>10',
                     'between 5 and 10 years' : '5-10',
                     'between 2 and 5 years' : '2-5',
-                    'less than 2 years' : '<2' },
-                  order = 'reverse')
+                    'less than 2 years' : '<2' }
+                  )
 
 graph_percentage( df_whole,
                   'Q7',
