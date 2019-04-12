@@ -26,6 +26,7 @@ REGION_COUNTRY = True 	# if True, major countries will also appear
 FILE_TYPE = 'pdf' 	# if specified, then graphs are saved in this format
 EVENT_SHOW = False 	# if True, events are wshown in TimeSeries graph
 CROSSTAB_THRESHOLD = 0.01 # crosstabe values less than this will be removed
+CROSSTAB_NCOLS = 3
 DEBUG = False
 
 event_list = [ # [ year, month, day, event-name, text-height ]
@@ -378,9 +379,13 @@ def unique ( list ) :
 if len( sys.argv ) < 2 :
     print( 'Input CSV file must be specified' )
     exit( 1 )
-if len( sys.argv ) > 2 and sys.argv[1] == 'debug' :
-    DEBUG = True
+if len( sys.argv ) > 2 :
+    if sys.argv[1] == 'debug' :
+        DEBUG = True
+    elif sys.argv[1] =='show' :
+        FILE_TYPE = ''
     csv_in = sys.argv[2]
+
 else :
     csv_in = sys.argv[1]
 
@@ -528,7 +533,7 @@ def graph_time_series( df ) :
     if FILE_TYPE == '' :
         plt.show()
     else :
-        plt.savefig(basename+'-TimeSeries.'+FILE_TYPE)
+        plt.savefig(basename+'-TimeSeries.'+FILE_TYPE, transparent=True)
     plt.close('all')
     return
 
@@ -716,7 +721,7 @@ def graph_percentage( all, qno, last='', order='', scale=0.8) :
     if FILE_TYPE == '' :
         plt.show()
     else :
-        plt.savefig(basename+'-'+qno+'.'+FILE_TYPE)
+        plt.savefig(basename+'-'+qno+'.'+FILE_TYPE, transparent=True)
     return
 
 graph_time_series( df_whole )
@@ -752,15 +757,6 @@ if not DEBUG :
     graph_percentage( df_whole, 'Q29', scale=0.6  )
     graph_percentage( df_whole, 'Q30', scale=0.75 )
 
-##print( '** Whole Data **' )
-##print( df_whole )
-print( '** SUMMARY **' )
-cs = df_whole['Q2'].value_counts( sort=True )
-print( cs )
-print( '' ) # newline
-print( '# Countries:\t' + str( len(cs) ) )
-print( '# Answers:\t' + str(total_answers) )
-
 def cross_tab( qno0, qno1 ) :
     nregs = 0
     for reg in unique_regions :
@@ -769,8 +765,22 @@ def cross_tab( qno0, qno1 ) :
     if nregs == 0 :
         print( 'No region' )
         return
-    list_regions = []
+    list_regions = [ ' whole' ]
     list_graphs  = []
+
+    r0 = df_whole[qno0]
+    r1 = df_whole[qno1]
+    ct = pd.crosstab( r0, r1, normalize=True, dropna=False )
+    idx = qval_tab[qno0]
+    clm = qval_tab[qno1]
+    ct = ct.reindex( index=idx, columns=clm, fill_value=0 )
+    ct.fillna( 0, inplace=True )
+    ct.rename( index=idx, columns=clm, inplace=True )
+    list_graphs.append( ct )
+    print( '' )
+    print( 'Whole' )
+    print( ct )
+
     for reg in sorted( unique_regions ) :
         if len( df_whole[df_whole['Region']==reg] ) > 30 :
             r0 = df_whole[df_whole['Region']==reg][qno0]
@@ -817,10 +827,10 @@ def cross_tab( qno0, qno1 ) :
         i += 1
 #    print( 'list-drop:', list_drop )
 
-    ncols = 4
+    ncols = CROSSTAB_NCOLS
     nrows = int( math.ceil( ( nregs + 2 ) / ncols ) )
 
-    plt.figure( figsize=(nrows*2,ncols*2) )
+    plt.figure( figsize=(ncols*2,nrows*2) )
     plt.rcParams["font.size"] = 8
     plt.tight_layout()
     i = 0
@@ -849,7 +859,7 @@ def cross_tab( qno0, qno1 ) :
     for i in range( 0, ni ) :
         for j in range( 0, nc ) :
             dat.iat[i,j] = ( ( ( (j+1) % 2 ) + ( i % 2 ) ) % 2 ) * 0.5
-    ax.set_title( 'Legend' )
+#    ax.set_title( 'Legend' )
     ax.set_autoscale_on( True )
     sns.heatmap( dat, 
                  cmap='Greys', cbar=False, 
@@ -858,6 +868,15 @@ def cross_tab( qno0, qno1 ) :
                  xticklabels=True, yticklabels=True,
                  ax=ax )
     plt.subplots_adjust(hspace=0.4)
+
+    if qno0 in multi_answer :
+        ax.set_ylabel( qno0 + '*:' + question_tab[qno0] )
+    else :
+        ax.set_ylabel( qno0 + ':' + question_tab[qno0] )
+    if qno1 in multi_answer :
+        ax.set_xlabel( qno1 + '*:' + question_tab[qno1] )
+    else :
+        ax.set_xlabel( qno1 + ':' + question_tab[qno1] )
 
     len_max = 0
     for xlabel in dat.columns :
@@ -871,7 +890,7 @@ def cross_tab( qno0, qno1 ) :
     if FILE_TYPE == '' :
         plt.show()
     else :
-        plt.savefig(basename+'-'+qno0+'-'+qno1+'.'+FILE_TYPE)
+        plt.savefig(basename+'-'+qno0+'-'+qno1+'.'+FILE_TYPE, transparent=True)
     plt.close('all')
     return
 
@@ -880,6 +899,16 @@ qlist = [ 'Q1', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9',
           'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29',
           'Q30' ]
 
+def summary () :
+    ##print( '** Whole Data **' )
+    ##print( df_whole )
+    print( '** SUMMARY **' )
+    cs = df_whole['Q2'].value_counts( sort=True )
+    print( cs )
+    print( '' ) # newline
+    print( '# Countries:\t' + str( len(cs) ) )
+    print( '# Answers:\t' + str(total_answers) )
+
 i = 0
 j = 0
 for q0 in qlist :
@@ -887,9 +916,10 @@ for q0 in qlist :
     for q1 in qlist[i:] :
         j += 1
         if DEBUG and j > 4 :
+            summary()
             exit( 0 )
         cross_tab( q0, q1 )
-
+summary()
 
 ##if __name__ == '__main__':
 ##    main()
