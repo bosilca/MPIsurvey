@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 ## written by Atsushi Hori (ahori@riken.jp) at 
 ## Riken Center for Computational Science
@@ -14,20 +14,20 @@ import datetime
 import math
 import pandas as pd
 from cycler import cycler
+import unicodedata
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import dates as mdates
 from matplotlib.dates import date2num
 import seaborn as sns
+import argparse
 
-PREPROCESS = '' 	# if specified, then the csv file is preprocessed
 DATE_FORMAT = '%Y/%m/%d' # YYmmDD
 REGION_COUNTRY = True 	# if True, major countries will also appear
 FILE_TYPE = 'pdf' 	# if specified, then graphs are saved in this format
-EVENT_SHOW = False 	# if True, events are wshown in TimeSeries graph
+EVENT_SHOW = False 	# if True, events are shown in TimeSeries graph
 CROSSTAB_THRESHOLD = 0.01 # crosstabe values less than this will be removed
 CROSSTAB_NCOLS = 3
-DEBUG = False
 
 event_list = [ # [ year, month, day, event-name, text-height ]
     [ 2019, 2, 18, 'hpc-announce[1]', 120 ],
@@ -364,6 +364,26 @@ print_other = [ 'Q5', 'Q8', 'Q9', 'Q11', 'Q12', 'Q13', 'Q15', 'Q18', 'Q20',
 
 color_list =  [ "r", "g", "b", "c", "m", "y" ]
 
+
+def strip_accents(text):
+    """
+    Strip accents from input String.
+
+    :param text: The input string.
+    :type text: String.
+
+    :returns: The processed String.
+    :rtype: String.
+    """
+    try:
+        text = unicode(text, 'utf-8')
+    except (TypeError, NameError):  # unicode is a default on python 3
+        pass
+    text = unicodedata.normalize('NFD', text)
+    text = text.encode('ascii', 'ignore')
+    text = text.decode("utf-8")
+    return str(text)
+
 def conv_date ( q0_str ) :
     ymd = q0_str.split().pop(0)
     return datetime.datetime.strptime( ymd, DATE_FORMAT ).date()
@@ -376,93 +396,102 @@ def unique ( list ) :
     return unique_list
 
 
-if len( sys.argv ) < 2 :
-    print( 'Input CSV file must be specified' )
+parser = argparse.ArgumentParser(description="MPI Survey")
+parser.add_argument('--dry-run', action='store_true', default=False,
+                    help="Don't execute any outside visible actions (such as generating pdfs).")
+parser.add_argument('--log', '-v', dest="DEBUG", action='store_true', default=False,
+                    help="Log all steps of the operations (verbose).")
+parser.add_argument('--preprocess', '-p', dest="PREPROCESS", action='store_true', default=False,
+                    help="Preprocess the input files first.")
+# We automatically open the files in read mode, so if they dont exists an exception
+# will be raised by the parsec. Protect if necessary.
+parser.add_argument('csv_in', nargs='*', type=argparse.FileType('r'),
+                    help="The CSV file containing the survey data. Multiple files can be provided.")
+args = parser.parse_args()
+
+if [] == args.csv_in:
+    print( 'At least one input CSV file must be specified' )
     exit( 1 )
-if len( sys.argv ) > 2 :
-    if sys.argv[1] == 'debug' :
-        DEBUG = True
-    elif sys.argv[1] =='show' :
-        FILE_TYPE = ''
-    csv_in = sys.argv[2]
 
-else :
-    csv_in = sys.argv[1]
-
-if not os.path.isfile( csv_in ) :
-    print( csv_in + ' not found' )
-    exit( 1 )
-
-if DEBUG :
+if args.DEBUG :
     FILE_TYPE = ''
     EVENT_SHOW = True
 
-if PREPROCESS != '' :
-    tmpfile = csv_in + '.ascii'
-    os.system( 'nkf ' + '"' + csv_in + '" > "' + tmpfile + '"' )
-    df = pd.read_csv( tmpfile, sep=',' )
-    os.remove( tmpfile )
-else :
-    df = pd.read_csv( csv_in, sep=',')
-basename = os.path.splitext( os.path.basename( csv_in ) )[0].replace(' ','')
+for csv_in in args.csv_in :
+    if args.PREPROCESS :
+        tmpfile = csv_in.name + '.ascii'
+        os.system( 'nkf ' + '"' + csv_in.name + '" > "' + tmpfile + '"' )
+        df = pd.read_csv( tmpfile, sep=',' )
+        os.remove( tmpfile )
+    else :
+        df = pd.read_csv( csv_in, sep=',')
 
-# shorten long country names
-df = df.replace( 'United Kingdom', 	'UK'  )
-df = df.replace( 'United States', 	'USA' )
-df = df.replace( 'belgium',		'Belgium' )
-df = df.replace( 'United arab Emirates ', 'UAE' )
-total_answers = len( df )
+    basename = os.path.splitext( os.path.basename( csv_in.name ) )[0].replace(' ','')
 
-#print( df.dtypes )
-#print( df.columns )
-i = 0;
-for column_name in df :
-    q = 'Q' + str(i)
-    i += 1
-    df.rename(columns={column_name: q}, inplace=True)
-num_columns = i + 1
+    # shorten long country names
+    df = df.replace( 'United Kingdom', 	'UK'  )
+    df = df.replace( 'United States', 	'USA' )
+    df = df.replace( 'belgium',		'Belgium' )
+    df = df.replace( 'United arab Emirates ', 'UAE' )
+    total_answers = len( df )
 
-countries = df[ 'Q2' ]
-#print( countries )
+    #print( df.dtypes )
+    #print( df.columns )
+    i = 0;
+    for column_name in df :
+        q = 'Q' + str(i)
+        i += 1
+        df.rename(columns={column_name: q}, inplace=True)
 
-err = False
-# checking unknown cournties
-for country in countries :
-    region = region_tab[ country ]
-    if region == None :
-        err = True
-        print( '????? Unknown Country: ' + country )
-if err :
-    exit( 1 )
+    num_columns = i + 1
 
-# adding another Region column
-region_list = []
-rename_list = []
-if REGION_COUNTRY == 'Region' :
-    # adding Region column
+    countries = df[ 'Q2' ]
+    #print( countries )
+
+    err = False
+    # checking for unknown countries and remove accents from all countries name
     for country in countries :
-        region = region_tab[ country ]
-        region_list.append( region )
-else :
-    for country in countries :
-        region = region_tab[ country ]
-        if len( df[df['Q2']==country] ) > 30 and \
-                region != country :
-            region_tab.setdefault( region, country )
-            region_list.append( region + ':' + country )
-            rename_list.append( region )
-        else :
+        stripped = strip_accents(country)
+        if stripped != country:
+            print("Convert %s to %s" % (country, stripped))
+            df.replace(country, stripped, inplace=True)
+            country = stripped
+
+        region = region_tab[ stripped ]
+        if None == region :
+            print( '????? Unknown Country: ' + stripped )
+            exit( 1 )
+    # As we modified tha panda table to remove accents we need to update the list of countries
+    countries = df['Q2']
+    # adding another Region column
+    region_list = []
+    rename_list = []
+    if REGION_COUNTRY == 'Region' :
+        # adding Region column
+        for country in countries :
+            region = region_tab[ country ]
             region_list.append( region )
-df_whole = df.assign( Region = region_list )
+    else :
+        for country in countries :
+            region = region_tab[ country ]
+            if len( df[df['Q2'] == country] ) > 30 and \
+                region != country :
+                region_tab.setdefault( region, country )
+                region_list.append( region + ':' + country )
+                rename_list.append( region )
+            else :
+                region_list.append( region )
 
-for rename in unique( rename_list ) :
-    df_whole.replace( rename, rename+':others', inplace=True )
+    df_whole = df.assign( Region = region_list )
 
-regions = df_whole['Region']
-region_list = regions.values.tolist()
-#print( region_list )
-unique_regions = unique(region_list)
-#print( unique_regions )
+    for rename in unique( rename_list ) :
+        df_whole.replace( rename, rename+':others', inplace=True )
+
+    regions = df_whole['Region']
+    region_list = regions.values.tolist()
+    #print( region_list )
+    unique_regions = unique(region_list)
+    #print( unique_regions )
 
 def graph_time_series( df ) :
     # adding 'Date' column
@@ -729,7 +758,7 @@ graph_percentage( df_whole, 'Q1', scale=0.75 )
 graph_percentage( df_whole, 'Q3' )
 graph_percentage( df_whole, 'Q4',)
 
-if not DEBUG :
+if not args.DEBUG :
     graph_percentage( df_whole, 'Q5' )
     graph_percentage( df_whole, 'Q6' )
     graph_percentage( df_whole, 'Q7' )
@@ -915,7 +944,7 @@ for q0 in qlist :
     i += 1
     for q1 in qlist[i:] :
         j += 1
-        if DEBUG and j > 4 :
+        if args.DEBUG and j > 4 :
             summary()
             exit( 0 )
         cross_tab( q0, q1 )
