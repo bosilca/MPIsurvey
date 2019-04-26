@@ -22,7 +22,8 @@ from matplotlib.dates import date2num
 import seaborn as sns
 import argparse
 
-DATE_FORMAT = '%Y/%m/%d' # YYmmDD
+#DATE_FORMAT = '%Y/%m/%d' # YYmmDD
+DATE_FORMAT = '%m/%d/%Y' # YYmmDD
 REGION_COUNTRY = True 	# if True, major countries will also appear
 FILE_TYPE = 'pdf' 	# if specified, then graphs are saved in this format
 EVENT_SHOW = False 	# if True, events are shown in TimeSeries graph
@@ -289,19 +290,19 @@ qval_tab = \
   'Q24' :
       { 'No, my MPI programs are well-tuned.' : 
         'Well-tuned',
-        'I think there is room but I do not know how to tune it.' : 
-        'No tknowing how to do',
-        'Yes, I know there is room for tuning but I do not have enough resources to do that.' : 
+        'Yes, I know there is room for tuning but I should re-write large part of my program to do that.' :
+        'Rewriting is hard',
+        'Yes, I know there is room for tuning but I do not have enough resources to do that.' :
         'No resource',
-        'Yes, I know there is room for tuning but I should re-write large part of my program to do that.' : 
-        'Rewrintg is hard',
-        'I think there is room but I do not know how to tune it.' : 
+        'I think there is room but I do not know how to tune it.' :
         'Not knowing how to tune',
-        'I have no chance to investigate.' : 
+        'I do not have (know) tools to find performance bottlenecks.' :
+        'Not having the tools to find',
+        'I have no chance to investigate.' :
         'No chance to investigate',
-        'I do not know how to find bottlenecks.' : 
+        'I do not know how to find bottlenecks.' :
         'Not knowing how to find',
-        'I do not know if there is more to improve' : 
+        'I do not know if there is room for performance tuning.' :
         'Not knowing how to improve',
         'Other' : 'other' },
   'Q25' :
@@ -401,11 +402,11 @@ parser.add_argument('--dry-run', action='store_true', default=False,
                     help="Don't execute any outside visible actions (such as generating pdfs).")
 parser.add_argument('--log', '-v', dest="DEBUG", action='store_true', default=False,
                     help="Log all steps of the operations (verbose).")
-parser.add_argument('--preprocess', '-p', dest="PREPROCESS", action='store_true', default=False,
-                    help="Preprocess the input files first.")
+parser.add_argument('--outdir', '-o', type=str, default='',
+                    help="Prepend to all generated files")
 # We automatically open the files in read mode, so if they dont exists an exception
 # will be raised by the parsec. Protect if necessary.
-parser.add_argument('csv_in', nargs='*', type=argparse.FileType('r'),
+parser.add_argument('csv_in', nargs='+', type=argparse.FileType('r'),
                     help="The CSV file containing the survey data. Multiple files can be provided.")
 args = parser.parse_args()
 
@@ -418,21 +419,14 @@ if args.DEBUG :
     EVENT_SHOW = True
 
 for csv_in in args.csv_in :
-    if args.PREPROCESS :
-        tmpfile = csv_in.name + '.ascii'
-        os.system( 'nkf ' + '"' + csv_in.name + '" > "' + tmpfile + '"' )
-        df = pd.read_csv( tmpfile, sep=',' )
-        os.remove( tmpfile )
-    else :
-        df = pd.read_csv( csv_in, sep=',')
+    df = pd.read_csv( csv_in, sep=',')
 
-    basename = os.path.splitext( os.path.basename( csv_in.name ) )[0].replace(' ','')
+    basename = args.outdir + os.path.splitext( os.path.basename( csv_in.name ) )[0].replace(' ','')
 
     # shorten long country names
-    df = df.replace( 'United Kingdom', 	'UK'  )
-    df = df.replace( 'United States', 	'USA' )
-    df = df.replace( 'belgium',		'Belgium' )
-    df = df.replace( 'United arab Emirates ', 'UAE' )
+    df.replace(['United Kingdom', 'United States', 'belgium', 'United arab Emirates '],
+               ['UK',             'USA',            'Belgium', 'UAE'],
+               inplace=True)
     total_answers = len( df )
 
     #print( df.dtypes )
