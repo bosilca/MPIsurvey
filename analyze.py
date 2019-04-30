@@ -8,6 +8,7 @@
 # python3
 # and Python modules listed below
 
+import copy
 import os
 import sys
 import datetime
@@ -99,40 +100,82 @@ question_tab = { 'Q1'  : 'Occupation',
                  'Q12' : 'MPI Book',
                  'Q13' : 'MPI Implementation',
                  'Q14' : 'Reasons to choose MPI',
-                 'Q15' : 'How to check MPI Spec.?',
+                 'Q15' : 'How to check MPI Spec.',
                  'Q16' : 'MPI Difficulty', 
                  'Q17' : 'Known MPI Fetures',
                  'Q18' : 'MPI Aspects',
-                 'Q19' : 'MPI Thread Level',
+                 'Q19' : 'MPI thread level',
                  'Q20' : 'MPI Obstacles', 
                  'Q21' : 'Error Checking',
                  'Q22' : 'Packing MPI calls', 
                  'Q23' : 'MPI+X',
-                 'Q24' : 'Room for Tuning',
+                 'Q24' : 'Room for tuning',
                  'Q25' : 'Alternatives',
                  'Q26' : 'Missing Fetures',
-                 'Q27' : 'Missing semantics',
+                 'Q27' : 'Missing Semantics',
                  'Q28' : 'Unnecessary Features',
                  'Q29' : 'Backward Compatibility',
-                 'Q30' : 'Tradeoff between performance and portability'
+                 'Q30' : 'Performance and Portability'
               }
+
+graph_scale = {
+    'Q1'  : 0.75,
+    'Q3'  : 0.83,
+    'Q4'  : 0.83,
+    'Q5'  : 0.81,
+    'Q6'  : 0.83,
+    'Q7'  : 0.83,
+    'Q8'  : 0.7,
+    'Q9'  : 0.7,
+    'Q10' : 0.83,
+    'Q11' : 0.68,
+    'Q12' : 0.6,
+    'Q13' : 0.74,
+    'Q14' : 0.74,
+    'Q15' : 0.7,
+    'Q16' : 0.67,
+    'Q17' : 0.7,
+    'Q18' : 0.7,
+    'Q19' : 0.7,
+    'Q20' : 0.64,
+    'Q21' : 0.78,
+    'Q22' : 0.7,
+    'Q23' : 0.8,
+    'Q24' : 0.58,
+    'Q25' : 0.65,
+    'Q26' : 0.64,
+    'Q27' : 0.65,
+    'Q28' : 0.62,
+    'Q29' : 0.62,
+    'Q30' : 0.75
+}
 
 qval_tab = \
 { 'Q1' :
       { 'College/University' : 'University',
         'Governmental institute' : 'Government',
-        'Hardware vendor' : 'HW',
-        'Software vendor' : 'SW',
+        'Hardware vendor' : 'HW vendor',
+        'Software vendor' : 'SW vendor',
         'Private research institute' : 'Private',
         'Other' : 'other' },
   'Q3' :
-      { 1 : 'Low', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : 'High' },
+      { '1' : 'Low', 
+        '2' : '2', 
+        '3' : '3', 
+        '4' : '4', 
+        '5' : '5', 
+        '6' : 'High' },
   'Q4' :
-      { 1 : 'Low', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : 'High' },
+      { '1' : 'Low', 
+        '2' : '2', 
+        '3' : '3', 
+        '4' : '4', 
+        '5' : '5', 
+        '6' : 'High' },
   'Q5' :
       { 'C/C++' : 'C/C++',
-        'Fortran 90 or newer' : '>F90',
-        'Fortran (older one than Fortran 90)' : '<F90',
+        'Fortran 90 or newer' : '>= F90',
+        'Fortran (older one than Fortran 90)' : '< F90',
         'Python' : 'Python',
         'Java' : 'Java',
         'Other' : 'other' } ,
@@ -178,7 +221,7 @@ qval_tab = \
         'I had lecture(s) at school.' : 'School Lecture(s)',
         'Other lectures or tutorials (workplace, conference).' : 'Other lecture(s)',
         'I read articles found on Internet.' : 'Internet',
-        'I have not learned MPI.' : 'No learning',
+        'I have not learned MPI.' : 'Not learned',
         'Other' : 'other' },
   'Q12' :
       { 'Beginning MPI (An Introduction in C)' : 'Beginning MPI',
@@ -348,16 +391,20 @@ qval_tab = \
         'Other' : 'other'
         },
   'Q30' :
-      { 1 : 'Portability',
-        2 : '2',
-        3 : '3',
-        4 : '4',
-        5 : 'Performance' },
+      { '1' : 'Portability',
+        '2' : '2',
+        '3' : '3',
+        '4' : '4',
+        '5' : 'Performance' },
 }
 
 multi_answer = [ 'Q5', 'Q8', 'Q9', 'Q11', 'Q12', 'Q13', 'Q15', 
-                 'Q17', 'Q18', 'Q19', 'Q20', 'Q22', 'Q23', 'Q24', 'Q25', 
-                 'Q26', 'Q27', 'Q28', 'Q29' ]
+                 'Q17', 'Q18', 'Q19', 'Q20', 'Q23', 'Q25', 
+                 'Q27', 'Q28' ]
+
+sort_answer = [ 'Q1', 'Q5', 'Q8', 'Q9', 'Q12', 'Q13', 'Q14', 'Q15', 
+                'Q16', 'Q17', 'Q18', 'Q20', 'Q23', 'Q24', 'Q25', 'Q26', 
+                'Q27', 'Q28', 'Q29' ]
 
 print_other = [ 'Q5', 'Q8', 'Q9', 'Q11', 'Q12', 'Q13', 'Q15', 'Q18', 'Q20',
                 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29' ]
@@ -376,34 +423,43 @@ def unique ( list ) :
     return unique_list
 
 
-if len( sys.argv ) < 2 :
+argv_idx = 1
+argc = len( sys.argv )
+if argc < 2 :
     print( 'Input CSV file must be specified' )
     exit( 1 )
-if len( sys.argv ) > 2 :
-    if sys.argv[1] == 'debug' :
+if argc > 2 :
+    if sys.argv[argv_idx] == 'debug' :
+        argv_idx += 1
         DEBUG = True
-    elif sys.argv[1] =='show' :
+    elif sys.argv[argv_idx] =='show' :
         FILE_TYPE = ''
-    csv_in = sys.argv[2]
-
-else :
-    csv_in = sys.argv[1]
-
+        argv_idx += 1
+csv_in = sys.argv[argv_idx]
 if not os.path.isfile( csv_in ) :
     print( csv_in + ' not found' )
     exit( 1 )
+
+argv_idx += 1
+question0 = ''
+question1 = ''
+if argv_idx < argc :
+    question0 = sys.argv[argv_idx]
+    argv_idx += 1
+    if argv_idx < argc :
+        question1 = sys.argv[argv_idx]
 
 if DEBUG :
     FILE_TYPE = ''
     EVENT_SHOW = True
 
 if PREPROCESS != '' :
-    tmpfile = csv_in + '.ascii'
-    os.system( 'nkf ' + '"' + csv_in + '" > "' + tmpfile + '"' )
+    tmpfile = csv_in + '.pre'
+    os.system( PREPROCESS + ' "' + csv_in + '" > "' + tmpfile + '"' )
     df = pd.read_csv( tmpfile, sep=',' )
     os.remove( tmpfile )
 else :
-    df = pd.read_csv( csv_in, sep=',')
+    df = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
 basename = os.path.splitext( os.path.basename( csv_in ) )[0].replace(' ','')
 
 # shorten long country names
@@ -454,7 +510,6 @@ else :
         else :
             region_list.append( region )
 df_whole = df.assign( Region = region_list )
-
 for rename in unique( rename_list ) :
     df_whole.replace( rename, rename+':others', inplace=True )
 
@@ -463,14 +518,142 @@ region_list = regions.values.tolist()
 #print( region_list )
 unique_regions = unique(region_list)
 #print( unique_regions )
+#print( df_whole )
 
-def graph_time_series( df ) :
+# creating region list having more than 30 answers
+regions_major = []
+for reg in unique_regions :
+    df_reg = df_whole.query( 'Region=='+'"'+reg+'"' ) 
+    if len( df_reg ) > 30 :
+        regions_major.append( reg )
+regions_major.sort()
+
+whole = 'whole'
+dict_qno    = {}
+dict_others = {}
+for qno in qval_tab.keys() :
+    list_sum = []
+    dict_tmp = {}
+    list_others = []
+    legend = qval_tab[qno]
+
+# decompose answers if this is a multiple-answer question and
+# convert to percent numbers on whole data 
+    dict_ans = { 'other' : 0 }
+    for ans in legend.values() :
+        dict_ans.setdefault( str(ans), 0 )
+    tmp = df_whole[qno]
+
+#    print( tmp )
+    if qno in multi_answer :
+        for mans in tmp :
+            list_ans = mans.split( ';' )
+            for ans in list_ans :
+                if ans in legend.keys() :
+                    dict_ans[legend[ans]] += 1
+                elif len( ans ) > 0 :
+                    dict_ans['other'] += 1
+                    list_others.append( ans )
+    else :
+        for ans in tmp :
+            if ans in legend.keys() :
+                dict_ans[legend[ans]] += 1
+            elif len( ans ) > 0 :
+                dict_ans['other'] += 1
+                list_others.append( ans )
+#    print( list_others )
+    ser = pd.Series( data=dict_ans, dtype=float )
+    sum = ser.sum()
+    list_sum.append( sum )
+    for i in range( ser.size ) :
+        ser.iat[i] = ser.iat[i] / float(sum) * 100.0
+    dfq = pd.DataFrame( { 'whole' : ser } )
+#    print( 'whole', dfq )
+
+# convert to percent numbers for each region
+    for reg in regions_major :
+        dict_ans = { 'other' : 0 }
+        for ans in legend.values() :
+            dict_ans.setdefault( str(ans), 0 )
+        tmp = df_whole[df_whole['Region']==reg][qno]
+#        print( tmp )
+        if qno in multi_answer :
+            for mans in tmp :
+                list_ans = mans.split( ';' )
+                for ans in list_ans :
+                    if ans in legend.keys() :
+                        dict_ans[legend[ans]] += 1
+                    elif len( ans ) > 0 :
+                        dict_ans['other'] += 1
+                        list_others.append( ans )
+        else :
+            for ans in tmp :
+                if ans in legend.keys() :
+                    dict_ans[legend[ans]] += 1
+                elif len( ans ) > 0 :
+                    dict_ans['other'] += 1
+                    list_others.append( ans )
+        ser = pd.Series( data=dict_ans, dtype=float )
+        sum = ser.sum()
+        list_sum.append( sum )
+        for i in range( ser.size ) :
+            ser.iat[i] = ser.iat[i] / float(sum) * 100.0
+        dfq[reg] = ser
+    dfq.fillna( 0.0, inplace=True )
+
+## rename index with short ones
+#    legend = qval_tab[qno]
+#    idxs = dfq.index
+#    for idx_name in idxs :
+#        if idx_name in legend.keys() :
+#            dfq.rename( index={idx_name: legend[idx_name]}, inplace=True )
+
+# remove all zero rows
+    for idx in dfq.index :
+        flag = True
+        for clm in dfq.columns :
+            if dfq.loc[ idx, clm ] > 0 :
+                flag = False
+        if flag :
+            dfq.drop( idx, inplace=True )
+
+# sort, if desired
+    if qno in sort_answer :
+        dfq = dfq.sort_values( 'whole', ascending=False )
+
+# move 'other' to the last
+    if 'other' in dfq.index :
+        idx = dfq.index.tolist()
+        idx.remove( 'other' )
+        idx.append( 'other')
+        dfq = dfq.loc[idx,:]
+#    print( dfq )
+
+# adding number of answer row
+#    print( list_sum )
+    dfq = dfq.append( pd.Series( data=list_sum, 
+                                 index=[whole]+regions_major, 
+                                 name='_NumAns_',
+                                 dtype=int ) )
+    
+# print data
+#    print( dfq )                # print data
+# print others
+    if qno in print_other :
+        dict_others.setdefault( qno, list_others )
+
+# finally append to the dict_qno
+    dict_qno.setdefault( qno, dfq )
+
+#print( dict_qno )
+
+def graph_time_series( df, regions ) :
     # adding 'Date' column
     dt_list = []
     date_dict = {}
     for dt in df['Q0'] :
         dt_list.append( conv_date( dt ) )
-    df = df.assign( Date = dt_list )
+    df = df.assign( Date=dt_list )
 #    print( df )
 ##    dateF = conv_date( df['Q0'].iat[0] )
 ##    ondate = df[df['Date']==dateF]
@@ -511,7 +694,7 @@ def graph_time_series( df ) :
     ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
     ax.tick_params(axis="x", which="minor", labelsize=10, length=15, width=1)
 
-    plt.subplots_adjust( right=0.65 )
+    plt.subplots_adjust( right=0.68 )
     plt.legend( dc_etc, bbox_to_anchor=(1, 1) )
 
     if EVENT_SHOW :
@@ -537,181 +720,35 @@ def graph_time_series( df ) :
     plt.close('all')
     return
 
-def graph_percentage( all, qno, last='', order='', scale=0.8) :
+def graph_percentage( dict, others, qno ) :
+    df     = dict[qno]
+    scale  = graph_scale[qno]
     legend = qval_tab[qno]
-    print( '\n**** ' + qno + ': ' + question_tab[qno] + ' ****')
-    dict_tmp  = {}
-    list_sum  = []
-    whole     = 'whole'
-    list_regs = [ whole ]
-
-# creating region list
-    regions = []
-#    print( unique( region_tab.values() ) )
-    for reg in unique_regions :
-        df_reg = all.query( 'Region=='+'"'+reg+'"' ) 
-        if len( df_reg ) > 30 :
-            regions.append( reg )
-    regions.sort()
-#    print( regions )
-
-
-# list all the 'other' answers
-    list_others = []
-    if qno in print_other :
-        if qno in multi_answer :
-            for mans in all[qno] :
-                if mans == mans :
-                    for ans in mans.split( ';' ) :
-                        if not ans in legend.keys() :
-                            list_others.append( ans )
-        else :
-            for ans in all[qno] :
-                if ans == ans and not ans in legend.keys() :
-                    list_others.append( ans )
-
-# convert to percent numbers on whole data
-# decompose answer if this is a multiple-answer question
-    if qno in multi_answer :
-        dict_mans = {}
-        for sans in legend.keys() :
-            dict_mans.setdefault( sans, 0 )
-        tmp = all[qno]
-        for mans in pd.Series( data=tmp, dtype=str ) :
-            list_ans = mans.split( ';' )
-            for ans in list_ans :
-                if ans in legend.keys() :
-                    dict_mans[ans] += 1
-                else :
-                    dict_mans['Other'] += 1
-        tmp = pd.Series( dict_mans, dtype=float )
-#        print( tmp )
-    else :
-        tmp = all[qno].value_counts( sort=False )
-    ser = pd.Series( data=tmp, dtype=float )
-    sum = int(0)
-    for elm in ser :
-        sum += int( math.ceil( elm ) )
-    list_sum.append( sum )
-    for i in range( ser.size ) :
-        ser.iat[i] = ser.iat[i] / float(sum) * 100.0
-    dict_tmp.setdefault( whole, ser )
-    dfq = pd.DataFrame( data=dict_tmp )
-#    print( dfq )
-
-# convert to percent numbers for each region
-    for reg in regions :
-        if qno in multi_answer :
-            dict_mans = {}
-            for sans in legend.keys() :
-                dict_mans.setdefault( sans, 0 )
-#            print( dict_mans )
-            tmp = all[all['Region']==reg][qno]
-            for mans in pd.Series( data=tmp, dtype=str ) :
-                list_ans = mans.split( ';' )
-                for ans in list_ans :
-                    if ans in legend.keys() :
-                        dict_mans[ans] += 1
-                    else :
-                        dict_mans['Other'] += 1
-            ser = pd.Series( dict_mans, dtype=float )
-#            print( ser )
-        else :
-            tmp = all[all['Region']==reg][qno].value_counts(sort=False)
-            ser = pd.Series( data=tmp, dtype=float )
-        sum = int(0)
-        for elm in ser :
-            sum += int( math.ceil( elm ) )
-        list_sum.append( sum )
-        for i in range( ser.size ) :
-            ser.iat[i] = ser.iat[i] / float(sum) * 100.0
-        dict_tmp.setdefault( reg, ser )
-        perc = pd.DataFrame( data=dict_tmp )
-        dfq = pd.concat( [ perc ], axis=1, sort=False )
-    dfq.fillna( 0.0, inplace=True )
-
-#    print( dfq )
-
-# setup legend
-    if legend != '' :
-        idxs = dfq.index
-        for idx_name in idxs :
-            dfq.rename(index={idx_name: legend[idx_name]}, inplace=True)
-
-#    print( dfq )
-
-# move the specified line to the last (if specified)
-    idxs = dfq.index
-    if idxs.contains( last ) :
-        idxl = idxs.drop( last ).tolist()
-        idxl.append( last )
-        dfq = dfq.reindex( index=idxl )
-
-# reorder index (if specified)
-    if order == 'sort' :
-        dfq = dfq.sort_values( whole, ascending=False )
-
-    elif type(order) is list :
-        dfq = dfq.reindex( order, axis='index' )
-        dfq_idx = dfq.value_counts
-        if len(list) < len( dfq_idx ) :
-            diff = list( set(dfq_idx) - set(list) )
-            list_idx = dfq.index.tolist()
-            list_etc = []
-            for reg in regions :
-                sum = 0.0
-                for e in diff :
-                    sum += dfq.loc[e,reg]
-                list_etc.append( sum )
-            dfq = dfq.drop( diff )
-            etc = pd.Series( list_etc, 
-                             index=[ whole ] + regions, 
-                             name='(etc.)' )
-            dfq.loc['(etc.)'] = etc
-            
-    elif type(order) is int :
-        top = order
-        nidx = len( dfq.index )
-        if top > 0 and nidx > top :
-            dfq = dfq.sort_values( whole, ascending=False )
-            list_idx = dfq.index.tolist()
-            list_etc = []
-            for i in range( 0, len( regions ) + 1 ) :
-                sum = 0.0
-                for j in range( top, nidx ) :
-                    sum += dfq.iat[j,i]
-                list_etc.append( sum )
-            for i in range( 0, top ) :
-                list_idx.pop(0)
-            dfq = dfq.drop( list_idx )
-            etc = pd.Series( list_etc, 
-                             index=[ whole ] + regions, 
-                             name='(etc.)' )
-            dfq.loc['(etc.)'] = etc
-
-    else :
-        dfq = dfq.reindex( legend.values(), axis='index' )
 
 # adding numbers to the tiltle
-    for column_name in dfq :
-        newc = column_name + '\n(' + str(list_sum.pop(0)) + \
-        ' / ' + str(total_answers) + ')'
-        dfq.rename( columns={column_name: newc}, inplace=True )
+    df_tmp = df[:-1]          # sub-DF excepting '_NumAns_'
+    list_numans   = df.tail(1).values.tolist()[0]
+    total_answers = list_numans[0]
+#    print( total_answers, list_numans )
+    for clm in dfq.columns :
+        newc = clm + '\n(' + str( round( list_numans.pop(0)) ) + \
+        ' / ' + str( round(total_answers) ) + ')'
+        df_tmp.rename( columns={clm: newc}, inplace=True )
 
 # print data 
+    print( '\n**** ' + qno + ': ' + question_tab[qno] + ' ****')
     if qno in print_other :
         i = 0
-        for ans in set( list_others ) :
+        for ans in set( others[qno] ) :
             print( '[' + str(i) + '] ' + ans )
             i += 1
-        print( '' )             # new line
-    print( dfq )                # print data
+    print( '\n', df_tmp )       # print data
 
 # eventually draw a graph (stacked bar in percentage)
-    trans = dfq.T
+    trans = df_tmp.T
     trans.plot( kind='bar', stacked=True, legend='reverse', color=color_list )
     plt.subplots_adjust( right=scale, bottom=0.3 )
-    plt.legend( dfq.index, bbox_to_anchor=(1, 1) )
+    plt.legend( df_tmp.index, bbox_to_anchor=(1, 1) )
     plt.ylabel( 'Percentage' )
     if qno in multi_answer :
         plt.title( qno + '* : ' + question_tab[qno] )
@@ -724,108 +761,148 @@ def graph_percentage( all, qno, last='', order='', scale=0.8) :
         plt.savefig(basename+'-'+qno+'.'+FILE_TYPE, transparent=True)
     return
 
-graph_time_series( df_whole )
-graph_percentage( df_whole, 'Q1', scale=0.75 )
-graph_percentage( df_whole, 'Q3' )
-graph_percentage( df_whole, 'Q4',)
+### graph_time_series( df_whole, region_list )
 
-if not DEBUG :
-    graph_percentage( df_whole, 'Q5' )
-    graph_percentage( df_whole, 'Q6' )
-    graph_percentage( df_whole, 'Q7' )
-    graph_percentage( df_whole, 'Q8', scale=0.68 )
-    graph_percentage( df_whole, 'Q9', scale=0.68 )
-    graph_percentage( df_whole, 'Q10' )
-    graph_percentage( df_whole, 'Q11', scale=0.68 )
-    graph_percentage( df_whole, 'Q12', scale=0.6  )
-    graph_percentage( df_whole, 'Q13', scale=0.66 )
-    graph_percentage( df_whole, 'Q14', scale=0.73 )
-    graph_percentage( df_whole, 'Q15', scale=0.7  )
-    graph_percentage( df_whole, 'Q16', scale=0.67 )
-    graph_percentage( df_whole, 'Q17', scale=0.7  )
-    graph_percentage( df_whole, 'Q18', scale=0.7  )
-    graph_percentage( df_whole, 'Q19', scale=0.7  )
-    graph_percentage( df_whole, 'Q20', scale=0.64 )
-    graph_percentage( df_whole, 'Q21', scale=0.76 )
-    graph_percentage( df_whole, 'Q22', scale=0.7  )
-    graph_percentage( df_whole, 'Q23' )
-    graph_percentage( df_whole, 'Q24', scale=0.58 )
-    graph_percentage( df_whole, 'Q25', scale=0.65 )
-    graph_percentage( df_whole, 'Q26', scale=0.65 )
-    graph_percentage( df_whole, 'Q27', scale=0.62 )
-    graph_percentage( df_whole, 'Q28', scale=0.6  )
-    graph_percentage( df_whole, 'Q29', scale=0.6  )
-    graph_percentage( df_whole, 'Q30', scale=0.75 )
+if question0 != '' and question1 == '' :
+    graph_percentage( dict_qno, dict_others, question0 )
+elif question0 == '' and question1 == '' :
+    graph_percentage( dict_qno, dict_others, 'Q1' )
+    graph_percentage( dict_qno, dict_others, 'Q3' )
+    graph_percentage( dict_qno, dict_others, 'Q4' )
+
+    if not DEBUG :
+        graph_percentage( dict_qno, dict_others, 'Q5' )
+        graph_percentage( dict_qno, dict_others, 'Q6' )
+        graph_percentage( dict_qno, dict_others, 'Q7' )
+        graph_percentage( dict_qno, dict_others, 'Q8' )
+        graph_percentage( dict_qno, dict_others, 'Q9' )
+        graph_percentage( dict_qno, dict_others, 'Q10' )
+        graph_percentage( dict_qno, dict_others, 'Q11' )
+        graph_percentage( dict_qno, dict_others, 'Q12' )
+        graph_percentage( dict_qno, dict_others, 'Q13' )
+        graph_percentage( dict_qno, dict_others, 'Q14' )
+        graph_percentage( dict_qno, dict_others, 'Q15' )
+        graph_percentage( dict_qno, dict_others, 'Q16' )
+        graph_percentage( dict_qno, dict_others, 'Q17' )
+        graph_percentage( dict_qno, dict_others, 'Q18' )
+        graph_percentage( dict_qno, dict_others, 'Q19' )
+        graph_percentage( dict_qno, dict_others, 'Q20' )
+        graph_percentage( dict_qno, dict_others, 'Q21' )
+        graph_percentage( dict_qno, dict_others, 'Q22' )
+        graph_percentage( dict_qno, dict_others, 'Q23' )
+        graph_percentage( dict_qno, dict_others, 'Q24' )
+        graph_percentage( dict_qno, dict_others, 'Q25' )
+        graph_percentage( dict_qno, dict_others, 'Q26' )
+        graph_percentage( dict_qno, dict_others, 'Q27' )
+        graph_percentage( dict_qno, dict_others, 'Q28' )
+        graph_percentage( dict_qno, dict_others, 'Q29' )
+        graph_percentage( dict_qno, dict_others, 'Q30' )
+
+def expand_multians( qno, df ) :
+    list_expand = []
+    for idx, row in df.iterrows():
+        mans = row[qno]
+        for ans in mans.split(';') :
+            rec = copy.copy( row )
+            if ans in qval_tab[qno] :
+                rec[qno] = ans
+            else :
+                rec[qno] = 'Other'
+            list_expand.append( rec )
+    new_df = pd.DataFrame( list_expand, columns=df.columns )
+    new_df.fillna( 0.0, inplace=True )
+    return new_df
 
 def cross_tab( qno0, qno1 ) :
-    nregs = 0
-    for reg in unique_regions :
-        if len( df_whole[df_whole['Region']==reg] ) > 30 :
-            nregs += 1
-    if nregs == 0 :
-        print( 'No region' )
+    if qno0 in multi_answer and qno1 in multi_answer :
+        print( 'Unable cross multiple answer quenstions' )
         return
-    list_regions = [ ' whole' ]
+
+    list_regions = [whole] + regions_major
+    nregs        = len( list_regions )
     list_graphs  = []
+    list_numasn  = []
 
-    r0 = df_whole[qno0]
-    r1 = df_whole[qno1]
-    ct = pd.crosstab( r0, r1, normalize=True, dropna=False )
-    idx = qval_tab[qno0]
-    clm = qval_tab[qno1]
-    ct = ct.reindex( index=idx, columns=clm, fill_value=0 )
-    ct.fillna( 0, inplace=True )
-    ct.rename( index=idx, columns=clm, inplace=True )
+    cross = df_whole.loc[:,[qno0,qno1]]
+    # remove not-answered
+    cross = cross[cross[qno0]!='']
+    cross = cross[cross[qno1]!='']
+
+    if qno0 in multi_answer :
+        cross = expand_multians( qno0, cross )
+    elif qno1 in multi_answer :
+        cross = expand_multians( qno1, cross )
+    ct = pd.crosstab( cross[qno0], cross[qno1], normalize=True, dropna=False )
+    ct.fillna( 0.0, inplace=True )
+#    print( '\nCT\n', ct )
+
     list_graphs.append( ct )
-    print( '' )
-    print( 'Whole' )
-    print( ct )
+#    print( '\nwhole\n', ct )
 
-    for reg in sorted( unique_regions ) :
-        if len( df_whole[df_whole['Region']==reg] ) > 30 :
-            r0 = df_whole[df_whole['Region']==reg][qno0]
-            r1 = df_whole[df_whole['Region']==reg][qno1]
-            ct = pd.crosstab( r0, r1, normalize=True, dropna=False )
-            idx = qval_tab[qno0]
-            clm = qval_tab[qno1]
-            ct = ct.reindex( index=idx, columns=clm, fill_value=0 )
-            ct.fillna( 0, inplace=True )
-            ct.rename( index=idx, columns=clm, inplace=True )
-            list_regions.append( reg )
-            list_graphs.append( ct )
-            print( '' )
-            print( reg )
-            print( ct )
+    for reg in regions_major :
+        df_reg = df_whole[df_whole['Region']==reg]
+        cross = df_reg.loc[:,[qno0,qno1]]
+        # remove not-answered
+        cross = cross[cross[qno0]!='']
+        cross = cross[cross[qno1]!='']
 
-# delete zero index
-    list_drop = []
-    i = 0
-    for idx in list_graphs[0].index :
+        if qno0 in multi_answer :
+            cross = expand_multians( qno0, cross )
+        elif qno1 in multi_answer :
+            cross = expand_multians( qno1, cross )
+#        print( '\nCROSS\n', cross )
+        ct = pd.crosstab( cross[qno0], cross[qno1], 
+                          normalize=True, dropna=False )
+        ct.fillna( 0.0, inplace=True )
+        list_regions.append( reg )
+        list_graphs.append( ct )
+
+    # make tick titles short
+    # reorder index and columns
+    new_graphs = []
+    for dat in list_graphs :
+        dat = dat.rename( mapper=qval_tab[qno0], axis='index' )
+        dat = dat.rename( mapper=qval_tab[qno1], axis='columns' )
+        dat.fillna( 0.0, inplace=True )
+#        print( dat )
+        dat = dat.reindex( index=qval_tab[qno0].values(), 
+                           columns=qval_tab[qno1].values() )
+        dat.fillna( 0.0, inplace=True )
+#        print( dat )
+        new_graphs.append( dat )
+
+    # remove low-freq index 
+    dat_whole = new_graphs[0]
+    for idx in dat_whole.index :
         flag = True
-        for dat in list_graphs :
-            x = dat.sum( axis='columns' )
-            if x[i] > CROSSTAB_THRESHOLD :
-                flag = False
+        for dat in new_graphs :
+            if not flag :
+                break;
+            for clm in dat_whole.columns :
+                if clm in dat.columns and \
+                   idx in dat.index   and \
+                   dat.at[idx,clm] > 0.03 :
+                    flag = False
+                    break
         if flag :
-            list_drop.append( idx )
-        i += 1
-#    print( 'list-drop:', list_drop )
-    for drop in list_drop :
-        for dat in list_graphs :
-            dat.drop( drop, axis='index', inplace=True )
-# delete zero column
-    list_drop = []
-    i = 0
-    for clm in list_graphs[0].columns :
+            for dat in new_graphs :
+                dat.drop( idx, axis=0, inplace=True )
+
+    # remove low-freq columns
+    for clm in dat_whole.columns :
         flag = True
-        for dat in list_graphs :
-            x = dat.sum( axis='index' )
-            if x[i] > CROSSTAB_THRESHOLD :
-                flag = False
+        for dat in new_graphs :
+            if not flag :
+                break;
+            for idx in dat_whole.index :
+                if idx in dat.index   and \
+                   clm in dat.columns and \
+                   dat.at[idx,clm] > 0.03 :
+                    flag = False
+                    break
         if flag :
-            list_drop.append( clm )
-        i += 1
-#    print( 'list-drop:', list_drop )
+            for dat in new_graphs :
+                dat.drop( clm, axis=1, inplace=True )
 
     ncols = CROSSTAB_NCOLS
     nrows = int( math.ceil( ( nregs + 2 ) / ncols ) )
@@ -834,8 +911,8 @@ def cross_tab( qno0, qno1 ) :
     plt.rcParams["font.size"] = 8
     plt.tight_layout()
     i = 0
-    for dat in list_graphs :
-#        print( reg )
+    for dat in new_graphs :
+        print( '\nRegion:', list_regions[i], '\n', dat )
 #        print( nregs, nrows, ncols, int(i/ncols), int(i%ncols) )
         ax = plt.subplot2grid( ( nrows, ncols ), 
                                ( int(i/ncols), int(i%ncols) ) )
@@ -845,23 +922,29 @@ def cross_tab( qno0, qno1 ) :
                      annot=False, #square=True, 
                      linewidths=0.5, linecolor='black', 
                      xticklabels=False, yticklabels=False,
+#                     xticklabels=True, yticklabels=True,
                      ax=ax )
         ax.set_xlabel( '' )
         ax.set_ylabel( '' )
         i += 1
 
-    i+= 1
+    i+= 1 # make space for tick titles
     ax = plt.subplot2grid( ( nrows, ncols ), 
                            ( int(i/ncols), int(i%ncols) ),
                            colspan=((nrows*ncols)-2) )
-    ni = len( dat.index )
-    nc = len( dat.columns )
-    for i in range( 0, ni ) :
-        for j in range( 0, nc ) :
-            dat.iat[i,j] = ( ( ( (j+1) % 2 ) + ( i % 2 ) ) % 2 ) * 0.5
+
+    # LEGEND
+    legend = copy.copy( new_graphs[0] )
+    print( '\nLEGEND\n', legend )
+    nrows, ncols = legend.shape
+#    print( 'nrows=', nrows, 'ncols=', ncols )
+    for i in range( 0, nrows ) :
+        for j in range( 0, ncols ) :
+            legend.iat[i,j] = ( ( ( (j+1) % 2 ) + ( i % 2 ) ) % 2 ) * 0.5
 #    ax.set_title( 'Legend' )
     ax.set_autoscale_on( True )
-    sns.heatmap( dat, 
+
+    sns.heatmap( legend, 
                  cmap='Greys', cbar=False, 
                  annot=False, square=True, 
                  linewidths=0.5, linecolor='black', 
@@ -891,35 +974,45 @@ def cross_tab( qno0, qno1 ) :
         plt.show()
     else :
         plt.savefig(basename+'-'+qno0+'-'+qno1+'.'+FILE_TYPE, transparent=True)
-    plt.close('all')
+    plt.close( 'all' )
     return
-
-qlist = [ 'Q1', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 
-          'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 'Q17', 'Q18', 'Q19',
-          'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29',
-          'Q30' ]
 
 def summary () :
     ##print( '** Whole Data **' )
     ##print( df_whole )
-    print( '** SUMMARY **' )
+    print( '\n\n** SUMMARY **' )
     cs = df_whole['Q2'].value_counts( sort=True )
     print( cs )
     print( '' ) # newline
     print( '# Countries:\t' + str( len(cs) ) )
     print( '# Answers:\t' + str(total_answers) )
+    return
 
-i = 0
-j = 0
-for q0 in qlist :
-    i += 1
-    for q1 in qlist[i:] :
-        j += 1
-        if DEBUG and j > 4 :
-            summary()
-            exit( 0 )
-        cross_tab( q0, q1 )
-summary()
+
+if question0 != '' and question1 != '' :
+    cross_tab( question0, question1 )
+elif question0 == '' and question1 == '' :
+    qlist = [ 'Q1', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 
+              'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 
+              'Q17', 'Q18', 'Q19',
+              'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 
+              'Q27', 'Q28', 'Q29',
+              'Q30' ]
+    i = 0
+    j = 0
+    for q0 in qlist :
+        i += 1
+        for q1 in qlist[i:] :
+            j += 1
+            if DEBUG and j > 4 :
+                summary()
+                exit( 0 )
+            cross_tab( q0, q1 )
+
+####summary()
 
 ##if __name__ == '__main__':
 ##    main()
+
+exit( 0 )
+
