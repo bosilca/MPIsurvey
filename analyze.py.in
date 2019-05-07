@@ -25,8 +25,7 @@ import argparse
 DATE_FORMAT_JP = '%Y/%m/%d' # YYmmdd
 DATE_FORMAT_US = '%m/%d/%Y' # mmddYY
 DATE_FORMATS = [ DATE_FORMAT_JP, DATE_FORMAT_US ]
-REGION_THRESHOLD = 30 	# if True, major countries will also appear
-EVENT_SHOW = False 	# if True, events are shown in TimeSeries graph
+
 CROSSTAB_THRESHOLD = 0.01 # crosstabe values less than this will be removed
 CROSSTAB_NCOLS = 3
 
@@ -457,36 +456,39 @@ qlist_all = qlist.append( 'all' )
 file_formats = [ 'eps', 'pdf', 'png' ]
 
 parser = argparse.ArgumentParser(description="Survey Analysis")
-parser.add_argument( '--timeseries', '-t',
+parser.add_argument( '-t', '--timeseries',
                      action='store_true',
                      help='Draw time series graph' )
-parser.add_argument( '--simple', '-s',
+parser.add_argument( '-e', '--event',
+                     action='store_true',
+                     help='Show events in the time series graph' )
+parser.add_argument( '-s', '--simple',
                      nargs='?',
                      action='append',
                      choices=qlist_all,
                      help='Question (Qn) to output simple graph(s)' )
-parser.add_argument( '--cross', '-c', 
+parser.add_argument( '-c', '--cross', 
                      nargs='?',
                      action='append',
                      help='A pair of questions (Qn,Qm) ' \
                           'to output cross-tab graph(s)' )
-parser.add_argument( '--major_region', '-m', type=int, default=30,
+parser.add_argument( '-m', '--major_region', type=int, default=30,
                      help="Threshold to be a major region (30)" )
-parser.add_argument( '--format', '-f', type=str, default='',
+parser.add_argument( '-f', '--format', type=str, default='',
                      choices=file_formats,
-                     help="File format. One of 'eps', 'pdf', or 'png' (pdf)" )
-parser.add_argument( '--outdir', '-o', type=str, default='',
+                     help="File format. Default is 'pdf'" )
+parser.add_argument( '-o', '--outdir', type=str, default='',
                      help="Prepend to all generated files" )
 #parser.add_argument( '--dry-run', action='store_true', default=False,
 #                     help="Don't execute any outside visible " \
 #                        "actions (such as generating pdfs)." )
-#parser.add_argument( '--log', '-v', dest='DEBUG', action='store_true', 
+#parser.add_argument( '-v', '--log', dest='DEBUG', action='store_true', 
 #                     default=False,
 #                     help="Log all steps of the operations (verbose)." )
 # We automatically open the files in read mode, 
 # so if they dont exists an exception
 # will be raised by the parsec. Protect if necessary.
-parser.add_argument( '--DEBUG', '-D', action='store_true', help='for debug' )
+parser.add_argument( '-D', '--DEBUG', action='store_true', help='for debug' )
 parser.add_argument( 'csv_in', 
                      nargs=argparse.REMAINDER, 
                      type=argparse.FileType('r'),
@@ -496,8 +498,11 @@ parser.add_argument( 'csv_in',
 args = parser.parse_args()
 
 flag_timeseries = False
+flag_show_event = False
 if args.timeseries :
     flag_timeseries = True
+if args.event :
+    flag_show_event = True
 
 list_simple = []
 if args.simple is not None :
@@ -828,7 +833,7 @@ def graph_time_series( df, regions ) :
     plt.subplots_adjust( right=0.68 )
     plt.legend( dc_etc, bbox_to_anchor=(1, 1) )
 
-    if EVENT_SHOW :
+    if flag_show_event :
         for event in event_list :
             year  = event.pop(0)
             month = event.pop(0)
