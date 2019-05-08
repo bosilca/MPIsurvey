@@ -16,7 +16,7 @@ usage: analyze.py <OPTIONS> <CSV_FILE> [<CSV_FILE> ...]
        pair of specified questions. Or, 'all' to draw graphs on all
        possible combinations  
        - `-m <N>` threshold of number of answers to be a major region  
-       - `-f <FORMAT>` if specified, 'eps', 'pdf', or 'png', create
+       - `-f <FORMAT>` if specified, `eps`, `pdf`, or `png`, create
        file(s) in the specified format instead of showing graph(s)  
        - `-o <OUTDIR>` if specified, the output file(s) are created
        under the specified directory  
