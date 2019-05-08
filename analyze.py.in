@@ -26,8 +26,33 @@ DATE_FORMAT_JP = '%Y/%m/%d' # YYmmdd
 DATE_FORMAT_US = '%m/%d/%Y' # mmddYY
 DATE_FORMATS = [ DATE_FORMAT_JP, DATE_FORMAT_US ]
 
-CROSSTAB_THRESHOLD = 0.01 # crosstabe values less than this will be removed
+CROSSTAB_THRESHOLD = 0.04 # crosstab rows and columns less than this are not shown
 CROSSTAB_NCOLS = 3
+CROSSTAB_COLOR = 'YlOrRd'
+# possible color map names
+## Accent, Accent_r, Blues, Blues_r, BrBG, BrBG_r, BuGn, BuGn_r, BuPu,
+## BuPu_r, CMRmap, CMRmap_r, Dark2, Dark2_r, GnBu, GnBu_r, Greens,
+## Greens_r, Greys, Greys_r, OrRd, OrRd_r, Oranges, Oranges_r, PRGn,
+## PRGn_r, Paired, Paired_r, Pastel1, Pastel1_r, Pastel2, Pastel2_r,
+## PiYG, PiYG_r, PuBu, PuBuGn, PuBuGn_r, PuBu_r, PuOr, PuOr_r, PuRd,
+## PuRd_r, Purples, Purples_r, RdBu, RdBu_r, RdGy, RdGy_r, RdPu, RdPu_r,
+## RdYlBu, RdYlBu_r, RdYlGn, RdYlGn_r, Reds, Reds_r, Set1, Set1_r, Set2,
+## Set2_r, Set3, Set3_r, Spectral, Spectral_r, Wistia, Wistia_r, YlGn,
+## YlGnBu, YlGnBu_r, YlGn_r, YlOrBr, YlOrBr_r, YlOrRd, YlOrRd_r, afmhot,
+## afmhot_r, autumn, autumn_r, binary, binary_r, bone, bone_r, brg,
+## brg_r, bwr, bwr_r, cividis, cividis_r, cool, cool_r, coolwarm,
+## coolwarm_r, copper, copper_r, cubehelix, cubehelix_r, flag, flag_r,
+## gist_earth, gist_earth_r, gist_gray, gist_gray_r, gist_heat,
+## gist_heat_r, gist_ncar, gist_ncar_r, gist_rainbow, gist_rainbow_r,
+## gist_stern, gist_stern_r, gist_yarg, gist_yarg_r, gnuplot, gnuplot2,
+## gnuplot2_r, gnuplot_r, gray, gray_r, hot, hot_r, hsv, hsv_r, icefire,
+## icefire_r, inferno, inferno_r, jet, jet_r, magma, magma_r, mako,
+## mako_r, nipy_spectral, nipy_spectral_r, ocean, ocean_r, pink, pink_r,
+## plasma, plasma_r, prism, prism_r, rainbow, rainbow_r, rocket,
+## rocket_r, seismic, seismic_r, spring, spring_r, summer, summer_r,
+## tab10, tab10_r, tab20, tab20_r, tab20b, tab20b_r, tab20c, tab20c_r,
+## terrain, terrain_r, twilight, twilight_r, twilight_shifted,
+## twilight_shifted_r, viridis, viridis_r, vlag, vlag_r, winter, winter_r  
 
 event_list = [ # [ year, month, day, event-name, text-height ]
     [ 2019, 2, 18, 'hpc-announce[1]', 120 ],
@@ -151,11 +176,11 @@ graph_scale = {
 
 qval_tab = \
 { 'Q1' :
-      { 'College/University' : 'University',
-        'Governmental institute' : 'Government',
-        'Hardware vendor' : 'HW vendor',
-        'Software vendor' : 'SW vendor',
-        'Private research institute' : 'Private',
+      { 'College/University' : 'Univ',
+        'Governmental institute' : 'Gov',
+        'Hardware vendor' : 'HW',
+        'Software vendor' : 'SW',
+        'Private research institute' : 'Priv',
         'Other' : 'other' },
   'Q3' :
       { '1' : 'Low', 
@@ -358,16 +383,16 @@ qval_tab = \
         'Message injection rate' : 'Injection rate',
         'Bandwidth' : 'Bandwidth',
         'Additional optimization opportunities in terms of communication (topology awareness, locality, etc.)' : 'Additional comm. opt.',
-        'Optimization opportunities except communication (architecture awareness, dynamic processing, accelerator support, etc.)' : 'Other optimization',
-        'Multi-threading support' : 'Multi-threading\nsupport',
-        'Asynchronous progress' : 'Asynchronous progress',
+        'Optimization opportunities except communication (architecture awareness, dynamic processing, accelerator support, etc.)' : 'Other opt',
+        'Multi-threading support' : 'Multi-thread',
+        'Asynchronous progress' : 'Asynch progress',
         'MPI provides all semantics I need' : 'Satisfied',
         'Other' : 'other' },
   'Q27' :
       { 'Latency hiding (including asynchronous completion)' : 'Latency hiding',
         'Endpoints (multi-thread, sessions)' : 'End-points',
         'Resilience (fault tolerance)' : 'Resilience',
-        'Additional optimization opportunities in terms of communication (topology awareness, locality, etc.)' : 'Additional optimization',
+        'Additional optimization opportunities in terms of communication (topology awareness, locality, etc.)' : 'Additional opt',
         'Another API which is easier and/or simpler to use' : 'Another API',
         'MPI is providing all the communication semantics required by my application' : 'MPI provides all',
         'Other' : 'other' },
@@ -379,7 +404,7 @@ qval_tab = \
         'Process topologies' : 'Process topologies',
         'Dynamic process creation' : 'Dynamic process',
         'Error handlers' : 'Error handlers',
-        'There are no unnecessary features' : 'No unnecessary features',
+        'There are no unnecessary features' : 'No unnecessary feature',
         'Other' : 'other' },
   'Q29' :
       { 'Yes, compatibility is very important for me.' : 'Very important',
@@ -408,7 +433,7 @@ sort_answer = [ 'Q1', 'Q5', 'Q8', 'Q9', 'Q12', 'Q13', 'Q14', 'Q15',
 print_other = [ 'Q5', 'Q8', 'Q9', 'Q11', 'Q12', 'Q13', 'Q15', 'Q18', 'Q20',
                 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29' ]
 
-color_list =  [ "r", "g", "b", "c", "m", "y" ]
+color_list =  [ 'r', 'b', 'g', 'c', 'm', 'y', 'k' ]
 
 def strip_accents(text):
     """
@@ -426,15 +451,15 @@ def strip_accents(text):
         pass
     text = unicodedata.normalize('NFD', text)
     text = text.encode('ascii', 'ignore')
-    text = text.decode("utf-8")
+    text = text.decode('utf-8')
     return str(text)
 
-def conv_date ( q0_str ) :
-    ds = q0_str.split().pop(0)
+def conv_date ( q0_ans ) :
+    ds = q0_ans.split().pop(0)  # extract date (discard time)
     for format in DATE_FORMATS :
         try :
             return datetime.datetime.strptime( ds, format ).date()
-        except:
+        except :
             continue
     print( 'Unknown date format:', ds )
     exit( 1 )
@@ -451,11 +476,11 @@ qlist = [ 'Q1', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9',
           'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29',
           'Q30' ]
 
-qlist_all = qlist.append( 'all' )
+qlist_all = qlist + [ 'all' ]
 
 file_formats = [ 'eps', 'pdf', 'png' ]
 
-parser = argparse.ArgumentParser(description="Survey Analysis")
+parser = argparse.ArgumentParser( description="Survey Analysis" )
 parser.add_argument( '-t', '--timeseries',
                      action='store_true',
                      help='Draw time series graph' )
@@ -466,12 +491,15 @@ parser.add_argument( '-s', '--simple',
                      nargs='?',
                      action='append',
                      choices=qlist_all,
-                     help='Question (Qn) to output simple graph(s)' )
+                     help="Question (Qn) to output simple graph(s). " \
+                         "Or, 'all' to drawa graphs of all questions" )
 parser.add_argument( '-c', '--cross', 
                      nargs='?',
                      action='append',
-                     help='A pair of questions (Qn,Qm) ' \
-                          'to output cross-tab graph(s)' )
+                     help="A pair of questions (Qn,Qm) " \
+                         "to output cross-tab graph(s). " \
+                         "Or, 'all' to draw graphs of all possible" \
+                         "combinations." )
 parser.add_argument( '-m', '--major_region', type=int, default=30,
                      help="Threshold to be a major region (30)" )
 parser.add_argument( '-f', '--format', type=str, default='',
@@ -480,6 +508,7 @@ parser.add_argument( '-f', '--format', type=str, default='',
 parser.add_argument( '-o', '--outdir', type=str, default='',
                      help="Prepend to all generated files" )
 #parser.add_argument( '--dry-run', action='store_true', default=False,
+# AH: I have no idea what to do with dry-run
 #                     help="Don't execute any outside visible " \
 #                        "actions (such as generating pdfs)." )
 #parser.add_argument( '-v', '--log', dest='DEBUG', action='store_true', 
@@ -492,8 +521,8 @@ parser.add_argument( '-D', '--DEBUG', action='store_true', help='for debug' )
 parser.add_argument( 'csv_in', 
                      nargs=argparse.REMAINDER, 
                      type=argparse.FileType('r'),
-                     help='CSV file containing the survey data (Google Form)' \
-                          'Multiple files can be provided.' )
+                     help='CSV file name containing the survey data ' \
+                         "(Google Form). Multiple files can be provided." )
 
 args = parser.parse_args()
 
@@ -506,40 +535,40 @@ if args.event :
 
 list_simple = []
 if args.simple is not None :
-    list_simple = args.simple
-    for qno in list_simple :
-        if qno == 'all' :
-            list_simple = qlist
-            break;
+    if 'all' in args.simple :
+        list_simple = qlist
+    else :
+        list_simple = args.simple
+        list_simple.remove( 'all' )
 
 list_cross = []
 if args.cross is not None :
-    for item in args.cross :
-        pair = item.split( ',' )
-        if pair == 'all' or pair == 'a' :
-            list_cross = []
-            i = 0
-            j = 0
-            for q0 in qlist :
-                i += 1
-                for q1 in qlist[i:] :
-                    j += 1
-                    list_cross.append( [q0,q1] )
-            break;
-        elif len( pair ) != 2 :
-            print( 'ERR0' )
-            parser.print_help()
-            exit( 1 )
-        elif pair[0] == pair[1] :
-            print( 'ERR1' )
-            parser.print_help()
-            exit( 1 )
-        elif pair[0] not in qlist and pair[1] not in qlist :
-            print( 'ERR2' )
-            parser.print_help()
-            exit( 1 )
-        else :
-            list_cross.append( pair )
+    if 'all' in args.cross :
+        i = 0
+        for q0 in qlist :
+            i += 1
+            for q1 in qlist[i:] :
+                if q0 in multi_answer and q1 in multi_answer :
+                    # we cannot cross-tab on multi-answer questions 
+                    continue
+                list_cross.append( [q0,q1] )
+    else  :
+        for item in args.cross :
+            pair = item.split( ',' )
+            if len( pair ) != 2 :
+#                print( 'ERR0' )
+                parser.print_help()
+                exit( 1 )
+            elif pair[0] == pair[1] :
+#                print( 'ERR1' )
+                parser.print_help()
+                exit( 1 )
+            elif pair[0] not in qlist and pair[1] not in qlist :
+#                print( 'ERR2' )
+                parser.print_help()
+                exit( 1 )
+            else :
+                list_cross.append( pair )
 
 major_region = args.major_region
 
@@ -552,7 +581,11 @@ DEBUG = False
 if args.DEBUG :
     DEBUG = True
     FILE_TYPE = ''
-    EVENT_SHOW = True
+    flag_timeseries = True
+    flag_show_event = True
+    list_simple = [ 'Q1', 'Q3', 'Q11' ]
+    list_cross  = [ ['Q3','Q4'], ['Q4','Q5'], ['Q28','Q30'] ]
+
 
 if not flag_timeseries and \
         list_simple == [] and \
@@ -596,7 +629,7 @@ if args.csv_in is not [] :
 df.replace( [ 'United Kingdom', 
               'United States', 
               'belgium', 
-              'United arab Emirates ' ],
+              'United arab Emirates ' ], # he/she put a space at the end
             [ 'UK',
               'USA',
               'Belgium',
@@ -820,6 +853,8 @@ def graph_time_series( df, regions ) :
 # now we can draw a time series graph
     fig = plt.figure()
     ax = fig.add_subplot(111)
+#    dc_etc.plot.area( ax=ax, stacked=True, legend='reverse',
+#    color=color_list )
     dc_etc.plot.area( ax=ax, stacked=True, legend='reverse', color=color_list )
 
     ax.xaxis.set_major_locator(mdates.DayLocator(interval=5))
@@ -884,6 +919,8 @@ def graph_percentage( dict, others, qno ) :
 
 # eventually draw a graph (stacked bar in percentage)
     trans = df_tmp.T
+#    trans.plot( kind='bar', stacked=True, legend='reverse',
+#    color=color_list )
     trans.plot( kind='bar', stacked=True, legend='reverse', color=color_list )
     plt.subplots_adjust( right=scale, bottom=0.3 )
     plt.legend( df_tmp.index, bbox_to_anchor=(1, 1) )
@@ -984,7 +1021,7 @@ def cross_tab( qno0, qno1 ) :
             for clm in dat_whole.columns :
                 if clm in dat.columns and \
                    idx in dat.index   and \
-                   dat.at[idx,clm] > 0.03 :
+                   dat.at[idx,clm] > CROSSTAB_THRESHOLD :
                     flag = False
                     break
         if flag :
@@ -1000,7 +1037,7 @@ def cross_tab( qno0, qno1 ) :
             for idx in dat_whole.index :
                 if idx in dat.index   and \
                    clm in dat.columns and \
-                   dat.at[idx,clm] > 0.03 :
+                   dat.at[idx,clm] > CROSSTAB_THRESHOLD :
                     flag = False
                     break
         if flag :
@@ -1021,7 +1058,8 @@ def cross_tab( qno0, qno1 ) :
                                ( int(i/ncols), int(i%ncols) ) )
         ax.set_title( list_regions[i] )
         sns.heatmap( dat, 
-                     cmap='Greys', cbar=False, 
+                     cmap=CROSSTAB_COLOR, 
+                     cbar=False, 
                      annot=False, #square=True, 
                      linewidths=0.5, linecolor='black', 
                      xticklabels=False, yticklabels=False,
@@ -1048,8 +1086,9 @@ def cross_tab( qno0, qno1 ) :
     ax.set_autoscale_on( True )
 
     sns.heatmap( legend, 
-                 cmap='Greys', cbar=False, 
-                 annot=False, square=True, 
+                 cmap=CROSSTAB_COLOR, 
+                 cbar=False, 
+                 annot=False, #square=True, 
                  linewidths=0.5, linecolor='black', 
                  xticklabels=True, yticklabels=True,
                  ax=ax )
@@ -1096,17 +1135,11 @@ def summary () :
 if flag_timeseries : 
     graph_time_series( df_whole, region_list )
 
-if DEBUG :
-    graph_percentage( dict_qno, dict_others, 'Q1' )
-    graph_percentage( dict_qno, dict_others, 'Q3' )
-    graph_percentage( dict_qno, dict_others, 'Q4' )
-    cross_tab( 'Q3', 'Q4' )
-    cross_tab( 'Q4', 'Q5' )
-else :
-    for simple in list_simple :
-        graph_percentage( dict_qno, dict_others, simple )
-    for cross in list_cross :
-        cross_tab( cross[0], cross[1] )
+for simple in list_simple :
+    graph_percentage( dict_qno, dict_others, simple )
+
+for cross in list_cross :
+    cross_tab( cross[0], cross[1] )
 
 summary()
 
