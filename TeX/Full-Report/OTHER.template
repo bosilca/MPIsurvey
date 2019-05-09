@@ -1,0 +1,16 @@
+
+\subsection{Answers}
+\input{../inputs/QX-ans}
+
+\subsection{List of other answers}
+\begin{itemize}
+\input{../inputs/QX-other}
+\end{itemize}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm,angle=90]{../figs/QX.pdf}
+\caption{Simple analysis: QX}
+\label{fig:QX}
+\end{center}
+\end{figure}

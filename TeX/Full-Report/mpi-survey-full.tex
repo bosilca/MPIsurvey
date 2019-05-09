@@ -1,0 +1,1346 @@
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{url}
+% workwround for 'Multiple PDFs with page group included in a single page warning'
+\pdfsuppresswarningpagegroup=1
+
+\long\def\comment#1{}
+
+\title{MPI International Survey}
+
+\author{A.Hori}
+
+\begin{document}
+
+\chapter{Overview}
+\input{overview}
+
+\chapter{Simple Analysis}
+\section{Q1:What is your main occupation}
+\input{Q1}
+
+\clearpage
+\section{Q2:Select main country or region of your workplace in past 5 years}
+\input{Q2}
+
+\clearpage
+\section{Q3:Rate your overall programming skill (non-MPI programs)}
+\input{Q3}
+
+\clearpage
+\section{Q4:Rate your MPI programming skill}
+\input{Q4}
+
+\clearpage
+\section{Q5:What programming language(s) do you use most often?}
+\input{Q5}
+
+\clearpage
+\section{Q6:How long have you been writing computer programs (incl. non-MPI programs)?}
+\input{Q6}
+
+\clearpage
+\section{Q7:How long have you been writing MPI programs?}
+\input{Q7}
+
+\clearpage
+\section{Q8;Which fields are you mostly working in?}
+\input{Q8}
+
+\clearpage
+\section{Q9:What is your major role at your place of work?}
+\input{Q9}
+
+\clearpage
+\section{Q10:Have you ever read the MPI standard specification document?}
+\input{Q10}
+
+\clearpage
+\section{Q11:How did you learn MPI?}
+\input{Q11}
+
+\clearpage
+\section{Q12:Which MPI book(s) have you read?}
+\input{Q12}
+
+\clearpage
+\section{Q13:Which MPI implementations do you use?}
+\input{Q13}
+
+\clearpage
+\section{Q14:Why did you choose the MPI implementation(s)?}
+\input{Q14}
+
+\clearpage
+\section{Q15:How do you check MPI specifications when you are writing MPI programs?}
+\input{Q15}
+
+\clearpage
+\section{Q16:What is the most difficult part of writing an MPI program?}
+\input{Q16}
+
+\clearpage
+\section{Q17:Which MPI features have you never heard of?}
+\input{Q17}
+
+\clearpage
+\section{Q18:What aspects of the MPI standard do you use in your program in its current form?}
+\input{Q18}
+
+\clearpage
+\section{Q19:Which MPI thread support are you using?}
+\input{Q19}
+
+\clearpage
+\section{Q20:What are your obstacles to mastering MPI?}
+\input{Q20}
+
+\clearpage
+\section{Q21:When you call an MPI routine, how often do you check the error code of the MPI routine  (excepting MPI-IO)?}
+\input{Q21}
+
+\clearpage
+\section{Q22:In most of your programs, do you pack MPI function calls into their own file or files to have your own abstraction layer for communication?}
+\input{Q22}
+
+\clearpage
+\section{Q23:Have you ever written MPI+”X” programs?}
+\input{Q23}
+
+\clearpage
+\section{Q24:Is there any room for performance tuning in your MPI programs?}
+\input{Q24}
+
+\clearpage
+\section{Q25:What, if any, alternatives are you investigating to indirectly call MPI or another communication layer by using another parallel language/library?}
+\input{Q25}
+
+\clearpage
+\section{Q26:If there were one communication aspect which is not enough in the current MPI could improve the performance of your application, what would you prioritize? Or is MPI providing all the communication semantics required by your application? If not, what is missing?}
+\input{Q26}
+
+\clearpage
+\section{Q27:Is MPI providing all the communication semantics required by your application? If not, what is missing?}
+\input{Q27}
+
+\clearpage
+\section{Q28:What MPI feature(s) are NOT useful for you application?}
+\input{Q28}
+
+\clearpage
+\section{Q29:Do you think the MPI standard should maintain backward compatibility?}
+\input{Q29}
+
+\clearpage
+\section{Q30:In the tradeoff between code portability and performance, which is more or less important for you to write MPI programs?}
+\input{Q30}
+
+\chapter{Cross-Tab Analysis: Q1}
+
+\section{Q1 and Q3}
+\input{Q1-Q3}
+
+\clearpage
+\section{Q1 and Q4}
+\input{Q1-Q4}
+
+\clearpage
+\section{Q1 and Q5}
+\input{Q1-Q5}
+
+\clearpage
+\section{Q1 and Q6}
+\input{Q1-Q6}
+
+\clearpage
+\section{Q1 and Q7}
+\input{Q1-Q7}
+
+\clearpage
+\section{Q1 and Q8}
+\input{Q1-Q8}
+
+\clearpage
+\section{Q1 and Q9}
+\input{Q1-Q9}
+
+\clearpage
+\section{Q1 and Q10}
+\input{Q1-Q10}
+
+\clearpage
+\section{Q1 and Q11}
+\input{Q1-Q11}
+
+\clearpage
+\section{Q1 and Q12}
+\input{Q1-Q12}
+
+\clearpage
+\section{Q1 and Q13}
+\input{Q1-Q13}
+
+\clearpage
+\section{Q1 and Q14}
+\input{Q1-Q14}
+
+\clearpage
+\section{Q1 and Q15}
+\input{Q1-Q15}
+
+\clearpage
+\section{Q1 and Q16}
+\input{Q1-Q16}
+
+\clearpage
+\section{Q1 and Q17}
+\input{Q1-Q17}
+
+\clearpage
+\section{Q1 and Q18}
+\input{Q1-Q18}
+
+\clearpage
+\section{Q1 and Q19}
+\input{Q1-Q19}
+
+\clearpage
+\section{Q1 and Q20}
+\input{Q1-Q20}
+
+\clearpage
+\section{Q1 and Q21}
+\input{Q1-Q21}
+
+\clearpage
+\section{Q1 and Q22}
+\input{Q1-Q22}
+
+\clearpage
+\section{Q1 and Q23}
+\input{Q1-Q23}
+
+\clearpage
+\section{Q1 and Q24}
+\input{Q1-Q24}
+
+\clearpage
+\section{Q1 and Q25}
+\input{Q1-Q25}
+
+\clearpage
+\section{Q1 and Q26}
+\input{Q1-Q26}
+
+\clearpage
+\section{Q1 and Q27}
+\input{Q1-Q27}
+
+\clearpage
+\section{Q1 and Q28}
+\input{Q1-Q28}
+
+\clearpage
+\section{Q1 and Q29}
+\input{Q1-Q29}
+
+\clearpage
+\section{Q1 and Q30}
+\input{Q1-Q30}
+
+\chapter{Cross-Tab Analysis: Q3}
+\section{Q3 and Q4}
+\input{Q3-Q4}
+
+\clearpage
+\section{Q3 and Q5}
+\input{Q3-Q5}
+
+\clearpage
+\section{Q3 and Q6}
+\input{Q3-Q6}
+
+\clearpage
+\section{Q3 and Q7}
+\input{Q3-Q7}
+
+\clearpage
+\section{Q3 and Q8}
+\input{Q3-Q8}
+
+\clearpage
+\section{Q3 and Q9}
+\input{Q3-Q9}
+
+\clearpage
+\section{Q3 and Q10}
+\input{Q3-Q10}
+
+\clearpage
+\section{Q3 and Q11}
+\input{Q3-Q11}
+
+\clearpage
+\section{Q3 and Q12}
+\input{Q3-Q12}
+
+\clearpage
+\section{Q3 and Q13}
+\input{Q3-Q13}
+
+\clearpage
+\section{Q3 and Q14}
+\input{Q3-Q14}
+
+\clearpage
+\section{Q3 and Q15}
+\input{Q3-Q15}
+
+\clearpage
+\section{Q3 and Q16}
+\input{Q3-Q16}
+
+\clearpage
+\section{Q3 and Q17}
+\input{Q3-Q17}
+
+\clearpage
+\section{Q3 and Q18}
+\input{Q3-Q18}
+
+\clearpage
+\section{Q3 and Q19}
+\input{Q3-Q19}
+
+\clearpage
+\section{Q3 and Q20}
+\input{Q3-Q20}
+
+\clearpage
+\section{Q3 and Q21}
+\input{Q3-Q21}
+
+\clearpage
+\section{Q3 and Q22}
+\input{Q3-Q22}
+
+\clearpage
+\section{Q3 and Q23}
+\input{Q3-Q23}
+
+\clearpage
+\section{Q3 and Q24}
+\input{Q3-Q24}
+
+\clearpage
+\section{Q3 and Q25}
+\input{Q3-Q25}
+
+\clearpage
+\section{Q3 and Q26}
+\input{Q3-Q26}
+
+\clearpage
+\section{Q3 and Q27}
+\input{Q3-Q27}
+
+\clearpage
+\section{Q3 and Q28}
+\input{Q3-Q28}
+
+\clearpage
+\section{Q3 and Q29}
+\input{Q3-Q29}
+
+\clearpage
+\section{Q3 and Q30}
+\input{Q3-Q30}
+
+\chapter{Cross-Tab Analysis: Q4}
+\section{Q4 and Q5}
+\input{Q4-Q5}
+
+\clearpage
+\section{Q4 and Q6}
+\input{Q4-Q6}
+
+\clearpage
+\section{Q4 and Q7}
+\input{Q4-Q7}
+
+\clearpage
+\section{Q4 and Q8}
+\input{Q4-Q8}
+
+\clearpage
+\section{Q4 and Q9}
+\input{Q4-Q9}
+
+\clearpage
+\section{Q4 and Q10}
+\input{Q4-Q10}
+
+\clearpage
+\section{Q4 and Q11}
+\input{Q4-Q11}
+
+\clearpage
+\section{Q4 and Q12}
+\input{Q4-Q12}
+
+\clearpage
+\section{Q4 and Q13}
+\input{Q4-Q13}
+
+\clearpage
+\section{Q4 and Q14}
+\input{Q4-Q14}
+
+\clearpage
+\section{Q4 and Q15}
+\input{Q4-Q15}
+
+\clearpage
+\section{Q4 and Q16}
+\input{Q4-Q16}
+
+\clearpage
+\section{Q4 and Q17}
+\input{Q4-Q17}
+
+\clearpage
+\section{Q4 and Q18}
+\input{Q4-Q18}
+
+\clearpage
+\section{Q4 and Q19}
+\input{Q4-Q19}
+
+\clearpage
+\section{Q4 and Q20}
+\input{Q4-Q20}
+
+\clearpage
+\section{Q4 and Q21}
+\input{Q4-Q21}
+
+\clearpage
+\section{Q4 and Q22}
+\input{Q4-Q22}
+
+\clearpage
+\section{Q4 and Q23}
+\input{Q4-Q23}
+
+\clearpage
+\section{Q4 and Q24}
+\input{Q4-Q24}
+
+\clearpage
+\section{Q4 and Q25}
+\input{Q4-Q25}
+
+\clearpage
+\section{Q4 and Q26}
+\input{Q4-Q26}
+
+\clearpage
+\section{Q4 and Q27}
+\input{Q4-Q27}
+
+\clearpage
+\section{Q4 and Q28}
+\input{Q4-Q28}
+
+\clearpage
+\section{Q4 and Q29}
+\input{Q4-Q29}
+
+\clearpage
+\section{Q4 and Q30}
+\input{Q4-Q30}
+
+\chapter{Cross-Tab Analysis: Q5}
+\section{Q5 and Q6}
+\input{Q5-Q6}
+
+\clearpage
+\section{Q5 and Q7}
+\input{Q5-Q7}
+
+\clearpage
+\section{Q5 and Q10}
+\input{Q5-Q10}
+
+\clearpage
+\section{Q5 and Q14}
+\input{Q5-Q14}
+
+\clearpage
+\section{Q5 and Q16}
+\input{Q5-Q16}
+
+\clearpage
+\section{Q5 and Q21}
+\input{Q5-Q21}
+
+\clearpage
+\section{Q5 and Q22}
+\input{Q5-Q22}
+
+\clearpage
+\section{Q5 and Q24}
+\input{Q5-Q24}
+
+\clearpage
+\section{Q5 and Q26}
+\input{Q5-Q26}
+
+\clearpage
+\section{Q5 and Q29}
+\input{Q5-Q29}
+
+\clearpage
+\section{Q5 and Q30}
+\input{Q5-Q30}
+
+\chapter{Cross-Tab Analysis: Q6}
+\section{Q6 and Q7}
+\input{Q6-Q7}
+
+\clearpage
+\section{Q6 and Q8}
+\input{Q6-Q8}
+
+\clearpage
+\section{Q6 and Q9}
+\input{Q6-Q9}
+
+\clearpage
+\section{Q6 and Q10}
+\input{Q6-Q10}
+
+\clearpage
+\section{Q6 and Q11}
+\input{Q6-Q11}
+
+\clearpage
+\section{Q6 and Q12}
+\input{Q6-Q12}
+
+\clearpage
+\section{Q6 and Q13}
+\input{Q6-Q13}
+
+\clearpage
+\section{Q6 and Q14}
+\input{Q6-Q14}
+
+\clearpage
+\section{Q6 and Q15}
+\input{Q6-Q15}
+
+\clearpage
+\section{Q6 and Q16}
+\input{Q6-Q16}
+
+\clearpage
+\section{Q6 and Q17}
+\input{Q6-Q17}
+
+\clearpage
+\section{Q6 and Q18}
+\input{Q6-Q18}
+
+\clearpage
+\section{Q6 and Q19}
+\input{Q6-Q19}
+
+\clearpage
+\section{Q6 and Q20}
+\input{Q6-Q20}
+
+\clearpage
+\section{Q6 and Q21}
+\input{Q6-Q21}
+
+\clearpage
+\section{Q6 and Q22}
+\input{Q6-Q22}
+
+\clearpage
+\section{Q6 and Q23}
+\input{Q6-Q23}
+
+\clearpage
+\section{Q6 and Q24}
+\input{Q6-Q24}
+
+\clearpage
+\section{Q6 and Q25}
+\input{Q6-Q25}
+
+\clearpage
+\section{Q6 and Q26}
+\input{Q6-Q26}
+
+\clearpage
+\section{Q6 and Q27}
+\input{Q6-Q27}
+
+\clearpage
+\section{Q6 and Q28}
+\input{Q6-Q28}
+
+\clearpage
+\section{Q6 and Q29}
+\input{Q6-Q29}
+
+\clearpage
+\section{Q6 and Q30}
+\input{Q6-Q30}
+
+\chapter{Cross-Tab Analysis: Q7}
+\section{Q7 and Q8}
+\input{Q7-Q8}
+
+\clearpage
+\section{Q7 and Q9}
+\input{Q7-Q9}
+
+\clearpage
+\section{Q7 and Q10}
+\input{Q7-Q10}
+
+\clearpage
+\section{Q7 and Q11}
+\input{Q7-Q11}
+
+\clearpage
+\section{Q7 and Q12}
+\input{Q7-Q12}
+
+\clearpage
+\section{Q7 and Q13}
+\input{Q7-Q13}
+
+\clearpage
+\section{Q7 and Q14}
+\input{Q7-Q14}
+
+\clearpage
+\section{Q7 and Q15}
+\input{Q7-Q15}
+
+\clearpage
+\section{Q7 and Q16}
+\input{Q7-Q16}
+
+\clearpage
+\section{Q7 and Q17}
+\input{Q7-Q17}
+
+\clearpage
+\section{Q7 and Q18}
+\input{Q7-Q18}
+
+\clearpage
+\section{Q7 and Q19}
+\input{Q7-Q19}
+
+\clearpage
+\section{Q7 and Q20}
+\input{Q7-Q20}
+
+\clearpage
+\section{Q7 and Q21}
+\input{Q7-Q21}
+
+\clearpage
+\section{Q7 and Q22}
+\input{Q7-Q22}
+
+\clearpage
+\section{Q7 and Q23}
+\input{Q7-Q23}
+
+\clearpage
+\section{Q7 and Q24}
+\input{Q7-Q24}
+
+\clearpage
+\section{Q7 and Q25}
+\input{Q7-Q25}
+
+\clearpage
+\section{Q7 and Q26}
+\input{Q7-Q26}
+
+\clearpage
+\section{Q7 and Q27}
+\input{Q7-Q27}
+
+\clearpage
+\section{Q7 and Q28}
+\input{Q7-Q28}
+
+\clearpage
+\section{Q7 and Q29}
+\input{Q7-Q29}
+
+\clearpage
+\section{Q7 and Q30}
+\input{Q7-Q30}
+
+\chapter{Cross-Tab Analysis: Q8}
+\section{Q8 and Q10}
+\input{Q8-Q10}
+
+\clearpage
+\section{Q8 and Q14}
+\input{Q8-Q14}
+
+\clearpage
+\section{Q8 and Q16}
+\input{Q8-Q16}
+
+\clearpage
+\section{Q8 and Q21}
+\input{Q8-Q21}
+
+\clearpage
+\section{Q8 and Q22}
+\input{Q8-Q22}
+
+\clearpage
+\section{Q8 and Q24}
+\input{Q8-Q24}
+
+\clearpage
+\section{Q8 and Q26}
+\input{Q8-Q26}
+
+\clearpage
+\section{Q8 and Q29}
+\input{Q8-Q29}
+
+\clearpage
+\section{Q8 and Q30}
+\input{Q8-Q30}
+
+\chapter{Cross-Tab Analysis: Q9}
+\section{Q9 and Q10}
+\input{Q9-Q10}
+
+\clearpage
+\section{Q9 and Q14}
+\input{Q9-Q14}
+
+\clearpage
+\section{Q9 and Q16}
+\input{Q9-Q16}
+
+\clearpage
+\section{Q9 and Q21}
+\input{Q9-Q21}
+
+\clearpage
+\section{Q9 and Q22}
+\input{Q9-Q22}
+
+\clearpage
+\section{Q9 and Q24}
+\input{Q9-Q24}
+
+\clearpage
+\section{Q9 and Q26}
+\input{Q9-Q26}
+
+\clearpage
+\section{Q9 and Q29}
+\input{Q9-Q29}
+
+\clearpage
+\section{Q9 and Q30}
+\input{Q9-Q30}
+
+\chapter{Cross-Tab Analysis: Q10}
+\section{Q10 and Q11}
+\input{Q10-Q11}
+
+\clearpage
+\section{Q10 and Q12}
+\input{Q10-Q12}
+
+\clearpage
+\section{Q10 and Q13}
+\input{Q10-Q13}
+
+\clearpage
+\section{Q10 and Q14}
+\input{Q10-Q14}
+
+\clearpage
+\section{Q10 and Q15}
+\input{Q10-Q15}
+
+\clearpage
+\section{Q10 and Q16}
+\input{Q10-Q16}
+
+\clearpage
+\section{Q10 and Q17}
+\input{Q10-Q17}
+
+\clearpage
+\section{Q10 and Q18}
+\input{Q10-Q18}
+
+\clearpage
+\section{Q10 and Q19}
+\input{Q10-Q19}
+
+\clearpage
+\section{Q10 and Q20}
+\input{Q10-Q20}
+
+\clearpage
+\section{Q10 and Q21}
+\input{Q10-Q21}
+
+\clearpage
+\section{Q10 and Q22}
+\input{Q10-Q22}
+
+\clearpage
+\section{Q10 and Q23}
+\input{Q10-Q23}
+
+\clearpage
+\section{Q10 and Q24}
+\input{Q10-Q24}
+
+\clearpage
+\section{Q10 and Q25}
+\input{Q10-Q25}
+
+\clearpage
+\section{Q10 and Q26}
+\input{Q10-Q26}
+
+\clearpage
+\section{Q10 and Q27}
+\input{Q10-Q27}
+
+\clearpage
+\section{Q10 and Q28}
+\input{Q10-Q28}
+
+\clearpage
+\section{Q10 and Q29}
+\input{Q10-Q29}
+
+\clearpage
+\section{Q10 and Q30}
+\input{Q10-Q30}
+
+\chapter{Cross-Tab Analysis: Q11}
+\section{Q11 and Q14}
+\input{Q11-Q14}
+
+\clearpage
+\section{Q11 and Q16}
+\input{Q11-Q16}
+
+\clearpage
+\section{Q11 and Q21}
+\input{Q11-Q21}
+
+\clearpage
+\section{Q11 and Q22}
+\input{Q11-Q22}
+
+\clearpage
+\section{Q11 and Q24}
+\input{Q11-Q24}
+
+\clearpage
+\section{Q11 and Q26}
+\input{Q11-Q26}
+
+\clearpage
+\section{Q11 and Q29}
+\input{Q11-Q29}
+
+\clearpage
+\section{Q11 and Q30}
+\input{Q11-Q30}
+
+\chapter{Cross-Tab Analysis: Q12}
+\section{Q12 and Q14}
+\input{Q12-Q14}
+
+\clearpage
+\section{Q12 and Q16}
+\input{Q12-Q16}
+
+\clearpage
+\section{Q12 and Q21}
+\input{Q12-Q21}
+
+\clearpage
+\section{Q12 and Q22}
+\input{Q12-Q22}
+
+\clearpage
+\section{Q12 and Q24}
+\input{Q12-Q24}
+
+\clearpage
+\section{Q12 and Q26}
+\input{Q12-Q26}
+
+\clearpage
+\section{Q12 and Q29}
+\input{Q12-Q29}
+
+\clearpage
+\section{Q12 and Q30}
+\input{Q12-Q30}
+
+\chapter{Cross-Tab Analysis: Q13}
+\section{Q13 and Q14}
+\input{Q13-Q14}
+
+\clearpage
+\section{Q13 and Q16}
+\input{Q13-Q16}
+
+\clearpage
+\section{Q13 and Q21}
+\input{Q13-Q21}
+
+\clearpage
+\section{Q13 and Q22}
+\input{Q13-Q22}
+
+\clearpage
+\section{Q13 and Q24}
+\input{Q13-Q24}
+
+\clearpage
+\section{Q13 and Q26}
+\input{Q13-Q26}
+
+\clearpage
+\section{Q13 and Q29}
+\input{Q13-Q29}
+
+\clearpage
+\section{Q13 and Q30}
+\input{Q13-Q30}
+
+\chapter{Cross-Tab Analysis: Q14}
+\section{Q14 and Q15}
+\input{Q14-Q15}
+
+\clearpage
+\section{Q14 and Q16}
+\input{Q14-Q16}
+
+\clearpage
+\section{Q14 and Q17}
+\input{Q14-Q17}
+
+\clearpage
+\section{Q14 and Q18}
+\input{Q14-Q18}
+
+\clearpage
+\section{Q14 and Q19}
+\input{Q14-Q19}
+
+\clearpage
+\section{Q14 and Q20}
+\input{Q14-Q20}
+
+\clearpage
+\section{Q14 and Q21}
+\input{Q14-Q21}
+
+\clearpage
+\section{Q14 and Q22}
+\input{Q14-Q22}
+
+\clearpage
+\section{Q14 and Q23}
+\input{Q14-Q23}
+
+\clearpage
+\section{Q14 and Q24}
+\input{Q14-Q24}
+
+\clearpage
+\section{Q14 and Q25}
+\input{Q14-Q25}
+
+\clearpage
+\section{Q14 and Q26}
+\input{Q14-Q26}
+
+\clearpage
+\section{Q14 and Q27}
+\input{Q14-Q27}
+
+\clearpage
+\section{Q14 and Q28}
+\input{Q14-Q28}
+
+\clearpage
+\section{Q14 and Q29}
+\input{Q14-Q29}
+
+\clearpage
+\section{Q14 and Q30}
+\input{Q14-Q30}
+
+\chapter{Cross-Tab Analysis: Q15}
+\section{Q15 and Q16}
+\input{Q15-Q16}
+
+\clearpage
+\section{Q15 and Q21}
+\input{Q15-Q21}
+
+\clearpage
+\section{Q15 and Q22}
+\input{Q15-Q22}
+
+\clearpage
+\section{Q15 and Q24}
+\input{Q15-Q24}
+
+\clearpage
+\section{Q15 and Q26}
+\input{Q15-Q26}
+
+\clearpage
+\section{Q15 and Q29}
+\input{Q15-Q29}
+
+\clearpage
+\section{Q15 and Q30}
+\input{Q15-Q30}
+
+\chapter{Cross-Tab Analysis: Q16}
+\section{Q16 and Q17}
+\input{Q16-Q17}
+
+\clearpage
+\section{Q16 and Q18}
+\input{Q16-Q18}
+
+\clearpage
+\section{Q16 and Q19}
+\input{Q16-Q19}
+
+\clearpage
+\section{Q16 and Q20}
+\input{Q16-Q20}
+
+\clearpage
+\section{Q16 and Q21}
+\input{Q16-Q21}
+
+\clearpage
+\section{Q16 and Q22}
+\input{Q16-Q22}
+
+\clearpage
+\section{Q16 and Q23}
+\input{Q16-Q23}
+
+\clearpage
+\section{Q16 and Q24}
+\input{Q16-Q24}
+
+\clearpage
+\section{Q16 and Q25}
+\input{Q16-Q25}
+
+\clearpage
+\section{Q16 and Q26}
+\input{Q16-Q26}
+
+\clearpage
+\section{Q16 and Q27}
+\input{Q16-Q27}
+
+\clearpage
+\section{Q16 and Q28}
+\input{Q16-Q28}
+
+\clearpage
+\section{Q16 and Q29}
+\input{Q16-Q29}
+
+\clearpage
+\section{Q16 and Q30}
+\input{Q16-Q30}
+
+\chapter{Cross-Tab Analysis: Q17}
+\section{Q17 and Q21}
+\input{Q17-Q21}
+
+\clearpage
+\section{Q17 and Q22}
+\input{Q17-Q22}
+
+\clearpage
+\section{Q17 and Q24}
+\input{Q17-Q24}
+
+\clearpage
+\section{Q17 and Q26}
+\input{Q17-Q26}
+
+\clearpage
+\section{Q17 and Q29}
+\input{Q17-Q29}
+
+\clearpage
+\section{Q17 and Q30}
+\input{Q17-Q30}
+
+\chapter{Cross-Tab Analysis: Q18}
+\section{Q18 and Q21}
+\input{Q18-Q21}
+
+\clearpage
+\section{Q18 and Q22}
+\input{Q18-Q22}
+
+\clearpage
+\section{Q18 and Q24}
+\input{Q18-Q24}
+
+\clearpage
+\section{Q18 and Q26}
+\input{Q18-Q26}
+
+\clearpage
+\section{Q18 and Q29}
+\input{Q18-Q29}
+
+\clearpage
+\section{Q18 and Q30}
+\input{Q18-Q30}
+
+\chapter{Cross-Tab Analysis: Q19}
+\section{Q19 and Q21}
+\input{Q19-Q21}
+
+\clearpage
+\section{Q19 and Q22}
+\input{Q19-Q22}
+
+\clearpage
+\section{Q19 and Q24}
+\input{Q19-Q24}
+
+\clearpage
+\section{Q19 and Q26}
+\input{Q19-Q26}
+
+\clearpage
+\section{Q19 and Q29}
+\input{Q19-Q29}
+
+\clearpage
+\section{Q19 and Q30}
+\input{Q19-Q30}
+
+\chapter{Cross-Tab Analysis: Q20}
+\section{Q20 and Q21}
+\input{Q20-Q21}
+
+\clearpage
+\section{Q20 and Q22}
+\input{Q20-Q22}
+
+\clearpage
+\section{Q20 and Q24}
+\input{Q20-Q24}
+
+\clearpage
+\section{Q20 and Q26}
+\input{Q20-Q26}
+
+\clearpage
+\section{Q20 and Q29}
+\input{Q20-Q29}
+
+\clearpage
+\section{Q20 and Q30}
+\input{Q20-Q30}
+
+\chapter{Cross-Tab Analysis: Q21}
+\section{Q21 and Q22}
+\input{Q21-Q22}
+
+\clearpage
+\section{Q21 and Q23}
+\input{Q21-Q23}
+
+\clearpage
+\section{Q21 and Q24}
+\input{Q21-Q24}
+
+\clearpage
+\section{Q21 and Q25}
+\input{Q21-Q25}
+
+\clearpage
+\section{Q21 and Q26}
+\input{Q21-Q26}
+
+\clearpage
+\section{Q21 and Q27}
+\input{Q21-Q27}
+
+\clearpage
+\section{Q21 and Q28}
+\input{Q21-Q28}
+
+\clearpage
+\section{Q21 and Q29}
+\input{Q21-Q29}
+
+\clearpage
+\section{Q21 and Q30}
+\input{Q21-Q30}
+
+\chapter{Cross-Tab Analysis: Q22}
+\section{Q22 and Q23}
+\input{Q22-Q23}
+
+\clearpage
+\section{Q22 and Q24}
+\input{Q22-Q24}
+
+\clearpage
+\section{Q22 and Q25}
+\input{Q22-Q25}
+
+\clearpage
+\section{Q22 and Q26}
+\input{Q22-Q26}
+
+\clearpage
+\section{Q22 and Q27}
+\input{Q22-Q27}
+
+\clearpage
+\section{Q22 and Q28}
+\input{Q22-Q28}
+
+\clearpage
+\section{Q22 and Q29}
+\input{Q22-Q29}
+
+\clearpage
+\section{Q22 and Q30}
+\input{Q22-Q30}
+
+\chapter{Cross-Tab Analysis: Q23}
+\section{Q23 and Q24}
+\input{Q23-Q24}
+
+\clearpage
+\section{Q23 and Q26}
+\input{Q23-Q26}
+
+\clearpage
+\section{Q23 and Q29}
+\input{Q23-Q29}
+
+\clearpage
+\section{Q23 and Q30}
+\input{Q23-Q30}
+
+\chapter{Cross-Tab Analysis: Q24}
+\section{Q24 and Q25}
+\input{Q24-Q25}
+
+\clearpage
+\section{Q24 and Q26}
+\input{Q24-Q26}
+
+\clearpage
+\section{Q24 and Q27}
+\input{Q24-Q27}
+
+\clearpage
+\section{Q24 and Q28}
+\input{Q24-Q28}
+
+\clearpage
+\section{Q24 and Q29}
+\input{Q24-Q29}
+
+\clearpage
+\section{Q24 and Q30}
+\input{Q24-Q30}
+
+\chapter{Cross-Tab Analysis: Q25}
+\section{Q25 and Q26}
+\input{Q25-Q26}
+
+\clearpage
+\section{Q25 and Q29}
+\input{Q25-Q29}
+
+\clearpage
+\section{Q25 and Q30}
+\input{Q25-Q30}
+
+\chapter{Cross-Tab Analysis: Q26}
+\section{Q26 and Q27}
+\input{Q26-Q27}
+
+\clearpage
+\section{Q26 and Q28}
+\input{Q26-Q28}
+
+\clearpage
+\section{Q26 and Q29}
+\input{Q26-Q29}
+
+\clearpage
+\section{Q26 and Q30}
+\input{Q26-Q30}
+
+\chapter{Cross-Tab Analysis: Q27}
+\section{Q27 and Q29}
+\input{Q27-Q29}
+
+\clearpage
+\section{Q27 and Q30}
+\input{Q27-Q30}
+
+\chapter{Cross-Tab Analysis: Q28}
+\section{Q28 and Q29}
+\input{Q28-Q29}
+
+\clearpage
+\section{Q28 and Q30}
+\input{Q28-Q30}
+
+\chapter{Cross-Tab Analysis: Q29}
+\section{Q29 and Q30}
+\input{Q29-Q30}
+
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\end{document}

@@ -251,8 +251,8 @@ qval_tab = \
       { 'Beginning MPI (An Introduction in C)' : 'Beginning MPI',
         'Parallel Programming with MPI' : 'Parallel Programming\nwith MPI',
         'Using MPI' : 'Using MPI',
-        'Parallel Programming in C with MPI and OpenMP' : 'Parallel Programming\nin C with MPI and OpenMP',
-        'MPI: The Complete Reference' : 'MPI: the complete\nReference',
+        'Parallel Programming in C with MPI and OpenMP' : 'Parallel Programming in C ...',
+        'MPI: The Complete Reference' : 'MPI: the complete Reference',
         'I have never read any MPI books' : '(never read)',
         'Other' : 'other' },
   'Q13' :
@@ -471,6 +471,23 @@ def unique ( list ) :
             unique_list.append( elm )
     return unique_list
 
+def tex_conv( str ) :
+    s = copy.copy( str )
+    s = s.replace( '#', '\\#' )
+    s = s.replace( '_', '\\_' )
+    s = s.replace( '&', '\\&' )
+    s = s.replace( '^', '\\^' )
+    s = s.replace( '<', '\\verb!<!' )
+    s = s.replace( '>', '\\verb!>!' )
+    return( s )
+
+def get_long_ans( qno, sans ) :
+    for key, value in qval_tab[qno].items():
+        if value == sans :
+            return( key )
+    return( '' )
+
+
 qlist = [ 'Q1', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 
           'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 'Q17', 'Q18', 'Q19',
           'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29',
@@ -506,7 +523,7 @@ parser.add_argument( '-f', '--format', type=str, default='',
                      choices=file_formats,
                      help="File format. Default is 'pdf'" )
 parser.add_argument( '-o', '--outdir', type=str, default='',
-                     help="Prepend to all generated files" )
+                     help="Prepend to all generated graph files" )
 #parser.add_argument( '--dry-run', action='store_true', default=False,
 # AH: I have no idea what to do with dry-run
 #                     help="Don't execute any outside visible " \
@@ -517,6 +534,9 @@ parser.add_argument( '-o', '--outdir', type=str, default='',
 # We automatically open the files in read mode, 
 # so if they dont exists an exception
 # will be raised by the parsec. Protect if necessary.
+parser.add_argument( '-x', '--tex', action='store_true', help='Output TeX' )
+parser.add_argument( '-O', '--tex-outdir', type=str, default='',
+                     help="Prepend to all generated TeX files" )
 parser.add_argument( '-D', '--DEBUG', action='store_true', help='for debug' )
 parser.add_argument( 'csv_in', 
                      nargs=argparse.REMAINDER, 
@@ -539,7 +559,6 @@ if args.simple is not None :
         list_simple = qlist
     else :
         list_simple = args.simple
-        list_simple.remove( 'all' )
 
 list_cross = []
 if args.cross is not None :
@@ -586,10 +605,11 @@ if args.DEBUG :
     list_simple = [ 'Q1', 'Q3', 'Q11' ]
     list_cross  = [ ['Q3','Q4'], ['Q4','Q5'], ['Q28','Q30'] ]
 
+flag_tex = args.tex
+tex_outdir = args.tex_outdir + '/'
 
-if not flag_timeseries and \
-        list_simple == [] and \
-        list_cross  == [] :
+if not flag_timeseries and  not flag_tex and \
+        list_simple == [] and list_cross  == [] :
     flag_timeseries = True
     list_simple = qlist
     i = 0
@@ -610,20 +630,15 @@ if not flag_timeseries and \
 csv_in = args.csv_in.pop(0)
 df = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
 
-filename = ''
+dirname = ''
 format = args.format
-if format != '' :
-    if args.outdir != '' :
-        filename = args.outdir + '/' + \
-            os.path.splitext( os.path.basename( csv_in.name ) )[0].replace(' ','')
-    else :
-        filename = \
-            os.path.splitext( os.path.basename( csv_in.name ) )[0].replace(' ','')
+if args.outdir != '' :
+    dirname = args.outdir + '/'
 
 if args.csv_in is not [] :
     for csv_in in args.csv_in :
         dfn = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
-        df = pd.concat( [df, dfn] )
+        df = pd.concat( [df, dfn], sort=False )
 
 # shorten long (and wrong?) country names
 df.replace( [ 'United Kingdom', 
@@ -634,15 +649,17 @@ df.replace( [ 'United Kingdom',
               'USA',
               'Belgium',
               'UAE' ],
-            inplace=True)
+            inplace=True )
 
+dict_orgq = {}
 i = 0;
 for column_name in df :
     q = 'Q' + str(i)
+    dict_orgq.setdefault( q, column_name )
     i += 1
     df.rename(columns={column_name: q}, inplace=True)
     num_columns = i + 1
-    
+
 for column_name in df :
     countries = df[ 'Q2' ]
     #print( countries )
@@ -651,7 +668,7 @@ for column_name in df :
     # checking for unknown countries and remove accents from all countries name
     for country in countries :
         stripped = strip_accents(country)
-        if stripped != country:
+        if stripped != country :
             print("Convert %s to %s" % (country, stripped))
             df.replace(country, stripped, inplace=True)
             country = stripped
@@ -692,7 +709,7 @@ region_list = regions.values.tolist()
 unique_regions = unique(region_list)
 #print( unique_regions )
 
-# creating region list having more than 'major_region' answers
+# creating region list having more than 'major_region' threshold
 regions_major = []
 for reg in unique_regions :
     df_reg = df_whole.query( 'Region=='+'"'+reg+'"' ) 
@@ -734,6 +751,8 @@ for qno in qval_tab.keys() :
             elif len( ans ) > 0 :
                 dict_ans['other'] += 1
                 list_others.append( ans )
+
+#    print( dict_ans )
 #    print( list_others )
     ser = pd.Series( data=dict_ans, dtype=float )
     sum = ser.sum()
@@ -742,6 +761,54 @@ for qno in qval_tab.keys() :
         ser.iat[i] = ser.iat[i] / float(sum) * 100.0
     dfq = pd.DataFrame( { 'whole' : ser } )
 #    print( 'whole', dfq )
+
+    if flag_tex :
+        tex_list = []
+        tex_list.append( '\\begin{table}[htb]%\n' )
+        tex_list.append( '\\caption{' + dict_orgq[qno] + '}%\n' )
+        tex_list.append( '\\begin{center}%\n' )
+        tex_list.append( '\\begin{tabular}{l|l|r}%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\hline%\n' )
+        sum = 0
+        flag_other = False
+        if qno in sort_answer :
+            for k, v in sorted( dict_ans.items(), key=lambda x: -x[1] ) :
+                sum = sum + v
+                if k == 'other' :
+                    flag_other = True
+                    continue
+                valstr = str( v )
+                skeystr = tex_conv( k )
+                lkeystr = tex_conv( get_long_ans( qno, k ) )
+                tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
+                                     valstr + ' \\\\%\n')
+        else :
+            for k, v in dict_ans.items() :
+                sum = sum + v
+                if k == 'other' :
+                    flag_other = True
+                    continue
+                valstr = str( v )
+                skeystr = tex_conv( k )
+                lkeystr = tex_conv( get_long_ans( qno, k ) )
+                tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
+                                     valstr + ' \\\\%\n')
+        if flag_other :
+            key = 'other'
+            if dict_ans[key] > 0 :
+                valstr = str( dict_ans[key] )
+                tex_list.append( key + ' & - & ' + valstr + ' \\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\multicolumn{2}{c}{SUM} & ' + str( sum ) + \
+                             ' \\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\end{tabular}%\n' )
+        tex_list.append( '\\end{center}%\n' )
+        tex_list.append( '\\end{table}%\n' )
+        with open( tex_outdir + qno + '-ans.tex', mode='w' ) as f :
+            f.writelines( tex_list )
 
 # convert to percent numbers for each region
     for reg in regions_major :
@@ -814,6 +881,13 @@ for qno in qval_tab.keys() :
 # print others
     if qno in print_other :
         dict_others.setdefault( qno, list_others )
+    if flag_tex :
+        tex_list = []
+        for ans in set( list_others ) :
+            texstr = tex_conv( ans )
+            tex_list.append( '\item ' + texstr + '\n' )
+        with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
+            f.writelines( tex_list )
 
 # finally append to the dict_qno
     dict_qno.setdefault( qno, dfq )
@@ -884,12 +958,15 @@ def graph_time_series( df, regions ) :
                          arrowprops=dict(arrowstyle="->")
                          )
 
-    if filename == '' :
+    if format == '' and not flag_tex :
         plt.show()
     else :
-        fn = filename + '-TimeSeries.' + format
+        fn = dirname + 'TimeSeries.' + format
         print( '\nFilename:', fn )
-        plt.savefig( fn, transparent=True )
+        if flag_tex :
+            plt.savefig( fn, transparent=False )
+        else :
+            plt.savefig( fn, transparent=True )
     plt.close('all')
     return
 
@@ -930,12 +1007,15 @@ def graph_percentage( dict, others, qno ) :
     else :
         plt.title( qno + ' : ' + question_tab[qno] )
     plt.ylabel( 'Percentage' )
-    if filename == '' :
+    if format == '' and not flag_tex :
         plt.show()
     else :
-        fn = filename + '-' + qno + '.' + format
+        fn = dirname + qno + '.' + format
         print( '\nFilename:', fn )
-        plt.savefig( fn, transparent=True )
+        if flag_tex :
+            plt.savefig( fn, transparent=False )
+        else :
+            plt.savefig( fn, transparent=True )
     return
 
 def expand_multians( qno, df ) :
@@ -1112,12 +1192,15 @@ def cross_tab( qno0, qno1 ) :
             label.set_rotation( 30 )
             label.set_horizontalalignment( "right" )
     
-    if filename == '' :
+    if format == '' and not flag_tex :
         plt.show()
     else :
-        fn = filename + '-' + qno0 + '-' + qno1 + '.' + format
+        fn = dirname + qno0 + '-' + qno1 + '.' + format
         print( '\nFilename:', fn )
-        plt.savefig( fn, transparent=True )
+        if flag_tex :
+            plt.savefig( fn, transparent=False )
+        else :
+            plt.savefig( fn, transparent=True )
     plt.close( 'all' )
     return
 
@@ -1128,8 +1211,28 @@ def summary () :
     cs = df_whole['Q2'].value_counts( sort=True )
     print( cs )
     print( '' ) # newline
-    print( '# Countries:\t' + str( len(cs) ) )
-    print( '# Answers:\t' + str( len( df_whole.index ) ) )
+    nc = len(cs)
+    print( '# Countries:\t' + str( nc ) )
+    nans = len( df_whole.index )
+    print( '# Answers:\t' + str( nans ) )
+    if flag_tex :
+        tex_list = []
+        tex_list.append( '\\begin{table}[htb]%\n' )
+        tex_list.append( '\\caption{Country}%\n' )
+        tex_list.append( '\\begin{center}%\n' )
+        tex_list.append( '\\begin{tabular}{lr}%\n' )
+        tex_list.append( '\\hline%\n' )
+        for i in range( 0, len(cs) ) :
+            tex_list.append( cs.index[i] + '&' + str( cs[i] ) + '\\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( str( nc ) + 'countries & ' + \
+                             str( nans ) + 'answers \\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\end{tabular}%\n' )
+        tex_list.append( '\\end{center}%\n' )
+        tex_list.append( '\\end{table}%\n' )
+        with open( tex_outdir + 'countries.tex', mode='w' ) as f :
+            f.writelines( tex_list )
     return
 
 if flag_timeseries : 
