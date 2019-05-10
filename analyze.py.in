@@ -22,9 +22,10 @@ from matplotlib.dates import date2num
 import seaborn as sns
 import argparse
 
+DATE_FORMAT_MS = '%m/%d/%y' # mmddyy
 DATE_FORMAT_JP = '%Y/%m/%d' # YYmmdd
 DATE_FORMAT_US = '%m/%d/%Y' # mmddYY
-DATE_FORMATS = [ DATE_FORMAT_JP, DATE_FORMAT_US ]
+DATE_FORMATS = [ DATE_FORMAT_JP, DATE_FORMAT_US, DATE_FORMAT_MS ]
 
 CROSSTAB_THRESHOLD = 0.04 # crosstab rows and columns less than this are not shown
 CROSSTAB_NCOLS = 3
@@ -455,6 +456,7 @@ def strip_accents(text):
     return str(text)
 
 def conv_date ( q0_ans ) :
+#    print( "conv_date:'", q0_ans, "'" )
     ds = q0_ans.split().pop(0)  # extract date (discard time)
     for format in DATE_FORMATS :
         try :
@@ -630,6 +632,8 @@ if not flag_timeseries and  not flag_tex and \
 csv_in = args.csv_in.pop(0)
 df = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
 
+#print( df )
+
 dirname = ''
 format = args.format
 if args.outdir != '' :
@@ -651,18 +655,26 @@ df.replace( [ 'United Kingdom',
               'UAE' ],
             inplace=True )
 
+first_question='What is your main occupation?'
 dict_orgq = {}
 i = 0;
-for column_name in df :
-    q = 'Q' + str(i)
+for i in range(1,10) :
+#    print( df.columns[i] )
+    if df.columns[i] == first_question :
+        break;
+#print( df.columns[i:] )
+i -= 1
+j = 0;
+for column_name in df.columns[i:] :
+    q = 'Q' + str(j)
     dict_orgq.setdefault( q, column_name )
-    i += 1
-    df.rename(columns={column_name: q}, inplace=True)
-    num_columns = i + 1
+    j += 1
+    if( column_name != 'Timestamp' ) :
+        df.rename( columns={column_name: q}, inplace=True )
 
 for column_name in df :
     countries = df[ 'Q2' ]
-    #print( countries )
+#    print( countries )
     
     err = False
     # checking for unknown countries and remove accents from all countries name
@@ -898,7 +910,11 @@ def graph_time_series( df, regions ) :
     # adding 'Date' column
     dt_list = []
     date_dict = {}
-    for dt in df['Q0'] :
+    print ( df )
+    print( df['Timestamp'].tolist() )
+    print( df['Q1'].tolist() )
+
+    for dt in df['Timestamp'] :
         dt_list.append( conv_date( dt ) )
     df = df.assign( Date=dt_list )
     df.sort_values( by=['Date'], ascending=True )
