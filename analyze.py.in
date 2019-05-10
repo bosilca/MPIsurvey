@@ -769,7 +769,6 @@ for qno in qval_tab.keys() :
         tex_list.append( '\\begin{center}%\n' )
         tex_list.append( '\\begin{tabular}{l|l|r}%\n' )
         tex_list.append( '\\hline%\n' )
-        tex_list.append( '\\hline%\n' )
         sum = 0
         flag_other = False
         if qno in sort_answer :
@@ -800,9 +799,8 @@ for qno in qval_tab.keys() :
                 valstr = str( dict_ans[key] )
                 tex_list.append( key + ' & - & ' + valstr + ' \\\\%\n' )
         tex_list.append( '\\hline%\n' )
-        tex_list.append( '\multicolumn{2}{c}{SUM} & ' + str( sum ) + \
+        tex_list.append( '\multicolumn{2}{c}{sum} & ' + str( sum ) + \
                              ' \\\\%\n' )
-        tex_list.append( '\\hline%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\\end{tabular}%\n' )
         tex_list.append( '\\end{center}%\n' )

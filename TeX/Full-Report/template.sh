@@ -3,12 +3,18 @@
 slist="Q1 Q3 Q4 Q6 Q7 Q10 Q14 Q16 Q17 Q19 Q21 Q30"
 
 for q in ${slist}; do
+    if [ -f ${q}.tex ] ; then
+	mv ${q}.tex ${q}.tex.org
+    fi
     sed s/QX/${q}/ < SIMPLE.template > ${q}.tex
 done
 
 olist="Q5 Q8 Q9 Q11 Q12 Q13 Q15 Q18 Q20 Q22 Q23 Q24 Q25 Q26 Q27 Q28 Q29"
 
 for q in ${olist}; do
+    if [ -f ${q}.tex ]; then
+	mv ${q}.tex ${q}.tex.org
+    fi
     sed s/QX/${q}/ < OTHER.template > ${q}.tex
 done
 
@@ -316,5 +322,8 @@ Q28-Q30
 Q29-Q30"
 
 for q in ${clist}; do
+    if [ -f ${q}.tex ] ; then
+	mv ${q}.tex ${q}.tex.org
+    fi
     sed s/QX/${q}/ < CROSS.template > ${q}.tex
 done

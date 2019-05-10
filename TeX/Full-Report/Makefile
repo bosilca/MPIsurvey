@@ -9,10 +9,12 @@ PROG   = $(PROGDIR)/analyze.py
 PSRC    = $(PROG).in
 OPTS_ALL = -t -s all -c all
 OPTS_TEX = -x -O ../inputs 
-OPTS_PDF =  -o ../figs -f pdf
+OPTS_PDF =  -o ../pdfs -f pdf
 OPTS   =  $(OPTS_ALL)  $(OPTS_PDF) $(OPTS_TEX) $(INPUT)
 
 PDF    = $(TARGET).pdf
+
+# directories
 
 all : $(PDF)
 
@@ -30,7 +32,12 @@ OUTPUT = ../inputs/Q1-ans.tex
 $(OUTPUT) : $(PROG) $(CSV)
 	$(PROG) $(OPTS) $(CSV)
 
-$(PDF) : $(TSRC) $(BIBS) $(PROG) $(OUTPUT) Makefile
+TEMPLATE = Q1.tex
+
+$(TEMPLATE) : 
+	./template.sh
+
+$(PDF) : $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) Makefile
 	$(LATEX) $(TARGET);		\
 	bibtex $(TARGET);		\
 	$(LATEX) $(TARGET);		\
@@ -41,6 +48,6 @@ clean:
 	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *~ *.dvi
 
 veryclean: clean
-	rm -f $(PDF) ../inputs/Q*.tex ../figs/Q*.pdf
+	rm -f $(PDF) ../inputs/Q*.tex ../figs/Q*.pdf *.tex.org
 
 PDF    = $(TARGET).pdf

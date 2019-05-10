@@ -1,7 +1,7 @@
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=10cm]{../figs/QX.pdf}
+\includegraphics[width=10cm]{../pdfs/QX.pdf}
 \caption{Cross-tab analysis: QX}
 \label{fig:QX}
 \end{center}
