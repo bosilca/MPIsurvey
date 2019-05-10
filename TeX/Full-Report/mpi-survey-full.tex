@@ -1,8 +1,6 @@
 \documentclass{report}
 \usepackage{graphicx}
 \usepackage{url}
-% workwround for 'Multiple PDFs with page group included in a single page warning'
-\pdfsuppresswarningpagegroup=1
 
 \long\def\comment#1{}
 
@@ -12,35 +10,37 @@
 
 \begin{document}
 
+\maketitle
+
 \chapter{Overview}
 \input{overview}
 
 \chapter{Simple Analysis}
-\section{Q1:What is your main occupation}
+\section{Q1: What is your main occupation?}
 \input{Q1}
 
 \clearpage
-\section{Q2:Select main country or region of your workplace in past 5 years}
+\section{Q2: Select main country or region of your workplace in past 5 years}
 \input{Q2}
 
 \clearpage
-\section{Q3:Rate your overall programming skill (non-MPI programs)}
+\section{Q3: Rate your overall programming skill (non-MPI programs)}
 \input{Q3}
 
 \clearpage
-\section{Q4:Rate your MPI programming skill}
+\section{Q4: Rate your MPI programming skill}
 \input{Q4}
 
 \clearpage
-\section{Q5:What programming language(s) do you use most often?}
+\section{Q5: What programming language(s) do you use most often?}
 \input{Q5}
 
 \clearpage
-\section{Q6:How long have you been writing computer programs (incl. non-MPI programs)?}
+\section{Q6: How long have you been writing computer programs (incl. non-MPI programs)?}
 \input{Q6}
 
 \clearpage
-\section{Q7:How long have you been writing MPI programs?}
+\section{Q7: How long have you been writing MPI programs?}
 \input{Q7}
 
 \clearpage
@@ -48,91 +48,91 @@
 \input{Q8}
 
 \clearpage
-\section{Q9:What is your major role at your place of work?}
+\section{Q9: What is your major role at your place of work?}
 \input{Q9}
 
 \clearpage
-\section{Q10:Have you ever read the MPI standard specification document?}
+\section{Q10: Have you ever read the MPI standard specification document?}
 \input{Q10}
 
 \clearpage
-\section{Q11:How did you learn MPI?}
+\section{Q11: How did you learn MPI?}
 \input{Q11}
 
 \clearpage
-\section{Q12:Which MPI book(s) have you read?}
+\section{Q12: Which MPI book(s) have you read?}
 \input{Q12}
 
 \clearpage
-\section{Q13:Which MPI implementations do you use?}
+\section{Q13: Which MPI implementations do you use?}
 \input{Q13}
 
 \clearpage
-\section{Q14:Why did you choose the MPI implementation(s)?}
+\section{Q14: Why did you choose the MPI implementation(s)?}
 \input{Q14}
 
 \clearpage
-\section{Q15:How do you check MPI specifications when you are writing MPI programs?}
+\section{Q15: How do you check MPI specifications when you are writing MPI programs?}
 \input{Q15}
 
 \clearpage
-\section{Q16:What is the most difficult part of writing an MPI program?}
+\section{Q16: What is the most difficult part of writing an MPI program?}
 \input{Q16}
 
 \clearpage
-\section{Q17:Which MPI features have you never heard of?}
+\section{Q17: Which MPI features have you never heard of?}
 \input{Q17}
 
 \clearpage
-\section{Q18:What aspects of the MPI standard do you use in your program in its current form?}
+\section{Q18: What aspects of the MPI standard do you use in your program in its current form?}
 \input{Q18}
 
 \clearpage
-\section{Q19:Which MPI thread support are you using?}
+\section{Q19: Which MPI thread support are you using?}
 \input{Q19}
 
 \clearpage
-\section{Q20:What are your obstacles to mastering MPI?}
+\section{Q20: What are your obstacles to mastering MPI?}
 \input{Q20}
 
 \clearpage
-\section{Q21:When you call an MPI routine, how often do you check the error code of the MPI routine  (excepting MPI-IO)?}
+\section{Q21: When you call an MPI routine, how often do you check the error code of the MPI routine  (excepting MPI-IO)?}
 \input{Q21}
 
 \clearpage
-\section{Q22:In most of your programs, do you pack MPI function calls into their own file or files to have your own abstraction layer for communication?}
+\section{Q22: In most of your programs, do you pack MPI function calls into their own file or files to have your own abstraction layer for communication?}
 \input{Q22}
 
 \clearpage
-\section{Q23:Have you ever written MPI+”X” programs?}
+\section{Q23: Have you ever written MPI+”X” programs?}
 \input{Q23}
 
 \clearpage
-\section{Q24:Is there any room for performance tuning in your MPI programs?}
+\section{Q24: Is there any room for performance tuning in your MPI programs?}
 \input{Q24}
 
 \clearpage
-\section{Q25:What, if any, alternatives are you investigating to indirectly call MPI or another communication layer by using another parallel language/library?}
+\section{Q25: What, if any, alternatives are you investigating to indirectly call MPI or another communication layer by using another parallel language/library?}
 \input{Q25}
 
 \clearpage
-\section{Q26:If there were one communication aspect which is not enough in the current MPI could improve the performance of your application, what would you prioritize? Or is MPI providing all the communication semantics required by your application? If not, what is missing?}
+\section{Q26: If there were one communication aspect which is not enough in the current MPI could improve the performance of your application, what would you prioritize? Or is MPI providing all the communication semantics required by your application? If not, what is missing?}
 \input{Q26}
 
 \clearpage
-\section{Q27:Is MPI providing all the communication semantics required by your application? If not, what is missing?}
+\section{Q27: Is MPI providing all the communication semantics required by your application? If not, what is missing?}
 \input{Q27}
 
 \clearpage
-\section{Q28:What MPI feature(s) are NOT useful for you application?}
+\section{Q28: What MPI feature(s) are NOT useful for you application?}
 \input{Q28}
 
 \clearpage
-\section{Q29:Do you think the MPI standard should maintain backward compatibility?}
+\section{Q29: Do you think the MPI standard should maintain backward compatibility?}
 \input{Q29}
 
 \clearpage
-\section{Q30:In the tradeoff between code portability and performance, which is more or less important for you to write MPI programs?}
+\section{Q30: In the tradeoff between code portability and performance, which is more or less important for you to write MPI programs?}
 \input{Q30}
 
 \chapter{Cross-Tab Analysis: Q1}
