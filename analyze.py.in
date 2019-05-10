@@ -908,9 +908,6 @@ def graph_time_series( df, regions ) :
     # adding 'Date' column
     dt_list = []
     date_dict = {}
-    print ( df )
-    print( df['Timestamp'].tolist() )
-    print( df['Q1'].tolist() )
 
     for dt in df['Timestamp'] :
         dt_list.append( conv_date( dt ) )
