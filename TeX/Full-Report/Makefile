@@ -21,6 +21,8 @@ all : $(PDF)
 $(PROG) : $(PSRC)
 	cd $(PROGDIR) ; ./build.sh
 
+python : $(PROG)
+
 tex : $(PROG)
 	$(PROG) $(OPTS_TEX) $(CSV)
 

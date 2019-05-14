@@ -483,9 +483,11 @@ def tex_conv( str ) :
     s = s.replace( '>', '\\verb!>!' )
     return( s )
 
-def get_long_ans( qno, sans ) :
+def get_long_ans_tex( qno, sans ) :
     for key, value in qval_tab[qno].items():
         if value == sans :
+            if len( key ) > 42 :
+                key = key[:40] + '$\\cdots$'
             return( key )
     return( '' )
 
@@ -696,30 +698,30 @@ for column_name in df :
 # adding another Region column
 region_list = []
 rename_list = []
-if major_region <= 0 :
-    # adding Region column
+if major_region <= 1 :
     for country in countries :
         region = region_tab[ country ]
         region_list.append( region )
 else :
     for country in countries :
         region = region_tab[ country ]
-        if major_region > 1 and \
-                len( df[df['Q2'] == country] ) > major_region and \
+        if len( df[df['Q2'] == country] ) >= major_region and \
                 region != country :
             region_list.append( region + ':' + country )
             rename_list.append( region )
         else :
             region_list.append( region )
+# adding Region column
 df_whole = df.assign( Region = region_list )
-for rename in unique( rename_list ) :
-    df_whole.replace( rename, rename+':others', inplace=True )
+if rename_list != [] :
+    for rename in unique( rename_list ) :
+        df_whole.replace( rename, rename+':others', inplace=True )
 
 regions = df_whole['Region']
 region_list = regions.values.tolist()
-#print( region_list )
+print( 'Region_list:', region_list[:3] )
 unique_regions = unique(region_list)
-#print( unique_regions )
+print( 'Unique_regions:', unique_regions )
 
 # creating region list having more than 'major_region' threshold
 regions_major = []
@@ -777,9 +779,11 @@ for qno in qval_tab.keys() :
     if flag_tex :
         tex_list = []
         tex_list.append( '\\begin{table}[htb]%\n' )
-        tex_list.append( '\\caption{' + dict_orgq[qno] + '}%\n' )
         tex_list.append( '\\begin{center}%\n' )
+        tex_list.append( '\\caption{' + qno + ': ' + dict_orgq[qno] + '}%\n' )
         tex_list.append( '\\begin{tabular}{l|l|r}%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( 'Choice & Legend & \# Answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         sum = 0
         flag_other = False
@@ -791,7 +795,7 @@ for qno in qval_tab.keys() :
                     continue
                 valstr = str( v )
                 skeystr = tex_conv( k )
-                lkeystr = tex_conv( get_long_ans( qno, k ) )
+                lkeystr = tex_conv( get_long_ans_tex( qno, k ) )
                 tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
                                      valstr + ' \\\\%\n')
         else :
@@ -802,7 +806,7 @@ for qno in qval_tab.keys() :
                     continue
                 valstr = str( v )
                 skeystr = tex_conv( k )
-                lkeystr = tex_conv( get_long_ans( qno, k ) )
+                lkeystr = tex_conv( get_long_ans_tex( qno, k ) )
                 tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
                                      valstr + ' \\\\%\n')
         if flag_other :
@@ -892,12 +896,15 @@ for qno in qval_tab.keys() :
     if qno in print_other :
         dict_others.setdefault( qno, list_others )
     if flag_tex :
-        tex_list = []
-        for ans in set( list_others ) :
-            texstr = tex_conv( ans )
-            tex_list.append( '\item ' + texstr + '\n' )
-        with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
-            f.writelines( tex_list )
+        if len( list_others ) == 0 :
+            tex_list = [ '\item (no other answer)\n' ]
+        else :
+            tex_list = []
+            for ans in set( list_others ) :
+                texstr = tex_conv( ans )
+                tex_list.append( '\item ' + texstr + '\n' )
+    with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
+        f.writelines( tex_list )
 
 # finally append to the dict_qno
     dict_qno.setdefault( qno, dfq )
@@ -912,21 +919,21 @@ def graph_time_series( df, regions ) :
     for dt in df['Timestamp'] :
         dt_list.append( conv_date( dt ) )
     df = df.assign( Date=dt_list )
-    df.sort_values( by=['Date'], ascending=True )
     for dt in unique( dt_list ) :
         ondate = df[df['Date']==dt]
         regc = ondate['Region'].value_counts( sort=False )
         date_dict.setdefault( dt, regc )
     dc = pd.DataFrame( date_dict ).T
     dc.fillna( 0.0, inplace=True )
+    dc = dc.sort_index( axis=0, ascending=True )
+    print( 'DC:\n', dc )
     # accumulate
     for i in range( 1, len(dc) ) :
         for j in range( 0, len(unique_regions) ) :
             dc.iat[i,j] += dc.iat[i-1,j]
 
 # drop regions having less number of answers
-    dc_etc = dc.assign( etc = dc[region_list.pop(0)] )
-#    print( dc_etc )
+    dc_etc = dc.assign( etc = dc[region_list[0]] )
     for i in range( 0, len(dc) ) :
         dc_etc['etc'].iat[i] = 0
     for reg in unique_regions :
@@ -934,10 +941,11 @@ def graph_time_series( df, regions ) :
             for i in range( 0, len(dc) ) :
                 dc_etc['etc'].iat[i] += dc_etc[reg].iat[i]
             dc_etc = dc_etc.drop( [reg], axis=1 )
+#    print( 'dc_etc\n', dc_etc )
     
 # now we can draw a time series graph
     fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot( 2, 1, 1 )
 #    dc_etc.plot.area( ax=ax, stacked=True, legend='reverse',
 #    color=color_list )
     dc_etc.plot.area( ax=ax, stacked=True, legend='reverse', color=color_list )
@@ -951,7 +959,7 @@ def graph_time_series( df, regions ) :
     ax.tick_params(axis="x", which="minor", labelsize=10, length=15, width=1)
 
     plt.subplots_adjust( right=0.68 )
-    plt.legend( dc_etc, bbox_to_anchor=(1, 1) )
+    plt.legend( dc_etc, bbox_to_anchor=(1,1) )
 
     if flag_show_event :
         for event in event_list :
@@ -970,7 +978,7 @@ def graph_time_series( df, regions ) :
                          )
 
     if format == '' and not flag_tex :
-        plt.show()
+        ax.show()
     else :
         fn = dirname + 'TimeSeries.' + format
         print( '\nFilename:', fn )
@@ -1007,11 +1015,14 @@ def graph_percentage( dict, others, qno ) :
 
 # eventually draw a graph (stacked bar in percentage)
     trans = df_tmp.T
-#    trans.plot( kind='bar', stacked=True, legend='reverse',
+    fig = plt.figure()
+    ax = fig.add_subplot( 1, 1, 1 )
+#    ax.plot( trans, kind='bar', stacked=True, legend='reverse',
 #    color=color_list )
-    trans.plot( kind='bar', stacked=True, legend='reverse', color=color_list )
+    trans.plot( ax=ax, kind='bar', stacked=True, \
+                    legend='reverse', color=color_list )
     plt.subplots_adjust( right=scale, bottom=0.3 )
-    plt.legend( df_tmp.index, bbox_to_anchor=(1, 1) )
+    plt.legend( df_tmp.index, bbox_to_anchor=(1,1) )
     plt.ylabel( 'Percentage' )
     if qno in multi_answer :
         plt.title( qno + '* : ' + question_tab[qno] )
@@ -1027,6 +1038,7 @@ def graph_percentage( dict, others, qno ) :
             plt.savefig( fn, transparent=False )
         else :
             plt.savefig( fn, transparent=True )
+    plt.close('all')
     return
 
 def expand_multians( qno, df ) :
@@ -1229,15 +1241,17 @@ def summary () :
     if flag_tex :
         tex_list = []
         tex_list.append( '\\begin{table}[htb]%\n' )
-        tex_list.append( '\\caption{Country}%\n' )
         tex_list.append( '\\begin{center}%\n' )
+        tex_list.append( '\\caption{Country}%\n' )
         tex_list.append( '\\begin{tabular}{lr}%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( 'Country & \# Answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         for i in range( 0, len(cs) ) :
             tex_list.append( cs.index[i] + '&' + str( cs[i] ) + '\\\\%\n' )
         tex_list.append( '\\hline%\n' )
-        tex_list.append( str( nc ) + 'countries & ' + \
-                             str( nans ) + 'answers \\\\%\n' )
+        tex_list.append( str( nc ) + ' countries & ' + \
+                             str( nans ) + ' answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\\end{tabular}%\n' )
         tex_list.append( '\\end{center}%\n' )
