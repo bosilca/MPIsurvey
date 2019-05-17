@@ -28,7 +28,8 @@ DATE_FORMAT_US = '%m/%d/%Y' # mmddYY
 DATE_FORMATS = [ DATE_FORMAT_JP, DATE_FORMAT_US, DATE_FORMAT_MS ]
 
 CROSSTAB_THRESHOLD = 0.04 # crosstab rows and columns less than this are not shown
-CROSSTAB_NCOLS = 3
+CROSSTAB_NCOLS   = 3
+CROSSTAB_CLEGEND = CROSSTAB_NCOLS
 CROSSTAB_COLOR = 'YlOrRd'
 # possible color map names
 ## Accent, Accent_r, Blues, Blues_r, BrBG, BrBG_r, BuGn, BuGn_r, BuPu,
@@ -112,67 +113,66 @@ region_tab = { 'Argentina'		: 'CentralandSouthAmerica',
                }
 
 question_tab = { 'Q1'  : 'Occupation',
-                 'Q2'  : 'Country/Region',
-                 'Q3'  : 'Programming Skill',
-                 'Q4'  : 'MPI Skill',
-                 'Q5'  : 'Programming Language',
-                 'Q6'  : 'Programming Experience',
-                 'Q7'  : 'MPI Experience',
-                 'Q8'  : 'Working Fields',
-                 'Q9'  : 'Role',
-                 'Q10' : 'MPI Standard', 
-                 'Q11' : 'Learning MPI',
-                 'Q12' : 'MPI Book',
-                 'Q13' : 'MPI Implementation',
-                 'Q14' : 'Reasons to choose MPI',
-                 'Q15' : 'How to check MPI Spec.',
-                 'Q16' : 'MPI Difficulty', 
-                 'Q17' : 'Known MPI Fetures',
-                 'Q18' : 'MPI Aspects',
-                 'Q19' : 'MPI thread level',
-                 'Q20' : 'MPI Obstacles', 
-                 'Q21' : 'Error Checking',
-                 'Q22' : 'Packing MPI calls', 
-                 'Q23' : 'MPI+X',
-                 'Q24' : 'Room for tuning',
-                 'Q25' : 'Alternatives',
-                 'Q26' : 'Missing Fetures',
-                 'Q27' : 'Missing Semantics',
-                 'Q28' : 'Unnecessary Features',
-                 'Q29' : 'Backward Compatibility',
-                 'Q30' : 'Performance and Portability'
+                 'Q2'  : 'Programming Skill',
+                 'Q3'  : 'MPI Skill',
+                 'Q4'  : 'Programming Language',
+                 'Q5'  : 'Programming Experience',
+                 'Q6'  : 'MPI Experience',
+                 'Q7'  : 'Working Fields',
+                 'Q8'  : 'Role',
+                 'Q9'  : 'MPI Standard', 
+                 'Q10' : 'Learning MPI',
+                 'Q11' : 'MPI Book',
+                 'Q12' : 'MPI Implementation',
+                 'Q13' : 'Choosing MPI',
+                 'Q14' : 'Checking MPI Spec.',
+                 'Q15' : 'MPI Difficulty', 
+                 'Q16' : 'Known MPI Fetures',
+                 'Q17' : 'MPI Aspects',
+                 'Q18' : 'MPI thread level',
+                 'Q19' : 'MPI Obstacles', 
+                 'Q20' : 'Error Checking',
+                 'Q21' : 'Packing MPI calls', 
+                 'Q22' : 'MPI+X',
+                 'Q23' : 'Room for tuning',
+                 'Q24' : 'Alternatives',
+                 'Q25' : 'Missing Fetures',
+                 'Q26' : 'Missing Semantics',
+                 'Q27' : 'Unnecessary Features',
+                 'Q28' : 'Backward Compatibility',
+                 'Q29' : 'Performance and Portability'
               }
 
 graph_scale = {
     'Q1'  : 0.75,
+    'Q2'  : 0.83,
     'Q3'  : 0.83,
-    'Q4'  : 0.83,
-    'Q5'  : 0.81,
+    'Q4'  : 0.81,
+    'Q5'  : 0.83,
     'Q6'  : 0.83,
-    'Q7'  : 0.83,
+    'Q7'  : 0.7,
     'Q8'  : 0.7,
-    'Q9'  : 0.7,
-    'Q10' : 0.83,
-    'Q11' : 0.68,
-    'Q12' : 0.6,
+    'Q9' : 0.83,
+    'Q10' : 0.68,
+    'Q11' : 0.6,
+    'Q12' : 0.74,
     'Q13' : 0.74,
-    'Q14' : 0.74,
-    'Q15' : 0.7,
-    'Q16' : 0.67,
+    'Q14' : 0.7,
+    'Q15' : 0.67,
+    'Q16' : 0.7,
     'Q17' : 0.7,
     'Q18' : 0.7,
-    'Q19' : 0.7,
-    'Q20' : 0.64,
-    'Q21' : 0.78,
-    'Q22' : 0.7,
-    'Q23' : 0.8,
-    'Q24' : 0.58,
-    'Q25' : 0.65,
-    'Q26' : 0.64,
-    'Q27' : 0.65,
+    'Q19' : 0.64,
+    'Q20' : 0.78,
+    'Q21' : 0.7,
+    'Q22' : 0.8,
+    'Q23' : 0.58,
+    'Q24' : 0.65,
+    'Q25' : 0.64,
+    'Q26' : 0.65,
+    'Q27' : 0.62,
     'Q28' : 0.62,
-    'Q29' : 0.62,
-    'Q30' : 0.75
+    'Q29' : 0.75
 }
 
 qval_tab = \
@@ -183,6 +183,13 @@ qval_tab = \
         'Software vendor' : 'SW',
         'Private research institute' : 'Priv',
         'Other' : 'other' },
+  'Q2' :
+      { '1' : 'Low', 
+        '2' : '2', 
+        '3' : '3', 
+        '4' : '4', 
+        '5' : '5', 
+        '6' : 'High' },
   'Q3' :
       { '1' : 'Low', 
         '2' : '2', 
@@ -191,30 +198,23 @@ qval_tab = \
         '5' : '5', 
         '6' : 'High' },
   'Q4' :
-      { '1' : 'Low', 
-        '2' : '2', 
-        '3' : '3', 
-        '4' : '4', 
-        '5' : '5', 
-        '6' : 'High' },
-  'Q5' :
       { 'C/C++' : 'C/C++',
         'Fortran 90 or newer' : '>= F90',
-        'Fortran (older one than Fortran 90)' : '< F90',
         'Python' : 'Python',
+        'Fortran (older one than Fortran 90)' : '< F90',
         'Java' : 'Java',
         'Other' : 'other' } ,
+  'Q5' :
+      { 'more than 10 years' : '>10',
+        'between 5 and 10 years' : '5-10',
+        'between 2 and 5 years' : '2-5',
+        'less than 2 years' : '<2' },
   'Q6' :
       { 'more than 10 years' : '>10',
         'between 5 and 10 years' : '5-10',
         'between 2 and 5 years' : '2-5',
         'less than 2 years' : '<2' },
   'Q7' :
-      { 'more than 10 years' : '>10',
-        'between 5 and 10 years' : '5-10',
-        'between 2 and 5 years' : '2-5',
-        'less than 2 years' : '<2' },
-  'Q8' :
       { 'System software development (OS, runtime library, communication library, etc.)' : 'OS/Runtime',
         'Parallel language (incl. domain specific language)' : 'Parallel language',
         'Numerical application and/or library' : 'Numerical Lib.',
@@ -225,30 +225,31 @@ qval_tab = \
         'Visualization' : 'Visualization',
         'Tool development (performance tuning, debugging, etc.)' : 'Tool',
         'Other' : 'other' },
-  'Q9' :
+  'Q8' :
       { 'Research and development of application(s)' : 'R&D Apps',
-        'Research and development on system software (OS and/or runtime library)' : 'R&D OS/Runtime',
+#        'Research and development on system software (OS and/or runtime library)' : 'R&D OS/Runtime',
         'Research and development software tool(s)' : 'R&D Tools',
         'Parallelization of sequential program(s)' : 'Parralelization',
         'Performance tuning of MPI program(s)' : 'MPI Tuning',
         'Debugging MPI programs' : 'Debugging',
+        'Research and development on system software (OS and/or runtime library)' : 'R&D OS/Runtime',
         'Other' : 'other'
         },
-  'Q10' :
+  'Q9' :
       { 'I read all.' : 'All',
         'I read most of it.' : 'Mostly',
         'I read only the chapters of interest for my work.' : 'Partly',
         'I have not read it, but I plan to.' : 'Wish',
         'No, and I will not read it.' : 'No' },
-  'Q11' :
+  'Q10' :
       { 'I read the MPI standard document.' : 'Read MPI standard',
-        'I read book(s).' : 'MPI Book(s)',
         'I had lecture(s) at school.' : 'School Lecture(s)',
-        'Other lectures or tutorials (workplace, conference).' : 'Other lecture(s)',
         'I read articles found on Internet.' : 'Internet',
         'I have not learned MPI.' : 'Not learned',
+        'I read book(s).' : 'MPI Book(s)',
+        'Other lectures or tutorials (workplace, conference).' : 'Other lecture(s)',
         'Other' : 'other' },
-  'Q12' :
+  'Q11' :
       { 'Beginning MPI (An Introduction in C)' : 'Beginning MPI',
         'Parallel Programming with MPI' : 'Parallel Programming\nwith MPI',
         'Using MPI' : 'Using MPI',
@@ -256,11 +257,12 @@ qval_tab = \
         'MPI: The Complete Reference' : 'MPI: the complete Reference',
         'I have never read any MPI books' : '(never read)',
         'Other' : 'other' },
-  'Q13' :
+  'Q12' :
       { 'MPICH' : 'MPICH',
         'Open MPI' : 'Open MPI',
-        'MVAPICH' : 'MVAPICH',
+#        'MVAPICH' : 'MVAPICH',
         'Intel MPI' : 'Intel MPI',
+        'MVAPICH' : 'MVAPICH',
         'Cray MPI' : 'Cray MPI',
         'IBM MPI (BG/Q, PE, Spectrum)' : 'IBM MPI',
         'HPE MPI' : 'HPE MPI',
@@ -272,21 +274,21 @@ qval_tab = \
         'MPC MPI' : 'MPC MPI',
         'I do not know' : 'I do not know',
         'Other' : 'other' },
-  'Q14' :
+  'Q13' :
       { 'I like to use it.' : 'I like',
         'I was said to use it.' : 'Said to use',
         'I could not have any choice (the one provided by a vendor).': 'No choice',
         'I am familiar with it.' : 'I am familiar',
         'I have no special reason.' : 'No reason' },
-  'Q15' :
+  'Q14' :
       { 'I read the MPI Standard document (web/book).' : 'MPI standard',
-        'I read book(s) (except the MPI standard).' : 'Book',
         'I read online documents (such as man pages).' : 'Online docs',
-        'I ask colleagues.' : 'Asking colleagues',
+        'I read book(s) (except the MPI standard).' : 'Book',
         'I search the Internet (Google / Stack Overflow).' : 'Internet',
+        'I ask colleagues.' : 'Asking colleagues',
         'I know almost all MPI routines.' : 'I know all',
         'Other' : 'other' },
-  'Q16' :
+  'Q15' :
       { 'Algorithm design' : 'Algorithm',
         'Debugging' : 'Debugging',
         'Domain decomposition' : 'Decomposition',
@@ -294,7 +296,7 @@ qval_tab = \
         'Implementation issue workaround' : 'Workaround',
         'Performance tuning' : 'Tuning',
         'Other' : 'other' },
-  'Q17' :
+  'Q16' :
       { 'Point-to-point communications' : 'Pt2Pt',
         'Collective communications' : 'Collectives',
         'Communicator operations (split, duplicate, and so on)' : 'Communicators',
@@ -302,11 +304,11 @@ qval_tab = \
         'One-sided communications' : 'One-sided',
         'Dynamic process creation' : 'Dynamic process',
         'Persistent communication' : 'Persistent',
-        'MPI with OpenMP (or multithread)' : 'MPI with OpenMP',
         'PMPI interface' : 'PMPI',
+        'MPI with OpenMP (or multithread)' : 'MPI with OpenMP',
         'Other' : 'other'
         },
-  'Q18' :
+  'Q17' :
       { 'Point-to-point communications' : 'Pt2Pt',
         'Collective communications' : 'Collectives',
         'Communicator operations (split, duplicate, and so on)' : 'Communicators',
@@ -317,7 +319,7 @@ qval_tab = \
         'MPI with OpenMP (or multithread)' : 'MPI with OpenMP',
         'PMPI interface' : 'PMPI',
         'Other' : 'other' },
-  'Q19' :
+  'Q18' :
       { 'MPI_THREAD_SINGLE' : 'SINGLE',
         'MPI_THREAD_FUNNELED' : 'FUNNELED',
         'MPI_THREAD_SERIALIZED' : 'SERIALIZED',
@@ -325,28 +327,28 @@ qval_tab = \
         'I have never called MPI_INIT_THREAD' : 'Never used',
         'I do not know or I do not care.' : 'Do not know/care',
         'Other' : 'other' },
-  'Q20' :
+  'Q19' :
       { 'I have no obstacles.' : 'No obstacles',
-        'Too many routines.' : 'Too many routines.',
-        'No appropriate lecture / book / info.' : 'No appropriate lecture',
+        'Too many routines.' : 'Too many routines',
+        'No appropriate lecture / book / info.' : 'No appropriate one',
         'Too complicated and hard to understand.' : 'Too much complicated',
-        'I have nobody to ask.' : 'I have nobody to ask.',
-        'I do not like the API.' : 'I do not like the API.',
+        'I have nobody to ask.' : 'I have nobody to ask',
+        'I do not like the API.' : 'I do not like API',
         'Other' : 'other' },
-  'Q21' : 
+  'Q20' : 
   { 'I rely on the default ‘Errors abort’ error handling' : 'Default',
     'Always' : 'Always',
     'Mostly' : 'Mostly',
     'Sometimes' : 'Sometimes',
     'Never' : 'Never',
     'Other' : 'other' },
-  'Q22' :
+  'Q21' :
       { 'Yes, to minimize the changes of communication API.' : 'Yes',
         'Yes, but I have no special reason for doing that.' : 'Yes, but no reason',
         'No, my program is too small to do that.' : 'No, too small',
         'No, MPI calls are scattered in my programs.' : 'No, scattered',
         'Other' : 'other' },
-  'Q23' :
+  'Q22' :
       { 'OpenMP'  : 'OpenMP',
         'Pthread' : 'Pthread',
         'OpenACC' : 'OpenACC',
@@ -354,7 +356,7 @@ qval_tab = \
         'CUDA'    : 'CUDA',
         'No'      : 'No',
         'Other'  : 'other' },
-  'Q24' :
+  'Q23' :
       { 'No, my MPI programs are well-tuned.' : 
         'Well-tuned',
         'Yes, I know there is room for tuning but I should re-write large part of my program to do that.' :
@@ -362,24 +364,24 @@ qval_tab = \
         'Yes, I know there is room for tuning but I do not have enough resources to do that.' :
         'No resource',
         'I think there is room but I do not know how to tune it.' :
-        'Not knowing how to tune',
+        'No idea to tune',
         'I do not have (know) tools to find performance bottlenecks.' :
         'Not having the tools to find',
         'I have no chance to investigate.' :
         'No chance to investigate',
         'I do not know how to find bottlenecks.' :
-        'Not knowing how to find',
+        'Not idea to find bottlenecks',
         'I do not know if there is room for performance tuning.' :
-        'Not knowing how to improve',
+        'No idea to improve',
         'Other' : 'other' },
-  'Q25' :
+  'Q24' :
       { 'A framework or library using MPI.' : 'Framework',
         'A PGAS language (UPC, Coarray Fortran, OpenSHMEM, XcalableMP, ...).' : 'PGAS',
         'A Domain Specific Language (DSL).' : 'DSL',
         'Low-level communication layer provided by vendor (Verbs, DCMF, ...).' : 'Low-level comm. layer',
         'I am not investigating any alternatives.' : 'No investigation',
         'Other' : 'other' },
-  'Q26' :
+  'Q25' :
       { 'Latency' : 'Latency',
         'Message injection rate' : 'Injection rate',
         'Bandwidth' : 'Bandwidth',
@@ -389,7 +391,7 @@ qval_tab = \
         'Asynchronous progress' : 'Asynch progress',
         'MPI provides all semantics I need' : 'Satisfied',
         'Other' : 'other' },
-  'Q27' :
+  'Q26' :
       { 'Latency hiding (including asynchronous completion)' : 'Latency hiding',
         'Endpoints (multi-thread, sessions)' : 'End-points',
         'Resilience (fault tolerance)' : 'Resilience',
@@ -397,7 +399,7 @@ qval_tab = \
         'Another API which is easier and/or simpler to use' : 'Another API',
         'MPI is providing all the communication semantics required by my application' : 'MPI provides all',
         'Other' : 'other' },
-  'Q28' :
+  'Q27' :
       { 'One-sided communication' : 'One-sided',
         'Datatypes' : 'Datatypes',
         'Communicator and group management' : 'Communicator',
@@ -407,7 +409,7 @@ qval_tab = \
         'Error handlers' : 'Error handlers',
         'There are no unnecessary features' : 'No unnecessary feature',
         'Other' : 'other' },
-  'Q29' :
+  'Q28' :
       { 'Yes, compatibility is very important for me.' : 'Very important',
         'API should be clearly versioned.' : 'Versioned API',
         'I prefer to have new API for better performance.' : 'New API for performance',
@@ -415,7 +417,7 @@ qval_tab = \
         'I do not know or I do not care.' : 'Do not know/care',
         'Other' : 'other'
         },
-  'Q30' :
+  'Q29' :
       { '1' : 'Portability',
         '2' : '2',
         '3' : '3',
@@ -423,18 +425,21 @@ qval_tab = \
         '5' : 'Performance' },
 }
 
-multi_answer = [ 'Q5', 'Q8', 'Q9', 'Q11', 'Q12', 'Q13', 'Q15', 
-                 'Q17', 'Q18', 'Q19', 'Q20', 'Q23', 'Q25', 
-                 'Q27', 'Q28' ]
+multi_answer = [ 'Q4', 'Q7', 'Q8', 'Q10', 'Q11', 'Q12', 'Q14', 
+                 'Q16', 'Q17', 'Q18', 'Q19', 'Q22', 'Q24', 
+                 'Q26', 'Q27' ]
 
-sort_answer = [ 'Q1', 'Q5', 'Q8', 'Q9', 'Q12', 'Q13', 'Q14', 'Q15', 
-                'Q16', 'Q17', 'Q18', 'Q20', 'Q23', 'Q24', 'Q25', 'Q26', 
-                'Q27', 'Q28', 'Q29' ]
+sort_answer = [ 'Q1', 'Q4', 'Q7', 'Q8', 'Q11', 'Q12', 'Q13', 'Q14', 
+                'Q15', 'Q16', 'Q17', 'Q19', 'Q22', 'Q23', 'Q24', 'Q25', 
+                'Q26', 'Q27', 'Q28' ]
 
-print_other = [ 'Q5', 'Q8', 'Q9', 'Q11', 'Q12', 'Q13', 'Q15', 'Q18', 'Q20',
-                'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29' ]
+print_other = [ 'Q4', 'Q7', 'Q8', 'Q10', 'Q11', 'Q12', 'Q14', 'Q17', 'Q19',
+                'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28' ]
 
 color_list =  [ 'r', 'b', 'g', 'c', 'm', 'y', 'k' ]
+
+first_question   = 'What is your main occupation?'
+country_question = 'Select main country or region of your workplace in past 5 years. [among the countries in Top500 list as of Nov. 2018. If you cannot find your country or region, please specify.]'
 
 def strip_accents(text):
     """
@@ -492,10 +497,10 @@ def get_long_ans_tex( qno, sans ) :
     return( '' )
 
 
-qlist = [ 'Q1', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 
+qlist = [ 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9',
           'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16', 'Q17', 'Q18', 'Q19',
-          'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29',
-          'Q30' ]
+          'Q20', 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28', 'Q29'
+          ]
 
 qlist_all = qlist + [ 'all' ]
 
@@ -521,8 +526,8 @@ parser.add_argument( '-c', '--cross',
                          "to output cross-tab graph(s). " \
                          "Or, 'all' to draw graphs of all possible" \
                          "combinations." )
-parser.add_argument( '-m', '--major_region', type=int, default=30,
-                     help="Threshold to be a major region (30)" )
+parser.add_argument( '-m', '--major_region', type=int, default=50,
+                     help="Threshold to be a major region (50)" )
 parser.add_argument( '-f', '--format', type=str, default='',
                      choices=file_formats,
                      help="File format. Default is 'pdf'" )
@@ -606,8 +611,8 @@ if args.DEBUG :
     FILE_TYPE = ''
     flag_timeseries = True
     flag_show_event = True
-    list_simple = [ 'Q1', 'Q3', 'Q11' ]
-    list_cross  = [ ['Q3','Q4'], ['Q4','Q5'], ['Q28','Q30'] ]
+    list_simple = [ 'Q1', 'Q2', 'Q11' ]
+    list_cross  = [ ['Q2','Q3'], ['Q3','Q4'], ['Q27','Q29'] ]
 
 flag_tex = args.tex
 tex_outdir = args.tex_outdir + '/'
@@ -657,43 +662,42 @@ df.replace( [ 'United Kingdom',
               'UAE' ],
             inplace=True )
 
-first_question='What is your main occupation?'
 dict_orgq = {}
-i = 0;
 for i in range(1,10) :
 #    print( df.columns[i] )
     if df.columns[i] == first_question :
         break;
 #print( df.columns[i:] )
-i -= 1
-j = 0;
+j = 1;
 for column_name in df.columns[i:] :
     q = 'Q' + str(j)
     dict_orgq.setdefault( q, column_name )
-    j += 1
-    if( column_name != 'Timestamp' ) :
+    if( column_name == country_question ) :
+        df.rename( columns={column_name: 'country'}, inplace=True )
+    else :
         df.rename( columns={column_name: q}, inplace=True )
+        j += 1
 
 for column_name in df :
-    countries = df[ 'Q2' ]
-#    print( countries )
-    
+#    print( column_name )
+    countries = df[ 'country' ]
     err = False
     # checking for unknown countries and remove accents from all countries name
     for country in countries :
         stripped = strip_accents(country)
         if stripped != country :
-            print("Convert %s to %s" % (country, stripped))
-            df.replace(country, stripped, inplace=True)
+            print( "Convert %s to %s" % (country, stripped) )
+            df.replace( country, stripped, inplace=True )
             country = stripped
 
         region = region_tab[ stripped ]
         if None == region :
             print( '????? Unknown Country: ' + stripped )
             exit( 1 )
-    # As we modified tha panda table to remove accents 
-    # we need to update the list of countries
-    countries = df['Q2']
+
+# As we modified tha panda table to remove accents 
+# we need to update the list of countries
+countries = df[ 'country' ]
 
 # adding another Region column
 region_list = []
@@ -705,7 +709,7 @@ if major_region <= 1 :
 else :
     for country in countries :
         region = region_tab[ country ]
-        if len( df[df['Q2'] == country] ) >= major_region and \
+        if len( df[df['country'] == country] ) >= major_region and \
                 region != country :
             region_list.append( region + ':' + country )
             rename_list.append( region )
@@ -719,9 +723,9 @@ if rename_list != [] :
 
 regions = df_whole['Region']
 region_list = regions.values.tolist()
-print( 'Region_list:', region_list[:3] )
+#print( 'Region_list:', region_list[:3] )
 unique_regions = unique(region_list)
-print( 'Unique_regions:', unique_regions )
+#print( 'Unique_regions:', unique_regions )
 
 # creating region list having more than 'major_region' threshold
 regions_major = []
@@ -748,7 +752,7 @@ for qno in qval_tab.keys() :
         dict_ans.setdefault( str(ans), 0 )
     tmp = df_whole[qno]
 
-#    print( tmp )
+#    print( 'tmp\n', tmp )
     if qno in multi_answer :
         for mans in tmp :
             list_ans = mans.split( ';' )
@@ -766,15 +770,15 @@ for qno in qval_tab.keys() :
                 dict_ans['other'] += 1
                 list_others.append( ans )
 
-#    print( dict_ans )
-#    print( list_others )
+#    print( 'dict_ans\n', dict_ans )
+#    print( 'list_others\n', list_others )
     ser = pd.Series( data=dict_ans, dtype=float )
     sum = ser.sum()
     list_sum.append( sum )
     for i in range( ser.size ) :
         ser.iat[i] = ser.iat[i] / float(sum) * 100.0
     dfq = pd.DataFrame( { 'whole' : ser } )
-#    print( 'whole', dfq )
+#    print( 'whole\n', dfq )
 
     if flag_tex :
         tex_list = []
@@ -903,15 +907,15 @@ for qno in qval_tab.keys() :
             for ans in set( list_others ) :
                 texstr = tex_conv( ans )
                 tex_list.append( '\item ' + texstr + '\n' )
-    with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
-        f.writelines( tex_list )
+        with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
+            f.writelines( tex_list )
 
 # finally append to the dict_qno
     dict_qno.setdefault( qno, dfq )
 
 #print( dict_qno )
 
-def graph_time_series( df, regions ) :
+def graph_time_series( df ) :
     # adding 'Date' column
     dt_list = []
     date_dict = {}
@@ -926,7 +930,7 @@ def graph_time_series( df, regions ) :
     dc = pd.DataFrame( date_dict ).T
     dc.fillna( 0.0, inplace=True )
     dc = dc.sort_index( axis=0, ascending=True )
-    print( 'DC:\n', dc )
+#    print( 'DC:\n', dc )
     # accumulate
     for i in range( 1, len(dc) ) :
         for j in range( 0, len(unique_regions) ) :
@@ -944,8 +948,8 @@ def graph_time_series( df, regions ) :
 #    print( 'dc_etc\n', dc_etc )
     
 # now we can draw a time series graph
-    fig = plt.figure()
-    ax = fig.add_subplot( 2, 1, 1 )
+    fig = plt.figure( num=1, figsize=(8,6) )
+    ax = fig.add_subplot( 1, 1, 1 )
 #    dc_etc.plot.area( ax=ax, stacked=True, legend='reverse',
 #    color=color_list )
     dc_etc.plot.area( ax=ax, stacked=True, legend='reverse', color=color_list )
@@ -1015,7 +1019,8 @@ def graph_percentage( dict, others, qno ) :
 
 # eventually draw a graph (stacked bar in percentage)
     trans = df_tmp.T
-    fig = plt.figure()
+    fig = plt.figure( num=1, figsize=(8,6) )
+#    fig = plt.figure()
     ax = fig.add_subplot( 1, 1, 1 )
 #    ax.plot( trans, kind='bar', stacked=True, legend='reverse',
 #    color=color_list )
@@ -1147,12 +1152,28 @@ def cross_tab( qno0, qno1 ) :
             for dat in new_graphs :
                 dat.drop( clm, axis=1, inplace=True )
 
-    ncols = CROSSTAB_NCOLS
-    nrows = int( math.ceil( ( nregs + 2 ) / ncols ) )
+    # find max in all data to have the same scale in heatmaps
+    max = 0.0
+    for dat in new_graphs :
+        for idx in dat_whole.index :
+            for clm in dat_whole.columns :
+                if dat.at[idx,clm] > max :
+                    max = dat.at[idx,clm]
 
-    plt.figure( figsize=(ncols*2,nrows*2) )
-    plt.rcParams["font.size"] = 8
-    plt.tight_layout()
+    ncols = CROSSTAB_NCOLS
+    nrows = int( math.ceil( ( nregs + CROSSTAB_CLEGEND ) / ncols ) )
+
+    flag_enlarge = False
+    len_max = 0
+    for xlabel in new_graphs[0].columns :
+        l = len( xlabel )
+        if l > len_max :
+            len_max = l
+##    if len_max > 15 :
+##        flag_enlarge = True
+##        nrows += 1
+
+    plt.rcParams["font.size"] = 7
     i = 0
     for dat in new_graphs :
         print( '\nRegion:', list_regions[i], '\n', dat )
@@ -1167,35 +1188,47 @@ def cross_tab( qno0, qno1 ) :
                      linewidths=0.5, linecolor='black', 
                      xticklabels=False, yticklabels=False,
 #                     xticklabels=True, yticklabels=True,
+                     vmin=0.0, vmax=max,
                      ax=ax )
         ax.set_xlabel( '' )
         ax.set_ylabel( '' )
         i += 1
 
-    i+= 1 # make space for tick titles
-    ax = plt.subplot2grid( ( nrows, ncols ), 
-                           ( int(i/ncols), int(i%ncols) ),
-                           colspan=((nrows*ncols)-2) )
-
     # LEGEND
+ #    plt.subplots_adjust( bottom=0.8 )
+    i = ( nrows * ncols ) - CROSSTAB_CLEGEND + 1
+    if flag_enlarge :
+        ax = plt.subplot2grid( ( nrows, ncols ), 
+                               ( int(i/ncols), int(i%ncols) ),
+                               colspan=CROSSTAB_CLEGEND-1 )
+    else :
+        ax = plt.subplot2grid( ( nrows, ncols ), 
+                               ( int(i/ncols), int(i%ncols) ),
+                               colspan=CROSSTAB_CLEGEND-1 )
     legend = copy.copy( new_graphs[0] )
     print( '\nLEGEND\n', legend )
     nrows, ncols = legend.shape
 #    print( 'nrows=', nrows, 'ncols=', ncols )
+    nn = nrows * ncols
     for i in range( 0, nrows ) :
         for j in range( 0, ncols ) :
-            legend.iat[i,j] = ( ( ( (j+1) % 2 ) + ( i % 2 ) ) % 2 ) * 0.5
+# hatch
+#            legend.iat[i,j] = ( ( ( (j+1) % 2 ) + ( i % 2 ) ) % 2 ) * 0.5
+# 
+#            legend.iat[i,j] = float( i + j ) / float( nn ) * max * 100
+            legend.iat[i,j] = float( i * ncols + j ) / float( nn ) * max * 100
 #    ax.set_title( 'Legend' )
     ax.set_autoscale_on( True )
+    ax.set_ylim( 0.8 )
 
     sns.heatmap( legend, 
                  cmap=CROSSTAB_COLOR, 
                  cbar=False, 
-                 annot=False, #square=True, 
+                 annot=True, #square=True, 
                  linewidths=0.5, linecolor='black', 
                  xticklabels=True, yticklabels=True,
                  ax=ax )
-    plt.subplots_adjust(hspace=0.4)
+ #   plt.subplots_adjust(hspace=0.4)
 
     if qno0 in multi_answer :
         ax.set_ylabel( qno0 + '*:' + question_tab[qno0] )
@@ -1206,15 +1239,12 @@ def cross_tab( qno0, qno1 ) :
     else :
         ax.set_xlabel( qno1 + ':' + question_tab[qno1] )
 
-    len_max = 0
-    for xlabel in dat.columns :
-        if len( xlabel ) > len_max :
-            len_max = len( xlabel )
     if len_max > 10 :
         for label in ax.get_xmajorticklabels() :
-            label.set_rotation( 30 )
+            label.set_rotation( 15 )
             label.set_horizontalalignment( "right" )
-    
+
+    plt.tight_layout()
     if format == '' and not flag_tex :
         plt.show()
     else :
@@ -1225,13 +1255,23 @@ def cross_tab( qno0, qno1 ) :
         else :
             plt.savefig( fn, transparent=True )
     plt.close( 'all' )
+
+    if flag_tex :
+        tex_list = []
+        tex_list.append( '\\begin{description}%\n' )
+        tex_list.append( '\\item{' + qno0 + '} ' + dict_orgq[qno0] + '%\n' )
+        tex_list.append( '\\item{' + qno1 + '} ' + dict_orgq[qno1] + '%\n' )
+        tex_list.append( '\\end{description}%\n' )
+        fn = tex_outdir + qno0 + '-' + qno1 + '-questions.tex'
+        with open( fn, mode='w' ) as f :
+            f.writelines( tex_list )
     return
 
 def summary () :
     ##print( '** Whole Data **' )
     ##print( df_whole )
     print( '\n\n** SUMMARY **' )
-    cs = df_whole['Q2'].value_counts( sort=True )
+    cs = df_whole['country'].value_counts( sort=True )
     print( cs )
     print( '' ) # newline
     nc = len(cs)
@@ -1261,7 +1301,7 @@ def summary () :
     return
 
 if flag_timeseries : 
-    graph_time_series( df_whole, region_list )
+    graph_time_series( df_whole )
 
 for simple in list_simple :
     graph_percentage( dict_qno, dict_others, simple )

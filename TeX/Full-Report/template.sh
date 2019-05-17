@@ -1,329 +1,65 @@
 #!/bin/sh
 
-slist="Q1 Q3 Q4 Q6 Q7 Q10 Q14 Q16 Q17 Q19 Q21 Q30"
+OUTDIR=../inputs
 
-for q in ${slist}; do
-    if [ -f ${q}.tex ] ; then
-	mv ${q}.tex ${q}.tex.org
+slist="1 2 3 5 6 9 13 15 16 18 20 29"
+
+DEBUG=0
+
+for qno in ${slist}; do
+    q=Q${qno}
+    if [ ${DEBUG} -gt 0 ] ; then
+	echo ${q};
+    else
+	if [ -f ${q}.tex ] ; then
+	    mv ${q}.tex ${q}.tex.org
+	fi
+	sed s/QX/${q}/ < SIMPLE.template > ${OUTDIR}/${q}.tex
     fi
-    sed s/QX/${q}/ < SIMPLE.template > ${q}.tex
 done
 
-olist="Q5 Q8 Q9 Q11 Q12 Q13 Q15 Q18 Q20 Q22 Q23 Q24 Q25 Q26 Q27 Q28 Q29"
+olist="4 7 8 10 11 12 14 17 19 21 22 23 24 25 26 27 28"
 
-for q in ${olist}; do
+for qno in ${olist}; do
+    q=Q${qno}
     if [ -f ${q}.tex ]; then
 	mv ${q}.tex ${q}.tex.org
     fi
-    sed s/QX/${q}/ < OTHER.template > ${q}.tex
+    sed s/QX/${q}/ < OTHER.template > ${OUTDIR}/${q}.tex
 done
 
-clist="
-Q1-Q3
-Q1-Q4
-Q1-Q5
-Q1-Q6
-Q1-Q7
-Q1-Q8
-Q1-Q9
-Q1-Q10
-Q1-Q11
-Q1-Q12
-Q1-Q13
-Q1-Q14
-Q1-Q15
-Q1-Q16
-Q1-Q17
-Q1-Q18
-Q1-Q19
-Q1-Q20
-Q1-Q21
-Q1-Q22
-Q1-Q23
-Q1-Q24
-Q1-Q25
-Q1-Q26
-Q1-Q27
-Q1-Q28
-Q1-Q29
-Q1-Q30
-Q3-Q4
-Q3-Q5
-Q3-Q6
-Q3-Q7
-Q3-Q8
-Q3-Q9
-Q3-Q10
-Q3-Q11
-Q3-Q12
-Q3-Q13
-Q3-Q14
-Q3-Q15
-Q3-Q16
-Q3-Q17
-Q3-Q18
-Q3-Q19
-Q3-Q20
-Q3-Q21
-Q3-Q22
-Q3-Q23
-Q3-Q24
-Q3-Q25
-Q3-Q26
-Q3-Q27
-Q3-Q28
-Q3-Q29
-Q3-Q30
-Q4-Q5
-Q4-Q6
-Q4-Q7
-Q4-Q8
-Q4-Q9
-Q4-Q10
-Q4-Q11
-Q4-Q12
-Q4-Q13
-Q4-Q14
-Q4-Q15
-Q4-Q16
-Q4-Q17
-Q4-Q18
-Q4-Q19
-Q4-Q20
-Q4-Q21
-Q4-Q22
-Q4-Q23
-Q4-Q24
-Q4-Q25
-Q4-Q26
-Q4-Q27
-Q4-Q28
-Q4-Q29
-Q4-Q30
-Q5-Q6
-Q5-Q7
-Q5-Q10
-Q5-Q14
-Q5-Q16
-Q5-Q21
-Q5-Q22
-Q5-Q24
-Q5-Q26
-Q5-Q29
-Q5-Q30
-Q6-Q7
-Q6-Q8
-Q6-Q9
-Q6-Q10
-Q6-Q11
-Q6-Q12
-Q6-Q13
-Q6-Q14
-Q6-Q15
-Q6-Q16
-Q6-Q17
-Q6-Q18
-Q6-Q19
-Q6-Q20
-Q6-Q21
-Q6-Q22
-Q6-Q23
-Q6-Q24
-Q6-Q25
-Q6-Q26
-Q6-Q27
-Q6-Q28
-Q6-Q29
-Q6-Q30
-Q7-Q8
-Q7-Q9
-Q7-Q10
-Q7-Q11
-Q7-Q12
-Q7-Q13
-Q7-Q14
-Q7-Q15
-Q7-Q16
-Q7-Q17
-Q7-Q18
-Q7-Q19
-Q7-Q20
-Q7-Q21
-Q7-Q22
-Q7-Q23
-Q7-Q24
-Q7-Q25
-Q7-Q26
-Q7-Q27
-Q7-Q28
-Q7-Q29
-Q7-Q30
-Q8-Q10
-Q8-Q14
-Q8-Q16
-Q8-Q21
-Q8-Q22
-Q8-Q24
-Q8-Q26
-Q8-Q29
-Q8-Q30
-Q9-Q10
-Q9-Q14
-Q9-Q16
-Q9-Q21
-Q9-Q22
-Q9-Q24
-Q9-Q26
-Q9-Q29
-Q9-Q30
-Q10-Q11
-Q10-Q12
-Q10-Q13
-Q10-Q14
-Q10-Q15
-Q10-Q16
-Q10-Q17
-Q10-Q18
-Q10-Q19
-Q10-Q20
-Q10-Q21
-Q10-Q22
-Q10-Q23
-Q10-Q24
-Q10-Q25
-Q10-Q26
-Q10-Q27
-Q10-Q28
-Q10-Q29
-Q10-Q30
-Q11-Q14
-Q11-Q16
-Q11-Q21
-Q11-Q22
-Q11-Q24
-Q11-Q26
-Q11-Q29
-Q11-Q30
-Q12-Q14
-Q12-Q16
-Q12-Q21
-Q12-Q22
-Q12-Q24
-Q12-Q26
-Q12-Q29
-Q12-Q30
-Q13-Q14
-Q13-Q16
-Q13-Q21
-Q13-Q22
-Q13-Q24
-Q13-Q26
-Q13-Q29
-Q13-Q30
-Q14-Q15
-Q14-Q16
-Q14-Q17
-Q14-Q18
-Q14-Q19
-Q14-Q20
-Q14-Q21
-Q14-Q22
-Q14-Q23
-Q14-Q24
-Q14-Q25
-Q14-Q26
-Q14-Q27
-Q14-Q28
-Q14-Q29
-Q14-Q30
-Q15-Q16
-Q15-Q21
-Q15-Q22
-Q15-Q24
-Q15-Q26
-Q15-Q29
-Q15-Q30
-Q16-Q17
-Q16-Q18
-Q16-Q19
-Q16-Q20
-Q16-Q21
-Q16-Q22
-Q16-Q23
-Q16-Q24
-Q16-Q25
-Q16-Q26
-Q16-Q27
-Q16-Q28
-Q16-Q29
-Q16-Q30
-Q17-Q21
-Q17-Q22
-Q17-Q24
-Q17-Q26
-Q17-Q29
-Q17-Q30
-Q18-Q21
-Q18-Q22
-Q18-Q24
-Q18-Q26
-Q18-Q29
-Q18-Q30
-Q19-Q21
-Q19-Q22
-Q19-Q24
-Q19-Q26
-Q19-Q29
-Q19-Q30
-Q20-Q21
-Q20-Q22
-Q20-Q24
-Q20-Q26
-Q20-Q29
-Q20-Q30
-Q21-Q22
-Q21-Q23
-Q21-Q24
-Q21-Q25
-Q21-Q26
-Q21-Q27
-Q21-Q28
-Q21-Q29
-Q21-Q30
-Q22-Q23
-Q22-Q24
-Q22-Q25
-Q22-Q26
-Q22-Q27
-Q22-Q28
-Q22-Q29
-Q22-Q30
-Q23-Q24
-Q23-Q26
-Q23-Q29
-Q23-Q30
-Q24-Q25
-Q24-Q26
-Q24-Q27
-Q24-Q28
-Q24-Q29
-Q24-Q30
-Q25-Q26
-Q25-Q29
-Q25-Q30
-Q26-Q27
-Q26-Q28
-Q26-Q29
-Q26-Q30
-Q27-Q29
-Q27-Q30
-Q28-Q29
-Q28-Q30
-Q29-Q30"
+slist="1 2 3 5 6 9 13 15 20 21 23 25 28 29"
+mlist="4 7 8 10 11 12 14 16 17 18 19 22 24 26 27"
 
-for q in ${clist}; do
-    if [ -f ${q}.tex ] ; then
-	mv ${q}.tex ${q}.tex.org
-    fi
-    sed s/QX/${q}/ < CROSS.template > ${q}.tex
+for s0 in ${slist}; do
+    for s1 in $(seq 1 29); do
+	if [ ${s1} -gt ${s0} ] ; then 
+	    q=Q${s0}-Q${s1};
+	    if [ ${DEBUG} -gt 0 ] ; then
+		echo ${q};
+	    else
+		if [ -f ${q}.tex ] ; then
+		    mv ${q}.tex ${q}.tex.org
+		fi
+		sed s/QX/${q}/ < CROSS.template > ${OUTDIR}/${q}.tex
+	    fi
+	fi
+    done
 done
+
+for s0 in ${mlist}; do
+    for s1 in ${slist}; do
+	if [ ${s1} -gt ${s0} ] ; then 
+	    q=Q${s0}-Q${s1};
+	    if [ ${DEBUG} -gt 0 ] ; then
+		echo ${q};
+	    else
+		if [ -f ${q}.tex ] ; then
+		    mv ${q}.tex ${q}.tex.org
+		fi
+		sed s/QX/${q}/ < CROSS.template > ${OUTDIR}/${q}.tex
+	    fi
+	fi
+    done
+done
+ 

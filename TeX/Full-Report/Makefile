@@ -11,6 +11,7 @@ OPTS_ALL = -t -s all -c all
 OPTS_TEX = -x -O ../inputs 
 OPTS_PDF =  -o ../pdfs -f pdf
 OPTS   =  $(OPTS_ALL)  $(OPTS_PDF) $(OPTS_TEX) $(INPUT)
+TEMPLATES = SIMPLE.template OTHER.template CROSS.template
 
 PDF    = $(TARGET).pdf
 
@@ -24,10 +25,13 @@ $(PROG) : $(PSRC)
 python : $(PROG)
 
 tex : $(PROG)
-	$(PROG) $(OPTS_TEX) $(CSV)
+	$(PROG) $(OPTS_ALL) $(OPTS_TEX) $(CSV)
 
-pdf : $(PROG)
+graphs : $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_PDF) $(CSV)
+
+debug :  $(PROG)
+	$(PROG) $(OPTS_ALL) $(OPTS_PDF) --DEBUG $(CSV)
 
 OUTPUT = ../inputs/Q1-ans.tex
 
@@ -36,8 +40,10 @@ $(OUTPUT) : $(PROG) $(CSV)
 
 TEMPLATE = Q1.tex
 
-$(TEMPLATE) : 
+$(TEMPLATE) : $(TEMPLATES)
 	./template.sh
+
+templates : $(TEMPLATE)
 
 $(PDF) : $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) Makefile
 	$(LATEX) $(TARGET);		\
