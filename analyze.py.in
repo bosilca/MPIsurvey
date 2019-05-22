@@ -245,9 +245,9 @@ qval_tab = \
       { 'I read the MPI standard document.' : 'Read MPI standard',
         'I had lecture(s) at school.' : 'School Lecture(s)',
         'I read articles found on Internet.' : 'Internet',
-        'I have not learned MPI.' : 'Not learned',
         'I read book(s).' : 'MPI Book(s)',
         'Other lectures or tutorials (workplace, conference).' : 'Other lecture(s)',
+        'I have not learned MPI.' : 'Not learned',
         'Other' : 'other' },
   'Q11' :
       { 'Beginning MPI (An Introduction in C)' : 'Beginning MPI',
@@ -283,9 +283,9 @@ qval_tab = \
   'Q14' :
       { 'I read the MPI Standard document (web/book).' : 'MPI standard',
         'I read online documents (such as man pages).' : 'Online docs',
-        'I read book(s) (except the MPI standard).' : 'Book',
         'I search the Internet (Google / Stack Overflow).' : 'Internet',
         'I ask colleagues.' : 'Asking colleagues',
+        'I read book(s) (except the MPI standard).' : 'Book',
         'I know almost all MPI routines.' : 'I know all',
         'Other' : 'other' },
   'Q15' :
@@ -385,7 +385,7 @@ qval_tab = \
       { 'Latency' : 'Latency',
         'Message injection rate' : 'Injection rate',
         'Bandwidth' : 'Bandwidth',
-        'Additional optimization opportunities in terms of communication (topology awareness, locality, etc.)' : 'Additional comm. opt.',
+        'Additional optimization opportunities in terms of communication (network topology awareness, etc.)' : 'Additional comm. opt.',
         'Optimization opportunities except communication (architecture awareness, dynamic processing, accelerator support, etc.)' : 'Other opt',
         'Multi-threading support' : 'Multi-thread',
         'Asynchronous progress' : 'Asynch progress',
@@ -591,6 +591,24 @@ if args.cross is not None :
 #                print( 'ERR1' )
                 parser.print_help()
                 exit( 1 )
+            elif pair[0] == 'all' and pair[1] in qlist :
+                q1 = pair[1]
+                for q0 in qlist :
+                    if q0 == q1 :
+                        continue;
+                    if q0 in multi_answer and q1 in multi_answer :
+                        # we cannot cross-tab on multi-answer questions 
+                        continue
+                    list_cross.append( [q0,q1] )
+            elif pair[1] == 'all' and pair[0] in qlist :
+                q0 = pair[0]
+                for q1 in qlist :
+                    if q0 == q1 :
+                        continue;
+                    if q0 in multi_answer and q1 in multi_answer :
+                        # we cannot cross-tab on multi-answer questions 
+                        continue
+                    list_cross.append( [q0,q1] )
             elif pair[0] not in qlist and pair[1] not in qlist :
 #                print( 'ERR2' )
                 parser.print_help()
@@ -742,7 +760,6 @@ dict_others = {}
 for qno in qval_tab.keys() :
     list_sum = []
     dict_tmp = {}
-    list_others = []
     legend = qval_tab[qno]
 
 # decompose answers if this is a multiple-answer question and
@@ -761,17 +778,14 @@ for qno in qval_tab.keys() :
                     dict_ans[legend[ans]] += 1
                 elif len( ans ) > 0 :
                     dict_ans['other'] += 1
-                    list_others.append( ans )
     else :
         for ans in tmp :
             if ans in legend.keys() :
                 dict_ans[legend[ans]] += 1
             elif len( ans ) > 0 :
                 dict_ans['other'] += 1
-                list_others.append( ans )
 
 #    print( 'dict_ans\n', dict_ans )
-#    print( 'list_others\n', list_others )
     ser = pd.Series( data=dict_ans, dtype=float )
     sum = ser.sum()
     list_sum.append( sum )
@@ -829,6 +843,7 @@ for qno in qval_tab.keys() :
             f.writelines( tex_list )
 
 # convert to percent numbers for each region
+    list_others = []
     for reg in regions_major :
         dict_ans = { 'other' : 0 }
         for ans in legend.values() :
@@ -843,14 +858,14 @@ for qno in qval_tab.keys() :
                         dict_ans[legend[ans]] += 1
                     elif len( ans ) > 0 :
                         dict_ans['other'] += 1
-                        list_others.append( ans )
+                        list_others.append( reg + ': ' + ans )
         else :
             for ans in tmp :
                 if ans in legend.keys() :
                     dict_ans[legend[ans]] += 1
                 elif len( ans ) > 0 :
                     dict_ans['other'] += 1
-                    list_others.append( ans )
+                    list_others.append( reg + ': ' + ans )
         ser = pd.Series( data=dict_ans, dtype=float )
         sum = ser.sum()
         list_sum.append( sum )
@@ -898,13 +913,13 @@ for qno in qval_tab.keys() :
 #    print( dfq )                # print data
 # print others
     if qno in print_other :
-        dict_others.setdefault( qno, list_others )
+        dict_others.setdefault( qno, sorted( list_others ) )
     if flag_tex :
         if len( list_others ) == 0 :
             tex_list = [ '\item (no other answer)\n' ]
         else :
             tex_list = []
-            for ans in set( list_others ) :
+            for ans in sorted( list_others ) :
                 texstr = tex_conv( ans )
                 tex_list.append( '\item ' + texstr + '\n' )
         with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
@@ -954,16 +969,19 @@ def graph_time_series( df ) :
 #    color=color_list )
     dc_etc.plot.area( ax=ax, stacked=True, legend='reverse', color=color_list )
 
-    ax.xaxis.set_major_locator(mdates.DayLocator(interval=5))
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d"))
-    ax.tick_params(axis="x", which="major", labelsize=10)
+    ax.xaxis.set_major_locator( mdates.DayLocator(interval=5) )
+    ax.xaxis.set_major_formatter( mdates.DateFormatter("%d") )
+    ax.tick_params( axis="x", which="major", labelsize=11 )
     
     ax.xaxis.set_minor_locator(mdates.MonthLocator(interval=1))
     ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
-    ax.tick_params(axis="x", which="minor", labelsize=10, length=15, width=1)
+    ax.tick_params( axis="x", which="minor", labelsize=10, length=15, width=1 )
 
-    plt.subplots_adjust( right=0.68 )
-    plt.legend( dc_etc, bbox_to_anchor=(1,1) )
+    ax.set_xlabel( "Date", size = 11 )
+    ax.set_ylabel( "# Answers", size = 11 )
+
+    #plt.subplots_adjust( right=0.68 )
+    plt.legend( loc="upper left" )
 
     if flag_show_event :
         for event in event_list :
@@ -990,7 +1008,7 @@ def graph_time_series( df ) :
             plt.savefig( fn, transparent=False )
         else :
             plt.savefig( fn, transparent=True )
-    plt.close('all')
+    plt.close( 'all' )
     return
 
 def graph_percentage( dict, others, qno ) :
@@ -1012,7 +1030,7 @@ def graph_percentage( dict, others, qno ) :
     print( '\n**** ' + qno + ': ' + question_tab[qno] + ' ****')
     if qno in print_other :
         i = 0
-        for ans in set( others[qno] ) :
+        for ans in others[qno] :
             print( '[' + str(i) + '] ' + ans )
             i += 1
     print( '\n', df_tmp )       # print data
@@ -1043,7 +1061,7 @@ def graph_percentage( dict, others, qno ) :
             plt.savefig( fn, transparent=False )
         else :
             plt.savefig( fn, transparent=True )
-    plt.close('all')
+    plt.close( 'all' )
     return
 
 def expand_multians( qno, df ) :
@@ -1112,24 +1130,20 @@ def cross_tab( qno0, qno1 ) :
         dat = dat.rename( mapper=qval_tab[qno0], axis='index' )
         dat = dat.rename( mapper=qval_tab[qno1], axis='columns' )
         dat.fillna( 0.0, inplace=True )
-#        print( dat )
         dat = dat.reindex( index=qval_tab[qno0].values(), 
                            columns=qval_tab[qno1].values() )
         dat.fillna( 0.0, inplace=True )
-#        print( dat )
         new_graphs.append( dat )
 
-    # remove low-freq index 
+    # remove low-freq index
     dat_whole = new_graphs[0]
     for idx in dat_whole.index :
         flag = True
         for dat in new_graphs :
             if not flag :
-                break;
-            for clm in dat_whole.columns :
-                if clm in dat.columns and \
-                   idx in dat.index   and \
-                   dat.at[idx,clm] > CROSSTAB_THRESHOLD :
+                break
+            for clm in dat.columns :
+                if dat.at[idx,clm] > CROSSTAB_THRESHOLD :
                     flag = False
                     break
         if flag :
@@ -1141,11 +1155,9 @@ def cross_tab( qno0, qno1 ) :
         flag = True
         for dat in new_graphs :
             if not flag :
-                break;
-            for idx in dat_whole.index :
-                if idx in dat.index   and \
-                   clm in dat.columns and \
-                   dat.at[idx,clm] > CROSSTAB_THRESHOLD :
+                break
+            for idx in dat.index :
+                if dat.at[idx,clm] > CROSSTAB_THRESHOLD :
                     flag = False
                     break
         if flag :
@@ -1174,17 +1186,30 @@ def cross_tab( qno0, qno1 ) :
 ##        nrows += 1
 
     plt.rcParams["font.size"] = 7
+    legend = copy.copy( new_graphs[0] )
     i = 0
     for dat in new_graphs :
+        # rename index names to ''. this makes graphs larger
+        tickl = {}
+        for idx in dat.index :
+            tickl.setdefault( idx, '' )
+        ndat = dat.rename( mapper=tickl, axis='index' )
+        # rename column names to ''
+        tickl = {}
+        for clm in dat.columns :
+            tickl.setdefault( clm, '' )
+        ndat = ndat.rename( mapper=tickl, axis='columns' )
+
         print( '\nRegion:', list_regions[i], '\n', dat )
 #        print( nregs, nrows, ncols, int(i/ncols), int(i%ncols) )
         ax = plt.subplot2grid( ( nrows, ncols ), 
                                ( int(i/ncols), int(i%ncols) ) )
         ax.set_title( list_regions[i] )
-        sns.heatmap( dat, 
+        sns.heatmap( ndat, 
                      cmap=CROSSTAB_COLOR, 
                      cbar=False, 
                      annot=False, #square=True, 
+#                     annot=True, #square=True, 
                      linewidths=0.5, linecolor='black', 
                      xticklabels=False, yticklabels=False,
 #                     xticklabels=True, yticklabels=True,
@@ -1205,7 +1230,6 @@ def cross_tab( qno0, qno1 ) :
         ax = plt.subplot2grid( ( nrows, ncols ), 
                                ( int(i/ncols), int(i%ncols) ),
                                colspan=CROSSTAB_CLEGEND-1 )
-    legend = copy.copy( new_graphs[0] )
     print( '\nLEGEND\n', legend )
     nrows, ncols = legend.shape
 #    print( 'nrows=', nrows, 'ncols=', ncols )
@@ -1233,11 +1257,11 @@ def cross_tab( qno0, qno1 ) :
     if qno0 in multi_answer :
         ax.set_ylabel( qno0 + '*:' + question_tab[qno0] )
     else :
-        ax.set_ylabel( qno0 + ':' + question_tab[qno0] )
+        ax.set_ylabel( qno0 + ':'  + question_tab[qno0] )
     if qno1 in multi_answer :
         ax.set_xlabel( qno1 + '*:' + question_tab[qno1] )
     else :
-        ax.set_xlabel( qno1 + ':' + question_tab[qno1] )
+        ax.set_xlabel( qno1 + ':'  + question_tab[qno1] )
 
     if len_max > 10 :
         for label in ax.get_xmajorticklabels() :

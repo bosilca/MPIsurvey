@@ -1,6 +1,6 @@
 TARGET = mpi-survey-full
 TSRC    = $(TARGET).tex
-#BIBS   = ref.bib 
+BIBS   = ../ref.bib 
 LATEX  = pdflatex
 
 CSV    = ../csv/MPI\ International\ Survey.csv
@@ -10,7 +10,7 @@ PSRC    = $(PROG).in
 OPTS_ALL = -t -s all -c all
 OPTS_TEX = -x -O ../inputs 
 OPTS_PDF =  -o ../pdfs -f pdf
-OPTS   =  $(OPTS_ALL)  $(OPTS_PDF) $(OPTS_TEX) $(INPUT)
+OPTS   =  $(OPTS_ALL) $(OPTS_PDF) $(OPTS_TEX) $(INPUT)
 TEMPLATES = SIMPLE.template OTHER.template CROSS.template
 
 PDF    = $(TARGET).pdf
@@ -38,7 +38,7 @@ OUTPUT = ../inputs/Q1-ans.tex
 $(OUTPUT) : $(PROG) $(CSV)
 	$(PROG) $(OPTS) $(CSV)
 
-TEMPLATE = Q1.tex
+TEMPLATE = ../inputs/Q1.tex
 
 $(TEMPLATE) : $(TEMPLATES)
 	./template.sh
@@ -56,6 +56,6 @@ clean:
 	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *~ *.dvi
 
 veryclean: clean
-	rm -f $(PDF) ../inputs/Q*.tex ../figs/Q*.pdf *.tex.org
+	rm -f $(PROG) $(PDF) ../inputs/Q*.tex ../figs/Q*.pdf *.tex.org
 
 PDF    = $(TARGET).pdf
