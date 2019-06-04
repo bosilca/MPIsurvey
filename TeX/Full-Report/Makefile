@@ -1,7 +1,7 @@
 TARGET = mpi-survey-full
 TSRC    = $(TARGET).tex
 BIBS   = ../ref.bib 
-LATEX  = pdflatex
+LATEX  = xelatex
 
 CSV    = ../csv/MPI\ International\ Survey.csv
 PROGDIR = ../..
