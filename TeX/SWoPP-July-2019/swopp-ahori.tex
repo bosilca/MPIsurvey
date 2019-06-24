@@ -36,12 +36,13 @@ We analyzed the currently available answers and have found some
 interesting results which indicate that the Japanese MPI users are
 different from the MPI users of the rest of the world. This paper focuses
 on those possible specificities of Japanese MPI users and warns
-the future of Japanese HPC community based. Since the survey is still
-open and accepting answers, this is an interim report of the survey.
+the future of Japanese HPC community based on the resuklt of the
+survey. Since the survey is still open and accepting answers, this is
+an interim report of the survey. 
 \footnote{The word ``Galapagos'' in the title is widely used in Japan to
 indicate special technologies developed only in Japan and endangered
 by the other countries.  ``Galapagosnized'' which is a passive voice of
-verbed ``galapagos'' is often used to express such endangered
+verbed ``Galapagos'' is often used to express such endangered
 technology.  The analogy between Galapagos and Japan is
 that both consist of islands and species (technologies) evolves
 independently.}
@@ -64,14 +65,16 @@ the differences between US and Japan. Unfortunately we could find only
 one similar question related to MPI in both surveys.
 
 We decided to conduct another MPI survey targeting MPI users in the
-whole world. MPI is being widely-used vehicle for high-performance
-computing, hoping we could find the differences of MPI users by
-countries and/or regions of the world.
+whole world. Since MPI is being widely-used vehicle for
+high-performance computing, this relatively large-scale questionnaire 
+survey would be beneficial for deciding the future direction of MPI.  
+Additionally, we could find the differences of MPI users among
+countries and/or regions of the world.  
 
 This project is being carried on by JLESC\cite{JLESC} which is an
 international research collaboration framework. The international
 nature of this survey matches the concept of JLESC. Each co-author is
-a member of JLESC organizations and responsible for the country and/or
+a member of JLESC and responsible for the country and/or
 region where he belongs. 
 
 \begin{table}[htb]%
@@ -102,12 +105,14 @@ between our survey and the others are;
   supercomputers. Thus, both surveys targeted high-end users. Whereas
   our survey targets all MPI users from novices to experts.
 \item[Number of answers]
-  The number of answers ECP survey and HPCI survey are 77 and 105,
+  The number of answers of ECP survey and HPCI survey are 77 and 105,
   respectively. Because of the wider target of our survey, in terms of
-  MPI expertise of participants on a global scale, the expected number of
-  answers would be larger than those of preceding surveys. The number
-  of questions in our survey is 30 which is much smaller than those of ECP
-  and HPCI surveys.
+  the scope of MPI expertise of participants on a global scale, the
+  expected number of answers would be larger than those of preceding
+  surveys. 
+\item[Number of questions]
+  The number of questions in our survey is 30 which is much
+  smaller than those of ECP and HPCI surveys. 
 \end{description}
 
 As a result of our survey, although it is still accepting answers, we
@@ -127,12 +132,11 @@ The points we kept in our mind while we were designing the
 questions are; 
 
 \subsubsection*{Number of questions}
-This must be less than around 30\footnote{This project is one of the
-  JLESC project\cite{JLESC} and this number was advised by
-  Prof. Marshall Scott Poole at Illinois Univ., and Prof. Iftekhar
-  Ahmed at Univ. of North Texas, they are also the members of
-  JLESC\cite{JLESC}, from their social science viewpoints.}
-to keep participants concentrated.
+The number of questions must be less than around 30
+to keep participants concentrated\footnote{This
+  number was advised by Prof. Marshall Scott Poole at Illinois Univ.,
+  and Prof. Iftekhar Ahmed at Univ. of North Texas, they are also
+  the members of JLESC\cite{JLESC}, from their social science viewpoints.}.
 The maximum numbers of questions in the ECP survey and HPCI survey are
 64 and 75, respectively. Thus, the number of questions in this survey
 is far less than those.  We focused on MPI itself to reduce the number
@@ -235,7 +239,7 @@ very final stage of the questionnaire design.
 
 The questionnaire is implemented by using Google Forms and distributed
 by sending e-mails to major mailing lists including {\tt
-  hpc-announce}. We started distributing the survey from 17th of
+  hpc-announce@mcs.anl.gov}. We started distributing the survey from 17th of
 February, 2019. All data in this paper is as of 10th of
 May. Figure~\ref{fig:timeseries} shows the number of answers since then.
 
@@ -244,7 +248,9 @@ mailing-lists (e.g., {\tt hpc-announce}) did not work well as we
 expected. So we started asking our friends to help us to distribute
 the survey to their local communities. In Figure~\ref{fig:timeseries},
 the number of answers increases stepwise. This is because our friends
-re-distributed the survey to their local communities at each step. 
+re-distributed the survey to their local communities at each step. As
+shown in this figure, this hierarchical distribution to reach local
+communities worked well.
 
 \begin{figure}[htb]
 \begin{center}
@@ -257,10 +263,8 @@ re-distributed the survey to their local communities at each step.
 The answers are automatically collected by Google Forms. So a
 questionnaire survey in this way (using Google Forms and sending
 e-mails) is very easy, fast, and no charge.  However, we could have 
-answers only from the mailing-lists and these responses may have the
-possibility of having some differences from the ones obtained by a
-random sampling way. Thus, our survey may include some bias and be
-different from ideal responses representing statistical population.  
+answers only from the mailing-list members and these responses may
+have the possibility of having some bias.
 
 We developed a Python program to analyze the resulting CSV files. For
 cross-tab analysis, this program outputs graphs of all possible
@@ -358,7 +362,7 @@ came from the biased questionnaire distribution.
 \end{center}
 \end{figure}
 
-These answerers' profile may bias the analysis in the 
+This profile may bias the analysis in the 
 following sections. Thus, readers must keep this in their mind on the
 above situations.
 The following sections will show the results of analysis of our survey
@@ -400,8 +404,8 @@ others. This looks like the Japanese HPC researchers and programmers
 are well-experienced. However, it can also be said that only little young
 researchers and programmers are writing MPI programs. Contrastingly
 in Germany and Russia cases, novice users, intermediate users, and
-experienced users are almost equally distributed.  These look like
-ideal cases. 
+experienced users are almost equally distributed.  These look more
+ideal than the Japanese case.
 
 \begin{figure}[htb]
 \begin{center}
@@ -496,7 +500,7 @@ Q3 (asking MPI skill) and Q18 (asking MPI experience). As shown in
 this figure, Japanese answers are concentrated in the cell with the high
 MPI skill of 5 (out of 6, larger the number, higher the skill) and
 having more than 10 years of MPI experiences. Although the Japan's
-high peak makes the peaks of the others lower and hard to see, the
+Mhigh peak makes the peaks of the others lower and hard to see, the
 peaks of the other countries are rather distributed.  
 
 \begin{figure}[htb]
@@ -544,7 +548,7 @@ Figure~\ref{fig:q3-q18}. Considering with the aged MPI users in Japan,
 one possible explanation of this is that they are still calling MPI
 functions only appeared in the old MPI standard. And this hypothesis
 can lead to the next hypothesis; they do not writing MPI programs from
-the scratch, but changing existing MPI programs.
+the scratch, but changing existing old MPI programs.
 
 This new hypothesis is consistent with the result of Q15 asking MPI
 programming difficulty. As discussed in Section~\ref{sec:simple-tab},
@@ -558,19 +562,19 @@ Japan do not suffer from these issues.
 \subsection{Negative attitude to MPI programming}
 
 On the question Q23 asking room for performance tuning, there is one
-Japanese {\it other} answer; ``Yes, but it’s an MPI implementation
-issue.'' This sounds like that the tuning effort is not his/her job
-but MPI implementors. This answer is too negative and he/she does not
-capture the nature of parallel programming at all.
+Japanese {\it other} descriptive answer; ``Yes, but it’s an MPI
+implementation issue.'' This sounds like that the tuning effort is not
+his/her job but MPI implementors. This answer is too negative and
+he/she does not capture the nature of parallel programming at all.
 
 \subsection{Are Japanese MPI users really expert?}
 
-Taking int account of all above discussions, we dare say ``MPI users
-in Japan may NOT be experts although they say so.'' They declare they
+Taking into account of all above discussions, we dare say ``MPI users
+in Japan may NOT be experts, although they say so.'' They declare they
 have long experiences with MPI in the Q6 question, but the other
-questions in our survey reveal that they may not be. As the aged MPI
-users fade away in the future, it is hard to deny that the Japanese
-HPC will be in a big trouble. 
+questions in our survey reveal that they may not be
+well-experienced. As the aged MPI users fade away in the future, it is
+hard to deny that the Japanese HPC will be in a big trouble. 
 
 \section{Summary and Future Work}
 
@@ -586,7 +590,7 @@ attitude to MPI programming.
 
 Recently we opened a new survey site for those who cannot access
 Google Forms by using Microsoft Forms, having the same questions and
-answer choices. We are trying toget more answers from China which owns
+answer choices. We are trying to get more answers from China which owns
 the most powerful supercomputers. We are also trying to narrow the gap
 described in Section~\ref{sec:profile}. When we get enough number of
 participants, we will publish the final report.
