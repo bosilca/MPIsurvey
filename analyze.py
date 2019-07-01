@@ -1177,6 +1177,11 @@ def cross_tab( qno0, qno1 ) :
             for clm in dat_whole.columns :
                 if dat.at[idx,clm] > max :
                     max = dat.at[idx,clm]
+    max_whole = 0.0
+    for idx in dat_whole.index :
+        for clm in dat_whole.columns :
+            if dat_whole.at[idx,clm] > max_whole :
+                max_whole = dat_whole.at[idx,clm]
 
     ncols = CROSSTAB_NCOLS
     nrows = int( math.ceil( ( nregs + CROSSTAB_CLEGEND ) / ncols ) )
@@ -1219,7 +1224,7 @@ def cross_tab( qno0, qno1 ) :
                      linewidths=0.5, linecolor='black', 
                      xticklabels=False, yticklabels=False,
 #                     xticklabels=True, yticklabels=True,
-                     vmin=0.0, vmax=max,
+                     vmin=0.0, vmax=max_whole,
                      ax=ax )
         ax.set_xlabel( '' )
         ax.set_ylabel( '' )
@@ -1246,7 +1251,7 @@ def cross_tab( qno0, qno1 ) :
 #            legend.iat[i,j] = ( ( ( (j+1) % 2 ) + ( i % 2 ) ) % 2 ) * 0.5
 # 
 #            legend.iat[i,j] = float( i + j ) / float( nn ) * max * 100
-            legend.iat[i,j] = float( i * ncols + j ) / float( nn ) * max * 100
+            legend.iat[i,j] = float( i * ncols + j ) / float( nn ) * max_whole * 100
 #    ax.set_title( 'Legend' )
     ax.set_autoscale_on( True )
     ax.set_ylim( 0.8 )

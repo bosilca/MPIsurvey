@@ -10,6 +10,7 @@ PSRC    = $(PROG).in
 OPTS_ALL = -t -s all -c all
 OPTS_TEX = -x -O ../inputs 
 OPTS_PDF =  -o ../pdfs -f pdf
+OPTS_PNG =  -o ../pngs -f png
 OPTS   =  $(OPTS_ALL) $(OPTS_PDF) $(OPTS_TEX) $(INPUT)
 TEMPLATES = SIMPLE.template OTHER.template CROSS.template
 
@@ -29,6 +30,9 @@ tex : $(PROG)
 
 graphs : $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_PDF) $(CSV)
+
+pngs : $(PROG)
+	$(PROG) $(OPTS_ALL) $(OPTS_PNG) $(CSV)
 
 debug :  $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_PDF) --DEBUG $(CSV)
