@@ -30,7 +30,7 @@
 
 \begin{abstract}
 We have been conducting questionnaire survey targeting MPI users of
-whole world.  At the time of this writing, we get more than 800
+the whole world.  At the time of this writing, we get more than 800
 answers from more than 40 countries.
 We analyzed the currently available answers and have found some
 interesting results which indicate that the Japanese MPI users are
@@ -71,7 +71,7 @@ survey would be beneficial for deciding the future direction of MPI.
 Additionally, we could find the differences of MPI users among
 countries and/or regions of the world.  
 
-This project is being carried on by JLESC\cite{JLESC} which is an
+This project is a part of  JLESC\cite{JLESC} which is an
 international research collaboration framework. The international
 nature of this survey matches the concept of JLESC. Each co-author is
 a member of JLESC and responsible for the country and/or
@@ -131,7 +131,9 @@ report of our survey.
 The points we kept in our mind while we were designing the
 questions are; 
 
-\subsubsection*{Number of questions}
+
+\begin{description}
+\item[Minimizing the number of questions]
 The number of questions must be less than around 30
 to keep participants concentrated\footnote{This
   number was advised by Prof. Marshall Scott Poole at Illinois Univ.,
@@ -145,7 +147,6 @@ intentionally excluded simple because this may add several tens of
 questions. Another survey must be conducted for the topics not
 included in our survey.
 
-\begin{description}
 \item[Easy-to-answer]
 We designed our questions to minimize the stress of participants as
 much as possible. None of our questions requires free descriptive
@@ -153,7 +154,7 @@ answers. Additional investigations and/or efforts are minimized. If we
 would ask participants about the LOC (lines of codes) they have ever
 programmed, they would run the {\tt wc} command on their programs.  
 
-\item[Minimizing ambiguity]
+\item[Avoiding ambiguity]
 The above LOC question may introduce ambiguity into its answer; 1)
 large numerical applications may have more than hundreds thousand LOC,
 but the LOC for MPI function calls is much less than the whole LOC, 2)
@@ -238,13 +239,13 @@ very final stage of the questionnaire design.
 \section{Distribution}
 
 The questionnaire is implemented by using Google Forms and distributed
-by sending e-mails to major mailing lists including {\tt
+by sending e-mails to major mailing lists such as {\tt
   hpc-announce@mcs.anl.gov}. We started distributing the survey from 17th of
 February, 2019. All data in this paper is as of 10th of
 May. Figure~\ref{fig:timeseries} shows the number of answers since then.
 
 Soon after we started distribution, we realized that the major
-mailing-lists (e.g., {\tt hpc-announce}) did not work well as we
+mailing-lists did not work well as we
 expected. So we started asking our friends to help us to distribute
 the survey to their local communities. In Figure~\ref{fig:timeseries},
 the number of answers increases stepwise. This is because our friends
@@ -536,7 +537,7 @@ As shown in Figure~\ref{fig:q5} and \ref{fig:q6}, the most MPI users
 in Japan have more experiences than the other countries. This might
 sound good, but it is not good when you think about its future.  This
 means there are only little {\em novice} MPI users in Japan.
-Experienced Japanese MPI users decreases in the future.  We
+Experienced (old) Japanese MPI users decreases in the future.  We
 call MPI users in Japan {\em aged}, not experienced. The reason of
 this will be described in following subsection.
 
@@ -555,7 +556,7 @@ programming difficulty. As discussed in Section~\ref{sec:simple-tab},
 many Japanese participants have the difficulty with the low-level,
 early-stage program development; debugging and tuning, whereas they do
 not dominate that much in the other countries or regions. If an MPI user 
-tries to write a new MPI program, firstly they have to think about
+tries to write a MPI program from scratch, firstly they have to think about
 parallel algorithm and domain decomposition.  Many MPI users in
 Japan do not suffer from these issues.
 
@@ -595,9 +596,9 @@ the most powerful supercomputers. We are also trying to narrow the gap
 described in Section~\ref{sec:profile}. When we get enough number of
 participants, we will publish the final report.
 
-We believe that this international survey in the JLESC framework worked
-very well.  The other HPC related surveys which we excluded due to the
-number of questions are planned to follow.
+We believe that this international survey in the JLESC framework has
+worked very well.  The other HPC related surveys which we excluded due
+to the number of questions are planned to follow.
 
 All survey data obtained by Google Forms and Microsoft Forms and the
 Python program to draw graphs are open and can be downloaded from
