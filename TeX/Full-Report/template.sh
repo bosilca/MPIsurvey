@@ -1,31 +1,38 @@
 #!/bin/sh
 
-OUTDIR=../inputs
+TMPDIR=../templates
+CHAPDIR=./chaps
 
 slist="1 2 3 5 6 9 13 15 16 18 20 29"
 
 DEBUG=0
 
+function create_template() {
+    template=${TMPDIR}/$1
+    tmpfile=${TMPDIR}/$2.tex;
+    texfile=${CHAPDIR}/$2.tex;
+    sed s/QX/${q}/ < $template > ${tmpfile};
+    if [ -f $texfile ] ; then
+	echo "$texfile exists. Copy $tmpfile file, if needed.";
+    else 
+	if [ ${DEBUG} -gt 0 ] ; then
+	    echo "cp $tmpfile $texfile";
+	else 
+	    cp $tmpfile $texfile;
+	fi
+    fi
+}
+
 for qno in ${slist}; do
     q=Q${qno}
-    if [ ${DEBUG} -gt 0 ] ; then
-	echo ${q};
-    else
-	if [ -f ${q}.tex ] ; then
-	    mv ${q}.tex ${q}.tex.org
-	fi
-	sed s/QX/${q}/ < SIMPLE.template > ${OUTDIR}/${q}.tex
-    fi
+    create_template SIMPLE.template $q
 done
 
 olist="4 7 8 10 11 12 14 17 19 21 22 23 24 25 26 27 28"
 
 for qno in ${olist}; do
     q=Q${qno}
-    if [ -f ${q}.tex ]; then
-	mv ${q}.tex ${q}.tex.org
-    fi
-    sed s/QX/${q}/ < OTHER.template > ${OUTDIR}/${q}.tex
+    create_template OTHER.template $q
 done
 
 slist="1 2 3 5 6 9 13 15 20 21 23 25 28 29"
@@ -35,14 +42,7 @@ for s0 in ${slist}; do
     for s1 in $(seq 1 29); do
 	if [ ${s1} -gt ${s0} ] ; then 
 	    q=Q${s0}-Q${s1};
-	    if [ ${DEBUG} -gt 0 ] ; then
-		echo ${q};
-	    else
-		if [ -f ${q}.tex ] ; then
-		    mv ${q}.tex ${q}.tex.org
-		fi
-		sed s/QX/${q}/ < CROSS.template > ${OUTDIR}/${q}.tex
-	    fi
+	    create_template CROSS.template $q;
 	fi
     done
 done
@@ -51,13 +51,8 @@ for s0 in ${mlist}; do
     for s1 in ${slist}; do
 	if [ ${s1} -gt ${s0} ] ; then 
 	    q=Q${s0}-Q${s1};
-	    if [ ${DEBUG} -gt 0 ] ; then
-		echo ${q};
-	    else
-		if [ -f ${q}.tex ] ; then
-		    mv ${q}.tex ${q}.tex.org
-		fi
-		sed s/QX/${q}/ < CROSS.template > ${OUTDIR}/${q}.tex
+	    if [ ${s1} -gt ${s0} ] ; then 
+		create_template CROSS.template $q;
 	    fi
 	fi
     done
