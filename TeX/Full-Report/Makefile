@@ -25,9 +25,6 @@ PDF    = $(TARGET).pdf
 
 all : $(PDF)
 
-$(PROG) : $(PSRC)
-	cd $(PROGDIR) ; ./build.sh
-
 python : $(PROG)
 
 tex : $(PROG)
@@ -62,6 +59,6 @@ clean:
 
 veryclean: clean
 	rm -f $(PROG) $(PDF) ../inputs/Q*.tex ../pdfs/Q*.pdf \
-	../templates/*.tex ../templates/*.tex* chaps/*.tex*
+	../templates/*.tex ../templates/*.tex*
 
 PDF    = $(TARGET).pdf
