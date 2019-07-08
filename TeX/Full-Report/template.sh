@@ -7,6 +7,8 @@ slist="1 2 3 5 6 9 13 15 16 18 20 29"
 
 DEBUG=0
 
+mkdir -p ${CHAPDIR}
+
 function create_template() {
     template=${TMPDIR}/$1
     tmpfile=${TMPDIR}/$2.tex;
