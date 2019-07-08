@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 
 ## written by Atsushi Hori (ahori@riken.jp) at 
 ## Riken Center for Computational Science
 ## 2019 April
+## George Bosilca 2019
 
 # Preparation
 # python3
@@ -472,6 +474,13 @@ def conv_date ( q0_ans ) :
     exit( 1 )
 
 def unique ( list ) :
+    """
+    Return a list of unique elements of the original list in the order in which they first
+    appear in the original list.
+
+    :param list: The input list
+    :return: the list of unique elements maintaining the original order
+    """
     unique_list = []
     for elm in list :
         if elm not in unique_list :
@@ -517,8 +526,8 @@ parser.add_argument( '-s', '--simple',
                      nargs='?',
                      action='append',
                      choices=qlist_all,
-                     help="Question (Qn) to output simple graph(s). " \
-                         "Or, 'all' to drawa graphs of all questions" )
+                     help="Question (Qn) to output graph(s) for particular questions. " \
+                         "Or, 'all' graphs of all questions" )
 parser.add_argument( '-c', '--cross', 
                      nargs='?',
                      action='append',
@@ -754,7 +763,7 @@ for reg in unique_regions :
 regions_major.sort()
 #print( regions_major )
 
-whole = 'whole'
+whole = 'overall'
 dict_qno    = {}
 dict_others = {}
 for qno in qval_tab.keys() :
@@ -791,8 +800,7 @@ for qno in qval_tab.keys() :
     list_sum.append( sum )
     for i in range( ser.size ) :
         ser.iat[i] = ser.iat[i] / float(sum) * 100.0
-    dfq = pd.DataFrame( { 'whole' : ser } )
-#    print( 'whole\n', dfq )
+    dfq = pd.DataFrame( { whole : ser } )
 
     if flag_tex :
         tex_list = []
@@ -892,7 +900,7 @@ for qno in qval_tab.keys() :
 
 # sort, if desired
     if qno in sort_answer :
-        dfq = dfq.sort_values( 'whole', ascending=False )
+        dfq = dfq.sort_values( whole, ascending=False )
 
 # move 'other' to the last
     if 'other' in dfq.index :
@@ -1000,7 +1008,7 @@ def graph_time_series( df ) :
                          )
 
     if format == '' and not flag_tex :
-        ax.show()
+        plt.show()
     else :
         fn = dirname + 'TimeSeries.' + format
         print( '\nFilename:', fn )
