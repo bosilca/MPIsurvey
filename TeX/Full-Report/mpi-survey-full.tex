@@ -5,9 +5,26 @@
 
 \long\def\comment#1{}
 
+% Define a new environment to help with generating the full or
+% the short version of the report.
+\newif\iffullreport
+\newenvironment{report}%
+  {%
+    \iffullreport
+    \else
+      \setbox0\vbox\bgroup
+    \fi
+  }{%
+    \iffullreport
+    \else
+      \egroup
+    \fi
+  }%
+\fullreporttrue
+
 \title{MPI International Survey}
 
-\author{A.Hori}
+\author{A.Hori, G. Bosilca}
 
 \begin{document}
 
