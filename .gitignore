@@ -1,4 +1,10 @@
-TeX/inputs/*
+TeX/templates/*.tex
+TeX/inputs/*.tex
 TeX/pdfs/*
 TeX/csv/*
 !.keep
+TeX/Full-Report/mpi-survey-full.aux
+TeX/Full-Report/mpi-survey-full.bbl
+TeX/Full-Report/mpi-survey-full.blg
+TeX/Full-Report/mpi-survey-full.log
+TeX/Full-Report/mpi-survey-full.pdf
