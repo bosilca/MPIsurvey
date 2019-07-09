@@ -2,6 +2,19 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{todonotes}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={MPI Survey},
+    bookmarks=true,
+    pdfpagemode=FullScreen,
+}
 
 \long\def\comment#1{}
 
@@ -22,6 +35,15 @@
   }%
 \fullreporttrue
 
+\newcounter{mycomment}
+\newcommand{\mycomment}[2][]{%
+  % initials of the author (optional) + note in the margin
+  \refstepcounter{mycomment}%
+    {%
+      \todo[color={red!100!green!33},size=\small,inline]{%
+      \textbf{[\uppercase{#1} \#\themycomment]:}~#2}%
+    }}
+
 \title{MPI International Survey}
 
 \author{A.Hori, G. Bosilca}
@@ -29,6 +51,12 @@
 \begin{document}
 
 \maketitle
+
+\todototoc
+\listoftodos
+
+\tableofcontents
+\newpage
 
 \chapter{Overview}
 \input{overview}
