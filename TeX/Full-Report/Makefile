@@ -7,7 +7,6 @@ CSV    = ../csv/MPI\ International\ Survey.csv
 PROGDIR = ../..
 TEMPDIR = ../templates
 PROG   = $(PROGDIR)/analyze.py
-PSRC    = $(PROG).in
 OPTS_ALL = -t -s all -c all
 OPTS_TEX = -x -O ../inputs 
 OPTS_PDF =  -o ../pdfs -f pdf
@@ -58,7 +57,7 @@ clean:
 	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *~ *.dvi
 
 veryclean: clean
-	rm -f $(PROG) $(PDF) ../inputs/Q*.tex ../pdfs/Q*.pdf \
+	rm -f $(PDF) ../inputs/Q*.tex ../pdfs/Q*.pdf \
 	../templates/*.tex ../templates/*.tex*
 
 PDF    = $(TARGET).pdf
