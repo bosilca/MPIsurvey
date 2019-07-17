@@ -698,10 +698,10 @@ for i in range(1,10) :
 j = 1;
 for column_name in df.columns[i:] :
     q = 'Q' + str(j)
-    dict_orgq.setdefault( q, column_name )
     if( column_name == country_question ) :
         df.rename( columns={column_name: 'country'}, inplace=True )
     else :
+        dict_orgq.setdefault( q, column_name )
         df.rename( columns={column_name: q}, inplace=True )
         j += 1
 
