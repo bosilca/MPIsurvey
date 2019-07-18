@@ -17,6 +17,7 @@ TEMPLATE = $(TMPDIR)/Q1.tex
 TEMPLATES = $(TMPDIR)/SIMPLE.template \
 	$(TMPDIR)/OTHER.template \
 	$(TMPDIR)/CROSS.template
+CHAPS = $(shell ls chaps/*.tex)
 
 PDF    = $(TARGET).pdf
 
@@ -46,7 +47,7 @@ $(OUTPUT) : $(PROG) $(CSV)
 $(TEMPLATE) : $(TEMPLATES)
 	./template.sh
 
-$(PDF) : $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) Makefile
+$(PDF) : $(CHAPS) $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) Makefile
 	$(LATEX) $(TARGET);
 	bibtex $(TARGET);
 	$(LATEX) $(TARGET);
