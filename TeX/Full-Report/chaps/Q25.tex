@@ -2,6 +2,26 @@
 \subsection{Answers}
 \input{../inputs/Q25-ans}
 
+In terms of optimization of the performance a small fraction of the users
+are satisfied with the current situation. The main requirement concerns how MPI
+provides general optimization opportunities in terms of communication such as
+being able to handle the topology of the machine efficiently. Then comes how the
+to handle multi-threading support which a prevalent issues in a world where a
+lot of applications are run on multi-core nodes \mycomment[EJ]{here should cross
+  Q22-Q25}. Other optimizations such as architecture awareness or dynamic
+processing comes third. These issues are not related to the way MPI handles
+communications but are identified as bottleneck for performance as well. Last
+and interestingly almost twice as more users prioritize latency
+optimization vs bandwidth optimization meaning that the overhead in starting to
+send one message is seen as more prevalent than the time to send the message as
+a whole. Region wise an interesting exception to this is Japan where much more
+users ask for bandwidth optimization rather than
+latency. 
+\mycomment[EJ]{Does this means that Japan machines (K-computer?) have
+  known issues in bandwidth or are already extremely good in latency?}
+\mycomment[AH]{My guess is that they cannot distinguish bandwidth and
+  injection rate.}
+
 \subsection{List of other answers}
 \begin{itemize}
 \input{../inputs/Q25-other}
@@ -12,5 +32,13 @@
 \includegraphics[width=10cm]{../pdfs/Q25.pdf}
 \caption{Simple analysis: Q25}
 \label{fig:Q25}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm]{../pdfs/Q22-Q25.pdf}
+\caption{Cross analysis: Q22-Q25}
+\label{fig:Q25-and-Q22}
 \end{center}
 \end{figure}
