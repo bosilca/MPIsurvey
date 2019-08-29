@@ -107,6 +107,7 @@ region_tab = { 'Argentina'		: 'CentralandSouthAmerica',
                'Spain' 			: 'Europe',
                'Sweden' 		: 'Europe',
                'Switzerland' 		: 'Europe',
+               'Taiwan'			: 'Asia',
                'Tunisia' 		: 'Africa',
                'Ukraine' 		: 'Europe',
                'UAE'			: 'Asia',
@@ -462,14 +463,14 @@ def strip_accents(text):
     text = text.decode('utf-8')
     return str(text)
 
-def conv_date ( q0_ans ) :
-#    print( "conv_date:'", q0_ans, "'" )
-    ds = q0_ans.split().pop(0)  # extract date (discard time)
-    for format in DATE_FORMATS :
-        try :
-            return datetime.datetime.strptime( ds, format ).date()
-        except :
-            continue
+def conv_date ( dt ) :
+    #print( "conv_date:'", dt, "'" )
+    for ds in dt.split() :
+        for format in DATE_FORMATS :
+            try :
+                return datetime.datetime.strptime( ds, format ).date()
+            except :
+                continue
     print( 'Unknown date format:', ds )
     exit( 1 )
 
@@ -500,8 +501,10 @@ def tex_conv( str ) :
 def get_long_ans_tex( qno, sans ) :
     for key, value in qval_tab[qno].items():
         if value == sans :
-            if len( key ) > 42 :
-                key = key[:40] + '$\\cdots$'
+            if len( key ) > 45 :
+                key = '{\small ' + key[:40] + '$\\cdots$}'
+            elif len( key ) > 40 :
+                key = '{\small ' + key + '}'
             return( key )
     return( '' )
 
@@ -561,6 +564,19 @@ parser.add_argument( 'csv_in',
                      type=argparse.FileType('r'),
                      help='CSV file name containing the survey data ' \
                          "(Google Form). Multiple files can be provided." )
+
+def normalize_df( df ) :
+    if 'ID' in df.columns :
+        del df['ID']
+    if 'Start time' in df.columns :
+        del df['Start time']
+    if 'Completion time' in df.columns :
+        df = df.rename(columns={'Completion time':'Timestamp'})
+    if 'Email' in df.columns :
+        del df['Email']
+    if 'Name' in df.columns :
+        del df['Name']
+    return df
 
 args = parser.parse_args()
 
@@ -665,8 +681,7 @@ if not flag_timeseries and  not flag_tex and \
 
 csv_in = args.csv_in.pop(0)
 df = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
-
-#print( df )
+df = normalize_df( df )
 
 dirname = ''
 format = args.format
@@ -676,6 +691,7 @@ if args.outdir != '' :
 if args.csv_in is not [] :
     for csv_in in args.csv_in :
         dfn = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
+        dfn = normalize_df( dfn )
         df = pd.concat( [df, dfn], sort=False )
 
 # shorten long (and wrong?) country names
@@ -688,12 +704,12 @@ df.replace( [ 'United Kingdom',
               'Belgium',
               'UAE' ],
             inplace=True )
-
 dict_orgq = {}
 for i in range(1,10) :
 #    print( df.columns[i] )
     if df.columns[i] == first_question :
         break;
+
 #print( df.columns[i:] )
 j = 1;
 for column_name in df.columns[i:] :
@@ -789,10 +805,11 @@ for qno in qval_tab.keys() :
                     dict_ans['other'] += 1
     else :
         for ans in tmp :
-            if ans in legend.keys() :
-                dict_ans[legend[ans]] += 1
-            elif len( ans ) > 0 :
-                dict_ans['other'] += 1
+            if isinstance( ans, str ) :
+                if ans in legend.keys() :
+                    dict_ans[legend[ans]] += 1
+                elif len( ans ) > 0 :
+                    dict_ans['other'] += 1
 
 #    print( 'dict_ans\n', dict_ans )
     ser = pd.Series( data=dict_ans, dtype=float )
@@ -812,34 +829,42 @@ for qno in qval_tab.keys() :
         tex_list.append( 'Choice & Legend & \# Answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         sum = 0
+        for k, v in dict_ans.items() :
+            sum = sum + v
         flag_other = False
         if qno in sort_answer :
             for k, v in sorted( dict_ans.items(), key=lambda x: -x[1] ) :
-                sum = sum + v
                 if k == 'other' :
                     flag_other = True
                     continue
                 valstr = str( v )
                 skeystr = tex_conv( k )
                 lkeystr = tex_conv( get_long_ans_tex( qno, k ) )
+                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
                 tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
-                                     valstr + ' \\\\%\n')
+                                     valstr + ' (' + percent + '\%)' + \
+                                     ' \\\\%\n')
         else :
             for k, v in dict_ans.items() :
-                sum = sum + v
                 if k == 'other' :
                     flag_other = True
                     continue
                 valstr = str( v )
                 skeystr = tex_conv( k )
                 lkeystr = tex_conv( get_long_ans_tex( qno, k ) )
+                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
                 tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
-                                     valstr + ' \\\\%\n')
+                                     valstr + ' (' + percent + '\%)' + \
+                                     ' \\\\%\n')
         if flag_other :
             key = 'other'
             if dict_ans[key] > 0 :
-                valstr = str( dict_ans[key] )
-                tex_list.append( key + ' & - & ' + valstr + ' \\\\%\n' )
+                v = dict_ans[key]
+                valstr = str( v )
+                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+                tex_list.append( key + ' & - & ' + valstr + \
+                                     ' (' + percent + '\%)' + \
+                                     ' \\\\%\n')
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\multicolumn{2}{c}{sum} & ' + str( sum ) + \
                              ' \\\\%\n' )
@@ -945,6 +970,7 @@ def graph_time_series( df ) :
 
     for dt in df['Timestamp'] :
         dt_list.append( conv_date( dt ) )
+
     df = df.assign( Date=dt_list )
     for dt in unique( dt_list ) :
         ondate = df[df['Date']==dt]
@@ -977,7 +1003,7 @@ def graph_time_series( df ) :
 #    color=color_list )
     dc_etc.plot.area( ax=ax, stacked=True, legend='reverse', color=color_list )
 
-    ax.xaxis.set_major_locator( mdates.DayLocator(interval=5) )
+    ax.xaxis.set_major_locator( mdates.DayLocator(interval=10) )
     ax.xaxis.set_major_formatter( mdates.DateFormatter("%d") )
     ax.tick_params( axis="x", which="major", labelsize=11 )
     

@@ -3,7 +3,7 @@ TSRC    = $(TARGET).tex
 BIBS   = ../ref.bib 
 LATEX  = xelatex
 
-CSV    = ../csv/MPI\ International\ Survey.csv
+CSVS    = ../csv/MPI\ International\ Survey.csv ../csv/MPI\ International\ Survey-Microsoft.csv
 PROGDIR = ../..
 TEMPDIR = ../templates
 PROG   = $(PROGDIR)/analyze.py
@@ -23,26 +23,26 @@ PDF    = $(TARGET).pdf
 
 # directories
 
-all : $(PDF)
+all : $(PDF) Makefile
 
 python : $(PROG)
 
 tex : $(PROG)
-	$(PROG) $(OPTS_ALL) $(OPTS_TEX) $(CSV)
+	$(PROG) $(OPTS_ALL) $(OPTS_TEX) $(CSVS)
 
 graphs : $(PROG)
-	$(PROG) $(OPTS_ALL) $(OPTS_PDF) $(CSV)
+	$(PROG) $(OPTS_ALL) $(OPTS_PDF) $(CSVS)
 
 pngs : $(PROG)
-	$(PROG) $(OPTS_ALL) $(OPTS_PNG) $(CSV)
+	$(PROG) $(OPTS_ALL) $(OPTS_PNG) $(CSVS)
 
 debug :  $(PROG)
-	$(PROG) $(OPTS_ALL) $(OPTS_PDF) --DEBUG $(CSV)
+	$(PROG) $(OPTS_ALL) $(OPTS_PDF) --DEBUG $(CSVS)
 
 OUTPUT = ../inputs/Q1-ans.tex
 
-$(OUTPUT) : $(PROG) $(CSV)
-	$(PROG) $(OPTS) $(CSV)
+$(OUTPUT) : $(PROG) $(CSVS)
+	$(PROG) $(OPTS) $(CSVS)
 
 $(TEMPLATE) : $(TEMPLATES)
 	./template.sh
