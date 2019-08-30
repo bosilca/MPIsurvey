@@ -2,23 +2,34 @@
 \subsection{Answers}
 \input{../inputs/Q27-ans}
 
-The question of unnecessary features for the user’s applications relates on how
-the usefulness of each chapter of the MPI standards is perceived. Unsurprisingly, the
-least unwanted feature is the collective operation: this feature is seen as
-very important and very useful. Datatypes, communicators and group management
-as well as  error handlers received less than 10\% of the answers and are
-therefore seen as very useful characteristics of the standard. On the other
-side, dynamic process creation received 29\% of the answers. This means that
-such feature is not used in many applications and that more generally, MPI is seen
-as a static programming model where the number of processes does not evolve
-during the program execution. To a least extent, process topologies and
-one-sided communication received respectively 12\% and 10\% of the answers. This
-is not very surprising as these features relatively specific to special
-use-cases. 
+This question tries to look at the standard from the opposite point of view,
+asking not about the missing parts but about the unnecessary features for the
+user’s applications related on the perceived usefulness of each chapter of the
+MPI standards for users applications. Unsurprisingly, the least unwanted feature
+is the collective operation: this feature is seen as very important and very
+useful. Datatypes, communicators and group management as well as  error handlers
+received less than 10\% of the answers and are therefore seen as very useful
+characteristics of the standard. On the other side, dynamic process creation
+received 29\% of the answers. This means that such feature is not used in many
+applications and that more generally, MPI is seen as a static programming model
+where the number of processes does not evolve during the program execution. To a
+least extent, process topologies and one-sided communication received
+respectively 12\% and 10\% of the answers. This is not very surprising as these
+features relatively specific to special use-cases.
 
-It is a bit odd that the most people say the collective ops is
-usefull, however, 61 people feel that communicatos (and group) ops are
-useless. Does this mean many MPI users do not create their own communicatos?
+The usefulness of dynamic processing can be regarded from different
+perspectives. Without delving into MPI implementation details or HPC center
+administration, dynamic processing was certainly always the least, and possibly
+the last, supported capability in MPI. This is not a new trend, it was
+consistent starting from the moment when this feature was accepted into the MPI
+standard. We might be facing a chicken and egg problem, a feature being unused,
+or mostly unknown to users due to it's lack of support, or, the opposite, the
+lack of support due to user lack of interest. In any case, several recent
+studies pinpoint to the need for such feature outside the HPC market.
+
+\todo{It is a bit odd that the most people say the collective ops is useful,
+however, 61 people feel that communicators (and group) ops are useless. Does
+this mean many MPI users do not create their own communicators?}
 
 \subsection{List of other answers}
 \begin{itemize}

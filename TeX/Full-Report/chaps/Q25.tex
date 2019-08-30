@@ -2,34 +2,77 @@
 \subsection{Answers}
 \input{../inputs/Q25-ans}
 
-In terms of optimization of the performance a small fraction of the users
-are satisfied with the current situation. The main requirement concerns how MPI
-provides general optimization opportunities in terms of communication such as
-being able to handle the topology of the machine efficiently. Then comes how the
-to handle multithreading support which a prevalent issue in a world where a
-lot of applications are run on multi-core nodes \mycomment[EJ]{here should cross
-  Q22-Q25}. Other optimizations such as architecture awareness or dynamic
-processing comes third. These issues are not related to the way MPI handles
-communications but are identified as a bottleneck for performance as well. Last,
-and interestingly almost twice as more users prioritize latency
-optimization vs. bandwidth optimization meaning that the overhead in starting to
-send one message is seen as more prevalent than the time to send the message as
-a whole. Region wise an interesting exception to this is Japan where much more
-users ask for bandwidth optimization rather than
-latency. 
-\mycomment[EJ]{Does this means that Japan machines (K-computer?) have
-  known issues in bandwidth or are already extremely good in latency?}
-\mycomment[AH]{My guess is that they cannot distinguish bandwidth and
-  injection rate.}
+In terms of capabilities of the MPI standard and performance of the MPI
+implementations only a quarter of MPI users are satisfied with the current
+situation. The main concerns are related to how MPI provides general
+optimization opportunities in terms of hardware capabilities such as being able
+to handle the topology of the machine more efficiently. This topic is closely
+followed by the concerns related to threading support, or the integration of
+MPI+X, a prevalent issue in a world where a lot of applications are trying to
+integrate node-level runtimes to efficiently handle multi-core nodes.
+%
+A more detailed view of the missing functionalities emerges from the following questions~\ref{sec:q25},~\ref{sec:q26},~\ref{sec:q27}.
+\mycomment[EJ]{here should cross Q22-Q25}.
+%
+Other optimizations such as architecture awareness or dynamic processing comes
+third, but these issues are not related to the way MPI handles communications
+but are identified as a bottleneck for performance as well. This represent a
+shift in user awareness to hardware capabilities, and a willingness to take in
+account these hardware capabilities in application/algorithm design.
 
-It should be noted that Ruusia is the country best-satisfied with the
-current MPI standard and/or implementations. Contrastingly, Japan is
-the country which is least-satisfied with the current MPI.
+Interestingly enough almost twice as many users prioritize latency optimization
+vs. bandwidth optimization meaning that the overhead in starting to send one
+message is seen as more prevalent than the time to send the message as a whole,
+or put differently users realize that MPI delivers the expected performance in
+terms of bandwidth, but lack some in terms of message delivery or extraction
+rate.
+%
+Looking more closely to there results, especially from a region perspective,
+pinpoints to an interesting exception to this latency vs. bandwidth discussion.
+Indeed, in Japan most users seem to be more concerned about bandwidth rather
+than latency. Taking in account the well balance and relatively high performance
+in terms of communication capabilities of the last two generations of Japanese
+super computers (Earth simulator and the K-computer) compared with the rest of
+the Top500 of the same period, this shift in user perception could indicate
+either a raising need for bandwidth in the region applications, or an unfounded
+perception of the current Japanese platforms.
+%
+\mycomment[EJ]{Does this means that Japan machines (K-computer?) have known
+issues in bandwidth or are already extremely good in latency?} \mycomment[AH]{My
+guess is that they cannot distinguish bandwidth and injection
+rate.}\mycomment[GB]{Or a middle ground based on a misconception raised by a
+strong emphasis by the vendors on a single of these of these issues (similar to
+AH comment but shifting the blame on the vendors instead of users).}
+
+It should also be noted that, in a sharp contrast with Japan, Russia is the
+country most satisfied with the current MPI standard and/or implementations.
+This cannot be explained by the user occupation domain, academic vs. industry,
+as most answers received were from academia or government employees.
+%
+\mycomment[GB]{unclear if we can/need to explain this}
 
 \mycomment[AH]{I wonder why US users concern about the injection rate
   that much and the least in bandwidth?}
 
-\subsection{List of other answers}
+\subsection{List of other answers}%
+
+Looking more in details at the different complains few trends emerges, small
+enough not to become mainstream yet, but certainly providing an interesting
+discussion ground for the future of MPI. In fact some of these trends (such as
+resilience~\footnote{https://github.com/mpi-forum/mpi-issues/issues/134,
+https://github.com/mpiwg-ft} and large
+counts~\footnote{https://github.com/mpi-forum/mpi-issues/issues/80}) are
+currently under active discussion in the MPI Forum.
+%
+A short summary of frequently appearing concerns is
+\begin{itemize}
+    \item resilience
+    \item large messages
+    \item asynchronous progress
+    \item better accelerator support
+    \item internal statistics to drive further optimizations
+\end{itemize}
+
 \begin{itemize}
 \input{../inputs/Q25-other}
 \end{itemize}
