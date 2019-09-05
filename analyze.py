@@ -201,10 +201,10 @@ qval_tab = \
         '5' : '5', 
         '6' : 'High' },
   'Q4' :
-      { 'C/C++' : 'C/C++',
-        'Fortran 90 or newer' : '>= F90',
-        'Python' : 'Python',
-        'Fortran (older one than Fortran 90)' : '< F90',
+      { 'C/C++' : 'C(++)',
+        'Fortran 90 or newer' : '>=F90',
+        'Python' : 'Py',
+        'Fortran (older one than Fortran 90)' : '<F90',
         'Java' : 'Java',
         'Other' : 'other' } ,
   'Q5' :
@@ -218,24 +218,23 @@ qval_tab = \
         'between 2 and 5 years' : '2-5',
         'less than 2 years' : '<2' },
   'Q7' :
-      { 'System software development (OS, runtime library, communication library, etc.)' : 'OS/Runtime',
-        'Parallel language (incl. domain specific language)' : 'Parallel language',
-        'Numerical application and/or library' : 'Numerical Lib.',
+      { 'System software development (OS, runtime library, communication library, etc.)' : 'OS/R',
+        'Parallel language (incl. domain specific language)' : 'Lang',
+        'Numerical application and/or library' : 'Num-Lib.',
         'AI (Deep Learning)' : 'AI',
         'Image processing' : 'Image',
         'Big data' : 'Big data',
         'Workflow and/or In-situ' : 'Worlflow',
-        'Visualization' : 'Visualization',
+        'Visualization' : 'Vis.',
         'Tool development (performance tuning, debugging, etc.)' : 'Tool',
         'Other' : 'other' },
   'Q8' :
-      { 'Research and development of application(s)' : 'R&D Apps',
-#        'Research and development on system software (OS and/or runtime library)' : 'R&D OS/Runtime',
-        'Research and development software tool(s)' : 'R&D Tools',
-        'Parallelization of sequential program(s)' : 'Parralelization',
-        'Performance tuning of MPI program(s)' : 'MPI Tuning',
-        'Debugging MPI programs' : 'Debugging',
-        'Research and development on system software (OS and/or runtime library)' : 'R&D OS/Runtime',
+      { 'Research and development of application(s)' : 'Apps',
+        'Research and development software tool(s)' : 'Tools',
+        'Parallelization of sequential program(s)' : 'Parralelize',
+        'Performance tuning of MPI program(s)' : 'Tuning',
+        'Debugging MPI programs' : 'Debug',
+        'Research and development on system software (OS and/or runtime library)' : 'OS/R',
         'Other' : 'other'
         },
   'Q9' :
@@ -245,50 +244,49 @@ qval_tab = \
         'I have not read it, but I plan to.' : 'Wish',
         'No, and I will not read it.' : 'No' },
   'Q10' :
-      { 'I read the MPI standard document.' : 'Read MPI standard',
-        'I had lecture(s) at school.' : 'School Lecture(s)',
+      { 'I read the MPI standard document.' : 'Standard',
+        'I had lecture(s) at school.' : 'School Lectures',
         'I read articles found on Internet.' : 'Internet',
-        'I read book(s).' : 'MPI Book(s)',
-        'Other lectures or tutorials (workplace, conference).' : 'Other lecture(s)',
-        'I have not learned MPI.' : 'Not learned',
+        'I read book(s).' : 'Books',
+        'Other lectures or tutorials (workplace, conference).' : 'Other',
+        'I have not learned MPI.' : 'Never learned',
         'Other' : 'other' },
   'Q11' :
       { 'Beginning MPI (An Introduction in C)' : 'Beginning MPI',
-        'Parallel Programming with MPI' : 'Parallel Programming\nwith MPI',
+        'Parallel Programming with MPI' : 'Parallel Programming',
         'Using MPI' : 'Using MPI',
-        'Parallel Programming in C with MPI and OpenMP' : 'Parallel Programming in C ...',
-        'MPI: The Complete Reference' : 'MPI: the complete Reference',
-        'I have never read any MPI books' : '(never read)',
+        'Parallel Programming in C with MPI and OpenMP' : 'Parallel Programming in C',
+        'MPI: The Complete Reference' : 'MPI: complete Ref',
+        'I have never read any MPI books' : '(no book)',
         'Other' : 'other' },
   'Q12' :
       { 'MPICH' : 'MPICH',
-        'Open MPI' : 'Open MPI',
-#        'MVAPICH' : 'MVAPICH',
-        'Intel MPI' : 'Intel MPI',
-        'MVAPICH' : 'MVAPICH',
-        'Cray MPI' : 'Cray MPI',
-        'IBM MPI (BG/Q, PE, Spectrum)' : 'IBM MPI',
-        'HPE MPI' : 'HPE MPI',
-        'Tianhe MPI' : 'Tianhe MPI',
-        'Sunway MPI' : 'Sunway MPI',
-        'Fujistu MPI' : 'Fujistu MPI',
-        'NEC MPI' : 'NEC MPI',
-        'MS MPI' : 'MS MPI',
-        'MPC MPI' : 'MPC MPI',
-        'I do not know' : 'I do not know',
+        'Open MPI' : 'OMPI',
+        'Intel MPI' : 'Intel',
+        'MVAPICH' : 'MVA',
+        'Cray MPI' : 'Cray',
+        'IBM MPI (BG/Q, PE, Spectrum)' : 'IBM',
+        'HPE MPI' : 'HPE',
+        'Tianhe MPI' : 'Tianhe',
+        'Sunway MPI' : 'Sunway',
+        'Fujistu MPI' : 'Fujistu',
+        'NEC MPI' : 'NEC',
+        'MS MPI' : 'MS',
+        'MPC MPI' : 'MPC',
+        'I do not know' : 'No idea',
         'Other' : 'other' },
   'Q13' :
       { 'I like to use it.' : 'I like',
         'I was said to use it.' : 'Said to use',
         'I could not have any choice (the one provided by a vendor).': 'No choice',
-        'I am familiar with it.' : 'I am familiar',
+        'I am familiar with it.' : 'Familiar',
         'I have no special reason.' : 'No reason' },
   'Q14' :
       { 'I read the MPI Standard document (web/book).' : 'MPI standard',
         'I read online documents (such as man pages).' : 'Online docs',
         'I search the Internet (Google / Stack Overflow).' : 'Internet',
         'I ask colleagues.' : 'Asking colleagues',
-        'I read book(s) (except the MPI standard).' : 'Book',
+        'I read book(s) (except the MPI standard).' : 'Books',
         'I know almost all MPI routines.' : 'I know all',
         'Other' : 'other' },
   'Q15' :
@@ -301,25 +299,25 @@ qval_tab = \
         'Other' : 'other' },
   'Q16' :
       { 'Point-to-point communications' : 'Pt2Pt',
-        'Collective communications' : 'Collectives',
-        'Communicator operations (split, duplicate, and so on)' : 'Communicators',
-        'MPI datatypes' : 'MPI datatypes',
+        'Collective communications' : 'Coll',
+        'Communicator operations (split, duplicate, and so on)' : 'Comm Ops',
+        'MPI datatypes' : 'Datatypes',
         'One-sided communications' : 'One-sided',
         'Dynamic process creation' : 'Dynamic process',
         'Persistent communication' : 'Persistent',
         'PMPI interface' : 'PMPI',
-        'MPI with OpenMP (or multithread)' : 'MPI with OpenMP',
+        'MPI with OpenMP (or multithread)' : 'w/ OMP',
         'Other' : 'other'
         },
   'Q17' :
       { 'Point-to-point communications' : 'Pt2Pt',
-        'Collective communications' : 'Collectives',
-        'Communicator operations (split, duplicate, and so on)' : 'Communicators',
-        'MPI datatypes' : 'MPI datatypes',
+        'Collective communications' : 'Coll',
+        'Communicator operations (split, duplicate, and so on)' : 'Comm Ops',
+        'MPI datatypes' : 'Datatypes',
         'One-sided communications' : 'One-sided',
         'Dynamic process creation' : 'Dynamic process',
         'Persistent communications' : 'Persistent',
-        'MPI with OpenMP (or multithread)' : 'MPI with OpenMP',
+        'MPI with OpenMP (or multithread)' : 'w/ OMP',
         'PMPI interface' : 'PMPI',
         'Other' : 'other' },
   'Q18' :
@@ -327,16 +325,16 @@ qval_tab = \
         'MPI_THREAD_FUNNELED' : 'FUNNELED',
         'MPI_THREAD_SERIALIZED' : 'SERIALIZED',
         'MPI_THREAD_MULTIPLE' : 'MULTIPLE',
-        'I have never called MPI_INIT_THREAD' : 'Never used',
-        'I do not know or I do not care.' : 'Do not know/care',
+        'I have never called MPI_INIT_THREAD' : 'never used',
+        'I do not know or I do not care.' : 'do not know/care',
         'Other' : 'other' },
   'Q19' :
       { 'I have no obstacles.' : 'No obstacles',
         'Too many routines.' : 'Too many routines',
         'No appropriate lecture / book / info.' : 'No appropriate one',
-        'Too complicated and hard to understand.' : 'Too much complicated',
-        'I have nobody to ask.' : 'I have nobody to ask',
-        'I do not like the API.' : 'I do not like API',
+        'Too complicated and hard to understand.' : 'Complicated',
+        'I have nobody to ask.' : 'Nobody to ask',
+        'I do not like the API.' : 'Dislike API',
         'Other' : 'other' },
   'Q20' : 
   { 'I rely on the default ‘Errors abort’ error handling' : 'Default',
@@ -352,10 +350,10 @@ qval_tab = \
         'No, MPI calls are scattered in my programs.' : 'No, scattered',
         'Other' : 'other' },
   'Q22' :
-      { 'OpenMP'  : 'OpenMP',
-        'Pthread' : 'Pthread',
-        'OpenACC' : 'OpenACC',
-        'OpenCL'  : 'OpenCL',
+      { 'OpenMP'  : 'OMP',
+        'Pthread' : 'Pth',
+        'OpenACC' : 'O-ACC',
+        'OpenCL'  : 'O-CL',
         'CUDA'    : 'CUDA',
         'No'      : 'No',
         'Other'  : 'other' },
@@ -363,13 +361,13 @@ qval_tab = \
       { 'No, my MPI programs are well-tuned.' : 
         'Well-tuned',
         'Yes, I know there is room for tuning but I should re-write large part of my program to do that.' :
-        'Rewriting is hard',
+        'Hard to rewrie',
         'Yes, I know there is room for tuning but I do not have enough resources to do that.' :
         'No resource',
         'I think there is room but I do not know how to tune it.' :
         'No idea to tune',
         'I do not have (know) tools to find performance bottlenecks.' :
-        'Not having the tools to find',
+        'Not having the tools',
         'I have no chance to investigate.' :
         'No chance to investigate',
         'I do not know how to find bottlenecks.' :
@@ -381,12 +379,12 @@ qval_tab = \
       { 'A framework or library using MPI.' : 'Framework',
         'A PGAS language (UPC, Coarray Fortran, OpenSHMEM, XcalableMP, ...).' : 'PGAS',
         'A Domain Specific Language (DSL).' : 'DSL',
-        'Low-level communication layer provided by vendor (Verbs, DCMF, ...).' : 'Low-level comm. layer',
+        'Low-level communication layer provided by vendor (Verbs, DCMF, ...).' : 'LL comm',
         'I am not investigating any alternatives.' : 'No investigation',
         'Other' : 'other' },
   'Q25' :
       { 'Latency' : 'Latency',
-        'Message injection rate' : 'Injection rate',
+        'Message injection rate' : 'Inj. rate',
         'Bandwidth' : 'Bandwidth',
         'Additional optimization opportunities in terms of communication (network topology awareness, etc.)' : 'Additional comm. opt.',
         'Optimization opportunities except communication (architecture awareness, dynamic processing, accelerator support, etc.)' : 'Other opt',
@@ -407,9 +405,9 @@ qval_tab = \
         'Datatypes' : 'Datatypes',
         'Communicator and group management' : 'Communicator',
         'Collective operations' : 'Collectives',
-        'Process topologies' : 'Process topologies',
+        'Process topologies' : 'Topologies',
         'Dynamic process creation' : 'Dynamic process',
-        'Error handlers' : 'Error handlers',
+        'Error handlers' : 'Error',
         'There are no unnecessary features' : 'No unnecessary feature',
         'Other' : 'other' },
   'Q28' :
@@ -440,6 +438,18 @@ print_other = [ 'Q4', 'Q7', 'Q8', 'Q10', 'Q11', 'Q12', 'Q14', 'Q17', 'Q19',
                 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28' ]
 
 color_list =  [ 'r', 'b', 'g', 'c', 'm', 'y', 'k' ]
+
+country_abbrv = { 'Multi-Answer' :	'mans',
+                  'overall' : 		'overall',
+                  'Europe:France' : 	'FR', 
+                  'Europe:Germany' : 	'GR',
+                  'Europe:Italy' : 	'IT',
+                  'Europe:UK' : 	'UK',
+                  'Europe:others' : 	'eu',
+                  'Japan' : 		'JP',
+                  'Russia' : 		'RU',
+                  'USA' : 		'US'
+                  }
 
 first_question   = 'What is your main occupation?'
 country_question = 'Select main country or region of your workplace in past 5 years. [among the countries in Top500 list as of Nov. 2018. If you cannot find your country or region, please specify.]'
@@ -693,6 +703,7 @@ if args.csv_in is not [] :
         dfn = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
         dfn = normalize_df( dfn )
         df = pd.concat( [df, dfn], sort=False )
+        df = df.reset_index(drop=True)
 
 # shorten long (and wrong?) country names
 df.replace( [ 'United Kingdom', 
@@ -824,6 +835,7 @@ for qno in qval_tab.keys() :
         tex_list.append( '\\begin{table}[htb]%\n' )
         tex_list.append( '\\begin{center}%\n' )
         tex_list.append( '\\caption{' + qno + ': ' + dict_orgq[qno] + '}%\n' )
+        tex_list.append( '\\label{tab:' + qno + '-ans}%\n' )
         tex_list.append( '\\begin{tabular}{l|l|r}%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( 'Choice & Legend & \# Answers \\\\%\n' )
@@ -866,7 +878,7 @@ for qno in qval_tab.keys() :
                                      ' (' + percent + '\%)' + \
                                      ' \\\\%\n')
         tex_list.append( '\\hline%\n' )
-        tex_list.append( '\multicolumn{2}{c}{sum} & ' + str( sum ) + \
+        tex_list.append( '\multicolumn{2}{c}{total} & ' + str( sum ) + \
                              ' \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\\end{tabular}%\n' )
@@ -1113,6 +1125,135 @@ def expand_multians( qno, df ) :
     new_df.fillna( 0.0, inplace=True )
     return new_df
 
+def table_multi_ans( qno ) :
+    if flag_tex :
+        world = df_whole[qno].value_counts( sort=True ).sort_values( ascending=False )
+        dict_idx = {}
+        for ma in world.index :
+            ma_str = ''
+            if ma not in dict_idx :
+                for sa in ma.split(';') :
+                    if sa in qval_tab[qno] :
+                        if ma_str == '' :
+                            ma_str = qval_tab[qno][sa]
+                        else :
+                            ma_str += ', ' + qval_tab[qno][sa]
+            if ma_str != '' :
+                dict_idx.setdefault( ma, ma_str )
+            elif ma not in qval_tab[qno] :
+                world = world.drop( ma, axis='index' )
+        world = world.rename( index=dict_idx )
+        world = world.groupby( level=0 ).sum().sort_values( ascending=False )
+        #print( world )
+
+        df = pd.DataFrame( {whole:world} )
+        #print( df )
+        for reg in regions_major:
+            tmp = df_whole[df_whole['Region']==reg][qno].value_counts( sort=True )
+            for ma in tmp.index :
+                ma_str = ''
+                for sa in ma.split(';') :
+                    if sa in qval_tab[qno] :
+                        if ma_str == '' :
+                            ma_str = qval_tab[qno][sa]
+                        else :
+                            ma_str += ', ' + qval_tab[qno][sa]
+                if ma_str == '' and ma not in qval_tab[qno] :
+                    tmp = tmp.drop( ma, axis='index' )
+            tmp.rename( index=dict_idx, inplace=True )
+            tmp = tmp.groupby( level=0 ).sum()
+            tmp.name = reg
+            df = pd.concat( [df,tmp], axis='columns', sort=False )
+            #print( tmp )
+            #print( df )
+            #print()
+
+        df_others = df_whole.copy()
+        for reg in regions_major :
+            df_others = df_others[df_others['Region']!=reg]
+        tmp = df_others[qno].value_counts( sort=True )
+        for ma in tmp.index :
+            ma_str = ''
+            for sa in ma.split(';') :
+                if sa in qval_tab[qno] :
+                    if ma_str == '' :
+                        ma_str = qval_tab[qno][sa]
+                    else :
+                        ma_str += ', ' + qval_tab[qno][sa]
+            if ma_str == '' and ma not in qval_tab[qno] :
+                tmp = tmp.drop( ma, axis='index' )
+        tmp.rename( index=dict_idx, inplace=True )
+        tmp = tmp.groupby( level=0 ).sum()
+        tmp.name = 'others'
+        df = pd.concat( [df,tmp], axis='columns', sort=False )
+
+        df = df.groupby( level=0 ).sum().astype(np.int64)
+        df.rename( columns=country_abbrv, inplace=True )
+        df.sort_values( whole, ascending=False, inplace=True )
+        #print( df )
+
+        cpos = 'r'
+        for c in df.columns :
+            cpos += '|c'
+
+        thead = 'Multi-Answer'
+        for clm in df.columns :
+            thead += ' & ' +  tex_conv(clm)
+        thead += ' \\\\\n'
+        thead += ' \\hline%\n'
+
+        clms = df.columns.tolist() + ['others']
+        clms.pop()
+        headsum = '(total)'
+        for clm in clms :
+            headsum += ' & ' + str( df[clm].sum() )
+        headsum += ' \\\\%\n'
+
+        csz = ''
+        tex_list = []
+        tex_list.append( '{\\footnotesize\\begin{landscape}%\n' )
+        tex_list.append( '\\begin{longtable}[htb]{' + cpos + '}%\n' )
+        tex_list.append( '\\caption{' + qno + ': ' + dict_orgq[qno] + '}%\n' )
+        tex_list.append( '\\label{tab:' + qno + '-mans} \\\\%\n' )
+        # begin first head
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( thead )
+        tex_list.append( '\\endfirsthead%\n' )
+        # begin head
+        tex_list.append( '\\multicolumn{' + str(len(df.columns)+1) )
+        tex_list.append( '}{r}{(continued from the previous page)}\\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( thead )
+        tex_list.append( '\\endhead%\n' )
+        # end foot
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( headsum );
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\multicolumn{' + str(len(df.columns)+1) )
+        tex_list.append( '}{r}{(continue to the next page)}\\\\%\n' )
+        tex_list.append( '\\endfoot%\n' )
+        # end last foot
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( headsum );
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\endlastfoot%\n' )
+        # begin of table body
+        tex_list.append( '\\hline%\n' )
+        i = 0;
+        for idx in df.index :
+            tex_list.append( '{' + csz + tex_conv(idx) + '}' )
+            j = 0;
+            for clm in df.columns :
+                tex_list.append( ' & ' + str(df.iat[i,j]) )
+                j += 1
+            tex_list.append( ' \\\\%\n' )
+            i += 1
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\end{longtable}%\n' )
+        tex_list.append( '\\end{landscape}}%\n' )
+        with open( tex_outdir + qno + '-mans.tex', mode='w' ) as f :
+            f.writelines( tex_list )
+
 def cross_tab( qno0, qno1 ) :
     if qno0 in multi_answer and qno1 in multi_answer :
         print( 'Unable cross multiple answer quenstions' )
@@ -1340,7 +1481,7 @@ def summary () :
         tex_list = []
         tex_list.append( '\\begin{table}[htb]%\n' )
         tex_list.append( '\\begin{center}%\n' )
-        tex_list.append( '\\caption{Country}%\n' )
+        tex_list.append( '\\caption{Country}\\label{tab:countries}%\n' )
         tex_list.append( '\\begin{tabular}{lr}%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( 'Country & \# Answers \\\\%\n' )
@@ -1363,6 +1504,9 @@ if flag_timeseries :
 
 for simple in list_simple :
     graph_percentage( dict_qno, dict_others, simple )
+
+for qno in multi_answer :
+    table_multi_ans( qno )
 
 for cross in list_cross :
     cross_tab( cross[0], cross[1] )
