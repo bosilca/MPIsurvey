@@ -9,6 +9,14 @@
 \label{fig:Q20}
 \end{center}
 \end{figure}
+Only a few share of the responders do actually check (Mostly or always ) the
+error code of the routines  (32.5\%). Most of people do not check error or only
+in critical cases. There are several explanation to that : either the fact that
+it is sufficient that an error is handled by the MPI runtime system or that
+errors return by the routines is not the major source of bug or that the
+checking all the errors of all the routine called in an MPI programs make it
+highly verbose and hard to read.  
+
 
 The 'default' and 'never' are theoretically have the same meaning. I
 wonder how they distinguished them?
