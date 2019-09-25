@@ -451,6 +451,23 @@ country_abbrv = { 'Multi-Answer' :	'mans',
                   'USA' : 		'US'
                   }
 
+mpi_cat = { 'MPICH' : 'OSS',
+            'Open MPI' : 'OSS',
+            'MVAPICH' : 'OSS',
+            'MPC MPI' : 'OSS',
+            'Intel MPI' : 'Vendor',
+            'Cray MPI' : 'Vendor',
+            'IBM MPI (BG/Q, PE, Spectrum)' : 'Vendor',
+            'HPE MPI' : 'Vendor',
+            'Tianhe MPI' : 'OSS',
+            'Sunway MPI' : 'Vendor',
+            'Fujistu MPI' : 'Vendor',
+            'NEC MPI' : 'Vendor',
+            'MS MPI' : 'Vendor',
+            'I do not know' : 'No idea',
+            'Other' : 'other' },
+
+
 first_question   = 'What is your main occupation?'
 country_question = 'Select main country or region of your workplace in past 5 years. [among the countries in Top500 list as of Nov. 2018. If you cannot find your country or region, please specify.]'
 
@@ -1057,7 +1074,7 @@ def graph_time_series( df ) :
     plt.close( 'all' )
     return
 
-def graph_percentage( dict, others, qno ) :
+def simple_analysis( dict, others, qno ) :
     df     = dict[qno]
     scale  = graph_scale[qno]
     legend = qval_tab[qno]
@@ -1211,6 +1228,7 @@ def table_multi_ans( qno ) :
 
         csz = ''
         tex_list = []
+        tex_list.append( '\\clearpage%\n' )
         tex_list.append( '{\\footnotesize\\begin{landscape}%\n' )
         tex_list.append( '\\begin{longtable}[htb]{' + cpos + '}%\n' )
         tex_list.append( '\\caption{' + qno + ': ' + dict_orgq[qno] + '}%\n' )
@@ -1251,6 +1269,7 @@ def table_multi_ans( qno ) :
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\\end{longtable}%\n' )
         tex_list.append( '\\end{landscape}}%\n' )
+        tex_list.append( '\\clearpage%\n' )
         with open( tex_outdir + qno + '-mans.tex', mode='w' ) as f :
             f.writelines( tex_list )
 
@@ -1502,8 +1521,8 @@ def summary () :
 if flag_timeseries : 
     graph_time_series( df_whole )
 
-for simple in list_simple :
-    graph_percentage( dict_qno, dict_others, simple )
+for qno in list_simple :
+    simple_analysis( dict_qno, dict_others, qno )
 
 for qno in multi_answer :
     table_multi_ans( qno )
