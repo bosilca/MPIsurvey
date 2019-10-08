@@ -70,13 +70,13 @@ event_list = [ # [ year, month, day, event-name, text-height ]
     [ 2019, 4,  1, 'Rolf@HLRS', 150 ]
     ]
 
-region_tab = { 'Argentina'		: 'CentralandSouthAmerica',
+region_tab = { 'Argentina'		: 'Central and South America',
                'Australia' 		: 'Australia',
                'Austria' 		: 'Europe',
                'belgium' 		: 'Europe',
                'Belgium' 		: 'Europe',
-               'Brazil' 		: 'CentralandSouthAmerica',
-               'Canada' 		: 'NorthAmerica',
+               'Brazil' 		: 'Central and South America',
+               'Canada' 		: 'North America',
                'China' 			: 'China',
                'Croatia' 		: 'Europe',
                'Czech Republic' 	: 'Europe',
@@ -91,13 +91,13 @@ region_tab = { 'Argentina'		: 'CentralandSouthAmerica',
                'India' 			: 'India',
                'Italy' 			: 'Europe',
                'Japan' 			: 'Japan',
-               'Korea, South' 		: 'SouthKorea',
+               'Korea, South' 		: 'South Korea',
                'Luxembourg' 		: 'Europe',
-               'Mexico' 		: 'CentralandSouthAmerica',
+               'Mexico' 		: 'Central and South America',
                'Netherlands' 		: 'Europe',
                'Norway'			: 'Europe',
                'Pakistan' 		: 'Asia',
-               'Peru' 			: 'CentralandSouthAmerica',
+               'Peru' 			: 'Central and South America',
                'Poland' 		: 'Europe',
                'Portugal' 		: 'Europe',
                'Russia' 		: 'Russia',
@@ -107,7 +107,7 @@ region_tab = { 'Argentina'		: 'CentralandSouthAmerica',
                'Spain' 			: 'Europe',
                'Sweden' 		: 'Europe',
                'Switzerland' 		: 'Europe',
-               'Taiwan'			: 'Asia',
+               'Taiwan'			: 'China',
                'Tunisia' 		: 'Africa',
                'Ukraine' 		: 'Europe',
                'UAE'			: 'Asia',
@@ -285,7 +285,7 @@ qval_tab = \
       { 'I read the MPI Standard document (web/book).' : 'MPI standard',
         'I read online documents (such as man pages).' : 'Online docs',
         'I search the Internet (Google / Stack Overflow).' : 'Internet',
-        'I ask colleagues.' : 'Asking colleagues',
+        'I ask colleagues.' : 'Colleagues',
         'I read book(s) (except the MPI standard).' : 'Books',
         'I know almost all MPI routines.' : 'I know all',
         'Other' : 'other' },
@@ -351,9 +351,9 @@ qval_tab = \
         'Other' : 'other' },
   'Q22' :
       { 'OpenMP'  : 'OMP',
-        'Pthread' : 'Pth',
-        'OpenACC' : 'O-ACC',
-        'OpenCL'  : 'O-CL',
+        'Pthread' : 'Pthread',
+        'OpenACC' : 'OACC',
+        'OpenCL'  : 'OCL',
         'CUDA'    : 'CUDA',
         'No'      : 'No',
         'Other'  : 'other' },
@@ -802,10 +802,15 @@ unique_regions = unique(region_list)
 regions_major = []
 for reg in unique_regions :
     df_reg = df_whole.query( 'Region=='+'"'+reg+'"' ) 
-    if len( df_reg ) > major_region :
+    if len( df_reg ) >= major_region :
         regions_major.append( reg )
 regions_major.sort()
 #print( regions_major )
+
+regions_minor = []
+for reg in unique_regions :
+    if reg not in regions_major :
+        regions_minor.append( reg )
 
 whole = 'overall'
 dict_qno    = {}
@@ -855,7 +860,7 @@ for qno in qval_tab.keys() :
         tex_list.append( '\\label{tab:' + qno + '-ans}%\n' )
         tex_list.append( '\\begin{tabular}{l|l|r}%\n' )
         tex_list.append( '\\hline%\n' )
-        tex_list.append( 'Choice & Legend & \# Answers \\\\%\n' )
+        tex_list.append( 'Choice & Abbrv. & \# Answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         sum = 0
         for k, v in dict_ans.items() :
@@ -1114,7 +1119,6 @@ def simple_analysis( dict, others, qno ) :
         plt.title( qno + '* : ' + question_tab[qno] )
     else :
         plt.title( qno + ' : ' + question_tab[qno] )
-    plt.ylabel( 'Percentage' )
     if format == '' and not flag_tex :
         plt.show()
     else :
@@ -1142,53 +1146,30 @@ def expand_multians( qno, df ) :
     new_df.fillna( 0.0, inplace=True )
     return new_df
 
-def table_multi_ans( qno ) :
-    if flag_tex :
-        world = df_whole[qno].value_counts( sort=True ).sort_values( ascending=False )
-        dict_idx = {}
-        for ma in world.index :
-            ma_str = ''
-            if ma not in dict_idx :
-                for sa in ma.split(';') :
-                    if sa in qval_tab[qno] :
-                        if ma_str == '' :
-                            ma_str = qval_tab[qno][sa]
-                        else :
-                            ma_str += ', ' + qval_tab[qno][sa]
-            if ma_str != '' :
-                dict_idx.setdefault( ma, ma_str )
-            elif ma not in qval_tab[qno] :
-                world = world.drop( ma, axis='index' )
-        world = world.rename( index=dict_idx )
-        world = world.groupby( level=0 ).sum().sort_values( ascending=False )
-        #print( world )
+def table_and_graph_multi_ans( qno ) :
+    world = df_whole[qno].value_counts( sort=True ).sort_values( ascending=False )
+    dict_idx = {}
+    for ma in world.index :
+        ma_str = ''
+        if ma not in dict_idx :
+            for sa in ma.split(';') :
+                if sa in qval_tab[qno] :
+                    if ma_str == '' :
+                        ma_str = qval_tab[qno][sa]
+                    else :
+                        ma_str += ', ' + qval_tab[qno][sa]
+        if ma_str != '' :
+            dict_idx.setdefault( ma, ma_str )
+        elif ma not in qval_tab[qno] :
+            world = world.drop( ma, axis='index' )
+    world = world.rename( index=dict_idx )
+    world = world.groupby( level=0 ).sum().sort_values( ascending=False )
+    #print( world )
 
-        df = pd.DataFrame( {whole:world} )
-        #print( df )
-        for reg in regions_major:
-            tmp = df_whole[df_whole['Region']==reg][qno].value_counts( sort=True )
-            for ma in tmp.index :
-                ma_str = ''
-                for sa in ma.split(';') :
-                    if sa in qval_tab[qno] :
-                        if ma_str == '' :
-                            ma_str = qval_tab[qno][sa]
-                        else :
-                            ma_str += ', ' + qval_tab[qno][sa]
-                if ma_str == '' and ma not in qval_tab[qno] :
-                    tmp = tmp.drop( ma, axis='index' )
-            tmp.rename( index=dict_idx, inplace=True )
-            tmp = tmp.groupby( level=0 ).sum()
-            tmp.name = reg
-            df = pd.concat( [df,tmp], axis='columns', sort=False )
-            #print( tmp )
-            #print( df )
-            #print()
-
-        df_others = df_whole.copy()
-        for reg in regions_major :
-            df_others = df_others[df_others['Region']!=reg]
-        tmp = df_others[qno].value_counts( sort=True )
+    df = pd.DataFrame( {whole:world} )
+    #print( df )
+    for reg in regions_major:
+        tmp = df_whole[df_whole['Region']==reg][qno].value_counts( sort=True )
         for ma in tmp.index :
             ma_str = ''
             for sa in ma.split(';') :
@@ -1201,14 +1182,20 @@ def table_multi_ans( qno ) :
                 tmp = tmp.drop( ma, axis='index' )
         tmp.rename( index=dict_idx, inplace=True )
         tmp = tmp.groupby( level=0 ).sum()
-        tmp.name = 'others'
+        tmp.name = reg
         df = pd.concat( [df,tmp], axis='columns', sort=False )
-
-        df = df.groupby( level=0 ).sum().astype(np.int64)
-        df.rename( columns=country_abbrv, inplace=True )
-        df.sort_values( whole, ascending=False, inplace=True )
+        #print( tmp )
         #print( df )
+        #print()
+    #print( df )
 
+    df = df.groupby( level=0 ).sum().astype(np.int64)
+    df.rename( columns=country_abbrv, inplace=True )
+    df.sort_values( whole, ascending=False, inplace=True )
+    #print( df )
+
+    if flag_tex :
+	## output TeX table
         cpos = 'r'
         for c in df.columns :
             cpos += '|c'
@@ -1272,6 +1259,66 @@ def table_multi_ans( qno ) :
         tex_list.append( '\\clearpage%\n' )
         with open( tex_outdir + qno + '-mans.tex', mode='w' ) as f :
             f.writelines( tex_list )
+
+# adding numbers to the tiltle
+    gtotal = df['overall'].sum()
+    dict_rename = {}
+    for clm in df.columns :
+        total = df[clm].sum()
+        newc = clm + '\n(' + str( round(total) ) + \
+        ' / ' + str( round(gtotal) ) + ')'
+        dict_rename.setdefault( clm, newc )
+
+    # convert to percent
+    for clm in df.columns :
+        df[clm] = df[clm] / df[clm].sum() * 100.0
+    toosmall = []
+    etc      = 0.0
+    etclist  = []
+    for idx in df.index :
+        #print( idx )
+        mans = df.at[ idx, 'overall' ]
+        if mans < 3.0 :
+            etc += mans
+            toosmall.append( idx )
+    etclist.append( etc )
+    #print( toosmall )
+    for reg in df.columns :
+        etc  = 0.0
+        if reg == 'overall' :
+            continue
+        others = 0.0
+        for idx in df.index :
+            if idx in toosmall :
+                etc += df.at[ idx, reg ]
+        etclist.append( etc )
+    df_tmp = df.drop( toosmall )
+    #print( df_tmp )
+    #print( etclist )
+    df_tmp.loc['etc.'] = etclist
+
+    df_tmp.rename( columns=dict_rename, inplace=True )
+
+    trans = df_tmp.T
+    fig = plt.figure( num=1, figsize=(8,6) )
+    ax = fig.add_subplot( 1, 1, 1 )
+    trans.plot( ax=ax, kind='bar', stacked=True, \
+                    legend='reverse', color=color_list )
+    plt.subplots_adjust( right=0.5, bottom=0.3 )
+    plt.legend( df_tmp.index, bbox_to_anchor=(1,1) )
+    plt.ylabel( 'Percentage' )
+
+    if format == '' and not flag_tex :
+        plt.show()
+    else :
+        fn = dirname + qno + '-mans.' + format
+        #print( '\nFilename:', fn )
+        if flag_tex :
+            plt.savefig( fn, transparent=False )
+        else :
+            plt.savefig( fn, transparent=True )
+    plt.close( 'all' )
+    return
 
 def cross_tab( qno0, qno1 ) :
     if qno0 in multi_answer and qno1 in multi_answer :
@@ -1501,14 +1548,29 @@ def summary () :
         tex_list.append( '\\begin{table}[htb]%\n' )
         tex_list.append( '\\begin{center}%\n' )
         tex_list.append( '\\caption{Country}\\label{tab:countries}%\n' )
-        tex_list.append( '\\begin{tabular}{lr}%\n' )
+        tex_list.append( '\\begin{tabular}{l|c|l|r}%\n' )
         tex_list.append( '\\hline%\n' )
-        tex_list.append( 'Country & \# Answers \\\\%\n' )
+        tex_list.append( 'Country & Abbrv. & Region & \# Answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
+        prev = cs[0]
         for i in range( 0, len(cs) ) :
-            tex_list.append( cs.index[i] + '&' + str( cs[i] ) + '\\\\%\n' )
+            if prev >= major_region and cs[i] < major_region :
+                tex_list.append( '\\hline%\n' )
+            country = cs.index[i]
+            if country in country_abbrv :
+                abbrv = country_abbrv[country]
+            elif 'Europe:' + country in country_abbrv :
+                abbrv = country_abbrv['Europe:'+country]
+            else :
+                abbrv = ''
+            prev   = cs[i]
+            region = region_tab[country]
+            tex_list.append( country + '&' + \
+                                 abbrv  + '&' + \
+                                 region + '&' + \
+                                 str( cs[i] ) + '\\\\%\n' )
         tex_list.append( '\\hline%\n' )
-        tex_list.append( str( nc ) + ' countries & ' + \
+        tex_list.append( str( nc ) + ' countries & & & ' + \
                              str( nans ) + ' answers \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\\end{tabular}%\n' )
@@ -1518,17 +1580,69 @@ def summary () :
             f.writelines( tex_list )
     return
 
+def response_rate() :
+    nregs = len(regions_major)
+    if flag_tex :
+        tex_list = []
+        tabs = '|c|'
+        cols = 'Q'
+        for reg in regions_major :
+            tabs += 'c|'
+            cols += ' & {\\footnotesize ' + reg.replace('Europe','EU') + '}'
+        cols += '\\\\%\n'
+        tex_list.append( '\\begin{table}[htb]%\n' )
+        tex_list.append( '\\begin{center}\\small%\n' )
+        tex_list.append( '\\caption{Number of Abstains (percent in paranthesis)}' )
+        tex_list.append( '\\label{tab:abstain}%\n' )
+        tex_list.append( '\\begin{tabular}{' + tabs + '}%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( cols )
+        tex_list.append( '\\hline%\n' )
+        numans = '\#Ans'
+        for reg in regions_major :
+            df_rq = df_whole[df_whole['Region']==reg]['Q1']
+            tans  = len( df_rq.index )
+            numans += ' & ' + str( tans )
+        tex_list.append( numans )
+        tex_list.append( ' \\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        for q in range(1,30) :
+            qno = 'Q' + str(q)
+            tex_list.append( '\\hline%\n' )
+            tex_list.append( qno )
+            for reg in regions_major :
+                df_rq = df_whole[df_whole['Region']==reg][qno]
+                nnull = df_rq == ''
+                noans = nnull.sum()
+                tans  = len( df_rq.index )
+                if noans > 0 :
+                    regrr = str(noans) + ' (' + str( round(noans/tans*100,1) ) + ')'
+                else :
+                    regrr = '0'
+                tex_list.append( ' & ' + regrr )
+            tex_list.append( ' \\\\%\n' )
+        tex_list.append( '\\hline%\n' )
+        tex_list.append( '\\end{tabular}%\n' )
+        tex_list.append( '\\end{center}%\n' )
+        tex_list.append( '\\end{table}%\n' )
+        with open( tex_outdir + 'response-rate.tex', mode='w' ) as f :
+            f.writelines( tex_list )
+    return
+
 if flag_timeseries : 
     graph_time_series( df_whole )
+
+response_rate()
 
 for qno in list_simple :
     simple_analysis( dict_qno, dict_others, qno )
 
 for qno in multi_answer :
-    table_multi_ans( qno )
+    table_and_graph_multi_ans( qno )
+#table_and_graph_multi_ans( 'Q26' )
 
-for cross in list_cross :
-    cross_tab( cross[0], cross[1] )
+#for cross in list_cross :
+#    cross_tab( cross[0], cross[1] )
 
 summary()
 
