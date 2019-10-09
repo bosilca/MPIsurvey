@@ -576,7 +576,7 @@ parser.add_argument( '-o', '--outdir', type=str, default='',
 # AH: I have no idea what to do with dry-run
 #                     help="Don't execute any outside visible " \
 #                        "actions (such as generating pdfs)." )
-#parser.add_argument( '-v', '--log', dest='DEBUG', action='store_true', 
+#parser.add_argument( '-D', '--log', dest='DEBUG', action='store_true', 
 #                     default=False,
 #                     help="Log all steps of the operations (verbose)." )
 # We automatically open the files in read mode, 
@@ -585,12 +585,15 @@ parser.add_argument( '-o', '--outdir', type=str, default='',
 parser.add_argument( '-x', '--tex', action='store_true', help='Output TeX' )
 parser.add_argument( '-O', '--tex-outdir', type=str, default='',
                      help="Prepend to all generated TeX files" )
+parser.add_argument( '-V', '--csvout', type=str, default='', 
+                     help="Output CSV files used to draw all graphs" )
 parser.add_argument( '-D', '--DEBUG', action='store_true', help='for debug' )
 parser.add_argument( 'csv_in', 
                      nargs=argparse.REMAINDER, 
                      type=argparse.FileType('r'),
-                     help='CSV file name containing the survey data ' \
-                         "(Google Form). Multiple files can be provided." )
+                     help='CSV file name containing the survey data ' +
+                        "(Google Form or Microsoft Forms). " +
+			"Multiple files can be provided." )
 
 def normalize_df( df ) :
     if 'ID' in df.columns :
@@ -686,6 +689,7 @@ if args.DEBUG :
 
 flag_tex = args.tex
 tex_outdir = args.tex_outdir + '/'
+csv_outdir = args.csvout + '/'
 
 if not flag_timeseries and  not flag_tex and \
         list_simple == [] and list_cross  == [] :
@@ -1037,6 +1041,9 @@ def graph_time_series( df ) :
 #    color=color_list )
     dc_etc.plot.area( ax=ax, stacked=True, legend='reverse', color=color_list )
 
+    if csv_outdir != '' :
+        dc_etc.to_csv( csv_outdir + 'timeline.csv' )
+
     ax.xaxis.set_major_locator( mdates.DayLocator(interval=10) )
     ax.xaxis.set_major_formatter( mdates.DateFormatter("%d") )
     ax.tick_params( axis="x", which="major", labelsize=11 )
@@ -1110,6 +1117,10 @@ def simple_analysis( dict, others, qno ) :
     ax = fig.add_subplot( 1, 1, 1 )
 #    ax.plot( trans, kind='bar', stacked=True, legend='reverse',
 #    color=color_list )
+
+    if csv_outdir != '' :
+        trans.to_csv( csv_outdir + qno + '-simple.csv' )
+
     trans.plot( ax=ax, kind='bar', stacked=True, \
                     legend='reverse', color=color_list )
     plt.subplots_adjust( right=scale, bottom=0.3 )
@@ -1300,6 +1311,10 @@ def table_and_graph_multi_ans( qno ) :
     df_tmp.rename( columns=dict_rename, inplace=True )
 
     trans = df_tmp.T
+
+    if csv_outdir != '' :
+        trans.to_csv( csv_outdir + qno + '-mans.csv' )
+
     fig = plt.figure( num=1, figsize=(8,6) )
     ax = fig.add_subplot( 1, 1, 1 )
     trans.plot( ax=ax, kind='bar', stacked=True, \
@@ -1440,6 +1455,9 @@ def cross_tab( qno0, qno1 ) :
         for clm in dat.columns :
             tickl.setdefault( clm, '' )
         ndat = ndat.rename( mapper=tickl, axis='columns' )
+
+        if csv_outdir != '' :
+            ndat.to_csv( csv_outdir + qno0 + '-' + qno1 + '-cross.csv' )
 
         print( '\nRegion:', list_regions[i], '\n', dat )
 #        print( nregs, nrows, ncols, int(i/ncols), int(i%ncols) )
