@@ -1457,7 +1457,11 @@ def cross_tab( qno0, qno1 ) :
         ndat = ndat.rename( mapper=tickl, axis='columns' )
 
         if csv_outdir != '' :
-            ndat.to_csv( csv_outdir + qno0 + '-' + qno1 + '-cross.csv' )
+            sreg = list_regions[i].replace( 'Europe:', '' )
+            if sreg == 'others' :
+                sreg = 'EU-others'
+            ndat.to_csv( csv_outdir + qno0 + '-' + qno1 + \
+                             '-cross-' +  sreg + '.csv' )
 
         print( '\nRegion:', list_regions[i], '\n', dat )
 #        print( nregs, nrows, ncols, int(i/ncols), int(i%ncols) )
@@ -1657,10 +1661,9 @@ for qno in list_simple :
 
 for qno in multi_answer :
     table_and_graph_multi_ans( qno )
-#table_and_graph_multi_ans( 'Q26' )
 
-#for cross in list_cross :
-#    cross_tab( cross[0], cross[1] )
+for cross in list_cross :
+    cross_tab( cross[0], cross[1] )
 
 summary()
 
