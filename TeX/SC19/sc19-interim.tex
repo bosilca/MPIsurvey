@@ -1,0 +1,289 @@
+
+\documentclass[sigconf,nonacm]{acmart}
+\usepackage{graphicx}
+\usepackage{url}
+
+
+%% up to 2 pages for distributing at SC19 and some other places to
+%% have more number of answers
+
+\def\Underline{\setbox0\hbox\bgroup\let\\\endUnderline}
+\def\endUnderline{\vphantom{y}\egroup\smash{\underline{\box0}}\\}
+\def\|{\verb|}
+%
+\long\def\comment#1{}
+%
+
+\begin{document}
+
+\title{Why do MPI users not use the state-of-the-art API?\\
+- An Interim Report of MPI International Survey -}
+
+
+\author{Atsushi Hori}
+\email{ahori@riken.jp}
+\author{Takashi Ogura}
+\email{t-ogura@riken.jp}
+\affiliation{\institution{R-CCS}}
+ 
+\author{George Bosilca}
+\email{bosilca@icl.utk.edu}
+\affiliation{\institution{UTK/ICL}}
+ 
+\author{Emmanuel Jeannot}
+\email{emmanuel.jeannot@inria.fr}
+\affiliation{\institution{Inria}}
+
+\begin{abstract}
+In 2017, ECP\cite{ECP} conducted a survey for MPI users in the ECP
+project to reveal how MPI would/should be integrated with ECP
+applications in the future\cite{osti_1462877}.  
+We decided to conduct another MPI survey targeting MPI users in the
+whole world. Since MPI is being widely-used vehicle for
+high-performance computing, this relatively large-scale questionnaire 
+survey would be beneficial not only for deciding the future direction
+of MPI, but also the feature differences of MPI users among
+countries and/or regions of the world.  Our survey is not only
+international but also targeting from novice to expert users, unlike
+the ECP survey.
+
+This survey began from February of 2019 and more than 800 answers from
+42 countries all over the world at the time of this writing.
+Unfortunately some countries which are known to be very eager for HPC
+has very little number of answers. So we decided not to close the
+survey until we got enough number of answers from those
+countries. This is the short interim report based the current answers
+of the survey. 
+
+In this short report, it is focused on which MPI aspects MPI users
+mostly use and which ones do not. This survey reveals that many MPI
+users do not use newly introduced MPI functions, such as PMPI, dynamic
+process creation, and persistent communication. Other questions also
+reveals that most MPI users learn MPI via Internet and/or some form of
+online documents. Considering those results, a possible explanation is
+that most MPI users miss the chance to learn MPI in a systematic way
+and thus they are not aware of the newly introduced APIs.
+\end{abstract}
+
+\maketitle
+
+\section{Questionnaire}
+
+The points we kept in our mind while we were designing the
+questions are; a) minimizing the number of questions, b) easy-to-answer,
+c) avoiding ambiguity
+The questionnaire is implemented by using Google Forms and Microsoft
+Forms, and distributed
+by sending e-mails to major mailing lists such as {\tt
+  hpc-announce@mcs.anl.gov}. 
+All data, a Python program to analyze the answers, and reports
+published so far (including this) are available from a GITHUB page
+({\tt https://github.com/bosilca/MPIsurvey.git}).  
+
+Table~\ref{tab:countries} shows the number of answers of top-10
+countries. It should be noted that the question asked the
+workplaces of participants for recent 5 years, not the nationality.
+In this report, the countries and regions (a set of countries)
+having more than 50 answers are considered as major countries to
+compare regional differences.
+
+{\small
+\begin{table}[htb]%
+\begin{center}%
+\caption{Top 10 Countries}\label{tab:countries}%
+\begin{tabular}{c|l|r}%
+\hline%
+Rank & Country & \# Answers \hspace{5mm} \\%
+\hline%
+1 & Germany 	& 159 \hspace{8mm} \\%
+2 & France 	& 125 \hspace{8mm} \\%
+3 & Russia 	& 94 \hspace{8mm} \\%
+4 & UK 		& 64 \hspace{8mm} \\%
+5 & Japan 	& 63 \hspace{8mm} \\%
+6 & USA 		& 58 \hspace{8mm} \\%
+6 & Italy 		& 57 \hspace{8mm} \\%
+\hline
+8 & Switzerland & 40 \hspace{8mm} \\%
+9 & Korea, South & 27 \hspace{8mm} \\%
+10 & Austria 	& 26 \hspace{8mm} \\%
+\hline%
+\multicolumn{3}{c}{42 countries, 838 participants} \\%
+\end{tabular}%
+\end{center}%
+\end{table}%
+}
+
+Most answers, around 80\%, come from research organizations
+(universities and governmental research institutes).  We do not think this
+diversities did not reflect the characteristics of the countries, but
+came from the biased questionnaire distribution. 
+Since this profile may bias the analysis of the results, 
+readers must keep this in their mind on this background.
+
+\section{MPI users do not use the state-of-the-art API}
+
+{\small
+\begin{table}[htb]%
+\begin{center}%
+\caption{Which MPI features have you never heard of?}%
+\label{tab:Q16-ans}%
+\begin{tabular}{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+PMPI interface & 457 (24.5\%) \\%
+Persistent communication & 423 (22.7\%) \\%
+Dynamic process creation & 380 (20.4\%) \\%
+One-sided communications & 128 (6.9\%) \\%
+Communicator operations & 123 (6.6\%) \\%
+MPI datatypes & 90 (4.8\%) \\%
+Point-to-point communications & 89 (4.8\%) \\%
+Collective communications & 86 (4.6\%) \\%
+MPI with OpenMP (or multithread) & 86 (4.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 1,862 / 691 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}%
+}
+
+Table~\ref{tab:Q16-ans} shows the answers of the question asking
+``which MPI features have you never heard of?'' The answers of ``PMPI
+interface,'' and ``Persistent communication,'' and ``Dynamic process
+creation'' occupies almost 70\%.  The percentage of participants chose
+one or some of them is 64\%.  
+Table~\ref{tab:Q17-ans} shows the answers of the question asking
+``what aspects of the MPI standard do you use in your program in its
+current form?'' This question asks the MPI features used by
+participants, not if they know or not. Again, there are large gap
+between those three features and the other features.
+All those features was already standardized in MPI 2.2 which was
+release in 2009. Despite the 10-year appearance, those features are
+not well-known. 
+It is very interesting that the regional differences of the answers
+asking which MPI features participants are using
+(Table~\ref{tab:Q17-ans}) are very small as shown in
+Figure~\ref{fig:Q17}. 
+
+{\small
+\begin{table}[htb]%
+\begin{center}%
+\caption{What aspects of the MPI standard do you use in your program in its current form?}%
+\label{tab:Q17-ans}%
+\begin{tabular}{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+Collective communications & 729 (22.5\%) \\%
+Point-to-point communications & 701 (21.6\%) \\%
+MPI datatypes & 512 (15.8\%) \\%
+MPI with OpenMP (or multithread) & 472 (14.6\%) \\%
+Communicator operations & 406 (12.5\%) \\%
+One-sided communications & 223 (6.9\%) \\%
+PMPI interface & 66 (2.0\%) \\%
+Persistent communications & 61 (1.9\%) \\%
+Dynamic process creation & 50 (1.5\%) \\%
+other & 20 (0.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 3,240 / 813 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}%
+}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{figs/Q17.pdf}
+\vspace{-8mm}
+\caption{What aspects of the MPI standard do you use in your program in its current form?}%
+\label{fig:Q17}
+\end{center}
+\end{figure}
+
+On the question asking ``how did you learn MPI?,'' one quater of
+participants answered ``internet,'' ``not learned,'' and ``other.'' Many
+participants who chose ``other'' said ``learned from existing
+code,''  ``learned by doing,'' etc. 
+\comment{Table~\ref{tab:Q14-ans} shows the result of asking ``how do you check
+MPI specifications when you are writing MPI programs?'' }
+When we ask ``how do you check
+MPI specifications when you are writing MPI programs?,'' 45\% of
+participants chose the answers only from ``Online Docs,''
+``Internet,'' and ``Asking colleagues.''
+30\% of participants chose ``too many routines,'' ``too complicated,''
+and/or ``I have nobody to ask,'' when the question ``what are your
+obstacles to mastering MPI?'' was given. 
+
+\comment{
+{\small
+\begin{table}[htb]%
+\begin{center}%
+\caption{How do you check MPI specifications when you are writing MPI programs?}%
+\label{tab:Q14-ans}%
+\begin{tabular}{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+{\small I read online documents (such as man pages).} & 570 (30.1\%) \\%
+{\small I search the Internet} & 560 (29.6\%) \\%
+{\small I read the MPI Standard document}  & 424 (22.4\%) \\%
+I ask colleagues. & 185 (9.8\%) \\%
+{\small I read book(s) (except the MPI standard).} & 102 (5.4\%) \\%
+I know almost all MPI routines. & 43 (2.3\%) \\%
+other & 11 (0.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 1,895 / 824 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}%
+}}
+
+\section{Discussion}
+
+The above results show that the internet plays an important role for
+learning MPI. Since the learning from the internet or online docs is
+based on search engines, this way of learning via the internet can be said
+{\em learning-by-search}. To search something, key word(s) must be
+given. Only the words which users see or listen can be key words. If
+he or she does not know appropriate key word(s), then he or she cannot
+obtain the information about it.
+
+The traditional learning method, such as reading
+books and/or having lectures, becomes less significant but this is the way
+we have done so far. The learning-by-search can never be systematic and
+learner may fall in pit-falls. The underlying rationale of every MPI
+feature is never simpler than any other sequential programs. 
+
+
+
+\section{Summary}
+
+As of this writing, we got only 8 answers from China. This is because 
+Chinese government does not allow its people to access Google. We are
+trying to increase the number of participants from the
+countries which are aggressive in HPC.  
+If some of readers are interested in participating this survey, visit
+one (not both) of the URLs in Figure~\ref{fig:qrcodes}.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=4cm]{figs/QR-codes.pdf}
+\caption{QR codes to participate this survey}
+\label{fig:qrcodes}
+\end{center}
+\end{figure}
+
+\section*{Acknowledgment}
+  We thank to those who participated in this survey and those who
+  helped us to distribute the survey to their local communities.\\
+  This research is partially supported by the
+  NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
+  Computing\cite{JLESC}.
+
+\bibliographystyle{acm}
+\bibliography{../ref}
+
+\end{document}
