@@ -36,38 +36,39 @@
 
 \maketitle
 
-\section{Motivation}
+\section{Abstract}
 
 In 2017, ECP\cite{ECP} conducted a survey for MPI users in the ECP
 project to reveal how MPI would/should be integrated with ECP
 applications in the future\cite{osti_1462877}.  
-We decided to conduct another MPI survey targeting MPI users in the
+This inspired us to conduct another MPI survey targeting MPI users in the
 whole world. Since MPI is being widely-used vehicle for
-high-performance computing, this relatively large-scale questionnaire 
-survey would be beneficial not only for deciding the future direction
-of MPI, but also the feature differences of MPI users among
+high-performance computing for decades, this larger-scale
+questionnaire survey would be beneficial not only for deciding the
+future direction of MPI, but also the feature differences of MPI users among
 countries and/or regions of the world.  Our survey is not only
-international but also targeting from novice to expert users, unlike
-the ECP survey.
+international but also targeting from novice to expert users, hoping
+to be complement to the ECP survey.
 
-This survey began from February of 2019 and more than 800 answers from
-42 countries all over the world at the time of this writing.
+This survey is being opened from February of 2019 and more than 800
+answers from 42 countries all over the world at the time of this writing.
 Unfortunately some countries which are known to be very eager for
 doing HPC have very little number of participants. So we decided not
 to close the survey until we got enough number of answers from those
-countries. This is the short interim report based the current answers
-of the survey. 
+countries. 
 
-In this report, we focused on which MPI features MPI users
+This is the short interim report based the current results
+of the survey. 
+In this short report, we focused on which MPI features MPI users
 know and which ones do not. This survey reveals that many MPI
 users do not use newly introduced MPI functions, such as PMPI, dynamic
-process creation, and persistent communication. It must noted that
-those features are not new at all but already introduced in MPI 2.2
+process creation, and persistent communication. It must be noted that
+those features are not new but already introduced in MPI 2.2
 released 2009. The other questions 
 reveal that many MPI users learn MPI  via the internet and/or some form of
 online documents. Taking account of those results, a possible explanation of
 is that many MPI users failed to reach the information about those
-MPI features from the internet and thus they are not aware of them.
+MPI features via the internet and thus they are not aware of them.
 
 \section{Survey}
 
@@ -82,11 +83,9 @@ published so far (including this) are available from a GITHUB page
 ({\tt https://github.com/bosilca/MPIsurvey.git}).  
 
 Table~\ref{tab:countries} shows the number of answers of top-10
-countries. It should be noted that the question asked the
+countries. It should be noted that one of the questions asked the
 workplaces of participants for recent 5 years, not the nationality.
 In this report, the countries and regions (a set of countries)
-having more than 50 answers are considered as major countries to
-compare regional differences.
 
 \begin{table}[htb]%
 \begin{center}%
@@ -258,7 +257,9 @@ Referring Table~\ref{tab:Q16-ans} and \ref{tab:Q17-ans}, The MPI
 features can be categorized into two groups; well-known ones (P2P,
 Collectives, and so on) and little-known ones (PMPI, Persistent and
 Dynamic process). Surprisingly this tendency is almost independent
-from countries/regions of the participants (Figure\ref{fig:Q17}). 
+from countries/regions of the participants
+(Figure\ref{fig:Q17} showing the percentages of answers over the
+countries/regions having more than 50 answers).  
 
 \comment{
 Table~\ref{tab:Q16-ans} shows the answers of the question asking
@@ -274,9 +275,11 @@ between those three features and the other features.
 All those features was already standardized in MPI 2.2 which was
 release in 2009. Despite the 10-year appearance, those features are
 not well-known. 
-It is very interesting that the regional differences of the answers
-asking which MPI features participants are using
-(Table~\ref{tab:Q17-ans}) are very small as shown in
+It is very interesting that the regional differences of the question
+asking using MPI aspects over the
+countries and regions having more 
+than 50 answers 
+(Table~\ref{tab:Q17-ans}) are very small as shown in 
 Figure~\ref{fig:Q17}. 
 }
 
@@ -382,7 +385,7 @@ it is revealed that the uneven perception in the MPI features. Our
 hypothesis of this unevenness based on the survey results is that many 
 MPI users nowadays learn MPI by searching the internet. If this
 unevenness will not be fixed then the new features which will be
-introduced in MPI by MPI Forum in the future might not be
+introduced in MPI by MPI Forum in the future might also not be
 widely accepted by MPI users. This can ruin the large effort of MPI
 Forum. 
 
@@ -394,9 +397,9 @@ Figure~\ref{fig:qrcodes}.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=6cm]{figs/QR-codes.pdf}
+\includegraphics[width=7cm]{figs/QR-codes.pdf}
 \vspace{-3mm}
-\caption{QR codes to participate this survey}
+\caption{QR codes for participating this survey}
 \label{fig:qrcodes}
 \end{center}
 \vspace{-5mm}
@@ -405,7 +408,7 @@ Figure~\ref{fig:qrcodes}.
 \section*{Acknowledgments}
 {\small
 We thank to those who participated in this survey and those who
-helped us to distribute the survey to their local communities.\\
+helped us to distribute the survey to their local communities. 
 This research is partially supported by the
 NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
 Computing\cite{JLESC}.
