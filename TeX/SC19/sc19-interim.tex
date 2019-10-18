@@ -34,7 +34,10 @@
 \email{emmanuel.jeannot@inria.fr}
 \affiliation{\institution{Inria}}
 
-\begin{abstract}
+\maketitle
+
+\section{Motivation}
+
 In 2017, ECP\cite{ECP} conducted a survey for MPI users in the ECP
 project to reveal how MPI would/should be integrated with ECP
 applications in the future\cite{osti_1462877}.  
@@ -49,33 +52,31 @@ the ECP survey.
 
 This survey began from February of 2019 and more than 800 answers from
 42 countries all over the world at the time of this writing.
-Unfortunately some countries which are known to be very eager for HPC
-has very little number of answers. So we decided not to close the
-survey until we got enough number of answers from those
+Unfortunately some countries which are known to be very eager for
+doing HPC have very little number of participants. So we decided not
+to close the survey until we got enough number of answers from those
 countries. This is the short interim report based the current answers
 of the survey. 
 
-In this short report, it is focused on which MPI aspects MPI users
-mostly use and which ones do not. This survey reveals that many MPI
+In this report, we focused on which MPI features MPI users
+know and which ones do not. This survey reveals that many MPI
 users do not use newly introduced MPI functions, such as PMPI, dynamic
-process creation, and persistent communication. Other questions also
-reveals that most MPI users learn MPI via Internet and/or some form of
-online documents. Considering those results, a possible explanation is
-that most MPI users miss the chance to learn MPI in a systematic way
-and thus they are not aware of the newly introduced APIs.
-\end{abstract}
+process creation, and persistent communication. It must noted that
+those features are not new at all but already introduced in MPI 2.2
+released 2009. The other questions 
+reveal that many MPI users learn MPI  via the internet and/or some form of
+online documents. Taking account of those results, a possible explanation of
+is that many MPI users failed to reach the information about those
+MPI features from the internet and thus they are not aware of them.
 
-\maketitle
-
-\section{Questionnaire}
+\section{Survey}
 
 The points we kept in our mind while we were designing the
 questions are; a) minimizing the number of questions, b) easy-to-answer,
 c) avoiding ambiguity
-The questionnaire is implemented by using Google Forms and Microsoft
-Forms, and distributed
-by sending e-mails to major mailing lists such as {\tt
-  hpc-announce@mcs.anl.gov}. 
+The questionnaire is implemented by using firstly Google Forms and
+later Microsoft Forms, and distributed
+by sending e-mails to major mailing lists such as {\tt hpc-announce}. 
 All data, a Python program to analyze the answers, and all reports
 published so far (including this) are available from a GITHUB page
 ({\tt https://github.com/bosilca/MPIsurvey.git}).  
@@ -87,31 +88,32 @@ In this report, the countries and regions (a set of countries)
 having more than 50 answers are considered as major countries to
 compare regional differences.
 
-{\small
 \begin{table}[htb]%
 \begin{center}%
-\caption{\small Top 10 Countries}\label{tab:countries}%
-\begin{tabular}{c|l|r}%
+\caption{\small Top 10 Countries of Participants}
+\vspace{-3mm}
+\label{tab:countries}%
+\begin{tabular}{c|l|c}%
 \hline%
-Rank & Country & \# Answers \hspace{5mm} \\%
+Rank & Country & \# Participants \\%
 \hline%
-1 & Germany 	& 159 \hspace{8mm} \\%
-2 & France 	& 125 \hspace{8mm} \\%
-3 & Russia 	& 94 \hspace{8mm} \\%
-4 & UK 		& 64 \hspace{8mm} \\%
-5 & Japan 	& 63 \hspace{8mm} \\%
-6 & USA 		& 58 \hspace{8mm} \\%
-6 & Italy 		& 57 \hspace{8mm} \\%
+1 & Germany 	& 159 \\%
+2 & France 	& 125 \\%
+3 & Russia 	& 94 \\%
+4 & UK 		& 64 \\%
+5 & Japan 	& 63 \\%
+6 & USA 		& 58 \\%
+6 & Italy 		& 57 \\%
 \hline
-8 & Switzerland & 40 \hspace{8mm} \\%
-9 & Korea, South & 27 \hspace{8mm} \\%
-10 & Austria 	& 26 \hspace{8mm} \\%
+8 & Switzerland & 40 \\%
+9 & South Korea & 27 \\%
+10 & Austria 	& 26  \\%
 \hline%
 \multicolumn{3}{c}{42 countries, 838 participants} \\%
 \end{tabular}%
 \end{center}%
+\vspace{-8mm}
 \end{table}%
-}
 
 Most answers, around 80\%, come from research organizations
 (universities and governmental research institutes).  We do not think this
@@ -146,7 +148,7 @@ Multiple Choice & \# Answers \\%
 \hline%
 Other lectures or tutorials & 436 (23.8\%) \\% 
 Articles found on Internet & 430 (23.4\%) \\%
-MPI standard doc. & 323 (17.6\%) \\% 
+MPI standard docs & 323 (17.6\%) \\% 
 Lecture(s) at school & 292 (15.9\%) \\% 
 Book(s) & 277 (15.1\%) \\%
 Never learned MPI & 26 (1.4\%) \\%
@@ -167,9 +169,9 @@ other & 50 (2.7\%) \\%
 \hline%
 Multiple Choice & \# Answers \\%
 \hline%
-Online doc. & 570 (30.1\%) \\%
+Online docs. & 570 (30.1\%) \\%
 Internet & 560 (29.6\%) \\%
-MPI standard doc. & 424 (22.4\%) \\%
+MPI standard docs. & 424 (22.4\%) \\%
 I ask colleagues & 185 (9.8\%) \\%
 I read book(s) & 102 (5.4\%) \\%
 I know all MPI routines & 43 (2.3\%) \\%
@@ -234,6 +236,7 @@ other & 20 (0.6\%) \\%
 
 \end{tabular}%
 \end{center}%
+\vspace{-3mm}
 \end{table*}%
 
 Table~\ref{tab:Q10-ans} shows the result of the question asking ``how
@@ -278,12 +281,15 @@ Figure~\ref{fig:Q17}.
 }
 
 \begin{figure}[htb]
+\vspace{-2mm}
+\begin{minipage}{0.8\hsize}
 \begin{center}
-\includegraphics[width=8cm]{figs/Q17.pdf}
-\vspace{-8mm}
+\includegraphics[width=7cm]{figs/Q17.pdf}
+\vspace{-10mm}
 \caption{What aspects of the MPI standard do you use in your program in its current form?}%
 \label{fig:Q17}
 \end{center}
+\end{minipage}
 \end{figure}
 
 \comment{
@@ -335,72 +341,75 @@ optimization not only P2P but also collective communication
 performance. 
 All those little-known MPI features already appeared in MPI 2.2
 released in 2009. Despite the 10-year appearance, those features 
-are failed to get widely accepted. Why this happens?
+are failed to get widely accepted.  Why?
 
 One possible answer for this question may come from the survey results
 asking participants ``how did you learn MPI''
 (Table~\ref{tab:Q10-ans}) and ``how do you check
 MPI specifications when you are writing MPI programs''
 (Table~\ref{tab:Q14-ans}). 
-Here a significant number of participants refer to internet
-and/or online documents. These are handy and able to get required
-information on the fly. However, 
-these online medias can only be accessed by
+Here a significant number of participants refer to the internet
+and/or online documents. These are handy and allow users to get
+required information on the fly. However, 
+these online medias can only be retrieved by
 search. To search something, a clue or some keywords must be given. 
 Someone wants to search something he/she does not know, how can he/she
-find the appropriate key words to obtain the right information? In
-MPI, for example, there is no {\tt See Also} link from the man page of {\tt
-  MPI\_Irecv}  to the corresponding persistent routines in many MPI
-implementations. 
+find the appropriate key words to obtain the right information? 
+There can be responsibility of the information providers. For example,
+there is no {\tt See Also} link from the man page of {\tt MPI\_Irecv}
+to the corresponding persistent routines in many MPI implementations. 
 
 Contrastingly traditional medias such as books, lectures, and tutorials can be
 systematic and complete, but not handy.  Once you learned MPI via some
-of those traditional medias, you may feel that you already know
-MPI. Unfortunately MPI standard keeps changing. It is very hard to
-keep your knowledge up-to-date, especially MPI is not your major
-concern. 
+of those traditional medias, you may think that you already know
+MPI. Unfortunately the MPI standard is being updated by MPI Forum. It is
+very hard to keep your MPI knowledge up-to-date, especially MPI is not
+your major concern. 
 
-Another point we noticed is that many people who chose the ``other''
+The other point we noticed is that many people who chose the ``other''
 answer to the question asking ``how did you learn MPI'' said
 ``reading existing code,'' ``learn by doing,'' ``reverse
-engineering''(!),  and so on. Taking a look at existing code might be
-the way of learning programing nowadays. However, the underlying
-rationale of every MPI feature is never simpler than any other
-sequential programs and there are many possible pitfalls. 
+engineering''(!),  and so on. Taking a look at existing code found on
+internet might be the way of learning programing nowadays. However,
+the underlying rationale of every MPI feature is never simpler than
+any other sequential programs. It is very likely for the novice
+programmers writing MPI programs in this way to fall into pitfalls. 
 
-\comment{
-The traditional learning method, such as reading
-books and/or having lectures, becomes less significant but this is the way
-we have done so far. The learning-by-search can never be systematic and
-learner may fall in pit-falls. The underlying rationale of every MPI
-feature is never simpler than any other sequential programs. 
-Thus, newly introduced features are hard to be widespread. 
-}
+\section{Summary and Future Work}
 
-\section{Summary}
+As the result of conducting an international, large-scale MPI survey,
+it is revealed that the uneven perception in the MPI features. Our
+hypothesis of this unevenness based on the survey results is that many 
+MPI users nowadays learn MPI by searching the internet. If this
+unevenness will not be fixed then the new features which will be
+introduced in MPI by MPI Forum in the future might not be
+widely accepted by MPI users. This can ruin the large effort of MPI
+Forum. 
 
-As of this writing, we got only 8 answers from China. This is because 
-Chinese government does not allow its people to access Google. We are
-trying to increase the number of participants from the
+We are trying to increase the number of participants from other 
 countries which are aggressive in HPC.  
-If some of readers are interested in participating this survey, visit
-one (not both) of the URLs in Figure~\ref{fig:qrcodes}.
+If readers are interested in participating this survey,
+visit one (not both) of the URLs in
+Figure~\ref{fig:qrcodes}.  
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=4cm]{figs/QR-codes.pdf}
+\includegraphics[width=6cm]{figs/QR-codes.pdf}
+\vspace{-3mm}
 \caption{QR codes to participate this survey}
 \label{fig:qrcodes}
 \end{center}
+\vspace{-5mm}
 \end{figure}
 
-\section*{Acknowledgment}
-  We thank to those who participated in this survey and those who
-  helped us to distribute the survey to their local communities.\\
-  This research is partially supported by the
-  NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
-  Computing\cite{JLESC}.
-
+\section*{Acknowledgments}
+{\small
+We thank to those who participated in this survey and those who
+helped us to distribute the survey to their local communities.\\
+This research is partially supported by the
+NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
+Computing\cite{JLESC}.
+}
 \bibliographystyle{acm}
 \bibliography{../ref}
 
