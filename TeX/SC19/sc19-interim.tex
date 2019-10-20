@@ -16,22 +16,22 @@
 
 \begin{document}
 
-\title{Why do MPI users not use the state-of-the-art API?\\
+\title{\textcolor{red}{Why do MPI users not use the state-of-the-art API?}\\
 - An Interim Report of MPI International Survey -}
 
 
 \author{Atsushi Hori}
-\email{ahori@riken.jp}
+%\email{ahori@riken.jp}
 \author{Takashi Ogura}
-\email{t-ogura@riken.jp}
+%\email{t-ogura@riken.jp}
 \affiliation{\institution{R-CCS}}
 
 \author{George Bosilca}
-\email{bosilca@icl.utk.edu}
-\affiliation{\institution{Innovative Computing Laboratory, The University of Tennessee}}
+%\email{bosilca@icl.utk.edu}
+\affiliation{\institution{The University of Tennessee}}
 
 \author{Emmanuel Jeannot}
-\email{emmanuel.jeannot@inria.fr}
+%\email{emmanuel.jeannot@inria.fr}
 \affiliation{\institution{Inria}}
 
 \maketitle
@@ -41,12 +41,12 @@
 The Message Passing Interface (MPI) is a critical part of the parallel computing
 ecosystem, a driver for many of the High Performance Computing (HPC) successes.
 To maintain its relevance to the user community and in particular to the HPC
-community, MPI interactions with the users, their expectations and concerns need
+community, MPI interactions with users, their expectations and concerns need
 to be identified and well understood.
 %
-Existing studies on MPI usages are not only focused on a small target domain,
-such as the ECP~\cite{ECP} study conductions in 2017~\cite{osti_1462877} focused
-on MPI usage in the context of ECP applications, but also geographically
+Existing studies on MPI usages are focused on a restricted target domain,
+such as the ECP~\cite{ECP} study conducted in 2017~\cite{osti_1462877} that focused
+on MPI usage in the context of ECP applications, and/or are geographically
 constrained to a single laboratory, funding agency or at best country.
 %In 2017, ECP~\cite{ECP} conducted a survey for MPI users in the ECP
 %project to reveal how MPI would/should be integrated with ECP
@@ -58,16 +58,14 @@ distinct users. Since MPI is being a widely-used vehicle for high-performance
 computing for decades, this larger-scale questionnaire survey would be
 beneficial not only for deciding the future direction of MPI, but also the
 feature differences of MPI users among countries and/or regions of the world.
-Our survey is not only international but also targeting from novice to expert
-users, hoping to be complement to the ECP survey.
+% Our survey is not only international but also targeting from novice to expert
+% users, hoping to be complement to the ECP survey.
 
-This survey has been conducted from February to May 2019 and has gathered more
-than 800 answers from 42 countries all over the world at the time of this
-writing.
+This survey has been conducted from February to June 2019 and at the time of
+this writing has gathered more than 800 answers from 42 countries.
 %
-This is the first interim report based the October 2019 results of the survey.
-In this short report, we focused on which MPI features MPI users know and which
-ones do not.
+This first interim report, based the October 2019 results of the survey,
+focuses on which MPI features MPI users know and which ones do not.
 %
 This survey reveals the staggering fact that most MPI users use a small subset
 of the MPI API, subset that mostly avoid features introduced after MPI 2.2
@@ -255,7 +253,7 @@ participants refer to the MPI standard. According to the original
 data (omitted due to the space limit), one quarter of participants
 learn MPI via the internet and/or online documents.
 
-The result of the question asking ``how do you check MPI
+The result of the question asking ``How do you check MPI
 specifications when writing MPI programs'' show in
 Table~\ref{tab:Q14-ans}. More than half of participants refer to the
 MPI standard. It is very natural for MPI users to check MPI
@@ -348,7 +346,7 @@ other & 11 (0.6\%) \\%
 
 \section{MPI users do not use the state-of-the-art API}
 
-Among the little-known MPI features, the persistent communication is
+Among the lesser-known MPI features, the persistent communication is
 one of the important directions being discussed in MPI Forum\cite{mpi-forum}.
 The persistent communication can give implementors a room for
 optimization not only P2P but also collective communication
@@ -391,25 +389,33 @@ programmers writing MPI programs in this way to fall into pitfalls.
 
 \section{Summary and Future Work}
 
-As the result of conducting an international, large-scale MPI survey,
-it is revealed that the uneven perception in the MPI features. Our
-hypothesis of this unevenness based on the survey results is that many
-MPI users nowadays learn MPI by searching the internet. If this
-unevenness will not be fixed then the new features which will be
-introduced in MPI by MPI Forum in the future might also not be
-widely accepted by MPI users. This can ruin the large effort of MPI
-Forum.
+This large-scale internaitonal MPI survey reveals an uneven perception of the
+MPI features, and a slow adoption of novel MPI capabilities.
+%
+Based on the survey our hypothesis is that due to the large impact of online
+sources, noew features have a slow propagation time from the MPI standard to
+the first page of a Google search. If this uneveness is not addressed by the MPI
+Forum itself, most new MPI features will continue to have a slow adoption, and
+will have their usefulness limited to only a niche community.
+% As the result of conducting an international, large-scale MPI survey,
+% it is revealed that the uneven perception in the MPI features.
+% Our hypothesis of this unevenness based on the survey results
+% is that many MPI users nowadays learn MPI directly from online sources. If this
+% unevenness will not be fixed then the new MPI features
+% introduced by MPI Forum might also have a slow adoption by the user community.
+% This can ruin the large effort of MPI Forum.
 
-As the contributions from some countries known to be early and eagerly adopters
-of HPC are below the necessary threshold to make accurate and constructive
-conclusions, we decided to publish intermediary partial results and leave the
+As contributions from some countries known to be early and eagerly HPC adopters
+are below the necessary threshold to make accurate and constructive
+conclusions, we decided to publish intermediary results and leave the
 survey open until we got a representative number of answers from most countries.
 %
-We are trying to increase the number of participants from other
-countries which are aggressive in HPC.
-If readers are interested in participating this survey,
-visit one (not both) of the URLs in
-Figure~\ref{fig:qrcodes}.
+Readers are strongly encouraged to visit one of the URLs in the QR codes below.
+% We are trying to increase the number of participants from other
+% countries which are aggressive in HPC.
+% If readers are interested in participating this survey,
+% visit one (not both) of the URLs in
+% Figure~\ref{fig:qrcodes}.
 
 \begin{figure}[htb]
 \begin{center}
