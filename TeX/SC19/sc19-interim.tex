@@ -134,10 +134,9 @@ readers must keep this in mind when considering the  background.
 \section{Some Results}
 
 Table~\ref{tab:Q10-ans}, \ref{tab:Q14-ans}, \ref{tab:Q16-ans}, and
-\ref{tab:Q17-ans} show the number of answers of 4 questions out of
-30. Since those questions allow participants to choose multiple answers,
-the numbers in those tables are the numbers of answers of the
-corresponding choices. The actual number of participants who answered
+\ref{tab:Q17-ans} show the answer distribution for 4 questions out of
+30. Note that the numbers in these tables reflect that these questions allow participants to choose multiple answers. 
+The actual number of participants who answered
 each question is noted after the slash (/) of the total number
 at the end of each table.
 
@@ -252,10 +251,10 @@ Table~\ref{tab:Q10-ans} shows the result of the question asking ``how
 did you learn MPI.'' It is a bit surprising that 40\% (323/825) of
 participants refer to the MPI standard. According to the original
 data (omitted due to the space limit), one quarter of participants
-learn MPI via the internet and/or online documents.
+learned MPI via the internet and/or online documents.
 
 The result of the question asking ``How do you check MPI
-specifications when writing MPI programs'' show in
+specifications when writing MPI programs'' is shown in
 Table~\ref{tab:Q14-ans}. More than half of participants refer to the
 MPI standard. It is very natural for MPI users to check MPI
 specification by referring the MPI standard more often than reading it
@@ -264,12 +263,12 @@ online documents and/or referring the internet occupies 46\% (original
 data).
 
 Referring Table~\ref{tab:Q16-ans} and \ref{tab:Q17-ans}, the MPI
-features can be categorized into two groups; well-known ones (P2P,
+features can be categorized into two groups: well-known ones (P2P,
 Collectives, and so on) and little-known ones (PMPI, Persistent and
-Dynamic process). Surprisingly this tendency is almost independent
-from countries/regions of the participants
-(Figure\ref{fig:Q17} showing the percentages of answers over the
-countries/regions having more than 50 answers).
+Dynamic process). Surprisingly, this tendency is almost independent
+from countries/regions of the participants.
+(Figure \ref{fig:Q17} shows the percentages of answers over the
+countries/regions having more than 50 answers.)
 
 \comment{
 Table~\ref{tab:Q16-ans} shows the answers of the question asking
@@ -348,15 +347,15 @@ other & 11 (0.6\%) \\%
 \section{MPI users do not use the state-of-the-art API}
 
 Among the lesser-known MPI features, the persistent communication is
-one of the important directions being discussed in MPI Forum\cite{mpi-forum}.
-The persistent communication can give implementors a room for
-optimization not only P2P but also collective communication
+one of the important directions being discussed on the MPI Forum\cite{mpi-forum}.
+The persistent communication can give implementors room for
+optimizing not only P2P but also collective communication
 performance.
 All those little-known MPI features already appeared in MPI 2.2
 released in 2009. Despite the 10-year appearance, those features
-are failed to get widely accepted.  Why?
+fail to be widely accepted.  Why?
 
-One possible answer for this question may come from the survey results
+One possible answer to this question may come from the survey results
 asking participants ``how did you learn MPI''
 (Table~\ref{tab:Q10-ans}) and ``how do you check
 MPI specifications when you are writing MPI programs''
@@ -366,17 +365,17 @@ and/or online documents. These are handy and allow users to get
 required information on the fly. However,
 these online medias can only be retrieved by
 search. To search something, a clue or some keywords must be given.
-Someone wants to search something he/she does not know, how can he/she
+Say someone wants to search something he/she does not know; how can he/she
 find the appropriate key words to obtain the right information?
-There can be responsibility of the information providers. For example,
+This could be the responsibility of the information providers. For example,
 there is no {\tt See Also} link from the man page of {\tt MPI\_Irecv}
 to the corresponding persistent routines in many MPI implementations.
 
-Contrastingly traditional medias such as books, lectures, and tutorials can be
+Contrastingly, traditional medias such as books, lectures, and tutorials can be
 systematic and complete, but not handy.  Once you learned MPI via some
 of those traditional medias, you may think that you already know
-MPI. Unfortunately the MPI standard is being updated by MPI Forum. It is
-very hard to keep your MPI knowledge up-to-date, especially MPI is not
+MPI. Unfortunately, the MPI standard is being updated by MPI Forum. It is
+very hard to keep your MPI knowledge up-to-date, especially if MPI is not
 your major concern.
 
 The other point we noticed is that many people who chose the ``other''
@@ -385,19 +384,19 @@ answer to the question asking ``how did you learn MPI'' said
 engineering''(!),  and so on. Taking a look at existing code found on
 internet might be the way of learning programing nowadays. However,
 the underlying rationale of every MPI feature is never simpler than
-any other sequential programs. It is very likely for the novice
-programmers writing MPI programs in this way to fall into pitfalls.
+any other sequential program. It is very likely that novice
+programmers writing MPI programs in this way encounter difficulties.
 
 \section{Summary and Future Work}
 
 This large-scale international MPI survey reveals an uneven perception of the
 MPI features, and a slow adoption of novel MPI capabilities.
 %
-Based on the survey our hypothesis is that due to the large impact of online
+Based on the survey, our hypothesis is that due to the large impact of online
 sources, new features have a slow propagation time from the MPI standard to
 the first page of a Google search. If this unevenness is not addressed by the MPI
 Forum itself, most new MPI features will continue to have a slow adoption, and
-will have their usefulness limited to only a niche community.
+their usefulness will be limited to only niche communities.
 % As the result of conducting an international, large-scale MPI survey,
 % it is revealed that the uneven perception in the MPI features.
 % Our hypothesis of this unevenness based on the survey results
@@ -406,8 +405,8 @@ will have their usefulness limited to only a niche community.
 % introduced by MPI Forum might also have a slow adoption by the user community.
 % This can ruin the large effort of MPI Forum.
 
-As contributions from some countries known to be early and eagerly HPC adopters
-are below the necessary threshold to make accurate and constructive
+As contributions from some countries known to be early and eager HPC adopters
+are below the necessary threshold for us to make accurate and constructive
 conclusions, we decided to publish intermediary results and leave the
 survey open until we got a representative number of answers from most countries.
 %
