@@ -18,6 +18,7 @@ TEMPLATES = $(TMPDIR)/SIMPLE.template \
 	$(TMPDIR)/OTHER.template \
 	$(TMPDIR)/CROSS.template
 CHAPS = $(shell ls chaps/*.tex)
+DISCUSS = $(shell ls discuss/*.tex)
 
 PDF    = $(TARGET).pdf
 
@@ -47,7 +48,7 @@ $(OUTPUT) : $(PROG) $(CSVS)
 $(TEMPLATE) : $(TEMPLATES)
 	./template.sh
 
-$(PDF) : $(CHAPS) $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) questionnaire.tex Makefile
+$(PDF) : $(CHAPS) ${DISCUSS} $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) questionnaire.tex Makefile
 	$(LATEX) $(TARGET);
 	bibtex $(TARGET);
 	$(LATEX) $(TARGET);
