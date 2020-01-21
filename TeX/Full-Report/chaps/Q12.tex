@@ -18,16 +18,21 @@
 \end{center}
 \end{figure}
 
+Looking at Table~\ref{tab:Q12-ans} from the perspective of the origin of the MPI
+implementation, either public domain or proprietary (vendor) provided MPI, we can
+notice that about 60\% of the answers are using open source MPI
+implementations (Open MPI, MPICH and MVAPICH), not provided by a
+vendor.
+
 Looking more precisely at the 27 other MPI implementations specifically
 mentioned in the answers, points to the expected dichotomy of vendor's imposed
 or delivered MPI implementations, as well as to some lesser known MPI
 implementations with an existing, but usually geographically constrained user
-base, such as MadMPI with 4 mentions only in Europe:France and ParaStation~MPI
-with 10 mentions only in Europe:Germany. Out of them only one MPI implementation
-stands out with a more international user base, SGI MPI with 5 total mentions,
-all across the world. Finally, for the sake of completeness it should be noted
-that some MPI implementations were mentioned at least once (Sun~MPI,
-Adaptive~MPI, PGI~MPI, Platform~MPI) as well as a Python API for MPI (mpi4py).
+base. For more information regarding geographical distribution of MPI
+implementations, see Section~\ref{sec:disc:impl}.
+For the sake of completeness it should be noted that some MPI implementations
+were mentioned at least once (Sun~MPI, Adaptive~MPI, PGI~MPI, Platform~MPI) as
+well as a Python API for MPI (mpi4py).
 
 % \mycomment[AH]{I do not think they are geographically constrained, but
 % vendors force users to use their MPI. For example, BG/* users have no
@@ -35,17 +40,6 @@ Adaptive~MPI, PGI~MPI, Platform~MPI) as well as a Python API for MPI (mpi4py).
 
 % \mycomment[AH]{It would be nice to categorize MPI implementations into
 % two; proprietary (vendor) MPI and public domain MPI}.
-
-Looking at this list from the perspective of the origin of the MPI
-implementation, either public domain or proprietary (vendor) provided MPI we can
-notice that about 60\% of the answers are using open source MPI
-implementations (Open MPI, MPICH and MVAPICH)  not provided by a
-vendor. 
-
-In all countries and regions, Open MPI, Inel MPI and MPICH dominate
-more than 60\%. Intel MPI is the most widely used vendor provided MPI
-implementation. Cray MPI dominates around 10\% in most countries and
-regions though, Fujistu MPI dominates more than Cray MPI in Japan.
 
 In Table~\ref{tab:Q12-mans}, Open MPI is the most frequently used MPI
 implementation in the standalone way.  Although the K computer and its
