@@ -1,3 +1,241 @@
 \section{MPI Features}
 
-(Atsushi)
+Table~\ref{tab:Q10-ans}, \ref{tab:Q14-ans}, \ref{tab:Q16-ans}, and
+\ref{tab:Q17-ans} show the answer distribution for 4 questions out of
+30. Note that the numbers in these tables reflect that these questions
+allow participants to choose multiple answers. 
+The actual number of participants who answered
+each question is noted after the slash (/) of the total number
+at the end of each table.
+
+\begin{table}[htb]%
+\begin{center}%
+\caption{How did you learn MPI?}%
+\label{tab:Q10-ans}%
+\begin{tabular}[t]{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+Other lectures or tutorials & 436 (23.8\%) \\%
+Articles found on Internet & 430 (23.4\%) \\%
+MPI standard docs & 323 (17.6\%) \\%
+Lecture(s) at school & 292 (15.9\%) \\%
+Book(s) & 277 (15.1\%) \\%
+Never learned MPI & 26 (1.4\%) \\%
+other & 50 (2.7\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 1834 / 825 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}
+
+\begin{table}[htb]%
+\begin{center}%
+\caption{How do you check MPI specifications when you are writing MPI programs?}%
+\label{tab:Q14-ans}%
+\begin{tabular}[t]{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+Online docs. & 570 (30.1\%) \\%
+Internet & 560 (29.6\%) \\%
+MPI standard docs. & 424 (22.4\%) \\%
+I ask colleagues & 185 (9.8\%) \\%
+I read book(s) & 102 (5.4\%) \\%
+I know all MPI routines & 43 (2.3\%) \\%
+other & 11 (0.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 1895 /824 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}
+
+
+\begin{table}[htb]%
+\begin{center}
+\caption{Which MPI features have you never heard of?}%
+\label{tab:Q16-ans}%
+\begin{tabular}[t]{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+PMPI interface & 457 (24.5\%) \\%
+Persistent comm. & 423 (22.7\%) \\%
+Dynamic process creation & 380 (20.4\%) \\%
+One-sided comm. & 128 (6.9\%) \\%
+Communicator operations & 123 (6.6\%) \\%
+MPI datatypes & 90 (4.8\%) \\%
+Point-to-point comm. & 89 (4.8\%) \\%
+Collective comm. & 86 (4.6\%) \\%
+w/ OpenMP (multithread) & 86 (4.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 1,862 / 691 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}
+
+\begin{table}[htb]%
+\begin{center}
+\caption{What aspects of the MPI standard do you use in your program in its current form?}%
+\label{tab:Q17-ans}%
+\begin{tabular}[t]{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+Collective comm. & 729 (22.5\%) \\%
+Point-to-point comm. & 701 (21.6\%) \\%
+MPI datatypes & 512 (15.8\%) \\%
+w/ OpenMP (multithread) & 472 (14.6\%) \\%
+Communicator operations & 406 (12.5\%) \\%
+One-sided comm. & 223 (6.9\%) \\%
+PMPI interface & 66 (2.0\%) \\%
+Persistent comm. & 61 (1.9\%) \\%
+Dynamic process creation & 50 (1.5\%) \\%
+other & 20 (0.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 3,240 / 813 \\%
+\hline%
+\end{tabular}%
+\end{center}
+\end{table}
+
+Table~\ref{tab:Q10-ans} shows the result of the question asking ``how
+did you learn MPI.'' It is a bit surprising that 40\% (323/825) of
+participants refer to the MPI standard. According to the original
+data (omitted due to the space limit), one quarter of participants
+learned MPI via the internet and/or online documents.
+
+The result of the question asking ``How do you check MPI
+specifications when writing MPI programs'' is shown in
+Table~\ref{tab:Q14-ans}. More than half of participants refer to the
+MPI standard. It is very natural for MPI users to check MPI
+specification by referring the MPI standard more often than reading it
+for learning. Most notably, the percentage of participants reading
+online documents and/or referring the internet occupies 46\% (original
+data).
+
+Referring Table~\ref{tab:Q16-ans} and \ref{tab:Q17-ans}, the MPI
+features can be categorized into two groups: well-known ones (P2P,
+Collectives, and so on) and little-known ones (PMPI, Persistent and
+Dynamic process). Surprisingly, this tendency is almost independent
+from countries/regions of the participants.
+(Figure \ref{fig:Q17} shows the percentages of answers over the
+countries/regions having more than 50 answers.)
+
+\comment{
+Table~\ref{tab:Q16-ans} shows the answers of the question asking
+``which MPI features have you never heard of?'' The answers of ``PMPI
+interface,'' and ``Persistent communication,'' and ``Dynamic process
+creation'' occupies almost 70\%.  The percentage of participants chose
+one or some of them is 64\%.
+Table~\ref{tab:Q17-ans} shows the answers of the question asking
+``what aspects of the MPI standard do you use in your program in its
+current form?'' This question asks the MPI features used by
+participants, not if they know or not. Again, there are large gap
+between those three features and the other features.
+All those features was already standardized in MPI 2.2 which was
+release in 2009. Despite the 10-year appearance, those features are
+not well-known.
+It is very interesting that the regional differences of the question
+asking using MPI aspects over the
+countries and regions having more
+than 50 answers
+(Table~\ref{tab:Q17-ans}) are very small as shown in
+Figure~\ref{fig:Q17}.
+}
+
+\begin{figure}[htb]
+\begin{minipage}{0.8\hsize}
+\begin{center}
+\includegraphics[width=7cm]{../pdfs/Q17.pdf}
+\vspace{-10mm}
+\caption{What aspects of the MPI standard do you use in your program in its current form?}%
+\label{fig:Q17}
+\end{center}
+\end{minipage}
+\end{figure}
+
+\comment{
+On the question asking ``how did you learn MPI?,'' one quater of
+participants answered ``internet,'' ``not learned,'' and ``other.'' Many
+participants who chose ``other'' said ``learned from existing
+code,''  ``learned by doing,'' etc.
+\comment{Table~\ref{tab:Q14-ans} shows the result of asking ``how do you check
+MPI specifications when you are writing MPI programs?'' }
+When we ask ``how do you check
+MPI specifications when you are writing MPI programs?,'' 45\% of
+participants chose the answers only from ``Online Docs,''
+``Internet,'' and ``Asking colleagues.''
+30\% of participants chose ``too many routines,'' ``too complicated,''
+and/or ``I have nobody to ask,'' when the question ``what are your
+obstacles to mastering MPI?'' was given.
+}
+\comment{
+\begin{table}[htb]%
+\begin{center}%
+\small
+\caption{How do you check MPI specifications when you are writing MPI programs?}%
+\label{tab:Q14-ans}%
+\begin{tabular}{l|r}%
+\hline%
+Multiple Choice & \# Answers \\%
+\hline%
+{\small I read online documents (such as man pages).} & 570 (30.1\%) \\%
+{\small I search the Internet} & 560 (29.6\%) \\%
+{\small I read the MPI Standard document}  & 424 (22.4\%) \\%
+I ask colleagues. & 185 (9.8\%) \\%
+{\small I read book(s) (except the MPI standard).} & 102 (5.4\%) \\%
+I know almost all MPI routines. & 43 (2.3\%) \\%
+other & 11 (0.6\%) \\%
+\hline%
+\multicolumn{1}{c}{total} & 1,895 / 824 \\%
+\hline%
+\end{tabular}%
+\end{center}%
+\end{table}%
+}
+
+Among the lesser-known MPI features, the persistent communication is
+one of the important directions being discussed on the MPI Forum\cite{mpi-forum}.
+The persistent communication can give implementors room for
+optimizing not only P2P but also collective communication
+performance.
+All those little-known MPI features already appeared in MPI 2.2
+released in 2009. Despite the 10-year appearance, those features
+fail to be widely accepted.  Why?
+
+One possible answer to this question may come from the survey results
+asking participants ``how did you learn MPI''
+(Table~\ref{tab:Q10-ans}) and ``how do you check
+MPI specifications when you are writing MPI programs''
+(Table~\ref{tab:Q14-ans}).
+Here a significant number of participants refer to the internet
+and/or online documents. These are handy and allow users to get
+required information on the fly. However,
+these online medias can only be retrieved by
+search. To search something, a clue or some keywords must be given.
+Say someone wants to search something he/she does not know; how can he/she
+find the appropriate key words to obtain the right information?
+This could be the responsibility of the information providers. For example,
+there is no {\tt See Also} link from the man page of {\tt MPI\_Irecv}
+to the corresponding persistent routines in many MPI implementations.
+
+Contrastingly, traditional medias such as books, lectures, and tutorials can be
+systematic and complete, but not handy.  Once you learned MPI via some
+of those traditional medias, you may think that you already know
+MPI. Unfortunately, the MPI standard is being updated by MPI Forum. It is
+very hard to keep your MPI knowledge up-to-date, especially if MPI is not
+your major concern.
+
+The other point we noticed is that many people who chose the ``other''
+answer to the question asking ``how did you learn MPI'' said
+``reading existing code,'' ``learn by doing,'' ``reverse
+engineering''(!),  and so on. Taking a look at existing code found on
+internet might be the way of learning programing nowadays. However,
+the underlying rationale of every MPI feature is never simpler than
+any other sequential program. It is very likely that novice
+programmers writing MPI programs in this way encounter difficulties.
+

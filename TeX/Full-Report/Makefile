@@ -56,7 +56,7 @@ $(PDF) : $(CHAPS) ${DISCUSS} $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) quest
 	grep -e $(LATEX) -e "LaTeX\ Warning" -e "Package\ natbib\ Warning" -e "undefined" -e "multiply\ defined" $(TARGET).log;
 
 clean:
-	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *~ *.dvi
+	rm -f $(PDF) *.bbl *.blg *.out *.aux *.toc *.tdo *.log *~ *.dvi
 
 veryclean: clean
 	rm -f $(PDF) ../inputs/Q*.tex ../pdfs/Q*.pdf \
