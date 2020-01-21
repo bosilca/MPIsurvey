@@ -1,3 +1,92 @@
 \section{Thread Support}
 
-(Emmanuel)
+The survey asked different questions about MPI and threads.
+
+
+Questions 16 (``which MPI features have you never heard of?'') and 17 (``what
+aspects of the MPI standard do you use in your program in its current form?'')
+reveal that onl 12\% of the respondent (86/692) have never heard about
+MPI+OpenMP or multithreading and that 58\% of the respondents are using
+multithreading or OpenMP in their program.
+
+
+Question 18 was about the thread support that is used in the MPI applications
+of the respondent.  
+
+\input{../inputs/Q18-ans}
+
+The support of multi-threading in MPI is done in different ways (MPI\_THREAD\_SINGLE
+MPI\_THREAD\_FUNNELED, MPI\_THREAD\_SERIALIZED, MPI\_THREAD\_MULTIPLE, in order of
+decreasing semantic restriction and often decreasing performance). The most used options (42.5\%) are either
+MPI\_THREAD\_SINGLE or MPI\_THREAD\_MULTIPLE which are the at the two ends of the
+spectrum in terms of thread support. This means that  most users either want a full support or a
+limited support. This could also mean that intermediate thread support which can
+offer a different trade-off between performance and semantic, requires more effort to be
+implemented efficiently within a program. Moreover, almost 37.1\% of the answers
+show no usage of thread
+support in their program. Region-wise (see Fig.~\ref{fig:Q18}), we see that in the USA, thread support is more used
+than in other regions and the most used option is MPI\_THREAD\_MULTIPLE which is
+the least restrictive option. 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm]{../pdfs/Q18.pdf}
+\caption{Simple analysis: Q18}
+\label{fig:Q18}
+\end{center}
+\end{figure}
+
+
+However, this question is a multi-answer question. We can see the distribution
+of the different answers among the respondent in Table~\ref{tab:Q18-mans}. If we
+remove inconsistent answers (such as ``SINGLE'' and ``Never used'') we  have 806
+consitent responders. Among them, the 
+number of participants who answered ``I have never called
+MPI\_INIT\_THREAD'' or ``I do not know or I do not care'' dominates
+close to 49\% (394/806).  In the rest of the half, the
+number of specifying one of the thread level and the number of
+specifying two or more of them are comparable. 
+
+
+\input{../inputs/Q18-mans}
+
+
+Another question is related to hybrid programming (Q22 : Have you ever written
+MPI+X programs?).  This is also a mutli-answer question related to hybrid
+programming which often involves threading (e.g. OpenMP). 
+
+\input{../inputs/Q22-ans}
+
+
+According to table~\ref{tab:q22-ans} only a small fraction (15\%) of the usage
+of  MPI do not imply  any other parallel programming language/model. The language
+or API the most used with MPI is OpenMP (44\%) followed by CUDA
+(17\%). As it is a multi-answer question, we see from table~\ref{tab:q22-mans}
+that  only 23\% (190/815) of the respondents have never written an MPI program
+without any other programming language or model. 
+
+\input{../inputs/Q22-mans}
+
+Related to thread support for computing (not taking into account CUDA or
+OpenCL which mostly use thread at the MPI level for managing data), we see that a
+majority of the usages (OpenMP, Pthread, etc.)  implies threading at some point.
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm]{../pdfs/Q22.pdf}
+\caption{Simple analysis: Q22}
+\label{fig:Q22}
+\end{center}
+\end{figure}
+
+If we look at the answers in terms of region (fig~\ref{fig:Q22}), we see that In
+general, around 40\% of all countries/regions exhibit an MPI usage with OpenMP. The
+hybrid technique is very common.  It is interesting that the percentage of 'no'
+answer in the US is the smallest.
+
+In conclusion, it appears that in the majority of the cases, MPI and threads are
+often used conjointly.  This is not very surprising as, with the advent of
+multi-core nodes, many programs use less MPI processes than cores and these
+processes are then multithreaded. Hence, due to this importance it is necessary
+that MPI continue and extend its support to multithreaded and hybrid programming.
