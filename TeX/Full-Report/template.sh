@@ -9,17 +9,17 @@ DEBUG=0
 
 mkdir -p ${CHAPDIR}
 
-function create_template() {
+create_template() {
     template=${TMPDIR}/$1
     tmpfile=${TMPDIR}/$2.tex;
     texfile=${CHAPDIR}/$2.tex;
     sed s/QX/${q}/ < $template > ${tmpfile};
     if [ -f $texfile ] ; then
 	echo "$texfile exists. Copy $tmpfile file, if needed.";
-    else 
+    else
 	if [ ${DEBUG} -gt 0 ] ; then
 	    echo "cp $tmpfile $texfile";
-	else 
+	else
 	    cp $tmpfile $texfile;
 	fi
     fi
@@ -42,7 +42,7 @@ mlist="4 7 8 10 11 12 14 16 17 18 19 22 24 26 27"
 
 for s0 in ${slist}; do
     for s1 in $(seq 1 29); do
-	if [ ${s1} -gt ${s0} ] ; then 
+	if [ ${s1} -gt ${s0} ] ; then
 	    q=Q${s0}-Q${s1};
 	    create_template CROSS.template $q;
 	fi
@@ -51,12 +51,11 @@ done
 
 for s0 in ${mlist}; do
     for s1 in ${slist}; do
-	if [ ${s1} -gt ${s0} ] ; then 
+	if [ ${s1} -gt ${s0} ] ; then
 	    q=Q${s0}-Q${s1};
-	    if [ ${s1} -gt ${s0} ] ; then 
+	    if [ ${s1} -gt ${s0} ] ; then
 		create_template CROSS.template $q;
 	    fi
 	fi
     done
 done
- 
