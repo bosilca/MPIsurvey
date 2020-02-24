@@ -48,7 +48,7 @@ $(OUTPUT) : $(PROG) $(CSVS)
 $(TEMPLATE) : $(TEMPLATES)
 	./template.sh
 
-$(PDF) : $(CHAPS) ${DISCUSS} $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) questionnaire.tex Makefile
+$(PDF) : $(CHAPS) $(DISCUSS) $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) $(CSVS) questionnaire.tex Makefile
 	$(LATEX) $(TARGET);
 	bibtex $(TARGET);
 	$(LATEX) $(TARGET);

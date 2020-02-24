@@ -710,6 +710,10 @@ if not flag_timeseries and  not flag_tex and \
                 flag_break = True
                 break
 
+if args.csv_in is [] :
+    print( "ERROR: CSV filename(s) must be given" )
+    exit( 1 )
+
 csv_in = args.csv_in.pop(0)
 df = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
 df = normalize_df( df )
