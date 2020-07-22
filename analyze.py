@@ -1048,19 +1048,22 @@ def graph_time_series( df ) :
     if csv_outdir != '' :
         dc_etc.to_csv( csv_outdir + 'timeline.csv' )
 
-    ax.xaxis.set_major_locator( mdates.DayLocator(interval=10) )
-    ax.xaxis.set_major_formatter( mdates.DateFormatter("%d") )
-    ax.tick_params( axis="x", which="major", labelsize=11 )
+#    ax.xaxis.set_major_locator( mdates.DayLocator(interval=100) )
+#    ax.xaxis.set_major_formatter( mdates.DateFormatter("%d") )
+#    ax.tick_params( axis="x", which="major", labelsize=11 )
     
-    ax.xaxis.set_minor_locator(mdates.MonthLocator(interval=1))
-    ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
+#    ax.xaxis.set_minor_locator(mdates.MonthLocator(interval=1))
+#    ax.xaxis.set_minor_formatter(mdates.DateFormatter("%b"))
+#    ax.tick_params( axis="x", which="minor", labelsize=10, length=15, width=1 )
+    ax.xaxis.set_minor_locator(mdates.MonthLocator(interval=2))
+    ax.xaxis.set_minor_formatter(mdates.DateFormatter("%y-%b"))
     ax.tick_params( axis="x", which="minor", labelsize=10, length=15, width=1 )
 
-    ax.set_xlabel( "Date", size = 11 )
-    ax.set_ylabel( "# Answers", size = 11 )
+    ax.set_xlabel( "Time", size = 11 )
+    ax.set_ylabel( "# Participants", size = 11 )
 
     #plt.subplots_adjust( right=0.68 )
-    plt.legend( loc="upper left" )
+    plt.legend( loc="lower right" )
 
     if flag_show_event :
         for event in event_list :
