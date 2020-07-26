@@ -63,11 +63,11 @@
 \section{Abstract}
 
 The Message Passing Interface (MPI) plays a critical part in the
-parallel computing 
-ecosystem, a driving force behind many of the high-performance
-computing (HPC) successes. To maintain its relevance to the user
-community---and in particular to the HPC community at large---we need
-to identify and understand the MPI users' expectations and concerns. 
+parallel computing ecosystem, a driving force behind many of the
+high-performance computing (HPC) successes. To maintain its relevance
+to the user community---and in particular to the growing HPC community
+at large---the MPI standard needs to identify and understand the MPI
+users' expectations and concerns, and adapt accordingly.
 
 %
 Existing studies on MPI uses are focused on a restricted target domain,
@@ -81,13 +81,14 @@ constrained to a single laboratory, funding agency or at best, country.
 %applications~\cite{osti_1462877}.
 %
 Such studies inspired us to conduct a larger study, not focused on
-high-end HPC, but
-targeting a wider audience and involving a larger spectrum of geographically
-distinct users. Since MPI has been a widely used vehicle for high-performance
-computing for decades, this larger-scale questionnaire survey would be
-beneficial not only for deciding the future direction of MPI, but also the
-feature differences of MPI users among countries and/or regions of the world.
-% Our survey is both internation and targets novice to expert
+high-end HPC, but targeting a wider audience and involving a larger
+spectrum of geographically distinct users. Since MPI has been a widely
+used vehicle for high-performance computing for decades, this
+larger-scale questionnaire survey would be beneficial not only for
+deciding the future direction of MPI, but also for understanding the
+feature differences of MPI users among countries and/or regions of the
+world.
+% Our survey is international and targets novice to expert
 % users, hoping to be a complement to the ECP survey.
 
 This survey was conducted from February to June 2019, and at the time of
@@ -97,12 +98,13 @@ This report, based the July 2020 results of the survey,
 focuses on the MPI users communities awareness of MPI features.
 % which MPI features MPI users know and which ones they do not.
 %
-This survey reveals the staggering fact that most MPI users use a small subset
-of the MPI API, a subset that mostly avoids features introduced after MPI 2.2,
-released in 2009, such as PMPI, dynamic process creation, and persistent
-communications. Further, the survey reveals that many MPI users learn MPI
-from the internet and/or some form of online documents, highlighting a shift in
-the education of the target community.
+This survey reveals the staggering fact that most MPI users make use
+of a small subset of the MPI API, a subset that mostly avoids features
+introduced after MPI 2.2, released in 2009, such as PMPI, dynamic
+process creation, and persistent communications. Further, the survey
+reveals that many MPI users learn MPI from the internet and/or some
+form of online documents, highlighting a shift in the education of the
+target community.
 %
 These two outcomes seem to suggest that many MPI users failed to receive the
 information about new MPI features because most internet sources are outdated
@@ -131,7 +133,7 @@ Rank & Country & \# Ans & Percent \\%
 4 & UK 		& 67  &  7.87 \\%
 5 & Japan 	& 64  &  7.52 \\%
 6 & USA 	& 58  &  6.82 \\%
-6 & Italy 	& 57  &  6.60 \\%
+7 & Italy 	& 57  &  6.60 \\%
 \hline
 8 & Switzerland & 40  &  5.76 \\%
 9 & South Korea & 27  &  3.17 \\%
@@ -155,13 +157,12 @@ Rank & Country & Perf. Share [\%] \\%
 2  & China 	  & 25.64 \\%
 3  & Japan 	  & 23.92 \\%
 4  & Italy	  & 3.95  \\%
-4  & France	  & 3.62  \\%
-5  & Germany 	  & 3.11  \\%
-6  & UK		  & 1.40  \\%
-7  & Canada	  & 1.27  \\%
-8  & Netherlands  & 1.12  \\%
-9  & Switzerland  & 1.05  \\%
-10 & Ireland	  & 1.05  \\%
+5  & France	  & 3.62  \\%
+6  & Germany 	  & 3.11  \\%
+7  & UK		  & 1.40  \\%
+8  & Canada	  & 1.27  \\%
+9  & Netherlands  & 1.12  \\%
+10  & Switzerland  & 1.05  \\%
 \hline%
 \end{tabular}%
 \end{center}%
@@ -172,27 +173,32 @@ Rank & Country & Perf. Share [\%] \\%
 42 countries, 851 participants\\%
 \end{table}%
 
-The points we kept in mind while we were designing the questions were: (a)
-minimizing the number of questions, (b) making them easy to answer,
-and (c) avoiding ambiguity. The 
-questionnaire is implemented by using firstly Google Forms and later Microsoft
-Forms, and distributed by sending emails to major mailing lists such as {\tt
-hpc-announce}. All data, a Python program to analyze the answers, and all
-reports published so far (including this one) are available on
+The points we kept in mind while designing the survey's questions
+were: (a) minimizing the number of questions, (b) making them easy to
+answer, and (c) avoiding ambiguity. The questionnaire is implemented
+by using firstly Google Forms and later Microsoft Forms, and
+distributed via emails to major mailing lists such as {\tt
+  hpc-announce} and by personal contact to diverse academic and
+governmental institutions and vendors. All data, a Python program to
+analyze the answers, and all reports published so far (including this
+one) are available on
 GITHUB.\footnote{\url{https://github.com/bosilca/MPIsurvey.git}}
 
 Table~\ref{tab:countries} shows the number of answers from top-10 countries. It
 should be noted that the survey does not ask participants nationality, but
 instead ask the most recent (last 5 years) country of employment.
 
-Table~\ref{tab:top500-share} shows the aggregated system performance for
-each countries as of June 2020. Comparing this and
-Table~\ref{tab:countries}, it turns out that there is a big disparity
-between them. Especially China has only 18 including two Taiwan
-participants. We noticed this immediately after publishing the survey
-and we have been trying to narrow the gap, but the effort was not
-rewarded. It ends up with 65\% from Europe, 15\% from Asia, 11\%
-from Russia, and 7\% from north America.
+Table~\ref{tab:top500-share} shows the top-10 aggregated system
+performance per country as of June 2020. Comparing with
+Table~\ref{tab:countries} highlights a big disparity, possibly related
+to the number of users or to their dedication of answering an online
+survey. In particular it can be noted that only 18 participants from
+Chinese institutions answered. We noticed this immediately after
+publishing the survey and we have been trying to narrow the gap, but
+our efforts were unfortunately not able to change the trend. Overall,
+if aggregating the answers geographically, we currently have 65\% of
+answers from Europe, 15\% from Asia, 11\% from Russia, and 7\% from
+North America.
 
 The countries having more than 50 participants (above the line in
 Table~\ref{tab:countries}) are the target of cross-tab analysis. One
@@ -240,16 +246,16 @@ readers must keep this in mind when considering the background.
 
 Figure~\ref{fig:Q12} shows the result of multiple answer question
 asking ``Which MPI implementations do you use?'' Note that the order
-in the legend and the orders of bars are reverssed. 
-With respect to geographical distribution of MPI implementations,
-several patterns stand out. In all countries and regions, Open MPI
-(denited as 'OMP'),
-Intel MPI ('Intel') and MPICH dominate more than 60\%. Intel MPI is
+in the legend and the orders of bars are reversed. 
+With respect to the geographical distribution of MPI implementations,
+several patterns stand out. In all countries and regions, Open~MPI
+(denoted as 'OMPI'),
+Intel~MPI ('Intel') and MPICH dominate more than 60\%. Intel~MPI is
 the most 
 widely used vendor provided MPI implementation all over the
-world. Cray MPI ('Cray') dominates around 10\% in most countries and
-regions. From the less dominant vendors, Fujitsu MPI ('Fujitsu')
-enjoys wider usage than Cray MPI in Japan, while IBM has visible
+world. Cray~MPI ('Cray') dominates around 10\% in most countries and
+regions. From the less dominant vendors, Fujitsu~MPI ('Fujitsu')
+enjoys wider usage than Cray~MPI in Japan, while IBM has visible
 presence in both Europe and the US. 
 On the other end of the spectrum are research oriented
 implementations, such as MadMPI with only a few mentions in
@@ -276,18 +282,34 @@ on their preferences than the other countries.
 \end{center}
 \end{figure}
 
-Figure~\ref{fig:Q3-Q18} shows another heatmap of two questions;
-``Rate your MPI programming skill'' and ``Which MPI thread support are
-you using?'' France, Germany and UK show the very similar and
-reasonable results, the most users declared 5 (higher the number,
-higher the skill) specify MPI thread levels and the most novice users
-have never used the threading support. The US users exhibit very
-differently. Higher percentage of users use {\tt
-  MPI\_THREAD\_MULTIPLE} and {MPI\_THERAD\_SINGLE}. Most
-interestingly Japan exhibits a very curious result. Most Japanese
-users declared high MPI skill (5), however, most of them do not
-use MPI threading support. This Japanese anomaly is discussed
-in \cite{swopp2019}.
+Figure~\ref{fig:Q3-Q18} shows another heatmap of two questions; ``Rate
+your MPI programming skill'' (X axis) and ``Which MPI thread support
+are you using?'' (Y axis).
+%
+France, Germany and UK show a very similar and expected outcome, the
+highest users programming skills the more they were tending to use a
+more complex programming approach, where threading is an integral part
+of the software stack.
+% most users declared 5 (higher the number, higher the skill) specify
+% MPI thread levels and the most novice users have never used the
+% threading support.
+The US users exhibit a very differently behavior. Most users seem to
+favor the two extremes of the MPI threading support, either {\tt
+  MPI\_THREAD\_MULTIPLE} or {MPI\_THERAD\_SINGLE}, irrelevant of their
+programming skills.
+%
+\todo[inline]{The difference here might be due not directly to MPI as
+a programming paradigm but to the libraries these users are running
+and to their approach to HPC in general. We can't really say this but
+having worked on both sides, I realize that in Europe the tendency is
+toward small, focused projects, with a clear life expectancy and
+little change for a perenial existence. This is the exactly opposite to
+US, where the major efforts are going toward software re-usability.}
+%
+Most interestingly Japan exhibits a very
+curious result. Most Japanese users declared high MPI programming skills (5),
+however, most of them do not use MPI threading support. This Japanese
+anomaly is discussed in~\cite{swopp2019}.
 
 \subsection{MPI Functions}
 
@@ -405,9 +427,10 @@ other & 20 (2.4\%) \\%
 \end{center}%
 \end{table*}%
 
-Table~\ref{tab:Q10-ans} shows the result of the question asking ``how
+Table~\ref{tab:Q10-ans} shows the result of the question asking ``How
 did you learn MPI.'' It is a bit surprising that 40\% (323/825) of
-participants refer to the MPI standard. According to the original
+participants refer to the MPI standard, despite it's lack of examples
+to walk-through. According to the original
 data (omitted due to the space limit), one quarter of participants
 learned MPI via the internet and/or online documents.
 
@@ -494,10 +517,11 @@ survey is much higher than that of the ECP survey.
 
 \section{Summary and Future Work}
 
-This large-scale international MPI survey reveals an uneven perception of the
-MPI features, and a slow adoption of novel MPI capabilities. Due to
-the page limit, some interesting results of our survey are shown. We
-will publish more results in the future.
+This large-scale international MPI survey reveals an uneven perception
+of the MPI features, and a slow adoption of novel MPI
+capabilities. Due to the page limit, only few of some of the most
+interesting results of our survey are shown. We will publish more
+results in the future.
 
 %
 \comment{
@@ -522,7 +546,7 @@ communities. We especially thank to MPI Forum members who gave us many
 significant comments on the draft questionnaire.
 This research is partially supported by the
 NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
-Computing\cite{JLESC}.
+Computing~\cite{JLESC}.
 
 \bibliographystyle{acm}
 \bibliography{../ref}
