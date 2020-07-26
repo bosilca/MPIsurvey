@@ -835,9 +835,13 @@ for qno in qval_tab.keys() :
         dict_ans.setdefault( str(ans), 0 )
     tmp = df_whole[qno]
 
+    nn = 0
+
 #    print( 'tmp\n', tmp )
     if qno in multi_answer :
         for mans in tmp :
+            if len( mans ) > 0 :
+                nn = nn + 1
             list_ans = mans.split( ';' )
             for ans in list_ans :
                 if ans in legend.keys() :
@@ -848,12 +852,15 @@ for qno in qval_tab.keys() :
         for ans in tmp :
             if isinstance( ans, str ) :
                 if ans in legend.keys() :
+                    nn = nn + 1
                     dict_ans[legend[ans]] += 1
                 elif len( ans ) > 0 :
+                    nn = nn + 1
                     dict_ans['other'] += 1
 
 #    print( 'dict_ans\n', dict_ans )
     ser = pd.Series( data=dict_ans, dtype=float )
+
     sum = ser.sum()
     list_sum.append( sum )
     for i in range( ser.size ) :
@@ -882,7 +889,8 @@ for qno in qval_tab.keys() :
                 valstr = str( v )
                 skeystr = tex_conv( k )
                 lkeystr = tex_conv( get_long_ans_tex( qno, k ) )
-                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+#                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+                percent = str( round( ((v*100*100)/nn)/100, 1 ) )
                 tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
                                      valstr + ' (' + percent + '\%)' + \
                                      ' \\\\%\n')
@@ -894,7 +902,8 @@ for qno in qval_tab.keys() :
                 valstr = str( v )
                 skeystr = tex_conv( k )
                 lkeystr = tex_conv( get_long_ans_tex( qno, k ) )
-                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+#                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+                percent = str( round( ((v*100*100)/nn)/100, 1 ) )
                 tex_list.append( lkeystr + ' & ' + skeystr + ' & ' + \
                                      valstr + ' (' + percent + '\%)' + \
                                      ' \\\\%\n')
@@ -903,12 +912,17 @@ for qno in qval_tab.keys() :
             if dict_ans[key] > 0 :
                 v = dict_ans[key]
                 valstr = str( v )
-                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+#                percent = str( round( ((v*100*100)/sum)/100, 1 ) )
+                percent = str( round( ((v*100*100)/nn)/100, 1 ) )
                 tex_list.append( key + ' & - & ' + valstr + \
                                      ' (' + percent + '\%)' + \
                                      ' \\\\%\n')
         tex_list.append( '\\hline%\n' )
-        tex_list.append( '\multicolumn{2}{c}{total} & ' + str( sum ) + \
+        if qno in multi_answer :
+            tex_list.append( '\multicolumn{2}{c}{total} & ' + str( sum ) + \
+                             ' (' + str( nn ) + ')\\\\%\n' )
+        else :
+            tex_list.append( '\multicolumn{2}{c}{total} & ' + str( sum ) + \
                              ' \\\\%\n' )
         tex_list.append( '\\hline%\n' )
         tex_list.append( '\\end{tabular}%\n' )

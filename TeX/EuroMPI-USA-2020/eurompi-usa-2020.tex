@@ -44,7 +44,7 @@
 %\email{t-ogura@riken.jp}
 \author{Balazs Gerofi}
 %\email{bgerofi@riken.jp}
-\author{Yin Jie}
+\author{Jie Yin}
 %\email{jie.yin@riken.jp}
 \author{Yutaka Ishikawa}
 %\email{yutaka.ishikawa@riken.jp}
@@ -216,10 +216,10 @@ readers must keep this in mind when considering the background.
 \begin{center}%
 \begin{tabular}[t]{cc}
 
-\begin{minipage}{0.48\hsize}
+\begin{minipage}{0.45\hsize}
 \begin{center}
-\includegraphics[width=\hsize]{figs/Q12.pdf}
-\caption{Which MPI implementationss do you usse?}%
+\includegraphics[width=0.9\hsize]{figs/Q12-S.pdf}
+\caption{Which MPI implementations do you use?}%
 \label{fig:Q12}
 \end{center}
 \end{minipage}
@@ -265,8 +265,31 @@ corner. The numbers in the legend cells represent the
 percentage and darker color means higher percentage. USA has the most
 distributed MPI choices and more US users choose MPI implementations
 on their preferences than the other countries.
+  
+\subsection{Threading Support}
 
-\subsection{MPI Functionss}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=0.8\hsize]{figs/Q3-Q18.pdf}
+\caption{Cross-tab: MPI Skill and Thread Level}%
+\label{fig:Q3-Q18}
+\end{center}
+\end{figure}
+
+Figure~\ref{fig:Q3-Q18} shows another heatmap of two questions;
+``Rate your MPI programming skill'' and ``Which MPI thread support are
+you using?'' France, Germany and UK show the very similar and
+reasonable results, the most users declared 5 (higher the number,
+higher the skill) specify MPI thread levels and the most novice users
+have never used the threading support. The US users exhibit very
+differently. Higher percentage of users use {\tt
+  MPI\_THREAD\_MULTIPLE} and {MPI\_THERAD\_SINGLE}. Most
+interestingly Japan exhibits a very curious result. Most Japanese
+users declared high MPI skill (5), however, most of them do not
+use MPI threading support. This Japanese anomaly is discussed
+in \cite{swopp2019}.
+
+\subsection{MPI Functions}
 
 Table~\ref{tab:Q10-ans}, \ref{tab:Q14-ans}, \ref{tab:Q16-ans}, and
 \ref{tab:Q17-ans} show the answer distribution for 4 questions out of
@@ -290,15 +313,15 @@ at the end of each table.
 \hline%
 Multiple Choice & \# Answers \\%
 \hline%
-Articles found on Internet & 439 (23.6\%) \\%
-Other lectures or tutorials & 438 (23.5\%) \\%
-MPI standard docs & 329 (17.7\%) \\%
-Lecture(s) at school & 294 (15.8\%) \\%
-Book(s) & 283 (15.2\%) \\%
-Never learned MPI & 26 (1.4\%) \\%
-other & 51 (2.7\%) \\%
+Articles found on Internet & 439 (51.8\%) \\%
+Other lectures or tutorials & 438 (51.7\%) \\%
+MPI standard docs & 329 (38.8\%) \\%
+Lecture(s) at school & 294 (34.7\%) \\%
+Book(s) & 283 (33.4\%) \\%
+Never learned MPI & 26 (3.1\%) \\%
+other & 51 (6.0\%) \\%
 \hline%
-\multicolumn{1}{c}{total} & 1860 / 838 \\%
+\multicolumn{1}{c}{total} & 1860 / 847 \\%
 \hline%
 \end{tabular}%
 \end{center}%
@@ -313,15 +336,15 @@ other & 51 (2.7\%) \\%
 \hline%
 Multiple Choice & \# Answers \\%
 \hline%
-Online docs. & 579 (30.0\%) \\%
-Internet & 566 (29.4\%) \\%
-MPI standard docs. & 430 (22.3\%) \\%
-I ask colleagues & 188 (9.8\%) \\%
-I read book(s) & 108 (5.6\%) \\%
-I know all MPI routines & 46 (2.4\%) \\%
-other & 11 (0.6\%) \\%
+Online docs. & 579 (68.8\%) \\%
+Internet & 566 (67.2\%) \\%
+MPI standard docs. & 430 (51.1\%) \\%
+I ask colleagues & 188 (22.3\%) \\%
+I read book(s) & 108 (12.8\%) \\%
+I know all MPI routines & 46 (5.5\%) \\%
+other & 11 (1.3\%) \\%
 \hline%
-\multicolumn{1}{c}{total} & 1928 / 837 \\%
+\multicolumn{1}{c}{total} & 1928 / 842 \\%
 \hline%
 \end{tabular}%
 \end{center}%
@@ -336,15 +359,15 @@ other & 11 (0.6\%) \\%
 \hline%
 Multiple Choice & \# Answers \\%
 \hline%
-PMPI interface & 465 (24.6\%) \\%
-Persistent comm. & 433 (22.9\%) \\%
-Dynamic process creation & 383 (20.3\%) \\%
-One-sided comm. & 131 (6.9\%) \\%
-Communicator operations & 123 (6.5\%) \\%
-Point-to-point comm. & 91 (4.8\%) \\%
-MPI datatypes & 90 (4.8\%) \\%
-Collective comm. & 86 (4.6\%) \\%
-MPI w/ OpenMP & 86 (4.6\%) \\%
+PMPI interface & 465 (66.1\%) \\%
+Persistent comm. & 433 (61.5\%) \\%
+Dynamic process creation & 383 (54.4\%) \\%
+One-sided comm. & 131 (18.6\%) \\%
+Communicator operations & 123 (17.5\%) \\%
+Point-to-point comm. & 91 (12.9\%) \\%
+MPI datatypes & 90 (12.8\%) \\%
+Collective comm. & 86 (12.2\%) \\%
+MPI w/ OpenMP & 86 (12.2\%) \\%
 \hline%
 \multicolumn{1}{c}{total} & 1,888 / 704 \\%
 \hline%
@@ -361,18 +384,18 @@ MPI w/ OpenMP & 86 (4.6\%) \\%
 \hline%
 Multiple Choice & \# Answers \\%
 \hline%
-Collective comm. & 729 (22.5\%) \\%
-Point-to-point comm. & 701 (21.6\%) \\%
-MPI datatypes & 512 (15.8\%) \\%
-w/ OpenMP (multithread) & 472 (14.6\%) \\%
-Communicator operations & 406 (12.5\%) \\%
-One-sided comm. & 223 (6.9\%) \\%
-PMPI interface & 66 (2.0\%) \\%
-Persistent comm. & 61 (1.9\%) \\%
-Dynamic process creation & 50 (1.5\%) \\%
-other & 20 (0.6\%) \\%
+Collective comm. & 740 (89.0\%) \\%
+Point-to-point comm. & 710 (85.4\%) \\%
+MPI datatypes & 521 (62.7\%) \\%
+w/ OpenMP (multithread) & 478 (57.5\%) \\%
+Communicator operations & 412 (49.6\%) \\%
+One-sided comm. & 226 (27.2\%) \\%
+PMPI interface & 67 (8.1\%) \\%
+Persistent comm. & 61 (7.3\%) \\%
+Dynamic process creation & 51 (6.1\%) \\%
+other & 20 (2.4\%) \\%
 \hline%
-\multicolumn{1}{c}{total} & 3,240 / 813 \\%
+\multicolumn{1}{c}{total} & 3,240 / 831 \\%
 \hline%
 \end{tabular}%
 \end{center}
@@ -403,9 +426,9 @@ Collectives, and so on) and little-known ones (PMPI, Persistent and
 Dynamic process). Surprisingly, this tendency is almost independent
 from countries/regions of the participants.
 
-\begin{figure}[htb]
+\begin{figure}[bht]
 \begin{center}
-\includegraphics[width=7cm]{figs/Q17.pdf}
+\includegraphics[width=0.8\hsize]{figs/Q17-S.pdf}
 \caption{What aspects of the MPI standard do you use in your program in its current form?}%
 \label{fig:Q17}
 \end{center}
@@ -454,35 +477,28 @@ any other sequential program. It is very likely that novice
 programmers writing MPI programs in this way encounter difficulties.
 }
 
-\subsection{Threading Support}
-
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=7cm]{figs/Q3-Q18.pdf}
-\caption{Cross-tab: MPI Skill and Thread Level}%
-\label{fig:Q3-Q18}
-\end{center}
+\begin{figure}[htb]%
+  \begin{center}%
+   \includegraphics[width=0.8\hsize]{figs/ECP.pdf}
+    \caption{Comparison of the result of asking using MPI aspects
+      between ours and ECP}
+    \label{fig:ecp-comparison}
+  \end{center}
 \end{figure}
 
-Figure~\ref{fig:Q3-Q18} shows another heatmap of two questions;
-``Rate your MPI programming skill'' and ``Which MPI thread support are
-you using?'' France, Germany and UK show the very similar and
-reasonable results, the most users declared 5 (higher the number,
-higher the skill) specify MPI thread levels and the most novice users
-have never used the threading support. The US users exhibit very
-differently. Higher percentage of users use {\tt
-  MPI\_THREAD\_MULTIPLE} and {MPI\_THERAD\_SINGLE}. Most
-interestingly Japan exhibits a very curious result. Most Japanese
-users declared they have high MPI skill, however, most of them do not
-use MPI threading support. This Japanese anomaly is already discussed
-in \cite{swopp2019}.
-
+There is a similar question of asking using MPI aspects in the ECP
+survey. Figure~\ref{fig:ecp-comparison} compares the results of ours
+and ECP survey on the common MPI aspects. Trends of both survey are
+very similar excepting the usage of datatype. The percentage in our
+survey is much higher than that of the ECP survey. 
 
 \section{Summary and Future Work}
 
 This large-scale international MPI survey reveals an uneven perception of the
-MPI features, and a slow adoption of novel MPI capabilities. bla bla
-bla ...
+MPI features, and a slow adoption of novel MPI capabilities. Due to
+the page limit, some interesting results of our survey are shown. We
+will publish more results in the future.
+
 %
 \comment{
 Based on the survey, our hypothesis is that due to the large impact of online
