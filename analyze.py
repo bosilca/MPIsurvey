@@ -14,15 +14,20 @@ import os
 import sys
 import datetime
 import math
+import copy
 import pandas as pd
 from cycler import cycler
 import unicodedata
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib
+import matplotlib.pyplot as pyp
+from matplotlib import pylab as plt
 from matplotlib import dates as mdates
 from matplotlib.dates import date2num
 import seaborn as sns
 import argparse
+
+pd.set_option('display.max_rows', 500)
 
 DATE_FORMAT_MS = '%m/%d/%y' # mmddyy
 DATE_FORMAT_JP = '%Y/%m/%d' # YYmmdd
@@ -269,7 +274,7 @@ qval_tab = \
         'HPE MPI' : 'HPE',
         'Tianhe MPI' : 'Tianhe',
         'Sunway MPI' : 'Sunway',
-        'Fujistu MPI' : 'Fujistu',
+        'Fujistu MPI' : 'Fujitsu',
         'NEC MPI' : 'NEC',
         'MS MPI' : 'MS',
         'MPC MPI' : 'MPC',
@@ -437,8 +442,13 @@ sort_answer = [ 'Q1', 'Q4', 'Q7', 'Q8', 'Q11', 'Q12', 'Q13', 'Q14',
 print_other = [ 'Q4', 'Q7', 'Q8', 'Q10', 'Q11', 'Q12', 'Q14', 'Q17', 'Q19',
                 'Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27', 'Q28' ]
 
-color_list =  [ 'r', 'b', 'g', 'c', 'm', 'y', 'k' ]
-
+#color_list =  [ 'r', 'b', 'g', 'c', 'm', 'y', 'k' ]
+color_list = [ '#7e1e9c', '#15b01a', '#0343df', '#ff81c0', '#677a04',
+               '#d1b26f', '#00ffff', '#06470c', '#13eac9', '#ae7181',
+               '#ffff14', '#75bbfd', '#929591', '#c7fdb5', '#bf77f6',
+               '#9a0eea', '#033500', '#06c2ac', '#c79fef', '#00035b',
+	       '#35063e', '#01ff07', '#650021', '#6e750e', '#ff796c' ]
+               
 country_abbrv = { 'Multi-Answer' :	'mans',
                   'overall' : 		'overall',
                   'Europe:France' : 	'FR', 
@@ -730,11 +740,26 @@ if args.csv_in is not [] :
         df = pd.concat( [df, dfn] )
         df = df.reset_index(drop=True)
 
+# strip blank(s) of user input value (not choices)
+for clm in df.columns :
+    for idx in df.index :
+        val = df.at[idx,clm]
+        if isinstance(val,str) or isinstance(val,int) :
+            sv = ''
+            val = val.strip( ';' )
+            for v in val.split( ';' ) :
+                v = v.strip()
+                if sv == '' :
+                    sv = v
+                else :
+                    sv = sv + ';' + v
+            df.at[idx,clm] = sv
+        
 # shorten long (and wrong?) country names
 df.replace( [ 'United Kingdom', 
               'United States', 
-              'belgium', 
-              'United arab Emirates ' ], # he/she put a space at the end
+              'belgium',
+              'United arab Emirates' ],
             [ 'UK',
               'USA',
               'Belgium',
@@ -841,7 +866,7 @@ for qno in qval_tab.keys() :
     if qno in multi_answer :
         for mans in tmp :
             if len( mans ) > 0 :
-                nn = nn + 1
+                nn += 1
             list_ans = mans.split( ';' )
             for ans in list_ans :
                 if ans in legend.keys() :
@@ -852,10 +877,10 @@ for qno in qval_tab.keys() :
         for ans in tmp :
             if isinstance( ans, str ) :
                 if ans in legend.keys() :
-                    nn = nn + 1
+                    nn += 1
                     dict_ans[legend[ans]] += 1
                 elif len( ans ) > 0 :
-                    nn = nn + 1
+                    nn += 1
                     dict_ans['other'] += 1
 
 #    print( 'dict_ans\n', dict_ans )
@@ -933,6 +958,7 @@ for qno in qval_tab.keys() :
 
 # convert to percent numbers for each region
     list_others = []
+
     for reg in regions_major :
         dict_ans = { 'other' : 0 }
         for ans in legend.values() :
@@ -961,7 +987,24 @@ for qno in qval_tab.keys() :
         for i in range( ser.size ) :
             ser.iat[i] = ser.iat[i] / float(sum) * 100.0
         dfq[reg] = ser
-    dfq.fillna( 0.0, inplace=True )
+
+    for reg in regions_minor :
+        tmp = df_whole[df_whole['Region']==reg][qno]
+        tmp = tmp.dropna(how='all')
+        if qno in multi_answer :
+            for mans in tmp :
+                list_ans = mans.split( ';' )
+                for ans in list_ans :
+                    if ans in legend.keys() :
+                        dict_ans[legend[ans]] += 1
+                    elif len( ans ) > 0 :
+                        list_others.append( reg + ': ' + ans )
+        else :
+            for ans in tmp :
+                if ans in legend.keys() :
+                    dict_ans[legend[ans]] += 1
+                elif len( ans ) > 0 :
+                    list_others.append( reg + ': ' + ans )
 
 ## rename index with short ones
 #    legend = qval_tab[qno]
@@ -1003,16 +1046,16 @@ for qno in qval_tab.keys() :
 # print others
     if qno in print_other :
         dict_others.setdefault( qno, sorted( list_others ) )
-    if flag_tex :
-        if len( list_others ) == 0 :
-            tex_list = [ '\item (no other answer)\n' ]
-        else :
-            tex_list = []
-            for ans in sorted( list_others ) :
-                texstr = tex_conv( ans )
-                tex_list.append( '\item ' + texstr + '\n' )
-        with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
-            f.writelines( tex_list )
+        if flag_tex :
+            if len( list_others ) == 0 :
+                tex_list = [ '\item (no other answer)\n' ]
+            else :
+                tex_list = []
+                for ans in sorted( list_others ) :
+                    texstr = tex_conv( ans )
+                    tex_list.append( '\item ' + texstr + '\n' )
+            with open( tex_outdir + qno + '-other.tex', mode='w' ) as f :
+                f.writelines( tex_list )
 
 # finally append to the dict_qno
     dict_qno.setdefault( qno, dfq )
@@ -1163,6 +1206,28 @@ def simple_analysis( dict, others, qno ) :
     plt.close( 'all' )
     return
 
+def output_q17_usa() :
+    dict_usa = copy.copy( qval_tab['Q17'] )
+    for key in dict_usa.keys() :
+        dict_usa[key] = 0
+    tmp = df_whole[df_whole['Region']=='USA']['Q17'].value_counts( sort=True )
+    print( tmp )
+    nusa = 0
+    for mkey, val in tmp.iteritems() :
+        if mkey == '' :
+            continue;
+        nusa += val
+        for k in mkey.split(';') :
+            if k == '' :
+                continue
+            if k in dict_usa :
+                dict_usa[k] += val
+            else :
+                dict_usa['Other'] += val
+    print( dict_usa )
+    print( nusa )
+
+
 def expand_multians( qno, df ) :
     list_expand = []
     for idx, row in df.iterrows():
@@ -1179,71 +1244,77 @@ def expand_multians( qno, df ) :
     return new_df
 
 def table_and_graph_multi_ans( qno ) :
-    world = df_whole[qno].value_counts( sort=True ).sort_values( ascending=False )
+    df_qno = df_whole[qno]
+    world = df_qno.value_counts( sort=True ).sort_values( ascending=False )
+    for ma in world.index :
+        if ma == '' :
+            world.drop(ma, axis=0, inplace=True)
+
     dict_idx = {}
     for ma in world.index :
+        ma = ma.strip()
         ma_str = ''
-        if ma not in dict_idx :
-            for sa in ma.split(';') :
-                if sa in qval_tab[qno] :
-                    if ma_str == '' :
-                        ma_str = qval_tab[qno][sa]
-                    else :
-                        ma_str += ', ' + qval_tab[qno][sa]
-        if ma_str != '' :
-            dict_idx.setdefault( ma, ma_str )
-        elif ma not in qval_tab[qno] :
-            world = world.drop( ma, axis='index' )
+        for sa in ma.split(';') :
+            if sa == '' :
+                continue
+            if sa in qval_tab[qno] :
+                if ma_str == '' :
+                    ma_str = qval_tab[qno][sa]
+                else :
+                    ma_str += ', ' + qval_tab[qno][sa]
+            else :
+                if ma_str == '' :
+                    ma_str = sa
+                else :
+                    ma_str += ', ' + sa
+        dict_idx.setdefault( ma, ma_str )
+
     world = world.rename( index=dict_idx )
-    world = world.groupby( level=0 ).sum().sort_values( ascending=False )
-    #print( world )
+    df = pd.DataFrame( {whole:world} ) # overall (total)
 
-    df = pd.DataFrame( {whole:world} )
-    #print( df )
     for reg in regions_major:
+        dict_reg = {}
+        for key in dict_idx.values() :
+            dict_reg.setdefault( key, 0 )
         tmp = df_whole[df_whole['Region']==reg][qno].value_counts( sort=True )
-        for ma in tmp.index :
-            ma_str = ''
-            for sa in ma.split(';') :
-                if sa in qval_tab[qno] :
-                    if ma_str == '' :
-                        ma_str = qval_tab[qno][sa]
-                    else :
-                        ma_str += ', ' + qval_tab[qno][sa]
-            if ma_str == '' and ma not in qval_tab[qno] :
-                tmp = tmp.drop( ma, axis='index' )
         tmp.rename( index=dict_idx, inplace=True )
-        tmp = tmp.groupby( level=0 ).sum()
-        tmp.name = reg
-        df = pd.concat( [df,tmp], axis='columns', sort=False )
-        #print( tmp )
-        #print( df )
-        #print()
-    #print( df )
-
-    df = df.groupby( level=0 ).sum().astype(np.int64)
-    df.rename( columns=country_abbrv, inplace=True )
-    df.sort_values( whole, ascending=False, inplace=True )
-    #print( df )
-
+        for key, val in tmp.iteritems() :
+            if key == '' :
+                continue;
+            dict_reg[key] = val
+        df = pd.concat( [df,pd.Series(data=dict_reg,name=country_abbrv[reg])],
+                        axis='columns', sort=False )
+    dict_reg = {}
+    for reg in regions_minor:
+        for key in dict_idx.values() :
+            dict_reg.setdefault( key, 0 )
+        tmp = df_whole[df_whole['Region']==reg][qno].value_counts( sort=True )
+        tmp.rename( index=dict_idx, inplace=True )
+        for key, val in tmp.iteritems() :
+            if key == '' :
+                continue;
+            dict_reg[key] += val
+    df = pd.concat( [df,pd.Series(data=dict_reg,name='others')],
+                    axis='columns', sort=False )
+    df.fillna(0, inplace=True)
     if flag_tex :
 	## output TeX table
         cpos = 'r'
         for c in df.columns :
             cpos += '|c'
 
+        clms = df.columns.tolist()
+
+        headsum = '(total)'
+        for clm in clms :
+            headsum += ' & ' + str( int(df[clm].sum()) )
+        headsum += ' \\\\%\n'
+
         thead = 'Multi-Answer'
-        for clm in df.columns :
+        for clm in clms :
             thead += ' & ' +  tex_conv(clm)
         thead += ' \\\\\n'
         thead += ' \\hline%\n'
-
-        clms = df.columns.tolist() + ['others']
-        clms.pop()
-        headsum = '(total)'
-        for clm in clms :
-            headsum += ' & ' + str( df[clm].sum() )
-        headsum += ' \\\\%\n'
 
         csz = ''
         tex_list = []
@@ -1281,7 +1352,7 @@ def table_and_graph_multi_ans( qno ) :
             tex_list.append( '{' + csz + tex_conv(idx) + '}' )
             j = 0;
             for clm in df.columns :
-                tex_list.append( ' & ' + str(df.iat[i,j]) )
+                tex_list.append( ' & ' + str(int(df.iat[i,j])) )
                 j += 1
             tex_list.append( ' \\\\%\n' )
             i += 1
@@ -1687,6 +1758,8 @@ for cross in list_cross :
     cross_tab( cross[0], cross[1] )
 
 summary()
+
+output_q17_usa()
 
 ##if __name__ == '__main__':
 ##    main()
