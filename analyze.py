@@ -1427,10 +1427,14 @@ def table_and_graph_multi_ans( qno ) :
     plt.close( 'all' )
     return
 
+def cross_multi( qno0, qno1 ) :
+    print( 'Unable cross multiple answer quenstions' )
+    return
+        
 def cross_tab( qno0, qno1 ) :
-    if qno0 in multi_answer and qno1 in multi_answer :
-        print( 'Unable cross multiple answer quenstions' )
-        return
+#    if qno0 in multi_answer and qno1 in multi_answer :
+#        cross_multi( qno0, qno1 )
+#        return
 
     list_regions = [whole] + regions_major
     nregs        = len( list_regions )
@@ -1444,7 +1448,7 @@ def cross_tab( qno0, qno1 ) :
 
     if qno0 in multi_answer :
         cross = expand_multians( qno0, cross )
-    elif qno1 in multi_answer :
+    if qno1 in multi_answer :
         cross = expand_multians( qno1, cross )
     ct = pd.crosstab( cross[qno0], cross[qno1], normalize=True, dropna=False )
     ct.fillna( 0.0, inplace=True )
@@ -1462,7 +1466,7 @@ def cross_tab( qno0, qno1 ) :
 
         if qno0 in multi_answer :
             cross = expand_multians( qno0, cross )
-        elif qno1 in multi_answer :
+        if qno1 in multi_answer :
             cross = expand_multians( qno1, cross )
 #        print( '\nCROSS\n', cross )
         ct = pd.crosstab( cross[qno0], cross[qno1], 
@@ -1754,8 +1758,12 @@ for qno in list_simple :
 for qno in multi_answer :
     table_and_graph_multi_ans( qno )
 
-for cross in list_cross :
-    cross_tab( cross[0], cross[1] )
+##for cross in list_cross :
+##    cross_tab( cross[0], cross[1] )
+for q0 in question_tab.keys() :
+    for q1 in question_tab.keys() :
+        if q0 != q1 :
+            cross_tab( q0, q1 )
 
 summary()
 

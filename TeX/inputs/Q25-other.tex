@@ -1,0 +1,45 @@
+\item Central and South America: I do not know if there is more to improve
+\item Central and South America: dynamic scheduling
+\item Europe:France: Energy consumption
+\item Europe:France: I do not know
+\item Europe:France: Mainly bandwidth and passing large arrays ~2GB+ memory usage and ofcourse the associated latency for large messages.
+\item Europe:France: Much better error handling
+\item Europe:France: RPC like API
+\item Europe:France: asynchronous comm that are ACTUALLY asynchronous (that is to say, progress even when we're outside MPI)
+\item Europe:France: dynamicity of nodes
+\item Europe:France: injure that messages progresses while my code is computing (not only within MPI calls)
+\item Europe:France: may be some control on the MPI overhead in massively parallel applications
+\item Europe:France: platform interoperability (run-time)
+\item Europe:France: rather than ibcast: isend same msg efficiently to several destinations, reception with irecv/recv. Or better (panel broadcast in a dense linear algebra factorizations): a way to pipeline communication and computation in an asynchronous broadcast tree. For example P0-\verb!>!(P1,P2);P1-\verb!>!(P3,P4), P2-\verb!>!(P5,P6), etc... while P3-P6 receive panel 1 (say), P1-P2  work with and forward panel 2, and P0 computes and sends panel 3, without synchronization and re-use of same buffer space for all panels
+\item Europe:Germany: Exception handling
+\item Europe:Germany: I don't know
+\item Europe:Germany: I don't understand the question, we are fighting with latency and bandwidth
+\item Europe:Germany: Latency for collective ops and bandwidth for point-to-point heavy codes.
+\item Europe:Germany: Not fully aware of the issue
+\item Europe:Germany: The first communication seems to be very slow with many MPI implementations (IBM MPI, Intel MPI,...)
+\item Europe:Germany: ensure information from one-sided call (e.g. MPI\_Get) has arrived, without the need to close the communication fence (i.e. synchronize all ranks at once)
+\item Europe:Germany: improve on one sided communication (GASPI, shmem style)
+\item Europe:Italy: Interfacing with/switching from CUDA
+\item Europe:UK: I don't know.
+\item Europe:UK: MPI\_Comm\_ifree and similar would make life simpler. But most needed is something more subtle than MPI\_Abort for handling errors in applications. At the very least a portable way to make sure the error message actually gets to the user before the abort kicks in. To be clear I am NOT talking about errors within MPI, I am talking about MPI providing cleaner mechanisms to deal with application level errors
+\item Europe:UK: More robust implementations
+\item Europe:UK: Network congestion control
+\item Europe:UK: The limit on data that can be sent and recieved using the pack / unpack , send / recv pattern. This is a severe limitation. My only way around it is to rewrite code to use my own custom datatypes, which seems unneccessarily complicated and time-consuming.
+\item Europe:UK: Unsure
+\item Europe:others: Fault tolerance/mitigation methods
+\item Europe:others: I am thinking whether I will need HWLOC
+\item Europe:others: I do not know
+\item Europe:others: I sometimes want a feature which does not exist, at least in the most common implementations. An example would be MPI\_Recvreduce.
+\item Europe:others: Unspecified message size
+\item Europe:others: no clue
+\item Japan: Fault Tolerancy
+\item Japan: I don't know.
+\item Japan: Slow initialization
+\item Russia: Don't know
+\item Russia: Too stupid to give an educated opinion
+\item USA: Better passive-target MPI RMA performance. Better MPI\_THREAD\_MULTIPLE performance.
+\item USA: Internal MPI statistics (off-node vs. on-node messages/bytes, etc.)
+\item USA: Multi-threading support + Batching sends for better message injection rate
+\item USA: Non-blocking collectives that could be used to loosen consistency semantics in PGAS languages
+\item USA: RPC/Active messages support in MPI RMA (like UPC++ RPC). A public RPC API in RMA could be very useful for graph/combinatorial workloads.
+\item USA: varies
