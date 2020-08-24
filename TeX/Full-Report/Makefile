@@ -24,31 +24,31 @@ PDF    = $(TARGET).pdf
 
 # directories
 
-all : $(PDF) Makefile
+all: $(PDF) Makefile
 
-python : $(PROG)
+python: $(PROG)
 
-tex : $(PROG)
+tex: $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_TEX) $(CSVS)
 
-graphs : $(PROG)
+graphs: $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_PDF) $(CSVS)
 
-pngs : $(PROG)
+pngs: $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_PNG) $(CSVS)
 
-debug :  $(PROG)
+debug:  $(PROG)
 	$(PROG) $(OPTS_ALL) $(OPTS_PDF) --DEBUG $(CSVS)
 
 OUTPUT = ../inputs/Q1-ans.tex
 
-$(OUTPUT) : $(PROG) $(CSVS)
+$(OUTPUT): $(PROG) $(CSVS)
 	$(PROG) $(OPTS) $(CSVS)
 
-$(TEMPLATE) : $(TEMPLATES)
+$(TEMPLATE): $(TEMPLATES)
 	./template.sh
 
-$(PDF) : $(CHAPS) $(DISCUSS) $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) $(CSVS) questionnaire.tex Makefile
+$(PDF): $(CHAPS) $(DISCUSS) $(TEMPLATE) $(TSRC) $(BIBS) $(PROG) $(OUTPUT) $(CSVS) questionnaire.tex Makefile
 	$(LATEX) $(TARGET);
 	bibtex $(TARGET);
 	$(LATEX) $(TARGET);

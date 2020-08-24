@@ -20,7 +20,6 @@ from cycler import cycler
 import unicodedata
 import numpy as np
 import matplotlib
-import matplotlib.pyplot as pyp
 from matplotlib import pylab as plt
 from matplotlib import dates as mdates
 from matplotlib.dates import date2num
@@ -33,6 +32,9 @@ DATE_FORMAT_MS = '%m/%d/%y' # mmddyy
 DATE_FORMAT_JP = '%Y/%m/%d' # YYmmdd
 DATE_FORMAT_US = '%m/%d/%Y' # mmddYY
 DATE_FORMATS = [ DATE_FORMAT_JP, DATE_FORMAT_US, DATE_FORMAT_MS ]
+
+MULTIANS_NCOLS  = 3
+MULTIANS_CLEGEND = MULTIANS_NCOLS
 
 CROSSTAB_THRESHOLD = 0.04 # crosstab rows and columns less than this are not shown
 CROSSTAB_NCOLS   = 3
@@ -146,7 +148,7 @@ question_tab = { 'Q1'  : 'Occupation',
                  'Q24' : 'Alternatives',
                  'Q25' : 'Missing Features',
                  'Q26' : 'Missing Semantics',
-                 'Q27' : 'Unnecessary Features',
+                 'Q27' : 'Unuseful Features',
                  'Q28' : 'Backward Compatibility',
                  'Q29' : 'Performance and Portability'
               }
@@ -250,7 +252,7 @@ qval_tab = \
         'No, and I will not read it.' : 'No' },
   'Q10' :
       { 'I read the MPI standard document.' : 'Standard',
-        'I had lecture(s) at school.' : 'School Lectures',
+        'I had lecture(s) at school.' : 'School',
         'I read articles found on Internet.' : 'Internet',
         'I read book(s).' : 'Books',
         'Other lectures or tutorials (workplace, conference).' : 'Other',
@@ -303,9 +305,9 @@ qval_tab = \
         'Performance tuning' : 'Tuning',
         'Other' : 'other' },
   'Q16' :
-      { 'Point-to-point communications' : 'Pt2Pt',
-        'Collective communications' : 'Coll',
-        'Communicator operations (split, duplicate, and so on)' : 'Comm Ops',
+      { 'Point-to-point communications' : 'Point-to-point',
+        'Collective communications' : 'Collectives',
+        'Communicator operations (split, duplicate, and so on)' : 'Communicator',
         'MPI datatypes' : 'Datatypes',
         'One-sided communications' : 'One-sided',
         'Dynamic process creation' : 'Dynamic process',
@@ -315,9 +317,9 @@ qval_tab = \
         'Other' : 'other'
         },
   'Q17' :
-      { 'Point-to-point communications' : 'Pt2Pt',
-        'Collective communications' : 'Coll',
-        'Communicator operations (split, duplicate, and so on)' : 'Comm Ops',
+      { 'Point-to-point communications' : 'Point-to-pint',
+        'Collective communications' : 'Collectives',
+        'Communicator operations (split, duplicate, and so on)' : 'Communicator',
         'MPI datatypes' : 'Datatypes',
         'One-sided communications' : 'One-sided',
         'Dynamic process creation' : 'Dynamic process',
@@ -331,7 +333,7 @@ qval_tab = \
         'MPI_THREAD_SERIALIZED' : 'SERIALIZED',
         'MPI_THREAD_MULTIPLE' : 'MULTIPLE',
         'I have never called MPI_INIT_THREAD' : 'never used',
-        'I do not know or I do not care.' : 'do not know/care',
+        'I do not know or I do not care.' : 'No idea',
         'Other' : 'other' },
   'Q19' :
       { 'I have no obstacles.' : 'No obstacles',
@@ -413,14 +415,14 @@ qval_tab = \
         'Process topologies' : 'Topologies',
         'Dynamic process creation' : 'Dynamic process',
         'Error handlers' : 'Error',
-        'There are no unnecessary features' : 'No unnecessary feature',
+        'There are no unnecessary features' : 'No',
         'Other' : 'other' },
   'Q28' :
       { 'Yes, compatibility is very important for me.' : 'Very important',
         'API should be clearly versioned.' : 'Versioned API',
         'I prefer to have new API for better performance.' : 'New API for performance',
         'I prefer to have new API which is simpler and/or easier-to-use.' : 'New API for easier-to-use',
-        'I do not know or I do not care.' : 'Do not know/care',
+        'I do not know or I do not care.' : 'No idea',
         'Other' : 'other'
         },
   'Q29' :
@@ -859,20 +861,21 @@ for qno in qval_tab.keys() :
     for ans in legend.values() :
         dict_ans.setdefault( str(ans), 0 )
     tmp = df_whole[qno]
+#    print( 'tmp\n', tmp )
 
     nn = 0
-
-#    print( 'tmp\n', tmp )
     if qno in multi_answer :
         for mans in tmp :
-            if len( mans ) > 0 :
-                nn += 1
+            n = 0
             list_ans = mans.split( ';' )
             for ans in list_ans :
                 if ans in legend.keys() :
                     dict_ans[legend[ans]] += 1
+                    n = 1
                 elif len( ans ) > 0 :
                     dict_ans['other'] += 1
+                    n = 1
+            nn += n
     else :
         for ans in tmp :
             if isinstance( ans, str ) :
@@ -886,7 +889,9 @@ for qno in qval_tab.keys() :
 #    print( 'dict_ans\n', dict_ans )
     ser = pd.Series( data=dict_ans, dtype=float )
 
-    sum = ser.sum()
+#    sum = ser.sum()
+#    sum = len( tmp.index )
+    sum = nn
     list_sum.append( sum )
     for i in range( ser.size ) :
         ser.iat[i] = ser.iat[i] / float(sum) * 100.0
@@ -964,25 +969,31 @@ for qno in qval_tab.keys() :
         for ans in legend.values() :
             dict_ans.setdefault( str(ans), 0 )
         tmp = df_whole[df_whole['Region']==reg][qno]
-#        print( tmp )
+        #print( 'TMP\n', tmp )
+        sum = 0
         if qno in multi_answer :
             for mans in tmp :
+                a = 0
                 list_ans = mans.split( ';' )
                 for ans in list_ans :
                     if ans in legend.keys() :
                         dict_ans[legend[ans]] += 1
+                        a = 1
                     elif len( ans ) > 0 :
                         dict_ans['other'] += 1
                         list_others.append( reg + ': ' + ans )
+                        a = 1
+                sum += a
         else :
             for ans in tmp :
                 if ans in legend.keys() :
                     dict_ans[legend[ans]] += 1
+                    sum += 1
                 elif len( ans ) > 0 :
                     dict_ans['other'] += 1
                     list_others.append( reg + ': ' + ans )
+                    sum += 1
         ser = pd.Series( data=dict_ans, dtype=float )
-        sum = ser.sum()
         list_sum.append( sum )
         for i in range( ser.size ) :
             ser.iat[i] = ser.iat[i] / float(sum) * 100.0
@@ -997,8 +1008,10 @@ for qno in qval_tab.keys() :
                 for ans in list_ans :
                     if ans in legend.keys() :
                         dict_ans[legend[ans]] += 1
+                        a = 1
                     elif len( ans ) > 0 :
                         list_others.append( reg + ': ' + ans )
+                        a = 1
         else :
             for ans in tmp :
                 if ans in legend.keys() :
@@ -1034,7 +1047,7 @@ for qno in qval_tab.keys() :
         dfq = dfq.loc[idx,:]
 #    print( dfq )
 
-# adding number of answer row
+# adding a row consisting of numbers of answers
 #    print( list_sum )
     dfq = dfq.append( pd.Series( data=list_sum, 
                                  index=[whole]+regions_major, 
@@ -1121,6 +1134,7 @@ def graph_time_series( df ) :
 
     #plt.subplots_adjust( right=0.68 )
     plt.legend( loc="lower right" )
+    plt.tight_layout()
 
     if flag_show_event :
         for event in event_list :
@@ -1150,19 +1164,18 @@ def graph_time_series( df ) :
     plt.close( 'all' )
     return
 
-def simple_analysis( dict, others, qno ) :
-    df     = dict[qno]
+def simple_analysis_single_ans( qno, others ) :
+    df = dict_qno[qno]
     scale  = graph_scale[qno]
-    legend = qval_tab[qno]
 
-# adding numbers to the tiltle
+    # adding numbers to the tiltle
     df_tmp = df[:-1]          # sub-DF excepting '_NumAns_'
     list_numans   = df.tail(1).values.tolist()[0]
     total_answers = list_numans[0]
-#    print( total_answers, list_numans )
+    print( total_answers, list_numans )
     for clm in dfq.columns :
-        newc = clm + '\n(' + str( round( list_numans.pop(0)) ) + \
-        ' / ' + str( round(total_answers) ) + ')'
+        numans = round( list_numans.pop(0) )
+        newc = clm + '\n(' + str( numans ) + ')'
         df_tmp.rename( columns={clm: newc}, inplace=True )
 
 # print data 
@@ -1185,15 +1198,90 @@ def simple_analysis( dict, others, qno ) :
     if csv_outdir != '' :
         trans.to_csv( csv_outdir + qno + '-simple.csv' )
 
-    trans.plot( ax=ax, kind='bar', stacked=True, \
-                    legend='reverse', color=color_list )
+    width  = 10
+    height = 5
+
+    trans.plot( ax=ax,
+                kind='bar', stacked=True,
+                figsize=(width,height),
+                width=0.7,
+                legend='reverse',
+                color=color_list )
     plt.subplots_adjust( right=scale, bottom=0.3 )
     plt.legend( df_tmp.index, bbox_to_anchor=(1,1) )
     plt.ylabel( 'Percentage' )
-    if qno in multi_answer :
-        plt.title( qno + '* : ' + question_tab[qno] )
+    plt.tight_layout()
+#    if qno in multi_answer :
+#        plt.title( qno + '* : ' + question_tab[qno] )
+#    else :
+#        plt.title( qno + ' : ' + question_tab[qno] )
+    if format == '' and not flag_tex :
+        plt.show()
     else :
-        plt.title( qno + ' : ' + question_tab[qno] )
+        fn = dirname + qno + '.' + format
+        print( '\nFilename:', fn )
+        if flag_tex :
+            plt.savefig( fn, transparent=False )
+        else :
+            plt.savefig( fn, transparent=True )
+    plt.close( 'all' )
+    return
+
+def simple_analysis_multi_ans( qno, others ) :
+    df = dict_qno[qno]
+
+# adding numbers to the tiltle
+    df_tmp = df[:-1]          # sub-DF excepting '_NumAns_'
+    list_numans   = df.tail(1).values.tolist()[0]
+    total_answers = list_numans[0]
+#    print( total_answers, list_numans )
+    for clm in dfq.columns :
+        newc = clm + '(' + str( round( list_numans.pop(0)) ) + ')'
+        df_tmp = df_tmp.rename( columns={clm: newc}, inplace=False )
+
+# print data 
+    print( '\n**** ' + qno + ': ' + question_tab[qno] + ' ****')
+    if qno in print_other :
+        i = 0
+        for ans in others[qno] :
+            print( '[' + str(i) + '] ' + ans )
+            i += 1
+    print( '\n', df_tmp )       # print data
+
+    trans = df_tmp.T
+    if csv_outdir != '' :
+        trans.to_csv( csv_outdir + qno + '-simple.csv' )
+
+# eventually draw a graph (multiple bar graphs)
+    nregs        = len( trans.index )
+    list_graphs  = []
+    list_numasn  = []
+
+    width  = 10
+    height = 5
+
+    ncols = MULTIANS_NCOLS
+    scale = int( math.ceil( len( df_tmp.index ) / 5 ) )
+    if scale > 2 :
+        scale = 2
+    height *= scale
+    if len( df_tmp.index ) > 5 :
+        ncols -= 1
+    nrows = int( math.ceil( nregs / ncols ) )
+
+    df_tmp.plot( subplots=True,
+                 figsize=(width,height),
+                 sharex='all', sharey='all',
+                 legend=False,
+                 layout=(nrows,ncols),
+                 kind='bar', stacked=False,
+                 ylim=(0,100),
+                 rot=30,
+                 width=0.9,
+                 color=['#191970'],
+                 grid='Vertical' )
+
+    plt.tight_layout()
     if format == '' and not flag_tex :
         plt.show()
     else :
@@ -1243,7 +1331,7 @@ def expand_multians( qno, df ) :
     new_df.fillna( 0.0, inplace=True )
     return new_df
 
-def table_and_graph_multi_ans( qno ) :
+def table_multi_ans( qno ) :
     df_qno = df_whole[qno]
     world = df_qno.value_counts( sort=True ).sort_values( ascending=False )
     for ma in world.index :
@@ -1362,69 +1450,6 @@ def table_and_graph_multi_ans( qno ) :
         tex_list.append( '\\clearpage%\n' )
         with open( tex_outdir + qno + '-mans.tex', mode='w' ) as f :
             f.writelines( tex_list )
-
-# adding numbers to the tiltle
-    gtotal = df['overall'].sum()
-    dict_rename = {}
-    for clm in df.columns :
-        total = df[clm].sum()
-        newc = clm + '\n(' + str( round(total) ) + \
-        ' / ' + str( round(gtotal) ) + ')'
-        dict_rename.setdefault( clm, newc )
-
-    # convert to percent
-    for clm in df.columns :
-        df[clm] = df[clm] / df[clm].sum() * 100.0
-    toosmall = []
-    etc      = 0.0
-    etclist  = []
-    for idx in df.index :
-        #print( idx )
-        mans = df.at[ idx, 'overall' ]
-        if mans < 3.0 :
-            etc += mans
-            toosmall.append( idx )
-    etclist.append( etc )
-    #print( toosmall )
-    for reg in df.columns :
-        etc  = 0.0
-        if reg == 'overall' :
-            continue
-        others = 0.0
-        for idx in df.index :
-            if idx in toosmall :
-                etc += df.at[ idx, reg ]
-        etclist.append( etc )
-    df_tmp = df.drop( toosmall )
-    #print( df_tmp )
-    #print( etclist )
-    df_tmp.loc['etc.'] = etclist
-
-    df_tmp.rename( columns=dict_rename, inplace=True )
-
-    trans = df_tmp.T
-
-    if csv_outdir != '' :
-        trans.to_csv( csv_outdir + qno + '-mans.csv' )
-
-    fig = plt.figure( num=1, figsize=(8,6) )
-    ax = fig.add_subplot( 1, 1, 1 )
-    trans.plot( ax=ax, kind='bar', stacked=True, \
-                    legend='reverse', color=color_list )
-    plt.subplots_adjust( right=0.5, bottom=0.3 )
-    plt.legend( df_tmp.index, bbox_to_anchor=(1,1) )
-    plt.ylabel( 'Percentage' )
-
-    if format == '' and not flag_tex :
-        plt.show()
-    else :
-        fn = dirname + qno + '-mans.' + format
-        #print( '\nFilename:', fn )
-        if flag_tex :
-            plt.savefig( fn, transparent=False )
-        else :
-            plt.savefig( fn, transparent=True )
-    plt.close( 'all' )
     return
 
 def cross_multi( qno0, qno1 ) :
@@ -1747,16 +1772,19 @@ def response_rate() :
             f.writelines( tex_list )
     return
 
-if flag_timeseries : 
-    graph_time_series( df_whole )
+##if flag_timeseries : 
+##    graph_time_series( df_whole )
 
-response_rate()
+##response_rate()
 
 for qno in list_simple :
-    simple_analysis( dict_qno, dict_others, qno )
+    if not qno in multi_answer :
+        simple_analysis_single_ans( qno, dict_others )
+    else :
+        simple_analysis_multi_ans( qno, dict_others )
 
 for qno in multi_answer :
-    table_and_graph_multi_ans( qno )
+    table_multi_ans( qno )
 
 ##for cross in list_cross :
 ##    cross_tab( cross[0], cross[1] )
