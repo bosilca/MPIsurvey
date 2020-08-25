@@ -68,8 +68,10 @@
 \usepackage{graphicx}
 \usepackage{balance}
 \usepackage{url}
+\usepackage{multirow}
 %
-\usepackage{todonotes}% who needs this?
+\usepackage{todonotes}%
+\usepackage{color}%
 %
 \long\def\comment#1{}
 %
@@ -194,7 +196,7 @@ ECP  & Exascale & US & 64 (max.) & 77 \\%
 HPCI & Computing & Japan & 75 (max.) & 105 \\%
 & Environment & & & \\%
 \hline%
-Ours & MPI & the globe & 30 & 851 \\%
+Ours & MPI (w/o MPI-IO) & the globe & 30 & 851 \\%
 \hline%
 \end{tabular}%
 \end{center}%
@@ -346,8 +348,8 @@ responses was not as many as we expected. So we asked people who can
 reach local regions. Distribution using local mailing-lists worked
 much better than that of major mailing
 lists. Fig.~\ref{fig:time-series} shows the transition of the number
-of answers. As shown there are several steps and those steps came out
-after asking local distribution. 
+of answers at the first three months. As shown there are several steps
+and those steps came out after asking local distribution. 
 %
 \begin{figure}[htb]
 \begin{center}
@@ -357,8 +359,8 @@ after asking local distribution.
 \end{center}
 \end{figure}
 %
-Unfortunately, this local distribution strategy did not work
-universally. Table~\ref{tab:countries} shows the number
+This local distribution strategy worked very well on some regions but
+did not work universally. Table~\ref{tab:countries} shows the number
 of participants of top 11 countries. In this report, the
 countries having more than 50 participants are called {\it major
   countries} and are the objects of cross-tab analysis. 
@@ -372,13 +374,12 @@ we asked a Chinese researcher why we could not get enough number off
 participants from China and his answer was because of the nationality. 
 %
 \begin{table}[htb]%
-\scriptsize
 \begin{center}%
 \begin{tabular}[t]{cc}
 %
 \begin{minipage}[t]{0.5\hsize}
 \begin{center}%
-\caption{Top 10 Countries of Participants}%
+\caption{Top 11 Countries of Participants}%
 \label{tab:countries}%
 \begin{tabular}{c|l|r|r}%
 \hline%
@@ -446,10 +447,11 @@ Universities or governmental research institutes.
 \section{Comparison with the ECP survey}
 
 Although the ECP questionnaire and our questionnaire were designed
-independently, there are several questions quite similar in them. 
-In the following subsections, we will discuss on those questions, but
-before going into the details, we clarify an aspect of US 
-participants in our survey.
+independently, there are several questions quite similar in both of
+them. It is also assumed that some of the participants of our survey
+also participated in the ECP survey. However, significant differences
+can be found. Before going into the details, we clarify some profiles
+of the participants in our survey.
 
 \begin{figure}[htb]
 \begin{center}
@@ -463,12 +465,90 @@ We assumed that the participants in the ECP survey have more
 experiences on MPI
 programming than the participants of ours. Fig.~\ref{fig:mpi-skill} 
 shows the results of Q3 asking to rate the participants MPI skill by
-themselves in our survey.  In the US case\footnote{Note that we asked
-  the workplace in past 5 years, not asking nationalities.} (right
-most), almost half of participants rate 5 or 6
-(6 is the highest). This percentage of having high MPI skill (larger
+themselves in our survey.  In the US case%
+\footnote{Note that we asked
+  the workplace in past 5 years, not asking nationalities.}
+(right most bar), almost half of participants rate 5 or 6
+(6 is the highest). This percentage in having high MPI skill (larger
 than or equal to 5) in the US is the highest among the other
-countries. 
+countries and nobody in US marked the lowest skill.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{Figs/Q6.pdf}
+\caption{Q6: MPI Experience {\it(single)}}
+\label{fig:mpi-experience}
+\end{center}
+\end{figure}
+
+Fig.~\ref{fig:mpi-experience} shows the more interesting result. This
+graph is the result of asking ``How long have you been writing MPI
+programs?'' and the choices are 'more than 10 years' (denoted as
+'\textgreater 10'), 'between 5 and 10 years' (denoted as '5-10'),
+'between 2 and 5 years' (denoted as '2-5') and 'less than 2 years'
+(denoted as '\textless 2').
+Interestingly 9\% of US participants have less than 2 years MPI
+experience, but they do no rank their MPI expertise the lowest (Fig.~\ref
+{fig:mpi-skill}). Japan followed by USA has the highest percentage in
+more than 10 years and has the lowest percentage in less than 2 years
+experience. Russia followed by Italy has the highest percentage in
+less than 5 years experience (including the less than 2 years
+experience case). 
+
+We chose three questions from both of out survey and ECP survey that
+are very similar and thus the results are comparable
+(Table~\ref{tab:comparable-questions}). We will discuss those results
+in the following subsections.
+
+\begin{table}[htb]%
+\begin{center}%
+  \caption{Comparable Questions}%
+  \label{tab:comparable-questions}%
+  \begin{tabular}[t]{c|c}
+    \hline
+    \multicolumn{2}{c}{A. Layering MPI calls} \\
+    \hline
+    \begin{minipage}[t]{0.45\hsize}
+      Q21: In most of your programs, do you pack MPI function calls into
+      their own file or files to have your own abstraction layer for
+      communication?  {\it(single)}
+    \end{minipage}
+    &
+    \begin{minipage}[t]{0.45\hsize}
+      Q22: Do you have an abstraction layer that hides the MPI calls? Or do
+      most of your developers write MPI calls directly? {\it(single)}
+    \end{minipage}
+    \\
+    \hline
+    \multicolumn{2}{c}{B. Using MPI Aspects} \\
+    \hline
+    \begin{minipage}[t]{0.45\hsize}
+      Q17: What aspects of the MPI standard do you use in your program in its
+      current form? {\it(multiple)}
+    \end{minipage}
+    &
+    \begin{minipage}[t]{0.45\hsize}
+      Q35: What aspects of the MPI standard do you use in your application in
+      its current form? {\it(multiple)}
+    \end{minipage}
+    \\
+    \hline
+    \multicolumn{2}{c}{C. Multi-Threading} \\
+    \hline
+    \begin{minipage}[t]{0.45\hsize}
+      Q18: Which MPI thread support are you using? {\it(multiple)}
+    \end{minipage}
+    &
+    \begin{minipage}[t]{0.45\hsize}
+      Q59: Which MPI threading option are you using? {\it(single)}
+    \end{minipage}
+    \\
+    \hline
+    Our Survey & ECP Survey \\
+    \hline
+  \end{tabular}%
+\end{center}%
+\end{table}%
 
 \subsection{Layering MPI calls}
 
@@ -490,10 +570,10 @@ Fig.~\ref{fig:layering-mpi-calls} shows the result of our survey and
 Table~\ref{tab:layering-mpi-calls} shows the comparison between ours
 and ECP survey. In the ECP survey, the participants are categorized
 into two groups; application development (AD) and system technology
-(ST). It is interesting that the percentage of having MPI call layers
-in our survey is roughly 50\%, whilst the ration of yes and no is
-$6:4$ in the ECP survey.
-Having a loser look at Fig.~\ref{fig:layering-mpi-calls}, the answer,
+(ST). It is interesting that the percentage in packing MPI calls
+in our survey is roughly 50\% even in the US, whilst the ratio of yes
+and no is approximately $6:4$ in the ECP survey.
+Having a closer look at Fig.~\ref{fig:layering-mpi-calls}, the answer,
  ``No, my program is too small to do that,'' dominates in Russia. In
 the other countries, the participants having a packing layer occupies
 40-50\%. 
@@ -528,7 +608,17 @@ Other & - & 5 & 2 & - & - & - \\
 
 \subsection{Using MPI Aspects}
 
-
+The question asking ``What aspects of the MPI standard do you use in
+your application in its current form?'' in the ECP survey and Q17 of
+our survey are almost equivalent
+questions, although choices are somewhat
+different. Fig.~\ref{fig:using-mpi-aspects} shows the result of our 
+survey and Table.~\ref{tab:using-mpi-aspects} shows the comparison
+between ECP and ours. As shown in Fig.\ref{fig:using-mpi-aspects}, the
+using aspects can be categorixed in three groups; A) more frequently
+used (point-to-point and collectives), B) second frequently used
+(datatypes, with OpenMP, communicator, and one-sided), and C) less
+frequently used (PMPI, persistent, and dynamic process).
 
 \begin{figure}[htb]
 \begin{center}
@@ -537,6 +627,11 @@ Other & - & 5 & 2 & - & - & - \\
 \label{fig:using-mpi-aspects}
 \end{center}
 \end{figure}
+
+Most notable difference between our survey and the ECP survey is the
+datatype (Table.~\ref{tab:using-mpi-aspects}). The percentage in
+datatype in ECP is 23\% and the percentage in our survey is more
+than 60\% in both overall and USA. 
 
 \begin{table}[htb]%
 \begin{center}%
@@ -559,15 +654,32 @@ PMPI & 8 & 19 & 11 & 0 & 14 \\
 \end{center}%
 \end{table}%
 
+Fig.~\ref{fig:skill-and-aspects} is the addition. This graph is
+heatmap of the cross-tab analysis between Q3 asking MPI skill and Q16
+asking unknown MPI features. The darker the color of a cell, the
+higher the frequency (Legend or color bar can be found at the bottom
+right. The numbers in the legend cells are percentage). Less frequent
+rows (skill low (1) and  
+skill high (6)) are omitted. Natural thinking may conclude
+that the higher the MPI skill, lesser the unknown MPI features. The
+result is quite interesting, the less used features in
+Fig.~\ref{fig:using-mpi-aspects}, PMPI, persistent, and dynamic process
+creation, are almost independent from the MPI skill.
+
+\todo[inline]{AH: Could we conclude that MPI standard is very complex and
+  hard to understand even for highly skilled (experienced) users?}
+  
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=9cm]{Figs/Q3-Q16.pdf}
 \caption{Q3-Q16: MPI Skill {\it(single)} and Unknown MPI features {\it(multiple)}}
-\label{fig:using-mpi-aspects}
+\label{fig:skill-and-aspects}
 \end{center}
 \end{figure}
 
 \subsection{Multi-Threading}
+
+
 
 \begin{figure}[htb]
 \begin{center}
@@ -600,6 +712,28 @@ not know & 14 & 8 & 25 & 25 & 25\\
 
 \section{Other Findings}
 
+\subsection{MPI Implementations}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=9cm]{Figs/Q12.pdf}
+\caption{Q12: Using MPI Implementations {\it(multiple)}}
+\label{fig:using-implementations}
+\end{center}
+\end{figure}
+
+In France, four (4) participants are using bullx MPI and four (4)
+participants are using MadMPI. In Germany, 10 participants are using
+ParaStation MPI.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=9cm]{Figs/Q13.pdf}
+\caption{Q13: Choosing MPI Implementations {\it(single)}}
+\label{fig:choosing-implementation}
+\end{center}
+\end{figure}
+
 \subsection{Learning MPI}
 
 \begin{figure}[htb]
@@ -628,28 +762,6 @@ Reading exiting code : 18
 \end{center}
 \end{figure}
 
-
-\subsection{MPI Implementations}
-
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=9cm]{Figs/Q12.pdf}
-\caption{Q12: Using MPI Implementations {\it(multiple)}}
-\label{fig:using-implementations}
-\end{center}
-\end{figure}
-
-In France, four (4) participants are using bullx MPI and four (4)
-participants are using MadMPI. In Germany, 10 participants are using
-ParaStation MPI.
-
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=9cm]{Figs/Q13.pdf}
-\caption{Q13: Choosing MPI Implementations {\it(single)}}
-\label{fig:choosing-implementation}
-\end{center}
-\end{figure}
 
 \subsection{Compatibility vs. Performance}
 
