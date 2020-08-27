@@ -148,7 +148,7 @@ question_tab = { 'Q1'  : 'Occupation',
                  'Q24' : 'Alternatives',
                  'Q25' : 'Missing Features',
                  'Q26' : 'Missing Semantics',
-                 'Q27' : 'Unuseful Features',
+                 'Q27' : 'Useless Features',
                  'Q28' : 'Backward Compatibility',
                  'Q29' : 'Performance and Portability'
               }
@@ -255,7 +255,7 @@ qval_tab = \
         'I had lecture(s) at school.' : 'School',
         'I read articles found on Internet.' : 'Internet',
         'I read book(s).' : 'Books',
-        'Other lectures or tutorials (workplace, conference).' : 'Other',
+        'Other lectures or tutorials (workplace, conference).' : 'Other lec.',
         'I have not learned MPI.' : 'Never learned',
         'Other' : 'other' },
   'Q11' :
@@ -313,7 +313,7 @@ qval_tab = \
         'Dynamic process creation' : 'Dynamic process',
         'Persistent communication' : 'Persistent',
         'PMPI interface' : 'PMPI',
-        'MPI with OpenMP (or multithread)' : 'w/ OMP',
+        'MPI with OpenMP (or multithread)' : 'with OpenMP',
         'Other' : 'other'
         },
   'Q17' :
@@ -324,7 +324,7 @@ qval_tab = \
         'One-sided communications' : 'One-sided',
         'Dynamic process creation' : 'Dynamic process',
         'Persistent communications' : 'Persistent',
-        'MPI with OpenMP (or multithread)' : 'w/ OMP',
+        'MPI with OpenMP (or multithread)' : 'with OpenMP',
         'PMPI interface' : 'PMPI',
         'Other' : 'other' },
   'Q18' :
@@ -378,7 +378,7 @@ qval_tab = \
         'I have no chance to investigate.' :
         'No chance to investigate',
         'I do not know how to find bottlenecks.' :
-        'Not idea to find bottlenecks',
+        'No idea to find bottlenecks',
         'I do not know if there is room for performance tuning.' :
         'No idea to improve',
         'Other' : 'other' },
@@ -437,7 +437,7 @@ multi_answer = [ 'Q4', 'Q7', 'Q8', 'Q10', 'Q11', 'Q12', 'Q14',
                  'Q16', 'Q17', 'Q18', 'Q19', 'Q22', 'Q24', 
                  'Q26', 'Q27' ]
 
-sort_answer = [ 'Q1', 'Q4', 'Q7', 'Q8', 'Q11', 'Q12', 'Q13', 'Q14', 
+sort_answer = [ 'Q1', 'Q4', 'Q7', 'Q8', 'Q10', 'Q11', 'Q12', 'Q13', 'Q14', 
                 'Q15', 'Q16', 'Q17', 'Q19', 'Q22', 'Q23', 'Q24', 'Q25', 
                 'Q26', 'Q27', 'Q28' ]
 
@@ -1772,8 +1772,8 @@ def response_rate() :
             f.writelines( tex_list )
     return
 
-##if flag_timeseries : 
-##    graph_time_series( df_whole )
+if flag_timeseries : 
+    graph_time_series( df_whole )
 
 ##response_rate()
 
