@@ -22,6 +22,7 @@ GRAPHS = $(GRAPHDIR)/TimeSeries.pdf \
 	 $(GRAPHDIR)/Q3.pdf \
 	 $(GRAPHDIR)/Q3-Q16.pdf \
 	 $(GRAPHDIR)/Q6.pdf \
+	 $(GRAPHDIR)/Q7.pdf \
 	 $(GRAPHDIR)/Q9.pdf \
 	 $(GRAPHDIR)/Q10.pdf \
 	 $(GRAPHDIR)/Q12.pdf \

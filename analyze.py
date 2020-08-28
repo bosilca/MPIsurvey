@@ -227,18 +227,18 @@ qval_tab = \
   'Q7' :
       { 'System software development (OS, runtime library, communication library, etc.)' : 'OS/R',
         'Parallel language (incl. domain specific language)' : 'Lang',
-        'Numerical application and/or library' : 'Num-Lib.',
+        'Numerical application and/or library' : 'Num-App/Lib',
         'AI (Deep Learning)' : 'AI',
-        'Image processing' : 'Image',
+        'Image processing' : 'Image Proc',
         'Big data' : 'Big data',
         'Workflow and/or In-situ' : 'Worlflow',
-        'Visualization' : 'Vis.',
+        'Visualization' : 'Visulization',
         'Tool development (performance tuning, debugging, etc.)' : 'Tool',
         'Other' : 'other' },
   'Q8' :
       { 'Research and development of application(s)' : 'Apps',
         'Research and development software tool(s)' : 'Tools',
-        'Parallelization of sequential program(s)' : 'Parralelize',
+        'Parallelization of sequential program(s)' : 'Paralelize',
         'Performance tuning of MPI program(s)' : 'Tuning',
         'Debugging MPI programs' : 'Debug',
         'Research and development on system software (OS and/or runtime library)' : 'OS/R',
@@ -368,7 +368,7 @@ qval_tab = \
       { 'No, my MPI programs are well-tuned.' : 
         'Well-tuned',
         'Yes, I know there is room for tuning but I should re-write large part of my program to do that.' :
-        'Hard to rewrie',
+        'Hard to rewrite',
         'Yes, I know there is room for tuning but I do not have enough resources to do that.' :
         'No resource',
         'I think there is room but I do not know how to tune it.' :
@@ -391,7 +391,7 @@ qval_tab = \
         'Other' : 'other' },
   'Q25' :
       { 'Latency' : 'Latency',
-        'Message injection rate' : 'Inj. rate',
+        'Message injection rate' : 'Injection rate',
         'Bandwidth' : 'Bandwidth',
         'Additional optimization opportunities in terms of communication (network topology awareness, etc.)' : 'Additional comm. opt.',
         'Optimization opportunities except communication (architecture awareness, dynamic processing, accelerator support, etc.)' : 'Other opt',
