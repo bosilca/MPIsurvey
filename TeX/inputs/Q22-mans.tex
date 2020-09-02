@@ -37,47 +37,47 @@ Multi-Answer & overall & FR & GR & IT & UK & eu & JP & RU & US & others \\
 {OMP, OACC, OCL, CUDA} & 5 & 0 & 1 & 1 & 0 & 2 & 0 & 0 & 1 & 0 \\%
 {Pthread, CUDA} & 5 & 2 & 0 & 0 & 0 & 2 & 0 & 1 & 0 & 0 \\%
 {OMP, Pthread, OACC, OCL, CUDA} & 4 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 0 \\%
-{OMP, Pthread, OACC} & 3 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\%
 {OCL} & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\%
-{Pthread, OACC} & 2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
-{OMP, TBB} & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
-{Pthread, OCL, CUDA} & 2 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \\%
-{OACC} & 2 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\%
-{OACC, CUDA} & 2 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
-{OMP, OACC, OCL} & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
+{OMP, Pthread, OACC} & 3 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\%
 {OMP, GASPI} & 2 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, TBB} & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
+{OACC} & 2 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\%
+{Pthread, OACC} & 2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
 {OCL, CUDA} & 2 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
+{OACC, CUDA} & 2 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
 {OMP, Pthread, OCL} & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, Pthread, Cilk++} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, coupling applications implemented in various languages (C++, fortran, Python) with MPI} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, MPI-3 shared memory windows} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, CUDA, Python} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\%
-{OMP, Pthread, StarPU} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, Pthread, OACC, CUDA, TBB, C++11 threads.} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
-{CUDA, StarPU, Intel TBB, MassiveThreads} & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\%
-{OMP, Pthread, MPI + Pthread but only via library (PaStiX)} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{Sunway athread} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
-{OMP, Pthread, OCL, CUDA, C++ threads} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
-{OMP, OACC, TBB} & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, Pthread, OmpSs} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, CUDA, MPI + MPI} & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, tbb GASPI} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, CUDA, kokkos} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{OMP, Pthread, CUDA, Tbb} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{Julia GPU} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
-{OMP, OACC, ompss} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{Pthread, UPC, UPC++} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
+{Pthread, OCL, CUDA} & 2 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \\%
+{OMP, OACC, OCL} & 2 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
 {Sunway Athread, OACC} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
-{OMP, OCL} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
-{athread} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
 {OMP, CUDA, Intel TBB} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
 {Pthread, TensorFlow} & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\%
-{OMP, Just as exercise in classes, or seen in others' programs} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
 {OMP, OACC, CUDA, CUDA Fortran} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
-{OMP, Kokkos} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
+{Pthread, UPC, UPC++} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
+{OMP, CUDA, MPI + MPI} & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, Pthread, MPI + Pthread but only via library (PaStiX)} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, MPI-3 shared memory windows} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, CUDA, Python} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\%
+{OMP, Pthread, OACC, CUDA, TBB, C++11 threads.} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
+{OMP, Just as exercise in classes, or seen in others' programs} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
+{OMP, Pthread, StarPU} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{Julia GPU} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\%
+{OMP, OACC, ompss} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, OACC, TBB} & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\%
 {OMP, ("MPI + MPI-3 shared memory" instead of "MPI+OpenMP")} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, Pthread, OCL, CUDA, C++ threads} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
+{Sunway athread} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
+{CUDA, StarPU, Intel TBB, MassiveThreads} & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\%
+{athread} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
 {CUDA, Posix ShM} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\%
+{OMP, CUDA, kokkos} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, tbb GASPI} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, Kokkos} & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\%
+{OMP, Pthread, CUDA, Tbb} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
 {OMP, CUDA, ROCm} & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\%
+{OMP, OCL} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, Pthread, OmpSs} & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, coupling applications implemented in various languages (C++, fortran, Python) with MPI} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
+{OMP, Pthread, Cilk++} & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\%
 \hline%
 \end{longtable}%
 \end{landscape}}%

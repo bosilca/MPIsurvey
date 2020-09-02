@@ -141,7 +141,7 @@ such as the Exascale Computing Project (ECP)~\cite{ECP} study
 conducted in 2017~\cite{osti_1462877} that focused 
 on MPI usage in the context of ECP applications; and/or those that are
 geographically constrained to a single laboratory, funding agency or
-at best, country. It ws a coincidence
+at best, country. It was a coincidence
 that another survey was conducted in Japan targeting HPCI~\cite{HPCI}
 users which included several questions asking about
 MPI~\cite{hpci-user-survey}.  HPCI is an infrastructure for HPC users
@@ -266,7 +266,7 @@ researchers at Riken Center for Computational Science (R-CCS). We also
 interviewed with Dr. Kento Sato at R-CCS.
 The questionnaire was started distributing and receiving answers from
 17th of February and it is still open. The most recent answer was
-obtained at June 22, 2020. The final questions and their choices are
+obtained at June 22, 2020. All questions and their choices are
 listed in
 Appendix~\ref{app:questions}. 
 
@@ -416,7 +416,7 @@ We assumed that the participants in the ECP survey have more
 experiences on MPI
 programming than the participants of ours. Fig.~\ref{fig:mpi-skill} 
 shows the results of Q3 asking to rate the participants MPI skill by
-themselves in our survey.  In the US case%
+themselves in our survey.  In the US case 
 \footnote{Note that we asked
   the workplace in past 5 years, not asking nationalities.}
 (right most bar), almost half of participants rate 5 or 6
@@ -485,7 +485,7 @@ in the following subsections.
     \end{minipage}
     \\
     \hline
-    \multicolumn{2}{c}{C. Multi-Threading} \\
+    \multicolumn{2}{c}{C. Multi-threading} \\
     \hline
     \begin{minipage}[t]{0.45\hsize}
       Q18: Which MPI thread support are you using? {\it(multiple)}
@@ -564,7 +564,8 @@ between ECP and ours. As shown in Fig.\ref{fig:using-mpi-aspects}, the
 using aspects can be categorixed in three groups; A) more frequently
 used (point-to-point and collectives), B) second frequently used
 (datatypes, with OpenMP, communicator, and one-sided), and C) less
-frequently used (PMPI, persistent, and dynamic process).
+frequently used (PMPI, persistent, and dynamic process (denoted as
+\myquote{dyn. process}).
 
 \begin{figure}[htb]
 \begin{center}
@@ -612,8 +613,8 @@ rows (skill low (1) and
 skill high (6)) are omitted. Natural thinking may conclude
 that the higher the MPI skill, lesser the unknown MPI features. The
 result is quite interesting, the less used features in
-Fig.~\ref{fig:using-mpi-aspects}, PMPI, persistent, and dynamic process
-creation, are almost independent from the MPI skill.
+Fig.~\ref{fig:using-mpi-aspects}, PMPI, persistent, and dynamic
+process, are almost independent from the MPI skill. 
 It should be noted that all these features were already introduced
 and standardized in MPI 2.2 which was release in 2009. Despite the
 10-year appearance, those features failed to get popular. 
@@ -665,7 +666,7 @@ spreads many parts of a computing system; MPI library, process manager,
 job scheduling system and system operation. This complexity might make
 users hard and impractical to use the dynamic process creation of MPI.
 
-\subsection{Multi-Threading}
+\subsection{Multi-threading}
 
 The difference between our survey and the ECP survey can be found on
 the question asking multi-thread support. Fig.~\ref{fig:multi-thread}
@@ -679,7 +680,7 @@ ECP participants would be more experienced MPI users.
 
 \begin{table}[htb]%
 \begin{center}%
-\caption{Multi-Threading}\label{tab:multi-thread}%
+\caption{Multi-threading}\label{tab:multi-thread}%
 \begin{tabular}{c||c|c||c|c|c}%
 \hline%
 Choice & \multicolumn{2}{c||}{Our Survey [\%]} & 
@@ -708,7 +709,7 @@ highest.
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=8cm]{Figs/Q18.pdf}
-\caption{Q18: Multi-Threading {\it(multiple)}}
+\caption{Q18: Multi-threading {\it(multiple)}}
 \label{fig:multi-thread}
 \end{center}
 \end{figure}
@@ -730,7 +731,7 @@ supported thread capabilities positively.
 
 \begin{table}[htb]%
   \begin{center}%
-    \caption{Multi-Threading - Raw Answers}\label{tab:multi-thread-raw}%
+    \caption{Multi-threading - Raw Answers}\label{tab:multi-thread-raw}%
     \begin{tabular}{c|c}%
       \hline%
       Threading Support & Overall \\
@@ -766,7 +767,8 @@ implementations, Open MPI, Intel MPI and MPICH, dominates in all
 countries and regions, followed by MVAPICH. A large disparity can be
 seen on the other implementations. Taking a
 look at the \myquote{other} choice, there are four (4) answers raising the
-\myquote{bullx MPI} and another four (4) using MadMPI~\cite{madmpi} in France, and 10
+\myquote{bullx MPI} and another four (4) using MadMPI~\cite{madmpi} in
+France, and 10 
 answers raising ParaStation MPI in Germany. The frequency of using
 Fujitsu MPI, ParaStation MPI, bullx MPI and others heavily depend on
 countries of participants and the countries where the MPI was
@@ -835,9 +837,9 @@ highest among the countries and regions.
 \end{center}
 \end{figure}
 
-Now let's see how people are programming
-MPI. Fig.~\ref{fig:checking-spec} shows the percentages of Q14 asking
-``How do you check MPI specifications when you are writing MPI
+Now let's see how people are writing MPI
+programs. Fig.~\ref{fig:checking-spec} shows the percentages of Q14
+asking ``How do you check MPI specifications when you are writing MPI
 programs?'' Most users are checking MPI specifications by reading online
 documentations (e.g., man pages), searching Internet and reading the
 standard. As shown in the previous figure
@@ -876,10 +878,10 @@ the choice of \myquote{No obstacles}, we got 111 \myquote{other} inputs
 exceptionally. Q4 and Q7 are the second largest (70), but these are
 because of the variety of answers. 
 More than 20 participants raise \myquote{time} (to master MPI). Many
-participants pointed 
-out the need of MPI programming guideline (in their words;
-\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation
-  doc.}, \myquote{performance guideline}, and so on).
+other participants pointed 
+out the need of MPI programming guideline (\myquote{clear doc.},
+\myquote{internal doc.}, \myquote{implementation 
+  doc.}, \myquote{performance guideline}, and so on, in their words).
 Some participants complaints about implementations and the
 (performance or specification) differences among implementations.  
 
@@ -1031,8 +1033,8 @@ programming guideline, online documents in hyper-text form, and
 practical sample programs. And for the compatibility, many MPI users
 may sacrifice the compatibility to get more performance.
 
-All answers, the Python program to analyze the survey data, all
-published report is available at
+All collected answers, the Python program to analyze the survey data,
+and all published reports are available at
 {\tt \url{https://github.com/bosilca/MPIsurvey.git}}. 
 
 \section*{Acknowledgments}
