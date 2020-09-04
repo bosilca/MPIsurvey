@@ -152,15 +152,15 @@ the differences between US and Japan. Unfortunately we could find only
 one similar question related to MPI in both surveys.
 
 Such studies inspired us to conduct a larger study, not focused on
-high-end HPC, but targeting a wider audience and involving a larger
-spectrum of geographically distinct users. Since MPI has been a widely
-used vehicle for high-performance computing for decades, this
+high-end HPC users, but targeting a wider audience and involving a
+larger spectrum of geographically distinct users. Since MPI has been a
+widely used vehicle for high-performance computing for decades, this
 larger-scale questionnaire survey would be beneficial not only for
 deciding the future direction of MPI, but also for understanding the
 feature differences of MPI users among countries and/or regions of the
 world.
 
-Our project was started to conduct such a study as a part of
+Our project was started to conduct such a study as a project at
 JLESC~\cite{JLESC} which is an international research collaboration
 framework. The international nature of this survey matches the concept
 of JLESC. Co-authors are a member of JLESC and responsible for the
@@ -247,12 +247,12 @@ following sections if appropriate.
 % Design
 %
 The social scientists suggested that the number of questions must be
-limited around 30 not to reduce the participants' concentrations.  
+limited around 30 not to loose the participants' concentrations.  
 This number is much smaller that those of ECP and HPCI surveys. So, we
 focused on MPI communications and excluded MPI-IO related
 questions. Additionally, we designed the questionnaire for
-participants can easily answer questions as much as possible. As a
-result, the questions to force participants doing some work, such as
+participants can easily answer questions as much as possible, and
+the questions to force participants doing some work, such as
 counting the lines of code, are eliminated. 
 
 ECP and our questionnaires are implemented by using Google Forms. Later
@@ -265,16 +265,11 @@ The draft questionnaire was tested by MPI Forum members, Inria and
 researchers at Riken Center for Computational Science (R-CCS). We also
 interviewed with Dr. Kento Sato at R-CCS.
 The questionnaire was started distributing and receiving answers from
-<<<<<<< HEAD
-17th of February and it is still open. The most recent answer was
-obtained at June 22, 2020. All questions and their choices are
-=======
-17th of February 2019 and it is still open. The most recent answer was
-obtained at June 22, 2020. The final questions and their choices are
->>>>>>> e08a33ce3cc1316629743a70a9f5780df4826839
+17th of February, 2019 and it is still open. The most recent answer was
+obtained at 22nd of June, 2020. The final questions and their choices are
 listed in
 Appendix~\ref{app:questions}.  Importantly, we have two kind of
-questions single-answer questions and multiple-answers questions
+questions single-answer questions and multiple-answer questions
 (marked with a "*" ins the appendix).
 
 %
@@ -381,8 +376,8 @@ countries, especially China, as much as we could, but we failed.
 % Profile
 %
 Fig.~\ref{fig:occupations} shows the graph of Q1 asking participants'
-occupation. As shown, roughly 80\% of participants come from
-Universities or governmental research institutes.
+occupation. As shown, roughly 80\% of participants are working at 
+universities or governmental research institutes.
 %
 \begin{figure}[htb]
 \begin{center}
@@ -577,6 +572,10 @@ used (point-to-point and collectives), B) second frequently used
 (datatypes, with OpenMP, communicator, and one-sided), and C) less
 frequently used (PMPI, persistent, and dynamic process (denoted as
 \myquote{dyn. process}).
+It should be noted that all these less frequently used features were
+already introduced and standardized in MPI 2.2 which was release in
+2009. Despite the 10-year appearance, those features failed to get
+popular.  
 
 \begin{figure}[htb]
 \begin{center}
@@ -620,18 +619,16 @@ heatmap of the cross-tab analysis between Q3 asking MPI skill and Q16
 asking unknown MPI features. The darker the color of a cell, the
 higher the frequency (Legend or color bar can be found at the bottom
 right. The numbers in the legend cells are percentage). Less frequent
-rows (skill low (1) and  
-skill high (6)) are omitted. Natural thinking may conclude
+rows (skill low (1) and skill high (6)) in this figure are
+omitted. Natural thinking may conclude 
 that the higher the MPI skill, lesser the unknown MPI features. The
 result is quite interesting, the less used features in
 Fig.~\ref{fig:using-mpi-aspects}, PMPI, persistent, and dynamic
-process, are almost independent from the MPI skill. 
-It should be noted that all these features were already introduced
-and standardized in MPI 2.2 which was release in 2009. Despite the
-10-year appearance, those features failed to get popular. 
-
-\todo[inline]{AH: Could we conclude that MPI standard is very complex and
-  hard to understand even for highly skilled (experienced) users?}
+process, are almost independent from the MPI skill. This may indicate
+that the MPI standard is very profound. Even the most basic
+send/receive functions, although they look very simple and natural,
+they require deep knowledge such as possibility of deadlock, timing of
+buffer access, blocking and non-blocking, and so on.
   
 \begin{figure}[htb]
 \begin{center}
@@ -644,10 +641,18 @@ and standardized in MPI 2.2 which was release in 2009. Despite the
 Fig.~\ref{fig:useless-features} is the result of Q27 asking ``What MPI
 feature(s) are NOT useful for your application?'' Although many
 participants think MPI has no "not useful features", fairly amount of
-participants think the dynamic process feature is not useful. Thinking
+participants think the dynamic process feature not useful. Thinking
 of the fact that the dynamic process feature is not used by the most
 participants (Q17, Fig.~\ref{fig:using-mpi-aspects}), this result is
 quite interesting.
+This tendency is also reported in \cite{10.1145/3295500.3356176}.
+
+Fig.~\ref{fig:useless-features} is additionally shown here. The second
+largest and considerable amount of percentage of the \myquote{dynamic
+  process} answer to the question ``What MPI feature(s) are NOT useful
+for your application?'' can be seen in this figure. This percentage
+occupies about 60\% of the participants who answered they have
+some useless features.
 
 \begin{figure}[htb]
 \begin{center}
@@ -657,25 +662,15 @@ quite interesting.
 \end{center}
 \end{figure}
 
-As for the dynamic process feature of MPI, the very similar tendency
-is also described in \cite{10.1145/3295500.3356176}.
-Fig.~\ref{fig:useless-features} is additionally shown here. The second
-largest and considerable amount of percentage of the \myquote{dynamic
-  process} answer to the question ``What MPI feature(s) are NOT useful
-for your application?'' can be seen in this figure. This percentage
-occupies about 60\% of the participants who answered they have
-some useless features.
-
-The low percentage shown in Fig.~\ref{fig:using-mpi-aspects} is
-considered to be because of the dissatisfaction of the feature. The
-dynamic process feature is at a difficult position in the MPI
-standard. The dynamic process creation itself is out of the
-scope of the standard, only the communication between the existing
-(MPI) processes and newly create (MPI) processes can be
-defined. Indeed, the implementation of dynamic process creation
-spreads many parts of a computing system: MPI library, process manager,
-job scheduling system and system operation. This complexity might make
-the use the dynamic process creation hard and impractical for MPI users.
+The dynamic process feature is on the
+border of process management and communication, since the process
+creation itself is obviously out of the scope of the MPI standard,
+while the communication between the existing (MPI) processes and newly
+create (MPI) processes must be defined in the standard. Indeed, the
+implementation of dynamic process creation spreads many parts of a
+computing system: MPI library, process manager, job scheduling system
+and system operation. This complexity might make the use of the
+dynamic process creation hard and impractical for MPI users. 
 
 \subsection{Multi-threading}
 
@@ -725,16 +720,16 @@ highest.
 \end{center}
 \end{figure}
 
-In our survey, this is a multiple answer
-question. Table~\ref{tab:multi-thread-raw} shows the top 7 of the
-percentages of raw answers (not decomposed multiple answers) of
-overall countries. Nearly half 
-participants have no knowledge and/or do not care about the
-multi-threading support of 
-MPI. The numbers in parenthesis in this table are the percentage of
-participants excluding who answered \myquote{never used} and/or
-\myquote{not know.} Half of threading-aware participants are using
-          {\tt SINGLE}  
+Remember this is a multiple answer
+question. Table~\ref{tab:multi-thread-raw} shows the top 7 of the 
+percentages of raw answers (combined answers) of the
+overall. These top 7 percentages occupy about 85\% in
+total. Nearly half 
+participants answered \myquote{never used} or \myquote{no idea.} The
+numbers in parenthesis in this table are the percentage of 
+participants excluding those who answered \myquote{never used} or
+\myquote{no idea.} Half of threading-aware participants are using
+        {\tt SINGLE}  
 and/or {\tt MULTIPLE}. Although many participants ignore the thread
 mode, however, some participants use a particular thread support ({\tt
   SINGLE} or {\tt MULTIPLE}) and some other participants select one of
@@ -817,7 +812,7 @@ developed.
 Fig.~\ref{fig:learning-mpi} shows the percentages of how participants
 learned MPI. In this graph, \myquote{Other lec.} indicates the choice
 \myquote{Other lectures or tutorials (workplace, conference)}. The
-participants of UK and Russia preferred to access Internet. The
+UK and Russia participants preferred to learn by Internet. The
 participants of Germany and other European countries preferred to have
 other lectures. The percentage of reading \myquote{Books} in US is the
 highest. Taking a look at the other answers, 18 participants learned
@@ -879,13 +874,14 @@ online hypertext form.
 \end{center}
 \end{figure}
 
-Generally speaking, there can be a case where a particular question may
-ignite for participants to explode their dissatisfaction by writing complaints
-into a free text field. In our survey Q19 is such a question. The
+Generally speaking, there can be a case where a particular question in
+a survey may ignite for participants to explode their dissatisfaction
+by writing messages into a free text field. In our survey Q19 is
+such a question. The 
 largest number of \myquote{other} inputs in our survey can be found 
 at Q19 asking ``What are your obstacles to mastering MPI?''
 (Fig.~\ref{fig:learning-obstacles}). Although the largest answer is
-the choice of \myquote{No obstacles}, we got 111 \myquote{other} inputs
+the choice of \myquote{No obstacles,} we got 111 \myquote{other} inputs
 exceptionally. Q4 and Q7 are the second largest (70), but these are
 because of the variety of answers. 
 More than 20 participants raise \myquote{time} (to master MPI). Many
@@ -923,7 +919,7 @@ Russia. There seems to be a lots of room to tune MPI programs in
 general, however, around 40\% of participants said they do not have
 enough resource to do that. In Japan, the percentage of well-tuned
 program is only few percent. Contrastingly, Russian percentage of
-\myquote{well-tuned} choice is the highest among the countries and
+choosing \myquote{well-tuned} is the highest among the countries and
 regions. 
 
 \begin{figure}[htb]
@@ -967,9 +963,9 @@ alternatives are you investigating to indirectly call MPI or another
 communication layer by using another parallel language/library?'' they
 exhibited as shown in Fig.~\ref{fig:mpi-alternatives}. In overall,
 almost half participants do not investigate the alternatives. The
-differences among the countries and regions are not so big. The second
+differences over the countries and regions are not so big. The second
 largest answer was \myquote{Framework} (i.e. a framework or library
-using MPI)  followed by \myquote{PGAS}. 
+using MPI) followed by \myquote{PGAS}. 
   
 \begin{figure}[htb]
 \begin{center}
@@ -982,8 +978,8 @@ using MPI)  followed by \myquote{PGAS}.
 Fig.~\ref{fig:mpi-x-and-alternatives} shows the cross-tab analysis of
 the above Q22 and Q24. A certain percentage of participants of
 Germany, Italy, Russia and other European countries using MPI+OpenMP
-without investigating the MPI alternative (upper right corner in the
-figure). 
+without investigating the MPI alternative (upper right corners of the
+heatmaps in the figure). 
 
 \subsection{Compatibility vs. Performance}
 
