@@ -739,7 +739,7 @@ if args.csv_in is not [] :
     for csv_in in args.csv_in :
         dfn = pd.read_csv( csv_in, sep=',', dtype=str, keep_default_na=False )
         dfn = normalize_df( dfn )
-        df = pd.concat( [df, dfn] )
+        df = pd.concat( [df, dfn], sort=False )
         df = df.reset_index(drop=True)
 
 # strip blank(s) of user input value (not choices)
