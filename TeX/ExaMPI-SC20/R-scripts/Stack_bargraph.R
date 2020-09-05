@@ -26,14 +26,15 @@ generate_graph <- function(input_csv = "./dat/Q7-simple.csv",
   T <- arrange(mutate(T,X=factor(X,levels=Torder)),X)
   
   p<- ggplot(data=T,aes(x=X,y=value,fill=variable))+
-    geom_col(aes(fill = variable), width = 0.7)+
+    geom_col(aes(fill = variable), width = 0.7, position = position_stack(reverse = TRUE))+
     theme(axis.text.y = element_text(size = rel(2)),
           axis.text.x = element_text(size = rel(3), angle=45, vjust = 1,hjust=1),
           axis.title = element_text(size = rel(2)),
           axis.title.x=element_blank(),
           legend.title=element_blank(),
           legend.text = element_text(size = rel(2)))+
-      labs(y = "Percentage")
+      labs(y = "Percentage")+ 
+    guides(fill = guide_legend(reverse = TRUE))
   
   
   # save plot 
