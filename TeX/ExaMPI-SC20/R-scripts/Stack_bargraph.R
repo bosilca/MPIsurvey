@@ -35,7 +35,6 @@ generate_graph <- function(input_csv = "./dat/Q7-simple.csv",
           legend.text = element_text(size = rel(2)))+
       labs(y = "Percentage")
   
-  p
   
   # save plot 
   ggsave(output_pdf,height=10,width=20)
