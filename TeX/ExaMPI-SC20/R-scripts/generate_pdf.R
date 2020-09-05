@@ -97,6 +97,18 @@ generate_graph(input_csv = "./dat/Q24-simple.csv",
                left_margin=60)
 
 
+generate_graph(input_csv = "./dat/Q25-simple.csv", 
+               output_pdf = "./ExaMPI-SC20/R-scripts/Q25.pdf", 
+               x_text = c("X", "Satisfied","Add. comm. opt.","Multi-thread","Other opt","Latency","Bandwidth","Injection rate","Asynch progress","other"),
+               left_margin=30)
+
+
+generate_graph(input_csv = "./dat/Q26-simple.csv", 
+               output_pdf = "./ExaMPI-SC20/R-scripts/Q26.pdf", 
+               x_text = c("X","MPI provides all","Add. opt","Resilience","Latency hiding","Another API","End-points","other"),
+               left_margin=90)
+
+
 
 
 
