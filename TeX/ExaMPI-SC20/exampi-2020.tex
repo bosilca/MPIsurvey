@@ -1054,6 +1054,102 @@ Q28 may suggests that users would accept incompatibility if the users
 could get some kind of benefit from the incompatible updates of MPI
 specification. 
 
+\subsection{MPI and communications}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=9cm]{R-scripts/Q25.pdf}
+\caption{Q25: communication aspect to improve {\it(single)}}
+\label{fig:com_improvment}
+\end{center}
+\end{figure}
+
+As shown in Fig.~\ref{fig:com_improvment}, in terms of capabilities of
+the MPI standard and performance of the MPI implementations only a
+quarter of MPI users are satisfied with the current situation. The
+main concerns are related to how MPI provides general optimization
+opportunities in terms of hardware capabilities such as being able to
+handle the topology of the machine more efficiently. This topic is
+closely followed by the concerns related to threading support, or the
+integration of MPI+X, a prevalent issue in a world where a lot of
+applications are trying to integrate node-level runtimes to
+efficiently handle multi-core nodes.
+
+Other optimizations such as architecture awareness or dynamic processing comes
+third, but these issues are not related to the way MPI handles communications
+but are identified as a bottleneck for performance as well. This represent a
+shift in user awareness to hardware capabilities, and a willingness to take in
+account these hardware capabilities in application/algorithm design.
+
+Interestingly enough almost twice as many users prioritize latency
+optimization vs. bandwidth optimization. Looking more closely to there
+results, especially from a region perspective, pinpoints to an
+interesting exception to this latency vs. bandwidth discussion.
+Indeed, in Japan most users seem to be more concerned about bandwidth
+rather than latency. This might be related to the last generation of
+computers in Japan which are more balanced compared to other Top500
+machines anbd could indicate either a raising need for bandwidth in
+the region applications, or an unfounded perception of the current
+Japanese platforms.
+
+
+
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=9cm]{R-scripts/Q26.pdf}
+\caption{Q26: missing communication semantic {\it(multiple)}}
+\label{fig:com_sem}
+\end{center}
+\end{figure}
+
+Somewhat similar to the previous question (Q25), but looking for more
+precise answers, this question tackles the issue on which semantic
+feature is missing from MPI (fig~\ref{fig:com_sem}). Overall a very
+similar picture emerges: almost 25\% of the users are satisfied with
+the current situation .
+
+The highest given answer concerns optimization related to
+communication such as topology awareness and locality management. This
+is coherent with the previous question and managing efficiently the
+topology seem a major concern to many users. Then comes the concerns
+about the lack of resilience in MPI, a concern shared by more than
+16\% of the surveyed users. Hiding latency through generalization of
+asynchrony over the whole set of functions is another point raised
+repeatedly. More than 10\% of the users think that a simpler and
+easier API would be desirable (a topic where the discrepancy between
+different regions is minimal).
+
+Finally, the least desired feature concerns the notion of endpoints.
+However taking in account the extremely technical aspect of this question, and
+it's intricate evolution in the standard, it might be possible that most people
+answering this question knew little, and possible imprecisely, what this feature
+was exactly about.
+
+%% It is very interesting that most countries concern about the
+%% resilience. Although there are relatively big
+%% disparity in the satisfaction (answering ``MPI provides all''), the
+%% disparities of the other answers are smaller.
+
+These two questions (Q25 and Q26) are also highly related to the MPI forum effort. 
+%% Indeed, looking more in details at the different complains few trends emerges, small
+%% enough not to become mainstream yet, but certainly providing an interesting
+%% discussion ground for the future of MPI.
+In fact some of these topics (such as
+resilience~\footnote{https://github.com/mpi-forum/mpi-issues/issues/134,
+https://github.com/mpiwg-ft} and large
+counts~\footnote{https://github.com/mpi-forum/mpi-issues/issues/80}) are
+currently under active discussion in the MPI Forum.
+%
+A short summary of frequently appearing concerns is: resilience ;
+large messages ; asynchronous progress ; better accelerator support ;
+internal statistics to drive further optimizations.
+
+
+
+
+
 \section{Summary}
 
 We have conducted a questionnaire survey and succeeded to gather more
