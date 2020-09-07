@@ -760,6 +760,9 @@ supported thread capabilities positively.
       {\tt SINGLE, FUNNELED} & 3 (7) \\
       {\tt SERIALIZED} & 3 (5) \\
       \hline%
+      \multicolumn{2}{c}{\footnotesize Numbers in parenthesis are
+        percentages excluding \myquote{never used} and \myquote{no
+          ides}} 
     \end{tabular}%
   \end{center}%
 \end{table}%
@@ -991,10 +994,10 @@ When the participants were asked the question ``What, if any,
 alternatives are you investigating to indirectly call MPI or another
 communication layer by using another parallel language/library?'' they
 exhibited as shown in Fig.~\ref{fig:mpi-alternatives}. In overall,
-almost half participants do not investigate the alternatives. The
-differences over the countries and regions are not so big. The second
+almost half participants do not investigate the alternatives. The second
 largest answer was \myquote{Framework} (i.e. a framework or library
-using MPI) followed by \myquote{PGAS}. 
+using MPI) followed by \myquote{PGAS}. The
+differences over the countries and regions are not so big. 
   
 \begin{figure}[htb]
 \begin{center}
@@ -1009,6 +1012,84 @@ the above Q22 and Q24. A certain percentage of participants of
 Germany, Italy, Russia and other European countries using MPI+OpenMP
 without investigating the MPI alternative (upper right corners of the
 heatmaps in the figure). 
+
+\subsection{Missing Features and Semantics}
+
+It is a general concern how MPI provides optimization
+opportunities in terms of hardware capabilities such as being able to
+handle the various topologies of hardware components more 
+efficiently. To answer this, Q25 asking ``If there were one
+communication aspect which is not enough in the current MPI could
+improve the performance of your application, what would you
+prioritize? Or $\cdots$'' (Fig.~\ref{fig:mmissing-features}, full
+question can be found at Appendix~\ref{app:questions}), and Q26 asking
+``Is MPI providing all the communication semantics required by your
+application? If not, what is missing?''
+(Fig.~\ref{fig:missing-semantics}) were prepared. 
+
+In Fig.~\ref{fig:missing-features}, only 1/5 of overall MPI users
+are satisfied with the current situation.
+Interestingly enough the second largest percentage is
+\myquote{additional comm. opt.} (\myquote{Additional optimization
+  opportunities in terms of communication (network topology awareness,
+  etc.)}, followed by \myquote{Multi-thread} and \myquote{Other
+  opt.} (\myquote{Optimization opportunities except communication
+  (architecture awareness, dynamic processing, accelerator support,
+  etc.)}. 
+
+almost twice as many users prioritize latency
+or bandwidth optimizations. Looking more closely to those results from
+a regional perspective, US participants are more concerned about
+message injection rate than the other countries, whilst a fare amount
+of Japanese MPI users seem to be more concerned about bandwidth rather
+than latency.  
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{Figs/Q25.pdf}
+\caption{Q25: Missing Features {\it(single)}}
+\label{fig:missing-features}
+\end{center}
+\end{figure}
+
+Q26 is somewhat similar to Q25, but asking more precise questions.
+This question tackles the issue on which semantic 
+feature is missing from MPI. Overall a very similar picture emerges,
+almost a quarter of the users are satisfied with the current situation
+(and there is a high discrepancy between Japan where users are the least
+satisfied with the current situation and Russia which are the most
+satisfied). The highest given answer concerns optimization related to
+communication such as topology awareness. This is coherent with the
+previous question and managing efficiently the topology seem a major
+concern to many users. Then comes the concerns about the lack of
+resilience in MPI, a concern shared by more than 20\% of the
+participants. Hiding latency through generalization of asynchrony over
+the 
+ whole set of functions is another point raised repeatedly. More than
+ 10\% of the users think that a simpler and easier API would be
+ desirable (a topic where the discrepancy between different regions is
+ minimal). 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{Figs/Q26.pdf}
+\caption{Q26: MPI Semantics {\it(multiple)}}
+\label{fig:missing-semantics}
+\end{center}
+\end{figure}
+
+Finally, the least desired feature concerns the notion of endpoints,
+as discussed in the MPI standardization effort\footnote{missing
+  endpoint footnote}. However taking in account the extremely
+technical aspect of this question, and it's intricate evolution in the
+standard, it might be possible that most people answering this
+question knew little, and possible imprecisely, what this feature was
+exactly about. 
+
+It is very interesting that most countries concern about the
+resilience (as Emmauel noted above). Although there are relatively big
+disparity in the satisfaction (answering \myquote{MPI provides all}),
+the disparities of the other answers are smaller. 
 
 \subsection{Compatibility vs. Performance}
 
