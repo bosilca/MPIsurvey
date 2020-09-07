@@ -1023,8 +1023,7 @@ handle the various topologies of hardware components more
 efficiently. To answer this, Q25 asking ``If there were one
 communication aspect which is not enough in the current MPI could
 improve the performance of your application, what would you
-prioritize? Or $\cdots$'' (Fig.~\ref{fig:missing-features}, full
-question can be found at Appendix~\ref{app:questions}), and Q26 asking
+prioritize? Or $\cdots$'' (Fig.~\ref{fig:missing-features}), and Q26 asking
 ``Is MPI providing all the communication semantics required by your
 application? If not, what is missing?''
 (Fig.~\ref{fig:missing-semantics}) were prepared. 
@@ -1042,35 +1041,33 @@ Interestingly enough the second largest percentage is
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=8cm]{R-scripts/Q25.pdf}
-\caption{Q25: Missing Features {\it(single)}}
+\caption{Q25: Features to improve {\it(single)}}
 \label{fig:missing-features}
 \end{center}
 \end{figure}
 
-Q26 is somewhat similar to Q25, but asking more precise questions.
-This question tackles the issue on which semantic 
-feature is missing from MPI. Overall a very similar picture emerges
-with Q25,
-almost one third of the participants are satisfied with the current
+Q26 is somewhat similar to Q25, but looking for more precise answers.
+This question tackles the issue on which semantic feature is missing
+from MPI. Overall a very similar picture emerges with Q25, almost one
+third of the participants are satisfied with the current
 situation. There is a high discrepancy between Japan where users are
-the least satisfied with the current situation and Russia which are the most
-satisfied. The same situation can be seen in Q25. The highest given
-answer concerns \myquote{Add. opt} (\myquote{Additional optimization
-  opportunities in terms of communication (topology awareness,
-  locality, etc.)}). This is coherent with Q25 and managing
-efficiently the topology seem a major concern to many users. Then
-comes the concerns about the lack of 
-resilience, a concern shared by more than 20\% of the
-participants. Hiding latency through generalization of asynchrony over
-the whole set of functions is another point raised repeatedly. 16\% of
-the users think that a simpler and easier API would be 
- desirable (a topic where the discrepancy between different regions is
- minimal). 
+the least satisfied with the current situation and Russia which are
+the most satisfied. The same situation can be seen in Q25. The highest
+given answer concerns \myquote{Add. opt} (\myquote{Additional
+  optimization opportunities in terms of communication (topology
+  awareness, locality, etc.)}). This is coherent with Q25 and managing
+efficiently the topology and the locality seem a major concern to many users. Then
+comes the concerns about the lack of resilience, a concern shared by
+more than 20\% of the participants. Hiding latency through
+generalization of asynchrony over the whole set of functions is
+another point raised repeatedly. 16\% of the users think that a
+simpler and easier API would be desirable (a topic where the
+discrepancy between different regions is minimal).
 
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=8cm]{R-scripts/Q26.pdf}
-\caption{Q26: MPI Semantics {\it(multiple)}}
+\caption{Q26: MPI missing Semantics {\it(multiple)}}
 \label{fig:missing-semantics}
 \end{center}
 \end{figure}
@@ -1084,7 +1081,7 @@ question knew little, and possible imprecisely, what this feature was
 exactly about. 
 
 It is very interesting that most countries concern about the
-resilience (as Emmauel noted above). Although there are relatively big
+resilience. Although there are relatively big
 disparity in the satisfaction (answering \myquote{MPI provides all}),
 the disparities of the other answers are smaller. 
 
