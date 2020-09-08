@@ -41,6 +41,9 @@ generate_graph <- function(input_csv = "./dat/Q7-simple.csv",
   ggsave(output_pdf,height=10,width=20)
 }
 
+generate_graph(input_csv = "./dat/Q13-simple.csv", 
+               output_pdf = "./ExaMPI-SC20/R-scripts/Q13.pdf")
+
 generate_graph(input_csv = "./dat/Q1-simple.csv", 
                output_pdf = "./ExaMPI-SC20/R-scripts/Q1.pdf")
 
