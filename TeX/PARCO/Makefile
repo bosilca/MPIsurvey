@@ -50,4 +50,4 @@ figs :
 .PHONY: figs
 
 clean :
-	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *~ *.dvi
+	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *.spl *~ *.dvi
