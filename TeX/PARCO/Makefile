@@ -1,9 +1,10 @@
 TARGET = MPI-Survey
 SRCS    = $(TARGET).tex
-BIBS   = ../ref.bib
+BIBS   = ref.bib
 LATEX  = pdflatex
 DVI    = $(TARGET).dvi
 PDF    = $(TARGET).pdf
+BBL    = $(TARGET).bbl
 
 GRAPHDIR = ../pdfs
 
@@ -11,10 +12,10 @@ all : $(PDF)
 
 $(PDF) : $(SRCS) $(BIBS) Makefile
 	$(LATEX) $(TARGET);
-	bibtex $(TARGET);
+	bibtex $(TARGET)
 	$(LATEX) $(TARGET);
 	$(LATEX) $(TARGET);
-	grep -e $(LATEX) -e "LaTeX\ Warning" -e "Package\ natbib\ Warning" \
+	@grep -e $(LATEX) -e "LaTeX\ Warning" -e "Package\ natbib\ Warning" \
 	     -e "undefined" -e "multiply\ defined" $(TARGET).log;
 
 GRAPHS = $(GRAPHDIR)/TimeSeries.pdf \

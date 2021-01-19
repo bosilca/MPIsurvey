@@ -46,7 +46,9 @@
 %% Best regards,
 %% Kathryn Mohror and Toni Pena
 
-\documentclass[5p,times]{elsarticle}
+\documentclass[preprint,5p,times]{elsarticle}
+%\documentclass[review,5p,times]{elsarticle}
+%\documentclass[doubleblind,5p,times]{elsarticle}
 
 \bibliographystyle{model1-num-names}
 %\bibliographystyle{model2-names.bst}\biboptions{authoryear}
@@ -58,10 +60,12 @@
 %
 \usepackage{todonotes}%
 \usepackage{color}%
+\usepackage{underscore}%
 %
 \def\myquote#1{`#1'}
 \long\def\comment#1{}
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \title{An International Survey on MPI Users}
@@ -97,8 +101,6 @@
   country={USA}
 }  
 
-\maketitle
-
 \begin{abstract}
   The Message Passing Interface (MPI) plays a crucial part in the
   parallel computing ecosystem, a driving force behind many of the
@@ -122,11 +124,18 @@
   when possible.
 \end{abstract}
 
+\begin{keyword}
+  \MSC[2020]{68-02} \sep Message Passing Interface (MPI) \sep survey 
+\end{keyword}
+
+\maketitle
+ 
 \section{Background}
 
 Existing studies on MPI uses are focused on a restricted target
 domain, such as the Exascale Computing Project (ECP)~\cite{ECP} study
-conducted in 2017~\cite{osti_1462877} that focused on MPI usage in the
+conducted in 2017~\cite{https://doi.org/10.1002/cpe.4851} that focused
+on MPI usage in the 
 context of ECP applications; and/or are generally geographically
 constrained to a single laboratory, funding agency or at best,
 country. As such they provide sporadic, disconnected views on the real
@@ -165,21 +174,23 @@ collaborate in the JLESC framework.
 
 \begin{table}[htb]%
   \begin{center}%
-    \caption{Survey Comparison}\label{tab:comparison}%
-    \begin{tabular}{c|cccc}%
+    \caption{Comparison of ECP and HPCI
+      Surveys}\label{tab:comparison}%
+    \begin{tabular}{c|ccc}%
+      \hline
+      & ECP & HPCI & Ours \\
+      \hline
+      \hline
+      Concern & {\small MPI usage in} & Computing & MPI \\
+              & Exascale & Environment & {\small (w/o MPI-IO)} \\
+              & Computing & & \\
       \hline%
-      & Field of  & Geographic & Number of & Number of \\%
-      & Interests & Target     & Questions & Participants \\%
-      \hline%
-      \hline%
-      ECP  & Exascale & US & 64 (max.) & 77 \\%
-      & Computing & & & \\%
-      \hline%
-      HPCI & Computing & Japan & 75 (max.) & 105 \\%
-      & Environment & & & \\%
-      \hline%
-      Ours & MPI (w/o MPI-IO) & Earth & 30 & 851 \\%
-      \hline%
+      Target & US & Japan & World \\
+      \hline
+      \#Questions & 64 (max) & 75 (max) & 30 \\
+      \hline
+      \#Participants & 77 & 105 & 851 \\
+      \hline
     \end{tabular}%
   \end{center}%
 \end{table}%
@@ -214,19 +225,19 @@ survey asking questions to MPI users such as ours and the ECP survey,
 [S] analyzing MPI program statically, and [R] analyzing MPI behavior
 at runtime by using a profiling tool. Apparently our survey and the
 ECP survey are categorized in [Q]. The surveys categorized as [S] are
-\cite{10.1145/3295500.3356176, Sultana2018UnderstandingTU}. The [R]
+\cite{https://doi.org/10.1002/cpe.5901}. The [R]
 class surveys are
-\cite{10.1109/SC.2018.00033,10.1007/978-3-319-58667-0_12}. 
+\cite{8665758,10.1007/978-3-319-58667-0-12}. 
 
 In the [S] category, \cite{10.1145/3295500.3356176} statically
 investigated 110 open-source MPI
-programs. \cite{Sultana2018UnderstandingTU} investigated 14 MPI
+programs. \cite{https://doi.org/10.1002/cpe.5901} investigated 14 MPI
 programs chosen from the ECP Proxy Applications Suite
-2.0~\cite{osti_1482870}. 
+2.0~\cite{osti-1482870}. 
 
-In the [R] category, \cite{10.1109/SC.2018.00033} collected and
+In the [R] category, \cite{8665758} collected and
 analyzed the runtime behavior by running more than 100K MPI
-jobs. \cite{10.1007/978-3-319-58667-0_12} analyzed behavior of DOE
+jobs. \cite{10.1007/978-3-319-58667-0-12} analyzed behavior of DOE
 Mini-apps based on the trace data which DOE made public.
 
 The target of the questionnaire surveys are MPI users, the target of
@@ -262,7 +273,7 @@ The questionnaire was started distributing and receiving answers from
 February 17, 2019 and it is still open. The most recent answer was
 obtained at June 22, 2020. All questions, their choices, and
 abbreviations of the choices are listed in
-Appendix~\ref{app:questions}.
+~\ref{app:questions}.
 \comment{
   Importantly, we have two kind of
   questions single-answer questions and multiple-answer questions.
@@ -283,7 +294,7 @@ and those steps came out after asking local distribution.
 \begin{figure}[htb]
   \begin{center}
     %\includegraphics[width=8cm]{Figs/TimeSeries-Zoom.pdf}
-    \includegraphics[width=8cm]{R-scripts/TimeSeries.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/TimeSeries.pdf}
     \caption{Time series in first 90 days}
     \label{fig:time-series}
   \end{center}
@@ -303,10 +314,13 @@ cross-tab analysis may not be reliable enough.
 
 Comparing with Table~\ref{tab:top500-share} listing the top 10
 countries in the performance share in the Top500~\cite{Top500}, the
-three major countries, USA, China and Japan, are not even the top 5 in
-out survey. Especially China has only 18 participants including
+three major countries, USA, China and Japan, are not even in the top 5
+of out survey. Especially China has only 18 participants including
 Taiwan (2). We tried to increase the number of participants of those
-countries, especially China, as much as we could, but we failed.
+countries as much as we could, making and distributing fliers at
+several conferences, but we failed. Possibly because we could
+not reach the right influencing person to ask, or maybe because of
+nationalities. 
 \comment{
   Once we asked a Chinese researcher why we could not get enough
   number off participants from China and his answer was because of their
@@ -314,61 +328,53 @@ countries, especially China, as much as we could, but we failed.
     people is a problem for answering the survey. Please be more recise...}
 }
 %
-\begin{table}[htb]%
-  \begin{center}%
-    \begin{tabular}[t]{cc}
-      %
-      \begin{minipage}[t]{0.5\hsize}
-        \begin{center}%
-          \caption{Top 11 Countries of Participants}%
-          \label{tab:countries}%
-          \begin{tabular}{c|l|r|r}%
-            \hline%
-            \# & Country & \#Ans & [\%] \\%
-            \hline%
-            1 & Germany 	& 159 & 18.7 \\%
-            2 & France 	& 125 & 14.7 \\%
-            3 & Russia 	& 94  & 11.1 \\%
-            4 & UK 		& 67  &  7.9 \\%
-            5 & Japan 	& 64  &  7.5 \\%
-            6 & USA 	& 58  &  6.8 \\%
-            7 & Italy 	& 57  &  6.6 \\%
-            \hline%
-            8 & Switzerland & 40  &  5.8 \\%
-            9 & South Korea & 27  &  3.2 \\%
-            10 & Austria 	& 26  &  3.1 \\%
-            11 & China (+Taiwan) & 18 & 2.1 \\%
-            \hline%
-            \multicolumn{4}{c}{42 countries, 851 participants} \\%
-          \end{tabular}%
-        \end{center}%
-      \end{minipage}
-      %
-      \begin{minipage}[t]{0.5\hsize}
-        \begin{center}%
-          \caption{Top500 Performance Share (June 2020)}%
-          \label{tab:top500-share}%
-          \begin{tabular}{c|l|r}%
-            \hline%
-            \# & Country & [\%] \\%
-            \hline%
-            1  & USA 	  & 28.2 \\%
-            2  & China 	  & 25.6 \\%
-            3  & Japan 	  & 23.9 \\%
-            4  & Italy	  & 4.0  \\%
-            5  & France	  & 3.6  \\%
-            6  & Germany 	  & 3.1  \\%
-            7  & UK		  & 1.4  \\%
-            8  & Canada	  & 1.3  \\%
-            9  & Netherlands  & 1.1  \\%
-            10 & Switzerland  & 1.1  \\%
-            \hline%
-          \end{tabular}%
-        \end{center}%
-      \end{minipage}%
-      %
-    \end{tabular}%
-  \end{center}%
+\begin{table}%
+\begin{center}%
+\caption{Top 11 Countries of Participants}%
+\label{tab:countries}%
+\begin{tabular}{c|l|r|r}%
+  \hline%
+  \# & Country & \#Ans & [\%] \\%
+  \hline%
+  1 & Germany 	& 159 & 18.7 \\%
+  2 & France 	& 125 & 14.7 \\%
+  3 & Russia 	& 94  & 11.1 \\%
+  4 & UK 		& 67  &  7.9 \\%
+  5 & Japan 	& 64  &  7.5 \\%
+  6 & USA 	& 58  &  6.8 \\%
+  7 & Italy 	& 57  &  6.6 \\%
+  \hline%
+  8 & Switzerland & 40  &  5.8 \\%
+  9 & South Korea & 27  &  3.2 \\%
+  10 & Austria 	& 26  &  3.1 \\%
+  11 & China (incl. Taiwan) & 18 & 2.1 \\%
+  \hline%
+  \multicolumn{4}{c}{42 countries, 851 participants} \\%
+\end{tabular}%
+\end{center}%
+\end{table}%
+
+\begin{table}%
+\begin{center}%
+  \caption{Top500 Performance Share (Nov. 2020)}%
+  \label{tab:top500-share}%
+  \begin{tabular}{c|l|r}%
+    \hline%
+    \# & Country & [\%] \\%
+    \hline%
+    1  & USA 	  & 27.5 \\%
+    2  & China 	  & 23.3 \\%
+    3  & Japan 	  & 24.4 \\%
+    4  & Germany  &  5.4 \\%
+    5  & France	  &  3.7 \\%
+    6  & Italy	  &  3.2 \\%
+    7  & UK	  &  1.4 \\%
+    8  & Canada	  &  1.1 \\%
+    9  & Netherlands  & 1.0 \\%
+    10 & Switzerland  & 1.0 \\%
+    \hline%
+  \end{tabular}%
+\end{center}%
 \end{table}%
 
 %
@@ -380,7 +386,7 @@ universities or governmental research institutes.
 %
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q1.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q1.pdf}
     \caption{Q1: Occupations {\it(single)}}
     \label{fig:occupations}
   \end{center}
@@ -394,7 +400,7 @@ OS/runtimes are higher than the other countries and regions.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q7.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q7.pdf}
     \caption{Q7: Working Fields {\it(multiple)}}
     \label{fig:working-fields}
   \end{center}
@@ -411,7 +417,7 @@ some profiles of the participants in our survey.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q3.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q3.pdf}
     \caption{Q3: Self assessment of MPI Skill {\it(single)}}
     \label{fig:mpi-skill}
   \end{center}
@@ -431,7 +437,7 @@ countries and nobody in US marked the lowest skill.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q6.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q6.pdf}
     \caption{Q6: MPI Experience {\it(single)}}
     \label{fig:mpi-experience}
   \end{center}
@@ -462,6 +468,9 @@ in the following subsections.
     \caption{Comparable Questions}%
     \label{tab:comparable-questions}%
     \begin{tabular}[t]{c|c}
+      \hline
+      Our Survey & ECP Survey \\
+      \hline
       \hline
       \multicolumn{2}{c}{A. Layering MPI calls} \\
       \hline
@@ -501,8 +510,6 @@ in the following subsections.
       \end{minipage}
       \\
       \hline
-      Our Survey & ECP Survey \\
-      \hline
     \end{tabular}%
   \end{center}%
 \end{table}%
@@ -511,7 +518,7 @@ in the following subsections.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q21.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q21.pdf}
     \caption{Q21: Layering MPI calls {\it(single)}}
     \label{fig:layering-mpi-calls}
   \end{center}
@@ -551,6 +558,7 @@ the other countries, the participants having a packing layer occupies
       \cline{2-4}%
       & (sum) & 48 & 46 & 21 & 54 & 38 \\
       \hline%
+      \hline%
       Other & - & 5 & 2 & - & - & - \\
       \hline%
     \end{tabular}%
@@ -576,7 +584,7 @@ popular.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q17.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q17.pdf}
     \caption{Q17: Using MPI Aspects {\it(multiple)}}
     \label{fig:using-mpi-aspects}
   \end{center}
@@ -630,7 +638,7 @@ buffer access, blocking and non-blocking, and so on.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{Figs/Q3-Q16.pdf}
+    \includegraphics[width=8.7cm]{Figs/Q3-Q16.pdf}
     \caption{Q3-Q16: MPI Skill {\it(single)} and Unknown MPI Features {\it(multiple)}}
     \label{fig:skill-and-aspects}
   \end{center}
@@ -647,7 +655,7 @@ This tendency is also reported in \cite{10.1145/3295500.3356176}.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q27.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q27.pdf}
     \caption{Q27: Useless Features {\it(multiple)}}
     \label{fig:useless-features}
   \end{center}
@@ -685,11 +693,11 @@ ECP participants would be more experienced MPI users.
       \cline{2-6}%
       & overall & USA & AD & ST & AD+ST \\
       \hline%
-      SINGLE & 29 & 22 & \multicolumn{3}{c}{\tiny (no corresponding choice)} \\
+      SINGLE & 29 & 22 & \multicolumn{3}{c}{\scriptsize (no corresponding choice)} \\
       FUNNELED & 18 & 13 & 18 & 18 & 18 \\
       SERIALIZED & 12 & 10 & 18 & 18 & 18 \\
       MULTIPLE & 22 & 31 & 18 & 32 & 25 \\
-      never used & 23 & 16 & \multicolumn{3}{c}{\tiny (no corresponding choice)} \\
+      never used & 23 & 16 & \multicolumn{3}{c}{\scriptsize (no corresponding choice)} \\
       not know & 14 & 8 & 25 & 25 & 25\\
       \hline%
     \end{tabular}%
@@ -705,7 +713,7 @@ highest.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8cm]{R-scripts/Q18.pdf}
+    \includegraphics[width=8.7cm]{R-scripts/Q18.pdf}
     \caption{Q18: Multi-threading {\it(multiple)}}
     \label{fig:multi-thread}
   \end{center}
@@ -744,12 +752,12 @@ supported thread capabilities positively.
               \hline%
               \multicolumn{2}{c}{\footnotesize Numbers in parenthesis are
                 percentages excluding \myquote{never used} and \myquote{no
-                  ides}} 
+                  idea}} 
     \end{tabular}%
   \end{center}%
 \end{table}%
 
-In~\cite{10.1109/SC.2018.00033}, approximately 75\% of their target
+In~\cite{8665758}, approximately 75\% of their target
 executables (not number of jobs) on Mira (total of 68) are using {\tt
   SINGLE}, 15\% use {\tt FUNNELED} and 4\% use {\tt
   MULTIPLE}. In \cite{10.1145/3295500.3356176}, approximately 60\% of
@@ -777,7 +785,7 @@ is needed to state a result.
 
   \begin{figure}[htb]
     \begin{center}
-      \includegraphics[width=8cm]{R-scripts/Q12.pdf}
+      \includegraphics[width=8.7cm]{R-scripts/Q12.pdf}
       \caption{Q12: Using MPI Implementations {\it(multiple)}}
       \label{fig:using-implementations}
     \end{center}
@@ -795,7 +803,7 @@ is needed to state a result.
   
   \begin{figure}[htb]
     \begin{center}
-      \includegraphics[width=7.5cm]{R-scripts/Q13.pdf}
+      \includegraphics[width=8.7cm]{R-scripts/Q13.pdf}
       \caption{Q13: Choosing MPI Implementations {\it(single)}}
       \label{fig:choosing-implementation}
     \end{center}
@@ -816,7 +824,7 @@ doing\footnote{One participant answered \myquote{reverse engineering!}}.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q10.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q10.pdf}
 \caption{Q10: Learning MPI {\it(multiple)}}
 \label{fig:learning-mpi}
 \end{center}
@@ -832,7 +840,7 @@ highest among the countries and regions.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q9.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q9.pdf}
 \caption{Q9: Reading MPI Standard {\it(single)}}
 \label{fig:reading-standard}
 \end{center}
@@ -849,7 +857,7 @@ partly because of checking the MPI specifications.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q14.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q14.pdf}
 \caption{Q14: Checking Specification {\it(multiple)}}
 \label{fig:checking-spec}
 \end{center}
@@ -864,7 +872,7 @@ some supplemental document(s) in another online hypertext form.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q19.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q19.pdf}
 \caption{Q19: Learning Obstacles {\it(multiple)}}
 \label{fig:learning-obstacles}
 \end{center}
@@ -890,7 +898,7 @@ Some participants complaints about implementations and the
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{Figs/Q6-Q3.pdf}
+\includegraphics[width=8.7cm]{Figs/Q6-Q3.pdf}
 \caption{Q6-Q3: MPI Experience {\it(single)} and MPI Skill {\it single}}
 \label{fig:experience-and-skill}
 \end{center}
@@ -924,7 +932,7 @@ participants of the other countries and regions chose
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q15.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q15.pdf}
 \caption{Q15: MPI Programming Difficulty {\it(single)}}
 \label{fig:difficulty}
 \end{center}
@@ -942,7 +950,7 @@ regions.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q23.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q23.pdf}
 \caption{Q23: Performance Tuning {\it(single)}}
 \label{fig:tuning}
 \end{center}
@@ -962,7 +970,7 @@ is very close to our survey result.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q22.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q22.pdf}
 \caption{Q22: MPI+X {\it(multiple)}}
 \label{fig:mpi-x}
 \end{center}
@@ -970,7 +978,7 @@ is very close to our survey result.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q24.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q24.pdf}
 \caption{Q24: MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-alternatives}
 \end{center}
@@ -987,7 +995,7 @@ differences over the countries and regions are not so big.
   
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{Figs/Q22-Q24.pdf}
+\includegraphics[width=8.7cm]{Figs/Q22-Q24.pdf}
 \caption{Q22-Q24: MPI+X {\it(multiple)} and MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-x-and-alternatives}
 \end{center}
@@ -1024,7 +1032,7 @@ Interestingly enough the second largest percentage is
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q25.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q25.pdf}
 \caption{Q25: Features to improve {\it(single)}}
 \label{fig:missing-features}
 \end{center}
@@ -1057,7 +1065,7 @@ the disparities of the other answers are smaller.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q26.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q26.pdf}
 \caption{Q26: MPI Missing Semantics {\it(multiple)}}
 \label{fig:missing-semantics}
 \end{center}
@@ -1076,7 +1084,7 @@ exactly about.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q25.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q25.pdf}
 \caption{Q25: Communication Aspect to Improve {\it(single)}}
 \label{fig:com_improvment}
 \end{center}
@@ -1112,7 +1120,7 @@ Japanese platforms.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q26.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q26.pdf}
 \caption{Q26: Missing Semantic {\it(multiple)}}
 \label{fig:com_sem}
 \end{center}
@@ -1172,7 +1180,7 @@ Q28 asking backward compatibility.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q29.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q29.pdf}
 \caption{Q29: Performance vs. Compatibility {\it(single)}}
 \label{fig:performance-vs-compatibility}
 \end{center}
@@ -1191,7 +1199,7 @@ the compatibility does not cause a big problem.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8cm]{R-scripts/Q28.pdf}
+\includegraphics[width=8.7cm]{R-scripts/Q28.pdf}
 \caption{Q28: Backward Compatibility {\it(single)}}
 \label{fig:compatibility}
 \end{center}
@@ -1238,14 +1246,17 @@ This research is partially supported by the
 NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
 Computing~\cite{JLESC}.
 
-\bibliography{../ref}
+\bibliography{ref}
+
+{\noindent\small [dataset][15] A. Hori, T. Ogura, E. Jeannot, G. Bosilca, MPI
+International Survey – GitHub Repository,
+\url{https://exascaleproject.org/}, 2021.} 
 
 \appendix
 \section{List of Questions and Choices}
 \label{app:questions}
 
 {\small
-
   The followings are the list of all questions associated with
 choices. The question numbers suffixed by \myquote{*} are
 multiple-answer questions. The choices are followed by corresponding
