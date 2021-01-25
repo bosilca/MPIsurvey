@@ -5,25 +5,18 @@ LATEX  = pdflatex
 DVI    = $(TARGET).dvi
 PDF    = $(TARGET).pdf
 BBL    = $(TARGET).bbl
+ADDITION = CRediT-author-statement
 
 GRAPHDIR = ../pdfs
-
-all : $(PDF)
-
-$(PDF) : $(SRCS) $(BIBS) Makefile
-	$(LATEX) $(TARGET);
-	bibtex $(TARGET)
-	$(LATEX) $(TARGET);
-	$(LATEX) $(TARGET);
-	@grep -e $(LATEX) -e "LaTeX\ Warning" -e "Package\ natbib\ Warning" \
-	     -e "undefined" -e "multiply\ defined" $(TARGET).log;
 
 GRAPHS = $(GRAPHDIR)/TimeSeries.pdf \
 	 $(GRAPHDIR)/Q1.pdf \
 	 $(GRAPHDIR)/Q3.pdf \
+	 $(GRAPHDIR)/Q3-Q14.pdf \
 	 $(GRAPHDIR)/Q3-Q16.pdf \
 	 $(GRAPHDIR)/Q6.pdf \
 	 $(GRAPHDIR)/Q6-Q3.pdf \
+	 $(GRAPHDIR)/Q6-Q16.pdf \
 	 $(GRAPHDIR)/Q7.pdf \
 	 $(GRAPHDIR)/Q9.pdf \
 	 $(GRAPHDIR)/Q10.pdf \
@@ -45,10 +38,28 @@ GRAPHS = $(GRAPHDIR)/TimeSeries.pdf \
 	 $(GRAPHDIR)/Q28.pdf \
 	 $(GRAPHDIR)/Q29.pdf
 
+FIGS = $(shell ls Figs/*.pdf)
+
+all : $(PDF) $(ADDITION).pdf
+
+$(PDF) : $(SRCS) $(BIBS) $(FIGS) Makefile
+	$(LATEX) $(TARGET);
+	bibtex $(TARGET)
+	$(LATEX) $(TARGET);
+	$(LATEX) $(TARGET);
+	@grep -e $(LATEX) -e "LaTeX\ Warning" -e "Package\ natbib\ Warning" \
+	     -e "undefined" -e "multiply\ defined" $(TARGET).log;
+
+$(ADDITION).pdf : $(ADDITION).tex
+	$(LATEX) $(ADDITION);
+
 figs :
 	rm Figs/Q*.pdf
 	cp $(GRAPHS) Figs/
 .PHONY: figs
 
 clean :
-	rm -f $(PDF) *.bbl *.blg *.out *.aux *.log *.spl *~ *.dvi
+	rm -f *.bbl *.blg *.out *.aux *.log *.spl *~ *.dvi
+
+veryclean : clean
+	rm -f *.pdf
