@@ -58,6 +58,7 @@
 \usepackage{url}
 \usepackage{paralist}
 \usepackage[inline]{enumitem}
+\usepackage{xspace}
 \setlist[enumerate,1]{label=\bf{\alph*)}}
 %
 \usepackage{todonotes}%
@@ -67,14 +68,14 @@
 \def\myquote#1{{\it #1}}
 \long\def\comment#1{}
 %
-\def\country{contributor }
-\def\Country{Contributor }
-\def\countries{contributors }
-\def\Countries{Contributors }
-\def\mcountry{major contributor }
-\def\Mcountry{Major Contributor }
-\def\mcountries{major contributors }
-\def\Mcountries{Major contributors }
+\def\country{contributor}%
+\def\Country{Contributor}%
+\def\countries{contributors}%
+\def\Countries{Contributors}%
+\def\mcountry{major contributor}%
+\def\Mcountry{Major Contributor}%
+\def\mcountries{major contributors}%
+\def\Mcountries{Major contributors}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -361,7 +362,7 @@ objects of cross-tab analysis. Those are
 Germany, France, Russia, UK, Japan, USA, Italy and
 the rest of the European countries.
 There is a trade-off between the number of participants of
-each major \country and the number of the major contributors in the
+each \mcountry\  and the number of the major contributors in the
 cross-tab analysis. The 
 threshold of 50 participants was selected to balance this trade-off
 but this is not our intention of saying 50 is enough. Hence, some
@@ -371,7 +372,7 @@ workplaces in past 5 years, not asking nationalities.
 %
 \begin{table}%
 \begin{center}%
-\caption{Top 11 \countries}\label{tab:countries}%
+\caption{Top 11 \Countries}\label{tab:countries}%
 \begin{tabular}{c|l|r|r}%
   \hline%
   \# & \Country & \#Ans & [\%] \\%
@@ -465,7 +466,7 @@ themselves in our survey.  In the US case
 (right most bar), almost half of participants rate themselves
 \myquote{5} or \myquote{High}. This US percentage in having high MPI
 skill (\myquote{5} and \myquote{High}) is the highest among
-the other \mcountries and nobody in US marked the lowest skill.
+the other \mcountries\  and nobody in US marked the lowest skill.
 
 \begin{figure}[htb]
   \begin{center}
@@ -635,7 +636,7 @@ questions asking using MPI aspects in different usage scenarios;
 \item current,
 \item exascale, and
 \item performance critical
-\end{enumerate*}. % a space is intentionally put
+\end{enumerate*}. % a space is intentionally put here
 In all three questions, the percentages of using datatype are low.
 
 \begin{table}[htb]%
@@ -685,7 +686,7 @@ process, are almost independent from the MPI skill.
 The similar situation can be seen in the cross-tab analysis between Q6
 and Q16 (Fig.~\ref{fig:experience-and-aspects}). It would be plausible,
 the longer the MPI experience, the less unknown features. However,
-some \mcountries (France, UK and Japan) in these heatmaps show that the
+some \mcountries\  (France, UK and Japan) in these heatmaps show that the
 longer the experience, the higher the percentage of having unknown
 features. This may indicate that the long experienced MPI users may
 not catch up the newly introduced MPI features.
@@ -766,9 +767,9 @@ ECP participants would be more experienced MPI users.
   \end{center}%
 \end{table}%
 
-The usage of {\tt MULTIPLE} in US is also the highest among the major
-regions (Fig.~\ref{fig:multi-thread}). France and Germany have the
-same trend. In Italy, Japan, Russia and the
+The usage of {\tt MULTIPLE} in US is also the highest among the
+\mcountries\  (Fig.~\ref{fig:multi-thread}). France and Germany have
+the same trend. In Italy, Japan, Russia and the
 other European countries, the percentages of \myquote{I don't know}
 are the highest. In UK, the percentage of using {\tt SINGLE} is the
 highest.
@@ -835,7 +836,7 @@ is needed to state a result.
   Fig.~\ref{fig:using-implementations} shows the Q12 result asking
   which MPI implementation(s) using. The top 3
   implementations, Open MPI, Intel MPI and MPICH, dominates in all
-  \mcountries and regions, followed by MVAPICH. A large disparity can be
+  \mcountries\  followed by MVAPICH. A large disparity can be
   seen on the other implementations. Taking a
   look at the \myquote{other} choice, there are four (4) answers raising the
   \myquote{bullx MPI} and another four (4) using MadMPI~\cite{madmpi} in
@@ -904,7 +905,7 @@ exhibited as shown in Fig.~\ref{fig:mpi-alternatives}. In overall,
 almost half participants do not investigate the alternatives. The second
 largest answer was \myquote{Framework} (i.e. a framework or library
 using MPI) followed by \myquote{PGAS}. The
-differences over the \mcountries are not so big.
+differences over the \mcountries\  are not so big.
 
 \begin{figure}[htb]
 \begin{center}
@@ -941,7 +942,7 @@ In Fig~\ref{fig:performance-vs-compatibility}, let's consider three
 groups; {\it performance group} choosing \myquote{Performance} or
 \myquote{4}, {\it compatibility group} choosing \myquote{Portability} or
 \myquote{2}), and {\it grey group} who chose \myquote{3}. Apparently the grey
-group dominates in most \mcountries and regions (excepting Russia),
+group dominates in most \mcountries\  (excepting Russia),
 however, the performance group occupies more percentage. Regarding to
 Russia, a certain percentage of Russian participants answered
 \myquote{my program is too small} in Q21
@@ -987,7 +988,7 @@ doing\footnote{One participant answered \myquote{reverse engineering!}}.
 Fig.~\ref{fig:reading-standard} shows the graph of Q9, asking if
 participants have read the MPI standard document. Not surprisingly,
 around 60\% of participants, independent from \countries, read the
-standard partly. Most interesting \country is UK, where the percentage
+standard partly. Most interesting \country\  is UK, where the percentage
 of participants reading all document and, at the same time, the
 percentage of the answer \myquote{No} are the highest among the
 \mcountries.
@@ -1024,7 +1025,7 @@ between them did not give us any clear evidence.  Instead here we have
 Fig.~\ref{fig:reading-standard-and-checking-spec}, cross-tab
 heatmaps between Q3 and above Q14. There can be seen a a weak
 correlation, those who check MPI standard have higher MPI skill,
-in some \mcountries (France, Germany, and Japan).
+in some \mcountries\  (France, Germany, and Japan).
 
 \begin{figure}[htb]
 \begin{center}
@@ -1041,7 +1042,7 @@ account for more than 90\%. This indicates that
 people with high program skills shown interest in our survey and/or
 that program beginners do not use MPI. This might indicate that MPI
 programming requires specific skills whom basic developers do not
-necessarily master. By \country comparison, Russia shows a different
+necessarily master. By \country\  comparison, Russia shows a different
 tendency from other \countries.
 
 \begin{figure}[htb]
@@ -1109,7 +1110,7 @@ most difficult part of writing an MPI program?} and
 Fig~\ref{fig:tuning} shows the result of Q23 asking \myquote{Is there any
 room for performance tuning in your MPI programs?} The largest part
 of US and UK participants chose \myquote{algorithm design} whilst the
-participants of the other \countries chose
+participants of the other \countries\  chose
 \myquote{Debugging}. In US, the second largest choice was
 \myquote{Domain Decomposition}. In Japan, the second largest is
 \myquote{Tuning}.
@@ -1184,7 +1185,7 @@ efficiently the topology and the locality seem a major concern to many
 users. Then
 comes the concerns about the lack of resilience, a concern shared by
 more than 20\% of the participants. It is very interesting that most
-\mcountries concern about the resilience. Hiding latency through
+\mcountries\  concern about the resilience. Hiding latency through
 generalization of asynchrony over the whole set of functions is
 another point raised repeatedly. 16\% of the users think that a
 simpler and easier API would be desirable.
@@ -1256,7 +1257,7 @@ reported in~\cite{swopp2019}). Despite the high MPI
 skill (Fig.~\ref{fig:mpi-skill}) and long MPI experience
 (Fig.~\ref{fig:mpi-experience}), many Japanese MPI users seem to be
 suffered from debugging and tuning (Fig.~\ref{fig:difficulty}), whilst
-many participants of the other \countries raise \myquote{Algorithm}.
+many participants of the other \countries\  raise \myquote{Algorithm}.
 
 Most notably, more than 50\% of Japanese MPI users have the MPI
 experience more than 10 years exceptionally. This would sound good,
