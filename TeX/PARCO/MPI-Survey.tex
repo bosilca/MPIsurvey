@@ -72,10 +72,10 @@
 \def\Country{Contributor}%
 \def\countries{contributors}%
 \def\Countries{Contributors}%
-\def\mcountry{major contributor}%
-\def\Mcountry{Major Contributor}%
-\def\mcountries{major contributors}%
-\def\Mcountries{Major contributors}%
+\def\mcountry{major contributor\xspace{}}%
+\def\Mcountry{Major Contributor\xspace{}}%
+\def\mcountries{major contributors\xspace{}}%
+\def\Mcountries{Major contributors\xspace{}}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -122,7 +122,7 @@
   users' concerns and expectations, and adapts
   accordingly to continue to efficiently bridge the gap between users
   and hardware. This questionnaire survey was conducted starting from
-  February 
+  February
   2019 by using two online questionnaire frameworks, and more than 850
   answers from 42 countries has gathered at the time of this writing.
   % There are some predecessors of this kind of survey.
@@ -285,7 +285,7 @@ some topics, such as MPI-IO, and instead focused on MPI communications.
 We designed the questionnaire so that participants can answer questions
 as easy as possible, and the questions to force participants doing
 some extra work to answer the questions, such as counting the lines of
-code of their programs, are eliminated. 
+code of their programs, are eliminated.
 
 Similarly to the ECP questionnaire, we initially started with Google Forms to
 develop ours. Later in our project, and mostly for geopolitical reasons, we
@@ -319,7 +319,7 @@ this report are listed in ~\ref{app:questions}.
 
 One of the first questions we had to ask was how to reach a largely
 international community of researchers and users, quickly and
-efficiently while hoping for a significant contribution. 
+efficiently while hoping for a significant contribution.
 %
 The survey was initially announced via several major mailing lists in the
 community such as {\tt hpc-announce@mcs.anl.gov}, but the contributions were
@@ -354,21 +354,21 @@ several conferences, with little positive outcome. While the root cause is still
 %  Possibly because we could not reach the right influencing person to ask, or
 %  maybe because of % nationalities.
 
-\subsection*{Major contributors}
+\subsection*{\Mcountries}
 
-For the remaining of this report, countries or regions having more than 50
-participants are called {\bf major contributors} and are the
-objects of cross-tab analysis. Those are
-Germany, France, Russia, UK, Japan, USA, Italy and
-the rest of the European countries.
-There is a trade-off between the number of participants of
-each \mcountry\  and the number of the major contributors in the
-cross-tab analysis. The 
-threshold of 50 participants was selected to balance this trade-off
-but this is not our intention of saying 50 is enough. Hence, some
-cross-tab analysis may not be reliable enough.
-It should be noted that we asked the
-workplaces in past 5 years, not asking nationalities.
+For the remaining of this report, geographical regions, either countries or
+regions, having more than 50 participants, are called {\bf major contributors}
+and are the object of cross-tab analysis. Such major contributors are Germany,
+France, Russia, UK, Japan, USA, Italy and the rest of European countries. It
+should be noted that the information used to define the \mcountry was the
+workplaces in the last 5 years and not the nationality of the individual
+participants.
+%
+There is a trade-off between the number of participants from each \mcountry and
+the number of the \mcountries in the cross-tab analysis. The threshold of 50
+participants was selected to balance this trade-off but it was not our intent to
+define this number as a satisfactory participation limit. Hence, some cross-tab
+analysis may not be reliable enough.
 %
 \begin{table}%
 \begin{center}%
@@ -415,8 +415,8 @@ workplaces in past 5 years, not asking nationalities.
 
 \subsection*{Participants' profile}
 
-Fig.~\ref{fig:occupations} shows the graph of Q1 asking participants'
-occupation. As shown, roughly 80\% of participants are working at
+Fig.~\ref{fig:occupations} shows the graph of Q1 regarding participants'
+occupation. As shown, the majority, roughly 80\% of participants are working at
 universities or governmental research institutes.
 %
 \begin{figure}[htb]
@@ -427,11 +427,18 @@ universities or governmental research institutes.
   \end{center}
 \end{figure}
 
-Fig.~\ref{fig:working-fields} shows the result of asking \myquote{Which
-fields are you mostly working in?}. Roughly speaking, most
-participants are working on numerical applications and/or
-libraries. In Japan and US, the percentages of parallel languages and
-OS/runtimes are higher than the other \mcountries.
+Fig.~\ref{fig:working-fields} shows the major field the participants are
+involved with, field selected among a set of provided choices.
+% result of asking \myquote{Which
+% fields are you mostly working in?}.
+Roughly speaking, most participants are working on numerical applications and/or
+libraries, which can either be interpreted as a confirmation that most of the
+government sponsored MPI usages are in numerical applications or libraries, or
+that it was the most encompassing field among the proposed choices.
+%
+It is interesting to note that in 2 \mcountries, Japan and US, the percentage of
+parallel languages and OS/runtimes participants is significantly higher compared
+with the rest of \mcountries.
 
 \begin{figure}[htb]
   \begin{center}
@@ -444,11 +451,13 @@ OS/runtimes are higher than the other \mcountries.
 \section{Comparison with the ECP survey}\label{sec:ecp}
 
 Although the ECP questionnaire and our questionnaire were designed
-independently, there are several questions quite similar. It is also
-assumed that some of the participants of our survey
-also participated in the ECP survey. However, significant differences
-between them can be found. Before going into the details, we clarify
-some profiles of the participants in our survey.
+independently, there are several comparable questions. Before going into the
+details, we need to clarify some points about the profiles of the participants
+in our survey.
+%
+Due to the target audience, we can assume that some of the participants of our
+survey also participated in the ECP survey. However, significant differences
+between the outcome of the two surveys arise.
 
 \begin{figure}[htb]
   \begin{center}
@@ -458,15 +467,20 @@ some profiles of the participants in our survey.
   \end{center}
 \end{figure}
 
-We assumed that the participants in the ECP survey have more
-experiences on MPI
-programming than the participants of ours. Fig.~\ref{fig:mpi-skill}
-shows the results of Q3 asking to rate the participants MPI skill by
-themselves in our survey.  In the US case
-(right most bar), almost half of participants rate themselves
-\myquote{5} or \myquote{High}. This US percentage in having high MPI
-skill (\myquote{5} and \myquote{High}) is the highest among
-the other \mcountries\  and nobody in US marked the lowest skill.
+First, and this mainly due to the larger ratio of participants from universities
+and national laboratories, it seems likely that the ECP survey contains more
+answers from experts MPI users.
+% We assumed that the participants in the ECP survey have more
+% experience on MPI programming than the participants of ours.
+Fig.~\ref{fig:mpi-skill} shows the results of self-evaluation of the
+participants MPI skill in our survey.  It is worth raising attention to the US
+case (right most bar), where almost half of participants rate themselves as
+highly skilled MPI users (\myquote{5} or \myquote{High}), significantly ahead
+that any other \mcountries. Not only that, but none of the participants
+indicated a low MPI-related skill.
+% This US percentage in having high MPI skill (\myquote{5} and
+% \myquote{High}) is the highest among the other \mcountries\  and nobody in US
+% marked the lowest skill.
 
 \begin{figure}[htb]
   \begin{center}
