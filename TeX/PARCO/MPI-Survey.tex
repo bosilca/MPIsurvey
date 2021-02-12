@@ -455,9 +455,10 @@ independently, there are several comparable questions. Before going into the
 details, we need to clarify some points about the profiles of the participants
 in our survey.
 %
-Due to the target audience, we can assume that some of the participants of our
-survey also participated in the ECP survey. However, significant differences
-between the outcome of the two surveys arise.
+Due to the target audience reached by the survey propagation means (emails, HPC
+related mailing lists, and community based word-of-the-mouth), we can assume
+that some of the participants of our survey also participated in the ECP survey.
+However, significant differences between the outcome of the two surveys arise.
 
 \begin{figure}[htb]
   \begin{center}
@@ -469,7 +470,7 @@ between the outcome of the two surveys arise.
 
 First, and this mainly due to the larger ratio of participants from universities
 and national laboratories, it seems likely that the ECP survey contains more
-answers from experts MPI users.
+answers from highly HPC-centered participants or experts MPI users.
 % We assumed that the participants in the ECP survey have more
 % experience on MPI programming than the participants of ours.
 Fig.~\ref{fig:mpi-skill} shows the results of self-evaluation of the
@@ -490,25 +491,24 @@ indicated a low MPI-related skill.
   \end{center}
 \end{figure}
 
-Fig.~\ref{fig:mpi-experience} shows the more interesting result. This
-graph is the result of asking {\it How long have you been writing MPI
-programs?} and the choices are {\it more than 10 years} (denoted as
-\myquote{\textgreater 10}), \myquote{between 5 and 10 years}
-(denoted as \myquote{5-10}), \myquote{between 2 and 5 years}
-(denoted as \myquote{2-5}) and \myquote{less than 2 years}
-(denoted as \myquote{\textless 2}).
-Interestingly 9\% of US participants have less than 2 years MPI
-experience, but they do no rank their MPI expertise the lowest (Fig.~\ref
-{fig:mpi-skill}). Japan followed by USA has the highest percentage in
-more than 10 years and has the lowest percentage in less than 2 years
-experience. Russia followed by Italy has the highest percentage in
-less than 5 years experience (including the less than 2 years
-experience case).
+Fig.~\ref{fig:mpi-experience} shows an interesting result, picturing the answers
+about the longevity of participants interactions with the MPI world. The
+question was {\it How long have you been writing MPI programs?} and the choices
+are {\it more than 10 years} (denoted as \myquote{\textgreater 10}),
+\myquote{between 5 and 10 years} (denoted as \myquote{5-10}), \myquote{between 2
+and 5 years} (denoted as \myquote{2-5}) and \myquote{less than 2 years} (denoted
+as \myquote{\textless 2}). Interestingly only 9\% of US participants have less
+than 2 years MPI experience, but they do no rank their MPI expertise the lowest
+(Fig.~\ref {fig:mpi-skill}). Japan followed closely has the highest percentage
+in participants with more than 10 years of experience and also the lowest
+percentage in those with less than 2 years experience. Russia, followed by
+Italy, has the highest percentage in less than 5 years experience (including the
+less than 2 years experience case).
 
-We chose three questions from both of out survey and ECP survey that
-are very similar and thus the results are comparable
-(Table~\ref{tab:comparable-questions}). We will discuss those results
-in the following subsections.
+A second set of questions (Table~\ref{tab:comparable-questions}) with strong
+similarities between the ECP and our survey relates to the software stack where
+the MPI code is included. We will discuss those results in the following
+subsections.
 
 \begin{table}[htb]%
   \begin{center}%
@@ -574,7 +574,7 @@ in the following subsections.
 \end{figure}
 
 Fig.~\ref{fig:layering-mpi-calls} shows the result of our survey and
-Table~\ref{tab:layering-mpi-calls} shows the comparison between ours
+Table~\ref{tab:layering-mpi-calls} focuses on the comparison between our
 and the ECP survey. In the ECP survey, the participants are categorized
 into two groups; application development (AD) and system technology
 (ST). It is interesting that the percentage of the participants having
@@ -615,23 +615,25 @@ the other \mcountries, the participants having a packing layer occupies
   \end{center}%
 \end{table}%
 
-\subsection{Using MPI Aspects}\label{sec:mpi-aspects}
+\subsection{Using MPI Features}\label{sec:mpi-aspects}
 
-The Q35 in the ECP survey and Q17 in our survey are almost equivalent
-questions, although choices are somewhat
+The Q35 in the ECP survey and Q17 in our survey are equivalent
+questions, although the answer choices are somewhat
 different. Fig.~\ref{fig:using-mpi-aspects} shows the result of our
 survey and Table~\ref{tab:using-mpi-aspects} shows the comparison
 between ECP's and ours on the same choices. As shown in
 Fig.\ref{fig:using-mpi-aspects}, the
-using aspects can be categorixed in three groups; A) more frequently
+using aspects can be categorized in three groups; A) more frequently
 used (point-to-point and collectives), B) second frequently used
 (\myquote{Datatypes}, \myquote{with OpenMP}, \myquote{Communicator}, and \myquote{One-sided}), and C) less
 frequently used (\myquote{PMPI}, \myquote{Persistent}, and
 \myquote{dyn. process} (dynamic process).
-It should be noted that all these less frequently used features were
-already introduced and standardized in MPI 2.2 which was release in
-2009. Despite the 10-year appearance, those features failed to get
-popular.
+%
+It should be noted that all these less frequently used features were already
+introduced and standardized in MPI 2.2 which was release in 2009. This is
+clearly a concerning factor for the popularity of some of the MPI features as
+despite the 10-year existence many of the features failed to get any traction
+outside a small, certainly dedicated crowd.
 
 \begin{figure}[htb]
   \begin{center}
@@ -641,17 +643,20 @@ popular.
   \end{center}
 \end{figure}
 
-Most notable difference between our survey and the ECP survey is the
-datatype (Table~\ref{tab:using-mpi-aspects}). The percentage in
-datatype in ECP is 23\% and the percentage in our survey is more
-than 60\% in both overall and USA. In the ECP survey, there are three
-questions asking using MPI aspects in different usage scenarios;
-\begin{enumerate*}
-\item current,
-\item exascale, and
-\item performance critical
-\end{enumerate*}. % a space is intentionally put here
-In all three questions, the percentages of using datatype are low.
+The most notable difference between the two surveys relates to the use of
+datatypes (Table~\ref{tab:using-mpi-aspects}). The percentage of datatype usage
+in the ECP was around 23\% while in our survey it is significantly higher, at
+more than 60\% in both overall and USA contributors.
+%
+Looking at the USA data, as it is difficult to imagine that the common
+participants changed their mind between the two surveys, it seems that the
+datatype usage is more developed outside national laboratories. But at this
+point this conclusion is conjectural, more thorough analysis is needed to gain a
+better understanding.
+% In the ECP survey, there are three questions asking using MPI aspects in
+% different usage scenarios; \begin{enumerate*} \item current, \item exascale, and
+% \item performance critical \end{enumerate*}. In all three questions, the
+% percentages of using datatype are low.
 
 \begin{table}[htb]%
   \begin{center}%
@@ -676,18 +681,19 @@ In all three questions, the percentages of using datatype are low.
   \end{center}%
 \end{table}%
 
-Fig.~\ref{fig:skill-and-aspects} is the addition. This graph is a
-heatmap of the cross-tab analysis between Q3 asking MPI skill and Q16
-asking unknown MPI features. The darker the color of a cell, the
-higher the frequency (Legend combined with color bar can be found at
-the bottom of the figure. The numbers in the legend cells are
-percentages). Less frequent rows (1 is the lowest skill and 6 is the
-highest skill) in this figure are
-omitted to increase readability. Natural thinking may conclude
-that the higher the MPI skill, lesser the unknown MPI features. The
-result is quite interesting, the less used features in
-Fig.~\ref{fig:using-mpi-aspects}, PMPI, persistent, and dynamic
-process, are almost independent from the MPI skill.
+Fig.~\ref{fig:skill-and-aspects} is a heatmap representing the cross-tab
+analysis between participants' MPI skills (Q3) and the knowledge or use of MPI
+features (Q16). The darker the color of a cell, the higher the frequency (Legend
+combined with color bar can be found at the bottom of the figure. The numbers in
+the legend cells are percentages). Less frequent rows (1 is the lowest skill and
+6 is the highest skill) in this figure are omitted to increase readability. The
+result is interesting in the sense it goes against the expected outcome, where
+MPI experts will know and use more features. What we observe here is that the
+less used features in Fig.~\ref{fig:using-mpi-aspects}, PMPI, persistent, and
+dynamic process, are almost independent from the MPI skill.
+
+% Natural thinking may conclude that the higher the MPI skill, lesser the unknown
+% MPI features.
 
 \begin{figure}[htb]
   \begin{center}
@@ -697,13 +703,14 @@ process, are almost independent from the MPI skill.
   \end{center}
 \end{figure}
 
-The similar situation can be seen in the cross-tab analysis between Q6
-and Q16 (Fig.~\ref{fig:experience-and-aspects}). It would be plausible,
-the longer the MPI experience, the less unknown features. However,
-some \mcountries\  (France, UK and Japan) in these heatmaps show that the
-longer the experience, the higher the percentage of having unknown
-features. This may indicate that the long experienced MPI users may
-not catch up the newly introduced MPI features.
+A similar situation can be seen in the cross-tab analysis between Q6 and Q16
+(Fig.~\ref{fig:experience-and-aspects}). It would be natural to expect that the
+longer the MPI experience, the more familiar the participant should be with
+different MPI features and thus less unknown features. However, some
+\mcountries\ (France, UK and Japan) show that in some cases there is no
+relationship between these two, and that a longer experience could evolve around
+the same, limited set of MPI features being used.  This may also indicate that
+experienced MPI users may not easily catch up the newly introduced MPI features.
 
 \begin{figure}[htb]
   \begin{center}
@@ -713,20 +720,20 @@ not catch up the newly introduced MPI features.
   \end{center}
 \end{figure}
 
-This may indicate
-that the MPI standard is very profound. Even the most basic
-send/receive functions, although they look very simple and natural,
-they require deep knowledge such as possibility of deadlock, timing of
-buffer access, blocking/non-blocking, and so on.
+This may indicate that the MPI standard is complex, and its understanding by the
+general developer population remains limited. Even the most basic send/receive
+functions, although their API looking simple and natural, require deep knowledge
+such as possibility of deadlock, timing of buffer access, blocking/non-blocking,
+and so on.
 
-Fig.~\ref{fig:useless-features} is the result of Q27 asking \myquote{What MPI
-feature(s) are NOT useful for your application?}. Although many
-participants think MPI has no {\it not useful features}, fairly amount of
-participants think the dynamic process feature not useful. Thinking
-of the fact that the dynamic process feature is not used by the most
-participants (Q17, Fig.~\ref{fig:using-mpi-aspects}), this result is
-quite interesting.
-This tendency is also reported in \cite{10.1145/3295500.3356176}.
+Fig.~\ref{fig:useless-features} represent the answers regarding the MPI features
+perceived as unnecessary by the participants (Q27: \myquote{What MPI feature(s)
+are NOT useful for your application?}). Although most participants believe MPI
+has little {\it unnecessary features}, a fair amount of participants seem
+convinced that the dynamic process features are not useful. There is certainly a
+correlation between this and the fact that dynamic process feature is not being
+used by the most participants (Q17, Fig.~\ref{fig:using-mpi-aspects}). It should
+be noted that this tendency is also reported in \cite{10.1145/3295500.3356176}.
 
 \begin{figure}[htb]
   \begin{center}
@@ -736,16 +743,24 @@ This tendency is also reported in \cite{10.1145/3295500.3356176}.
   \end{center}
 \end{figure}
 
-The dynamic process feature is on the
-border of process management and communication, since the process
-creation itself is obviously out of the scope of the MPI standard,
-while the communication between the existing (MPI) processes and newly
-create (MPI) processes must be defined in the standard. Indeed, the
-implementation of dynamic process creation spreads many parts of a
-computing system: MPI library, process manager, job scheduling system
-and system operation. This complexity might make the use of the
-dynamic process creation hard and impractical for MPI users and the
-un-usefulness of dynamic process may not come from the MPI standard.
+The dynamic process feature is on the border of process management and
+communication, since the process creation itself is obviously out of the scope
+of the MPI standard, while the communication between the existing (MPI)
+processes and newly create (MPI) processes must be defined in the standard.
+Indeed, the implementation of dynamic process creation spreads many parts of a
+computing system: MPI library, process manager, job scheduling system and system
+operation.
+%
+But, we also need to look at applications and their demands. Most of the
+scientific applications look at the scientific process on a set of fixed
+boundaries and condition, and thus required a fixed number of processes in a
+completely static world, one that does not grow or shrink. Few applications exit
+this mold, and the small number of developers working around these applications
+seem to not have been reached by the survey.
+
+% This complexity might make the use of the dynamic process creation hard and
+% impractical for MPI users and the un-usefulness of dynamic process may not come
+% from the MPI standard.
 
 \subsection{Multi-threading}\label{sec:mutil-threading}
 
@@ -1461,9 +1476,9 @@ abbreviations in square brackets, if any.
     \item Numerical application and/or library [Num-App/Lib]
     \item AI (Deep Learning) [AI]
     \item Image processing [Image Proc]
-    \item Big data
+    \item Big data [Bg Data]
     \item Workflow and/or In-situ [Workfflow]
-    \item Visualization
+    \item Visualization [Visualization]
     \item Tool development (performance tuning, debugging, etc.) [Tool]
     \item Other
     \end{inparaenum}
@@ -1546,7 +1561,7 @@ abbreviations in square brackets, if any.
   \item[Q15:] What is the most difficult part of writing an MPI program?
     \begin{inparaenum}[{\bf C}1)]
     \item Algorithm design [Algorithm]
-    \item Debugging
+    \item Debugging [Debugging]
     \item Domain decomposition [Decomposition]
     \item Finding appropriate MPI routines [Finding MPI routines]
     \item Implementation issue workaround [Workaround]
@@ -1586,7 +1601,7 @@ abbreviations in square brackets, if any.
     \item MPI\_THREAD\_SERIALIZED [SERIALIZED]
     \item MPI\_THREAD\_MULTIPLE [MULTIPLE]
     \item I have never called {\tt MPI\_INIT\_THREAD} [never used]
-    \item I do not know or I do not care. [No idea]
+    \item I do not know or I do not care. [Np idea]
     \item Other
     \end{inparaenum}
   \item[Q19*:] What are your obstacles to mastering MPI?
@@ -1691,7 +1706,7 @@ abbreviations in square brackets, if any.
   \item[Q27*:] What MPI feature(s) are NOT useful for your application?
     \begin{inparaenum}[{\bf C}1)]
     \item One-sided communication [One-sided]
-    \item Datatypes
+    \item Datatypes [Datatypes]
     \item Communicator and group management [Communicator]
     \item Collective operations [Collectives]
     \item Process topologies [Topologies]
