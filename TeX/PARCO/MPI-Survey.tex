@@ -863,18 +863,17 @@ investigation is needed to state a result.
 
 \subsection{MPI Implementations}
 
-  Fig.~\ref{fig:using-implementations} shows the Q12 result asking
-  which MPI implementation(s) using. The top 3
-  implementations, Open MPI, Intel MPI and MPICH, dominates in all
-  \mcountries\  followed by MVAPICH. A large disparity can be
-  seen on the other implementations. Taking a
-  look at the \myquote{other} choice, there are four (4) answers raising the
-  \myquote{bullx MPI} and another four (4) using MadMPI~\cite{madmpi} in
-  France, and 10
-  answers raising ParaStation MPI in Germany. The frequency of using
-  Fujitsu MPI, ParaStation MPI, bullx MPI and others heavily depend on
-  countries of participants and the countries where the MPI was
-  developed.
+ Fig.~\ref{fig:using-implementations} shows the usage of the different MPI
+ implementations, (Q12 asking specifically which MPI implementation(s) the
+ participants are using regularly). This result presents a coherent picture
+ across the board, as Open~MPI, Intel MPI and MPICH, dominates in all
+ \mcountries\ followed by MVAPICH. Outside these top contenders, a large
+ disparity can be seen on the other implementations. Taking a look at the
+ \myquote{other} choice, there are four (4) answers naming the \myquote{bullx
+ MPI} and another four (4) using MadMPI~\cite{madmpi} in France, and 10 answers
+ raising ParaStation MPI in Germany. The frequency of using Fujitsu MPI,
+ ParaStation MPI, bullx MPI and others heavily depend on countries of
+ participants and the countries where the MPI was developed.
 
   \begin{figure}[htb]
     \begin{center}
@@ -884,14 +883,28 @@ investigation is needed to state a result.
     \end{center}
   \end{figure}
 
-  Q13 is asking \myquote{why did you choose the MPI implementation(s)} and its
-  answers are shown in Fig.~\ref{fig:choosing-implementation}. The highest
-  percentage of US participants selected \myquote{Familiar}. Many Italian
-  participants also selected \myquote{Familiar.} Many Russian
-  participants selected \myquote{No reason.} The largest part of UK and Germany
-  participants selected \myquote{No choice.}
-  In general, more than half of participants excepting US select MPI
-  implementation(s) without any reason nor freedom of choice.
+In order to understand how the usage of a particular MPI implementation came to
+happen, we specifically asked the participants in Q13 \myquote{why did you
+choose the MPI implementation(s)} and the answers are shown in
+Fig.~\ref{fig:choosing-implementation}.
+%
+One of the interesting outcomes from this question is the fact that more than
+half of the participants outside US have little to no choice in the selection of
+the MPI implementation, they have to use what is made available to them with the
+platform. For the rest of participants their choice seem to favor their
+familiarity with a particular implementation or past experiences with the
+community supporting their choice MPI implementation.
+%
+This clearly suggest that MPI implementors must carefully build and support
+their users community in order to increase the usage of their particular
+implementation.
+
+% The highest percentage of US participants selected \myquote{Familiar}. Many
+% Italian participants also selected \myquote{Familiar.} Many Russian
+% participants selected \myquote{No reason.} The largest part of UK and Germany
+% participants selected \myquote{No choice.} In general, more than half of
+% participants excepting US select MPI implementation(s) without any reason nor
+% freedom of choice.
 
   \begin{figure}[htb]
     \begin{center}
@@ -904,13 +917,14 @@ investigation is needed to state a result.
 \subsection{MPI+X and Alternatives}
 
 Fig.~\ref{fig:mpi-x} shows the result of Q22 asking \myquote{Have you ever
-written MPI+''X'' programs?}. Most participants have the experiences of
-writing MPI+OpenMP programs. In US, \myquote{CUDA} is the second
-largest and the percentage of \myquote{No} is the lowest among the
-others. Considering the low percentage of \myquote{No} in overall (approx.
-25\%), 3/4 participants using MPI with something else.
-\cite{10.1145/3295500.3356176} also reported that the approximately 3/4 of
-the target programs use the hybrid model of MPI+OpenMP.
+written MPI+''X'' programs?}. As a constant across the board, most participants
+have experienced writing MPI+OpenMP programs. An interesting highlight, in US
+\myquote{CUDA} is the second largest and the percentage pure MPI applications is
+the lowest. Considering the low percentage of \myquote{No} in overall (approx.
+25\%), 3/4 participants are using MPI in combination with another, node-level or
+accelerator-focused, programming paradigm. A similar finding was highlighted
+in~\cite{10.1145/3295500.3356176}, where it has been reported that the
+approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 
 \begin{figure}[htb]
 \begin{center}
@@ -928,14 +942,26 @@ the target programs use the hybrid model of MPI+OpenMP.
 \end{center}
 \end{figure}
 
-When the participants were asked the question \myquote{What, if any,
-alternatives are you investigating to indirectly call MPI or another
-communication layer by using another parallel language~/ library?}, they
-exhibited as shown in Fig.~\ref{fig:mpi-alternatives}. In overall,
-almost half participants do not investigate the alternatives. The second
-largest answer was \myquote{Framework} (i.e. a framework or library
-using MPI) followed by \myquote{PGAS}. The
-differences over the \mcountries\  are not so big.
+Without going in details about the features provided by MPI, it could be natural
+to assume that all types of data movements can be provided by other message
+passing paradigms. We specifically asked the participants to indicate if they
+have investigated any of these alternative message passing libraries (Q24
+\myquote{What, if any, alternatives are you investigating to indirectly call MPI
+or another communication layer by using another parallel language library?}).
+The Fig.~\ref{fig:mpi-alternatives} highlights that almost half of the
+participants are totally satisfied with MPI, and have not investigated any
+replacement message passing paradigm. Out of the remaining participants,
+\myquote{PGAS} seems to be the most used alternative to MPI, a result that is
+similar across all \mcountries.
+
+% When the participants were asked the question \myquote{What, if any,
+% alternatives are you investigating to indirectly call MPI or another
+% communication layer by using another parallel language~/ library?}, they
+% exhibited as shown in Fig.~\ref{fig:mpi-alternatives}. In overall,
+% almost half participants do not investigate the alternatives. The second
+% largest answer was \myquote{Framework} (i.e. a framework or library
+% using MPI) followed by \myquote{PGAS}. The
+% differences over the \mcountries\  are not so big.
 
 \begin{figure}[htb]
 \begin{center}
@@ -945,20 +971,22 @@ differences over the \mcountries\  are not so big.
 \end{center}
 \end{figure}
 
-Fig.~\ref{fig:mpi-x-and-alternatives} shows the cross-tab analysis of
-the above Q22 and Q24. A certain percentage of participants of
-Germany, Italy, Russia and other European countries using MPI+OpenMP
-without investigating the MPI alternative (upper right corners of the
-heatmaps).
+Fig.~\ref{fig:mpi-x-and-alternatives} shows the cross-tab analysis of Q22 and
+Q24. A certain percentage of participants of Germany, Italy, Russia and other
+European countries are using hybrid programming (MPI+\ OpenMP) but without
+investigating the MPI alternative (upper right corners of the heatmaps).
 
 \subsection{Compatibility vs. Performance}
 
-In somewhat long history of MPI, maintaining the backward
-compatibility can be obstacles when introducing new features to
-enhance MPI capabilities. Fig.~\ref{fig:performance-vs-compatibility}
-shows the result of the question asking which is more important,
-performance or compatibility. Fig.~\ref{fig:compatibility} shows the
-percentages of Q28 asking backward compatibility.
+In the history of MPI, portability, which translates into maintaining backward
+compatibility across versions, has been of paramount importance. From the MPI
+standard point of view it can also be an obstacle to the introduction of new
+features to enhance MPI capabilities, and to the deprecation of features that
+proved inconsistent or were replaced by better alternative.
+Fig.~\ref{fig:performance-vs-compatibility} shows the result of the question
+asking which is more important, performance or compatibility on a scale, while
+Fig.~\ref{fig:compatibility} shows the expressed need for backward compatibility
+(Q28).
 
 \begin{figure}[htb]
 \begin{center}
@@ -968,16 +996,15 @@ percentages of Q28 asking backward compatibility.
 \end{center}
 \end{figure}
 
-In Fig~\ref{fig:performance-vs-compatibility}, let's consider three
-groups; {\it performance group} choosing \myquote{Performance} or
-\myquote{4}, {\it compatibility group} choosing \myquote{Portability} or
-\myquote{2}), and {\it grey group} who chose \myquote{3}. Apparently the grey
-group dominates in most \mcountries\  (excepting Russia),
-however, the performance group occupies more percentage. Regarding to
-Russia, a certain percentage of Russian participants answered
-\myquote{my program is too small} in Q21
-(Fig.~\ref{fig:layering-mpi-calls}). If program is small enough, then
-the compatibility does not cause a big problem.
+In Fig~\ref{fig:performance-vs-compatibility}, let's consider three groups; {\it
+performance group} focused on \myquote{Performance} or \myquote{4}, {\it
+compatibility group} focused on \myquote{Portability} or \myquote{2}), and {\it
+middle group} who chose \myquote{3}. While the middle group, striking a balance
+between performance and portability dominates in most \mcountries\  (excepting
+Russia), the performance group tend to occupy a larger percentage. Regarding
+Russia, a large percentage of Russian participants answered \myquote{my program
+is too small} in Q21 (Fig.~\ref{fig:layering-mpi-calls}), in which case the lost
+of compatibility does not cause a considerable burden.
 
 \begin{figure}[htb]
 \begin{center}
@@ -987,25 +1014,23 @@ the compatibility does not cause a big problem.
 \end{center}
 \end{figure}
 
-As shown in Fig.~\ref{fig:compatibility}, around 40\% of participants
-answered that the compatibility is very important, while the rest of
-participants may accept the incompatibility conditionally. The
-incompatibility forces users to update their programs. The result of
-Q28 may suggests that users would accept incompatibility if the users
-could get some kind of benefit from the incompatible updates of MPI
-specification.
+As shown in Fig.~\ref{fig:compatibility}, around 40\% of participants answered
+that the compatibility is very important, while the rest of participants may
+accept the incompatibility conditionally. The incompatibility forces users to
+update their programs. The result of Q28 may suggests that users would accept
+incompatibility in exchange of a substantiated benefit, either in terms of
+performance or productivity.
 
 \subsection{Learning MPI}\label{sec:learning-mpi}
 
-Fig.~\ref{fig:learning-mpi} shows the percentages of how participants
-learned MPI. In this graph, \myquote{Other lec.} indicates the choice
-\myquote{Other lectures or tutorials (workplace, conference)}. The
-UK and Russia participants preferred to learn by Internet. The
-participants of Germany and other European countries preferred to have
-other lectures. The percentage of reading \myquote{Books} in US is the
-highest. Taking a look at the other answers, 18 participants learned
-by reading existing code and 8 participants learned by
-doing\footnote{One participant answered \myquote{reverse engineering!}}.
+Fig.~\ref{fig:learning-mpi} shows the percentages of how participants learned
+MPI. In this graph, \myquote{Other lec.} indicates the choice \myquote{Other
+lectures or tutorials (workplace, conference)}. The UK and Russia participants
+preferred to learn from online sources. The participants of Germany and other
+European countries preferred to have other form of lectures. The percentage of
+reading \myquote{Books} in US is the highest. Taking a look at the other
+answers, 18 participants learned by reading existing code and 8 participants
+learned by writing MPI applications.
 
 \begin{figure}[htb]
 \begin{center}
@@ -1015,13 +1040,14 @@ doing\footnote{One participant answered \myquote{reverse engineering!}}.
 \end{center}
 \end{figure}
 
-Fig.~\ref{fig:reading-standard} shows the graph of Q9, asking if
-participants have read the MPI standard document. Not surprisingly,
-around 60\% of participants, independent from \countries, read the
-standard partly. Most interesting \country\  is UK, where the percentage
-of participants reading all document and, at the same time, the
-percentage of the answer \myquote{No} are the highest among the
-\mcountries.
+Fig.~\ref{fig:reading-standard} shows the familiarity of the participants with
+the official MPI standard document (asking if participants have read the MPI
+standard document). Not necessarily surprising, around 60\% of participants,
+independent from \countries, have partially read the MPI standard. Interestingly
+in UK, the percentage of participants having read the entirety of the MPI
+standard is similar to the percentage of users having never read the standard.
+In same time, UK participants overwhelmingly learned MPI from online sources,
+which usually translate by via practical examples.
 
 \begin{figure}[htb]
 \begin{center}
@@ -1031,14 +1057,14 @@ percentage of the answer \myquote{No} are the highest among the
 \end{center}
 \end{figure}
 
-Now let's see how people are writing MPI
-programs. Fig.~\ref{fig:checking-spec} shows the percentages of Q14
-asking \myquote{How do you check MPI specifications when your are writing MPI
+While the MPI standard is certainly not the best document for learning MPI, it
+is the most valid and trusted source for checking the specification of the MPI
+API. Fig.~\ref{fig:checking-spec} shows the percentages of Q14 asking
+\myquote{How do you check MPI specifications when your are writing MPI
 programs?} Most users are checking MPI specifications by reading online
-documentations (e.g., man pages), searching Internet, and reading the
-standard. As shown in the previous figure
-(Fig.~\ref{fig:reading-standard}), users are reading the standard
-partly because of checking the MPI specifications.
+documentations (e.g., man pages), searching Internet, and reading the standard.
+As shown in the previous figure (Fig.~\ref{fig:reading-standard}), users are
+reading the standard partly because of checking the MPI specifications.
 
 \begin{figure}[htb]
 \begin{center}
@@ -1048,14 +1074,15 @@ partly because of checking the MPI specifications.
 \end{center}
 \end{figure}
 
-It would be nice to have the cross-tab analysis between Q3 (MPI skill)
-and Q9 (reading MPI standard). Unfortunately the participants reading
-the standard partly dominates and the cross-tab analysis
-between them did not give us any clear evidence.  Instead here we have
-Fig.~\ref{fig:reading-standard-and-checking-spec}, cross-tab
-heatmaps between Q3 and above Q14. There can be seen a a weak
-correlation, those who check MPI standard have higher MPI skill,
-in some \mcountries\  (France, Germany, and Japan).
+It would be nice to have the cross-tab analysis between Q3 (MPI skill) and Q9
+(reading MPI standard). Unfortunately the participants reading the standard
+partly dominates and the cross-tab analysis between them did not give us any
+clear evidence.
+%
+Instead we have Fig.~\ref{fig:reading-standard-and-checking-spec}, cross-tab
+heatmaps between Q3 and above Q14. There can be seen a weak correlation, those
+who check MPI standard have higher MPI skill, in some \mcountries\  (France,
+Germany, and Japan).
 
 \begin{figure}[htb]
 \begin{center}
@@ -1065,15 +1092,15 @@ in some \mcountries\  (France, Germany, and Japan).
 \end{center}
 \end{figure}
 
-Another interesting result can be seen in Fig.~\ref{fig:prog-skill}
-asking \myquote{Rate your overall programming skill (non-MPI
-  programs)}. People with high programming skills who chose 4 or more
-account for more than 90\%. This indicates that
-people with high program skills shown interest in our survey and/or
-that program beginners do not use MPI. This might indicate that MPI
-programming requires specific skills whom basic developers do not
-necessarily master. By \country\  comparison, Russia shows a different
-tendency from other \countries.
+Another interesting result can be seen in Fig.~\ref{fig:prog-skill} asking
+\myquote{Rate your overall programming skill (non-MPI programs)}. People with
+high programming skills who chose 4 or more account for more than 90\%. This
+indicates that MPI users are seasoned developers, or at least programmers with
+high programming skills. This might indicate that MPI programming requires
+specific skills whom basic developers do not necessarily master, or that before
+starting to write parallel applications (where MPI is necessary) most developers
+have already become acquainted with programming. By \country\ comparison, Russia
+shows a different tendency from other \countries.
 
 \begin{figure}[htb]
 \begin{center}
