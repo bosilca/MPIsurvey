@@ -492,9 +492,9 @@ indicated a low MPI-related skill.
 \end{figure}
 
 Fig.~\ref{fig:mpi-experience} shows an interesting result, picturing the answers
-about the longevity of participants interactions with the MPI world. The
-question was {\it How long have you been writing MPI programs?} and the choices
-are {\it more than 10 years} (denoted as \myquote{\textgreater 10}),
+about participants' expertise via the length of the interactions with the MPI
+world. The question was {\it How long have you been writing MPI programs?} and
+the choices are {\it more than 10 years} (denoted as \myquote{\textgreater 10}),
 \myquote{between 5 and 10 years} (denoted as \myquote{5-10}), \myquote{between 2
 and 5 years} (denoted as \myquote{2-5}) and \myquote{less than 2 years} (denoted
 as \myquote{\textless 2}). Interestingly only 9\% of US participants have less
@@ -764,15 +764,17 @@ seem to not have been reached by the survey.
 
 \subsection{Multi-threading}\label{sec:mutil-threading}
 
-The difference between our survey and the ECP survey can also be found on
-the question asking multi-threading support. Fig.~\ref{fig:multi-thread}
-shows the result of our survey and Table~\ref{tab:multi-thread} shows
-the difference. Note that our question is multiple-answer and the ECP
-question is single-answer. In both surveys (USA and ECP), the
-percentage of using {\tt MULTIPLE} is the highest excepting the AD
-case. However, the percentage of the choice \myquote{I don't know}
-is fairly larger than ours. This may sound contradictory because the
-ECP participants would be more experienced MPI users.
+Similar to dynamic processes, the outcome of the question related to threading
+support in MPI has widely divergent answers between the two surveys.
+% The difference between our survey and the ECP survey can also be found on
+% the question asking multi-threading support.
+Fig.~\ref{fig:multi-thread} shows the result of our survey and
+Table~\ref{tab:multi-thread} shows the difference with the ECP survey. Note that
+our question is multiple-choice and the ECP question is single-choice. In both
+surveys, the percentage of using {\tt MULTIPLE} is the highest among the valid
+choices, but the percentage of the choice \myquote{I don't know} remains the
+largest. This may sound contradictory because the ECP participants would be more
+experienced MPI users.
 
 \begin{table}[htb]%
   \small%
@@ -811,20 +813,19 @@ highest.
   \end{center}
 \end{figure}
 
-Remember this is a multiple answer
-question. Table~\ref{tab:multi-thread-raw} shows the top 7 of the
-percentages of raw answers (combined answers) of the
-overall. These top 7 percentages occupy about 85\% in
-total. Nearly half
-participants answered \myquote{never used} or \myquote{no idea.} The
-numbers in parenthesis in this table are the percentage of
-participants excluding those who answered \myquote{never used} or
-\myquote{no idea}. Half of threading-aware participants are using {\tt
-  SINGLE}
-and/or {\tt MULTIPLE}. Although many participants ignore the thread
-mode, some participants use a particular thread support ({\tt
-  SINGLE} or {\tt MULTIPLE}) and some other participants select one of
-supported thread capabilities positively.
+Keeping in mind this question was a multiple-choice question
+Table~\ref{tab:multi-thread-raw} shows the top 7 raw answers (combined answers),
+with a coverage of about 85\% of the total answers.
+% These top 7 percentages occupy about 85\% in total.
+As nearly half participants answered \myquote{never used} or \myquote{no idea},
+we will ignore these two choices in the remaining of this analysis. This is
+reflected in the numbers in parenthesis in this table which are the percentage
+of participants excluding those who answered \myquote{never used} or \myquote{no
+idea}. Half of threading-aware participants are using {\tt SINGLE} and/or {\tt
+MULTIPLE}. Although many participants ignore the thread mode, some participants
+use a particular thread support ({\tt SINGLE} or {\tt MULTIPLE}) and some other
+participants select one of supported thread capabilities willingly, which might
+indicate a well established knowledge of the MPI features.
 
 \begin{table}[htb]%
   \begin{center}%
@@ -849,14 +850,14 @@ supported thread capabilities positively.
   \end{center}%
 \end{table}%
 
-In~\cite{8665758}, approximately 75\% of their target
-executables (not number of jobs) on Mira (total of 68) are using {\tt
-  SINGLE}, 15\% use {\tt FUNNELED} and 4\% use {\tt
-  MULTIPLE}. In \cite{10.1145/3295500.3356176}, approximately 60\% of
-their target programs use {\tt FUNNELED}, 30\% use {\tt MULTIPLE}, 20\%
-use {\tt SINGLE} and only few percent use {\tt SERIALIZED}. Thus, the
-thread support usage varies on each survey and further investigation
-is needed to state a result.
+A similarly scattered trend has also been confirmed by other studies. Indeed,
+\cite{8665758} indicates approximately 75\% of their target executables (not
+number of jobs) on Mira (total of 68) are using {\tt SINGLE}, 15\% use {\tt
+FUNNELED} and 4\% use {\tt MULTIPLE}. Similarly, \cite{10.1145/3295500.3356176}
+indicate that approximately 60\% of their target programs use {\tt FUNNELED},
+30\% use {\tt MULTIPLE}, 20\% use {\tt SINGLE} and only few percent use {\tt
+SERIALIZED}. Thus, the thread support usage varies on each survey and further
+investigation is needed to state a result.
 
 \section{Other Findings}
 
@@ -1425,7 +1426,7 @@ G. Bosilca, MPI International Survey – GitHub Repository,
 
 The followings are the list of all questions associated with
 choices. The question numbers suffixed by asterisks (*) are
-multiple-answer questions. The choices are followed by corresponding
+multiple-choice questions. The choices are followed by corresponding
 abbreviations in square brackets, if any.
 \vspace{2mm}
 {\small
