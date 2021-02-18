@@ -1360,13 +1360,13 @@ Japanese HPC community might be in a difficult spot over the next decade.
 
 \section{Discussion}
 
-\subsection{Inflating standard}
+\subsection{A constantly increasing standardization document}
 
-As this survey reveals that some MPI features, which were already
-introduced almost a decade ago, are not widely accepted by MPI users
-yet (Subsection \ref{sec:mpi-aspects}). Here a question may be raised,
-if this gap between the MPI features defined by the standard and the
-acceptance of the features will become wider or narrower?
+This survey reveals that some MPI features, which by most standards are not new
+being introduced almost a decade ago, are not yet widely accepted by MPI users
+(Subsection \ref{sec:mpi-aspects}). An interesting question may be raised
+regarding the evolution of the gap between the MPI features defined by the
+standard and the acceptance of the features.
 
 \begin{figure}[htb]
 \begin{center}
@@ -1376,29 +1376,26 @@ acceptance of the features will become wider or narrower?
 \end{center}
 \end{figure}
 
-Fig.~\ref{fig:mpi-standards} shows the number of pages (in terms of
-PDF, not the content) plotted over the released dates. Not
-surprisingly, the number of pages increases every time newer standard
-is released. It is a natural thinking that the number of pages and the
-number of features are proportional.
+Fig.~\ref{fig:mpi-standards} shows the number of pages (in terms of PDF, not the
+content) plotted over the released dates. Not surprisingly, the number of pages
+increases with every new version of the standard. It is a natural thinking that
+the number of pages and the number of features are proportional.
 
-In many cases, the higher functionalities introduced by newer MPI
-standard yield more degree of implementation freedom. An MPI
-implementation can be optimized its performance by exploiting hardware
-resources without having the MPI users large effort. If only the most
-basic communication functions, send and receive, are supported by MPI
-then users have to write collective functions which are not easy if
-users wants optimize for the parallel machines they are using.
+In many cases, the higher functionalities introduced by newer MPI standard yield
+more degree of implementation freedom. An MPI implementation can be optimized by
+exploiting hardware resources without imposing significant effort on the MPI
+users. If only the most basic communication functions, send and receive, are
+supported by MPI then users have to write collective functions which are not
+easy if users wants optimize for the parallel machines they are using.
 
 Another reason of the inflation is that MPI standard is the standard
 as a library. There is no way for library functions to know how the
 library functions are called in which context. The higher abstracted
 functions can give a library more information of how and which and
-thus the higher-level functions can be optimized. Traf, et al., gives
-a formal analysis on this point\cite{5184825}.
+thus the higher-level functions can be optimized. Träff, et al., gives
+a formal analysis on this point~\cite{5184825}.
 This situation, introducing higher-level functions into the standard,
-inflates the standard and always will be. And the gap will not be
-narrowed.
+will keep increasing the standard.
 
 Hoefler et al., reported their idea to extract collective operation
 patterns from a series of communication primitives, send and
@@ -1415,26 +1412,31 @@ Currently the MPI standard documents are available in PDF format and
 hardcover books~\cite{mpi-hardcover}. There are some MPI tutorial web
 sites (\cite{mpi-tutorial} as an example). \cite{mpi-tutorial-intro}
 pointed out most of such web pages are out-dated and not
-thorough.
+kept in sych with today's web standards.
 
-As already shown in Subsection~\ref{sec:mpi-aspects}, some MPI
-features, which are not newly introduced, have failed to be
-well-known. Further many MPI users have not enough time to master MPI
-as described in Subsection~\ref{sec:learning-mpi}. These suggest that
-there is something wrong for people to learn MPI and writing MPI
-programs.
+As already shown in Subsection~\ref{sec:mpi-aspects}, some, rather old, MPI
+features have failed to gain traction and be widely accepted by the users.
+Furthermore, as indicated in Subsection~\ref{sec:learning-mpi}, many MPI users
+complain of a lack of time to hone or master MPI, and also to a lack of clear
+and easy understandable documentation. These suggest that there is a real
+difficulty for people to learn MPI and to write, efficient and error-free MPI programs.
 
-Thus, it is very important to narrow the gap described in the previous
-subsection by helping MPI users to learn and write MPI programs. We
+However, this can be  addresses with a stronger educational effort from the MPI
+standardization body. Indeed, it is very important to narrow the gap described in
+the previous subsection by helping MPI users to learn and write MPI programs. We
 believe this is the responsibility of MPI Forum, since the other,
-volunteer-based approach would not be efficient and sufficient. If
-MPI Forum agrees with us for narrowing the gap, then MPI Forum should
-
+volunteer-based approach would not be efficient and sufficient. If MPI Forum
+agrees with us for narrowing the gap, then MPI Forum should
+%
 \begin{itemize}
-\item {\bf slow the pace of introducing new features,} and
-\item {\bf create a new working group to prepare and maintain web pages for
-  tutorial, guidelines for MPI programming, and good (and bad) MPI
-  examples}.
+    %
+\item {\bf raise the bar on potential user adoption for new features in order to
+slow the pace of introducing new features,} and
+%
+\item {\bf create a new working group focused on educational resources, and
+tasked to prepare and maintain web pages for tutorials, guidelines for MPI
+programming, and good (and certainly bad) MPI examples}.
+  %
 \end{itemize}
 
 \section{Summary}
