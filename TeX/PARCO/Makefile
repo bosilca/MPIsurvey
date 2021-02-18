@@ -62,4 +62,4 @@ clean :
 	rm -f *.bbl *.blg *.out *.aux *.log *.spl *~ *.dvi
 
 veryclean : clean
-	rm -f *.pdf
+	rm -f $(PDF) $(ADDITION).pdf

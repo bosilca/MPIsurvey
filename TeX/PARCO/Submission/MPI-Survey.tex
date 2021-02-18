@@ -68,10 +68,10 @@
 \def\myquote#1{{\it #1}}
 \long\def\comment#1{}
 %
-\def\country{contributor}%
-\def\Country{Contributor}%
-\def\countries{contributors}%
-\def\Countries{Contributors}%
+\def\country{contributor\xspace{}}%
+\def\Country{Contributor\xspace{}}%
+\def\countries{contributors\xspace{}}%
+\def\Countries{Contributors\xspace{}}%
 \def\mcountry{major contributor\xspace{}}%
 \def\Mcountry{Major Contributor\xspace{}}%
 \def\mcountries{major contributors\xspace{}}%
@@ -298,7 +298,7 @@ The draft questionnaire was tested and validated by several active members of
 the MPI standardization body, as well as researchers from Inria and Riken Center
 for Computational Science (R-CCS).
 % We also interviewed with Dr. Kento Sato at R-CCS.
-The questionnaire was was available online and receiving answers from February
+The questionnaire was available online and receiving answers from February
 17, 2019 until recently. In fact, the two forms remain open to additional
 answers, but taking in account the rate of the contributions we do not expect
 the outcome to drastically change.
@@ -310,7 +310,7 @@ this report are listed in ~\ref{app:questions}.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/TimeSeries.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/TimeSeries.pdf}
     \vspace{-2mm}
     \caption{Time series in first 90 days}
     \label{fig:time-series}
@@ -360,11 +360,11 @@ For the remaining of this report, geographical regions, either countries or
 regions, having more than 50 participants, are called {\bf major contributors}
 and are the object of cross-tab analysis. Such major contributors are Germany,
 France, Russia, UK, Japan, USA, Italy and the rest of European countries. It
-should be noted that the information used to define the \mcountry was the
+should be noted that the information used to define the \mcountry\ was the
 workplaces in the last 5 years and not the nationality of the individual
 participants.
 %
-There is a trade-off between the number of participants from each \mcountry and
+There is a trade-off between the number of participants from each \mcountry\ and
 the number of the \mcountries in the cross-tab analysis. The threshold of 50
 participants was selected to balance this trade-off but it was not our intent to
 define this number as a satisfactory participation limit. Hence, some cross-tab
@@ -421,7 +421,7 @@ universities or governmental research institutes.
 %
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q1.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q1.pdf}
     \vspace{-2mm}
     \caption{Q1: Occupations {\it(single)}}
     \label{fig:occupations}
@@ -443,7 +443,7 @@ with the rest of \mcountries.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q7.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q7.pdf}
     \vspace{-2mm}
     \caption{Q7: Working Fields {\it(multiple)}}
     \label{fig:working-fields}
@@ -464,7 +464,7 @@ However, significant differences between the outcome of the two surveys arise.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q3.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q3.pdf}
     \vspace{-2mm}
     \caption{Q3: Self assessment of MPI Skill {\it(single)}}
     \label{fig:mpi-skill}
@@ -488,7 +488,7 @@ indicated a low MPI-related skill.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q6.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q6.pdf}
     \vspace{-2mm}
     \caption{Q6: MPI Experience {\it(single)}}
     \label{fig:mpi-experience}
@@ -571,7 +571,7 @@ subsections.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q21.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q21.pdf}
     \vspace{-2mm}
     \caption{Q21: Layering MPI calls {\it(single)}}
     \label{fig:layering-mpi-calls}
@@ -642,7 +642,7 @@ outside a small, certainly dedicated crowd.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q17.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q17.pdf}
     \vspace{-2mm}
     \caption{Q17: Using MPI Aspects {\it(multiple)}}
     \label{fig:using-mpi-aspects}
@@ -703,7 +703,7 @@ dynamic process, are almost independent from the MPI skill.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{Figs/Q3-Q16.pdf}
+    \includegraphics[width=8.0cm]{Figs/Q3-Q16.pdf}
     \caption{Q3-Q16: MPI Skill {\it(single)} and Unknown MPI Features {\it(multiple)}}
     \label{fig:skill-and-aspects}
   \end{center}
@@ -720,7 +720,7 @@ experienced MPI users may not easily catch up the newly introduced MPI features.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{Figs/Q6-Q16.pdf}
+    \includegraphics[width=8.0cm]{Figs/Q6-Q16.pdf}
     \caption{Q6-Q16: MPI Experience {\it(single)} and Unknown MPI Features {\it(multiple)}}
     \label{fig:experience-and-aspects}
   \end{center}
@@ -743,7 +743,7 @@ be noted that this tendency is also reported in \cite{10.1145/3295500.3356176}.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q27.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q27.pdf}
     \vspace{-2mm}
     \caption{Q27: Useless Features {\it(multiple)}}
     \label{fig:useless-features}
@@ -814,7 +814,7 @@ highest.
 
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=8.5cm]{R-scripts/Q18.pdf}
+    \includegraphics[width=8.0cm]{R-scripts/Q18.pdf}
     \vspace{-2mm}
     \caption{Q18: Multi-threading {\it(multiple)}}
     \label{fig:multi-thread}
@@ -885,7 +885,7 @@ investigation is needed to state a result.
 
   \begin{figure}[htb]
     \begin{center}
-      \includegraphics[width=8.5cm]{R-scripts/Q12.pdf}
+      \includegraphics[width=8.0cm]{R-scripts/Q12.pdf}
     \vspace{-2mm}
       \caption{Q12: Using MPI Implementations {\it(multiple)}}
       \label{fig:using-implementations}
@@ -917,7 +917,7 @@ implementation.
 
   \begin{figure}[htb]
     \begin{center}
-      \includegraphics[width=8.5cm]{R-scripts/Q13.pdf}
+      \includegraphics[width=8.0cm]{R-scripts/Q13.pdf}
       \vspace{-2mm}
       \caption{Q13: Choosing MPI Implementations {\it(single)}}
       \label{fig:choosing-implementation}
@@ -938,7 +938,7 @@ approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q22.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q22.pdf}
 \vspace{-2mm}
 \caption{Q22: MPI+X {\it(multiple)}}
 \label{fig:mpi-x}
@@ -947,7 +947,7 @@ approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q24.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q24.pdf}
 \vspace{-2mm}
 \caption{Q24: MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-alternatives}
@@ -977,7 +977,7 @@ similar across all \mcountries.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{Figs/Q22-Q24.pdf}
+\includegraphics[width=8.0cm]{Figs/Q22-Q24.pdf}
 \caption{Q22-Q24: MPI+X {\it(multiple)} and MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-x-and-alternatives}
 \end{center}
@@ -1002,7 +1002,7 @@ Fig.~\ref{fig:compatibility} shows the expressed need for backward compatibility
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q29.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q29.pdf}
 \vspace{-2mm}
 \caption{Q29: Performance vs. Compatibility {\it(single)}}
 \label{fig:performance-vs-compatibility}
@@ -1021,7 +1021,7 @@ of compatibility does not cause a considerable burden.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q28.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q28.pdf}
 \vspace{-2mm}
 \caption{Q28: Backward Compatibility {\it(single)}}
 \label{fig:compatibility}
@@ -1048,7 +1048,7 @@ learned by writing MPI applications.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q10.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q10.pdf}
 \vspace{-2mm}
 \caption{Q10: Learning MPI {\it(multiple)}}
 \label{fig:learning-mpi}
@@ -1066,7 +1066,7 @@ which usually translate by via practical examples.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q9.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q9.pdf}
 \vspace{-2mm}
 \caption{Q9: Reading MPI Standard {\it(single)}}
 \label{fig:reading-standard}
@@ -1084,44 +1084,45 @@ reading the standard partly because of checking the MPI specifications.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q14.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q14.pdf}
 \vspace{-2mm}
 \caption{Q14: Checking Specification {\it(multiple)}}
 \label{fig:checking-spec}
 \end{center}
 \end{figure}
 
-It would be nice to have the cross-tab analysis between Q3 (MPI skill) and Q9
-(reading MPI standard). Unfortunately the participants reading the standard
-partly dominates and the cross-tab analysis between them did not give us any
-clear evidence.
+It would have been interesting to have the cross-tab analysis between Q3 (MPI
+skill) and Q9 (reading MPI standard). Unfortunately the participants reading the
+standard partly dominates and the cross-tab analysis would not give us any clear
+evidence.
 %
-Instead we have Fig.~\ref{fig:reading-standard-and-checking-spec}, cross-tab
-heatmaps between Q3 and above Q14. There can be seen a weak correlation, those
-who check MPI standard have higher MPI skill, in some \mcountries\  (France,
-Germany, and Japan).
+Instead Fig.~\ref{fig:reading-standard-and-checking-spec} presents a cross-tab
+analysis between Q3 and Q14. There can be seen a weak correlation, those who
+check more regularly the MPI standard have higher MPI skill, in some
+\mcountries\  (France, Germany, and Japan).
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{Figs/Q3-Q14.pdf}
-\caption{Q3-Q14: MPI Skill {\it(single)} and Checking Specification {\it(single)}}
+\includegraphics[width=8.0cm]{Figs/Q3-Q14.pdf}
+\caption{Q3-Q14: MPI Skill {\it(single)} and regular checking of the MPI Specification {\it(single)}}
 \label{fig:reading-standard-and-checking-spec}
 \end{center}
 \end{figure}
 
 Another interesting result can be seen in Fig.~\ref{fig:prog-skill} asking
-\myquote{Rate your overall programming skill (non-MPI programs)}. People with
-high programming skills who chose 4 or more account for more than 90\%. This
-indicates that MPI users are seasoned developers, or at least programmers with
-high programming skills. This might indicate that MPI programming requires
-specific skills whom basic developers do not necessarily master, or that before
-starting to write parallel applications (where MPI is necessary) most developers
-have already become acquainted with programming. By \country\ comparison, Russia
-shows a different tendency from other \countries.
+\myquote{Rate your overall programming skill (non-MPI programs)}. People who
+auto-evaluate  high their programming skills (basically those who chose 4 or
+more on the skills grade) account for more than 90\%. This indicates that MPI
+users are seasoned developers, or at least programmers with high programming
+skills. This might indicate that MPI programming requires specific skills whom
+basic developers do not necessarily master, or that before starting to write
+parallel applications (where MPI is necessary) most developers have already
+become acquainted with programming. By \country\ comparison, Russia shows a
+different tendency from other \countries.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{Figs/Q2.pdf}
+\includegraphics[width=8.0cm]{Figs/Q2.pdf}
 \caption{Q2: Rate your overall programming skill (non-MPI
   programs)}
 \label{fig:prog-skill}
@@ -1130,53 +1131,64 @@ shows a different tendency from other \countries.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q19.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q19.pdf}
 \vspace{-2mm}
 \caption{Q19: Learning Obstacles {\it(multiple)}}
 \label{fig:learning-obstacles}
 \end{center}
 \end{figure}
 
-Generally speaking, there can be a case where a particular question in
-a survey may ignite for participants to explode their dissatisfaction
-by writing messages into a free text field.
-\comment{In our survey Q19 is such a question.}
-The largest number of \myquote{other} inputs in our survey can be found
-at Q19 asking \myquote{What are your obstacles to mastering MPI?}
-(Fig.~\ref{fig:learning-obstacles}). Although the largest answer is
-the choice of \myquote{No obstacles,} we got 111 \myquote{other} inputs
-exceptionally. Q4 and Q7 are the second largest (70), but these are
-because of the variety of answers.
-More than 20 participants answered \myquote{other} raise
-\myquote{time (to master MPI)}. Many other participants pointed
-out the need of MPI programming guideline (\myquote{clear doc.},
-\myquote{internal doc.}, \myquote{implementation
-  doc.}, \myquote{performance guideline}, and so on, in their words).
-Some participants complaints about MPI implementations and the
-(performance or specification) differences among implementations.
+Generally speaking, allowing participants to freely answer questions in text
+boxes lead to a large variety of disparate answers, making difficult to find
+commonality between mostly subjective answers and to put forward a consistent
+answer. Despite this, we had one particular question in our survey, where we
+felt that predefined answers would have been led to unsatisfactory results, and
+where more diverse information could be gathered with a combination of
+preselected answers and the opportunity to enter a different answer in a text
+box. This particular question, Q19, relates to \myquote{What are your obstacles
+to mastering MPI}, and is represented in Fig.~\ref{fig:learning-obstacles}.
+% there can be a case where a particular question in a survey may ignite for
+% participants to explode their dissatisfaction by writing messages into a free
+% text field. \comment{In our survey Q19 is such a question.} The largest number
+% of \myquote{other} inputs in our survey can be found at Q19 asking
+% \myquote{What are your obstacles to mastering MPI?}
+% (Fig.~\ref{fig:learning-obstacles}).
+Although the largest answer was one of the provided choices, \myquote{No
+obstacles,} we got an exceptional 111 \myquote{other} inputs.
+% Q4 and Q7 are the second largest (70), but these are because of the variety of
+% answers.
+After post-analysis, we can report that out of these, more than 20 participants,
+18\%, answered pinpointing to how time consuming master MPI is. Many other
+participants pointed out the need for more clear MPI programming guideline
+(\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation doc.},
+\myquote{performance guideline}, and so on, in their words). Some participants
+complaints about MPI implementations and the (performance or specification)
+differences among implementations.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{Figs/Q6-Q3.pdf}
+\includegraphics[width=8.0cm]{Figs/Q6-Q3.pdf}
 \caption{Q6-Q3: MPI Experience {\it(single)} and MPI Skill {\it single}}
 \label{fig:experience-and-skill}
 \end{center}
 \end{figure}
 
-As shown in Fig.~\ref{fig:experience-and-skill}, the cross-tab heatmap
-graphs between Q6 (Fig.~\ref{fig:mpi-experience}) and Q3
-(Fig.~\ref{fig:mpi-skill}), there is a strong correlation, from
-lower-left to higher-right, between those
-two questions regardless to \mcountries. And these graphs
-tell that it takes more than 10 years of MPI programming experience to
-reach the high MPI skill (\myquote{4} to \myquote{High}) in most
-\mcountries. Many MPI users in US can reach the high
-(\myquote{4} or higher) MPI skill in 5 to 10 years. Hence, it takes
-more than 5 or 10 years to reach the high MPI skill
-mostly. Considering this fact
-and the profound nature of MPI specification
-(Subsection~\ref{sec:mpi-aspects}), MPI could be said to be very
-difficult library to master.
+As shown in Fig.~\ref{fig:experience-and-skill}, the cross-tab heatmap graphs
+between Q6 (Fig.~\ref{fig:mpi-experience}) and Q3 (Fig.~\ref{fig:mpi-skill}),
+highlight a strong correlation, from lower-left to higher-right, between those
+two questions regardless of \mcountries. In fact, these graphs confirm a prior
+answer regarding mastering MPI, indicating that it takes more than somewhere
+between 5 and 10 years of MPI programming experience to reach a high MPI skill
+(\myquote{4} to \myquote{High}). The answer is confirmed across the entire
+spectrum and in most \mcountries.
+% Many MPI users in US consider that the high (\myquote{4} or higher) MPI skill
+% can be reached in 5 to 10 years. Hence, it takes more than 5 or 10 years to
+% reach the high MPI skill mostly.
+Considering this fact and the nature and size of the MPI specification
+(Subsection~\ref{sec:mpi-aspects}), it is apparent that there is a, widely
+spread, belief that MPI could be said to be very difficult specification to
+master, and that the standardization body would need to put forward some serious
+efforts to facilitate the adoption and help MPI become more mainstream.
 
 \subsection{MPI Programming Difficulty and Tuning}
 
@@ -1192,25 +1204,27 @@ participants of the other \countries\  chose
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q15.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q15.pdf}
 \vspace{-2mm}
 \caption{Q15: MPI Programming Difficulty {\it(single)}}
 \label{fig:difficulty}
 \end{center}
 \end{figure}
 
-Fig.~\ref{fig:tuning} has more divergence than
-Fig~\ref{fig:difficulty}. The participants selected \myquote{my MPI
-  programs are well-tuned} is only around 10\% excepting Japan and
-Russia. There seems to be a lots of room to tune MPI programs in
-general, however, around 40\% of participants said they do not have
-enough resource to do that. In Japan, the percentage of well-tuned
-program is only few percent. Contrastingly, Russian percentage of
-choosing \myquote{well-tuned} is the highest among the \countries.
+Fig.~\ref{fig:tuning} has more divergence than Fig~\ref{fig:difficulty}. The
+participants having selected \myquote{my MPI programs are well-tuned} account
+for only around 10\%, with the exception of Japan and Russia. There seems to be
+a lots of room to tune MPI programs in general, however, around 40\% of
+participants said they do not have the necessary resources to do that. In Japan,
+the percentage of well-tuned program is only few percent, highlighting the fact
+that as parallel machines become more complex, users are feeling that an
+increasing percentage of performance become unobtainable.
+% Contrastingly, Russian percentage of choosing \myquote{well-tuned} is the
+% highest among the \countries.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q23.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q23.pdf}
 \vspace{-2mm}
 \caption{Q23: Performance Tuning {\it(single)}}
 \label{fig:tuning}
@@ -1222,83 +1236,77 @@ choosing \myquote{well-tuned} is the highest among the \countries.
 It is a general concern how MPI provides optimization
 opportunities in terms of hardware capabilities such as being able to
 handle the various topologies of hardware components more
-efficiently. To answer this, Q25 asking \myquote{If there were one
-communication aspect which is not enough in the current MPI could
+efficiently. To answer this, Q25 asked \myquote{If there were one
+communication aspect which is not enough in the current MPI that could
 improve the performance of your application, what would you
 prioritize? Or $\ldots$} (Fig.~\ref{fig:missing-features}), and Q26 asking
 \myquote{Is MPI providing all the communication semantics required by your
 application? If not, what is missing?}
-(Fig.~\ref{fig:missing-semantics}) were prepared.
+(Fig.~\ref{fig:missing-semantics}).
 
-In Fig.~\ref{fig:missing-features}, only 23\% of overall MPI users
-are satisfied with the current situation.
-Interestingly enough the second largest percentage is
-\myquote{additional comm. opt.} (\myquote{Additional optimization
-  opportunities in terms of communication (network topology awareness,
-  etc.)}, followed by \myquote{Multi-thread} and \myquote{Other
-  opt.} (\myquote{Optimization opportunities except communication
-  (architecture awareness, dynamic processing, accelerator support,
-  etc.)}).
+Fig.~\ref{fig:missing-features}, indicates that only 23\% of overall MPI users
+are satisfied with the current situation. Interestingly enough the second
+largest percentage is \myquote{Additional optimization opportunities in terms of
+communication (network topology awareness, etc.)}, followed by
+\myquote{Multi-thread} and \myquote{Optimization opportunities except
+communication (architecture awareness, dynamic processing, accelerator support,
+etc.)}.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q25.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q25.pdf}
 \vspace{-2mm}
 \caption{Q25: Features to improve {\it(single)}}
 \label{fig:missing-features}
 \end{center}
 \end{figure}
 
-Q26 is somewhat similar to Q25, but looking for more precise answers.
-This question tackles the issue on which semantic feature is missing
-from MPI. Overall a very similar picture emerges with Q25, almost one
-third of the participants are satisfied with the current
-situation. There is a high discrepancy between Japan where users are
-the least satisfied with the current situation and Russia which is
-the most satisfied. The same situation can be seen in Q25. The highest
-given answer concerns \myquote{Add. opt} (\myquote{Additional
-  optimization opportunities in terms of communication (topology
-  awareness, locality, etc.)}). This is coherent with Q25 and managing
-efficiently the topology and the locality seem a major concern to many
-users. Then
-comes the concerns about the lack of resilience, a concern shared by
-more than 20\% of the participants. It is very interesting that most
-\mcountries\  concern about the resilience. Hiding latency through
-generalization of asynchrony over the whole set of functions is
-another point raised repeatedly. 16\% of the users think that a
-simpler and easier API would be desirable.
-Although there are relatively big disparity in the satisfaction
-(answering \myquote{MPI provides all}), the disparities of the other
-answers are smaller.
+Q26 is somewhat similar to Q25, but looking for more precise answers. This
+question tackles the issue on which semantic features are missing from MPI.
+Overall a very similar picture emerges with Q25, almost one third of the
+participants are satisfied with the existing MPI features. There is a high
+discrepancy between Japan, where users are the least satisfied with the current
+situation, and Russia which hosts the most satisfied MPI users.
+%
+The situation here is similar to what we seen in Q25, with the highest answer
+being \myquote{Additional optimization opportunities in terms of communication
+(topology awareness, locality, etc.)}. Thus, it appears that efficiently
+managing the topology and the locality seem a major concern to many users. Then
+comes the concerns about the lack of resilience, a concern shared by more than
+20\% of the participants. It is very interesting to note that most \mcountries\
+have expressed concerns about resilience, but we do not have enough information
+to understand the root cause. Hiding latency through generalization of
+asynchrony over the whole set of functions is another point raised repeatedly.
+16\% of the users think that a simpler and easier API would be desirable.
+Although there are relatively big disparity in the satisfaction (answering
+\myquote{MPI provides all}), the disparities of the other answers are smaller.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=8.5cm]{R-scripts/Q26.pdf}
+\includegraphics[width=8.0cm]{R-scripts/Q26.pdf}
 \vspace{-2mm}
 \caption{Q26: MPI Missing Semantics {\it(multiple)}}
 \label{fig:missing-semantics}
 \end{center}
 \end{figure}
 
-Finally, the least desired feature concerns the notion of endpoints,
-as discussed in the MPI standardization effort. However taking into
-account the extremely
-technical aspect of this question, and it's intricate evolution in the
-standard, it might be possible that most people answering this
-question knew little, and possible imprecisely, what this feature was
-exactly about.
+Finally, the least desired feature concerns the notion of endpoints, as
+discussed in the MPI standardization effort. However taking into account the
+extremely technical aspect of this question, and it's intricate evolution in the
+standard, it might be possible that most people answering this question knew
+little, and possibly imprecisely, what this feature was exactly about.
 
 \subsection{Notes on \Countries}
 
-In this subsection, we summarize our findings on some \countries
-showing somewhat different results with the others.
+In this subsection, we summarize our findings where some \countries have showed
+somewhat different results than the others.
 
 \subsubsection*{USA}
 
-US has the highest percentages;
+US has the highest percentages:
 \begin{enumerate*}
-\item having the high MPI skill (Fig.~\ref{fig:mpi-skill}),
-\item using MPI more than 10 years (Fig.~\ref{fig:mpi-experience}),
+\item of high MPI skill (Fig.~\ref{fig:mpi-skill}),
+\item of seasoned users, with more than 10 years of MPI experience (Fig.~\ref{fig:mpi-experience}),
 \item using the {\tt MULTIPLE} threading support
   (Fig.~\ref{fig:multi-thread}),
 \item choosing familiar MPI implementations
@@ -1306,18 +1314,18 @@ US has the highest percentages;
 \item reading MPI books (Fig.~\ref{fig:learning-mpi})
 \end{enumerate*}
 among the \mcountries. All these results indicates that the MPI
-users in US are most advanced.
+users in US are, by some standards the most advanced.
 
 \subsubsection*{Russia}
 
-Russia is;
+Russia is:
 \begin{enumerate*}
-\item having the second largest percentage of MPI users less than 5
-  years of MPI experience, as well as Italy
+\item having the second largest percentage of MPI users with less than 5
+  years of MPI experience, a position it shared with Italy
   (Fig.~\ref{fig:mpi-experience}),
 \item having the largest percentage of (non-MPI) programming beginners
   (Fig:\ref{fig:prog-skill}),
-\item having the highest percentage of thinking their MPI programs are
+\item having the highest percentage of users assessing their MPI programs are
   well-tuned (Fig.~\ref{fig:difficulty}),
 \item having the highest percentage not knowing which thread level
   they are using (Fig.~\ref{fig:multi-thread}), and
@@ -1326,35 +1334,39 @@ Russia is;
 \end{enumerate*}
 
 These findings may indicate that Russia is relatively younger in terms
-of MPI usage than the other \mcountries. The high concern on
+of MPI usage compared with the other \mcountries. The high concern on
 MPI+CUDA, however, is very interesting.
 
 \subsubsection*{Japan}
 
-In this survey, Japan shows the most unique results (this is already
-reported in~\cite{swopp2019}). Despite the high MPI
-skill (Fig.~\ref{fig:mpi-skill}) and long MPI experience
-(Fig.~\ref{fig:mpi-experience}), many Japanese MPI users seem to be
-suffered from debugging and tuning (Fig.~\ref{fig:difficulty}), whilst
-many participants of the other \countries\  raise \myquote{Algorithm}.
+In this survey, Japan shows the most unique results (this is already reported
+in~\cite{swopp2019}). Despite a high level of MPI skill
+(Fig.~\ref{fig:mpi-skill}) and a long MPI experience
+(Fig.~\ref{fig:mpi-experience}), many Japanese MPI users seem to be displeased
+with the current status of debugging and tuning (Fig.~\ref{fig:difficulty}),
+whilst many participants of the other \countries\ are more concerned about
+\myquote{Algorithm}.
 
-Most notably, more than 50\% of Japanese MPI users have the MPI
-experience more than 10 years exceptionally. This would sound good,
-however, the equally distributed answers is desired, thinking the
-continuous alternation of generations. The percentage of 5-to-10-year
-MPI experience in Japan is the smallest among the \countries. If this
-lack of mid-level is true, then the future of Japanese HPC community
-would not be bright.
+Most notably, more than 50\% of Japanese MPI users have an extensive MPI
+experience, with more than 10 years. Having such a large mass of well seasoned
+MPI users sound promising, however, it might also point to an imbalance in
+generations of users, and to a potential lack of younger MPI developers that
+will continue the work in the future.
+% the equally distributed answers is
+% desired, thinking the continuous alternation of generations.
+Indeed, the percentage of 5-to-10-year MPI experience in Japan is the smallest
+among the \countries. If this lack of mid-level is true, then the future of
+Japanese HPC community might be in a difficult spot over the next decade.
 
 \section{Discussion}
 
-\subsection{Inflating standard}
+\subsection{A constantly increasing standardization document}
 
-As this survey reveals that some MPI features, which were already
-introduced almost a decade ago, are not widely accepted by MPI users
-yet (Subsection \ref{sec:mpi-aspects}). Here a question may be raised,
-if this gap between the MPI features defined by the standard and the
-acceptance of the features will become wider or narrower?
+This survey reveals that some MPI features, which by most standards are not new
+being introduced almost a decade ago, are not yet widely accepted by MPI users
+(Subsection \ref{sec:mpi-aspects}). An interesting question may be raised
+regarding the evolution of the gap between the MPI features defined by the
+standard and the acceptance of the features.
 
 \begin{figure}[htb]
 \begin{center}
@@ -1364,29 +1376,26 @@ acceptance of the features will become wider or narrower?
 \end{center}
 \end{figure}
 
-Fig.~\ref{fig:mpi-standards} shows the number of pages (in terms of
-PDF, not the content) plotted over the released dates. Not
-surprisingly, the number of pages increases every time newer standard
-is released. It is a natural thinking that the number of pages and the
-number of features are proportional.
+Fig.~\ref{fig:mpi-standards} shows the number of pages (in terms of PDF, not the
+content) plotted over the released dates. Not surprisingly, the number of pages
+increases with every new version of the standard. It is a natural thinking that
+the number of pages and the number of features are proportional.
 
-In many cases, the higher functionalities introduced by newer MPI
-standard yield more degree of implementation freedom. An MPI
-implementation can be optimized its performance by exploiting hardware
-resources without having the MPI users large effort. If only the most
-basic communication functions, send and receive, are supported by MPI
-then users have to write collective functions which are not easy if
-users wants optimize for the parallel machines they are using.
+In many cases, the higher functionalities introduced by newer MPI standard yield
+more degree of implementation freedom. An MPI implementation can be optimized by
+exploiting hardware resources without imposing significant effort on the MPI
+users. If only the most basic communication functions, send and receive, are
+supported by MPI then users have to write collective functions which are not
+easy if users wants optimize for the parallel machines they are using.
 
 Another reason of the inflation is that MPI standard is the standard
 as a library. There is no way for library functions to know how the
 library functions are called in which context. The higher abstracted
 functions can give a library more information of how and which and
-thus the higher-level functions can be optimized. Traf, et al., gives
-a formal analysis on this point\cite{5184825}.
+thus the higher-level functions can be optimized. Tr\"{a}ff, et al., gives
+a formal analysis on this point~\cite{5184825}.
 This situation, introducing higher-level functions into the standard,
-inflates the standard and always will be. And the gap will not be
-narrowed.
+will keep increasing the standard.
 
 Hoefler et al., reported their idea to extract collective operation
 patterns from a series of communication primitives, send and
@@ -1397,67 +1406,72 @@ Although their idea is at the experimental
 stage, however, this seems to be a good solution not introducing new
 functions but narrowing the gap.
 
-\subsection{Recommendation as a result of this survey}
+\subsection{Recommendations for MPI Forum}
 
 Currently the MPI standard documents are available in PDF format and
 hardcover books~\cite{mpi-hardcover}. There are some MPI tutorial web
 sites (\cite{mpi-tutorial} as an example). \cite{mpi-tutorial-intro}
 pointed out most of such web pages are out-dated and not
-thorough.
+kept in sych with today's web standards.
 
-As already shown in Subsection~\ref{sec:mpi-aspects}, some MPI
-features, which are not newly introduced, have failed to be
-well-known. Further many MPI users have not enough time to master MPI
-as described in Subsection~\ref{sec:learning-mpi}. These suggest that
-there is something wrong for people to learn MPI and writing MPI
-programs.
+As already shown in Subsection~\ref{sec:mpi-aspects}, some, rather old, MPI
+features have failed to gain traction and be widely accepted by the users.
+Furthermore, as indicated in Subsection~\ref{sec:learning-mpi}, many MPI users
+complain of a lack of time to hone or master MPI, and also to a lack of clear
+and easy understandable documentation. These suggest that there is a real
+difficulty for people to learn MPI and to write, efficient and error-free MPI programs.
 
-Thus, it is very important to narrow the gap described in the previous
-subsection by helping MPI users to learn and write MPI programs. We
+However, this can be  addresses with a stronger educational effort from the MPI
+standardization body. Indeed, it is very important to narrow the gap described in
+the previous subsection by helping MPI users to learn and write MPI programs. We
 believe this is the responsibility of MPI Forum, since the other,
-volunteer-based approach would not be efficient and sufficient. If
-MPI Forum agrees with us for narrowing the gap, then MPI Forum should
-
+volunteer-based approach would not be efficient and sufficient. If MPI Forum
+agrees with us for narrowing the gap, then MPI Forum should
+%
 \begin{itemize}
-\item {\bf slow the pace of introducing new features,} and
-\item {\bf create a new working group to prepare and maintain web pages for
-  tutorial, guidelines for MPI programming, and good (and bad) MPI
-  examples}.
+    %
+\item {\bf raise the bar on potential user adoption for all new features in
+order to slow the pace of introducing new features,} and
+%
+\item {\bf create a new working group focused on educational resources, and
+tasked to prepare and maintain web pages for tutorials, guidelines for MPI
+programming, and good (and certainly bad) MPI examples}.
+  %
 \end{itemize}
 
 \section{Summary}
 
-We have conducted a questionnaire survey and succeeded to gather more
-than 850 participants from more than 40 countries and regions. By
-analyzing the collected data, we could get several findings. As for
-the MPI features, the dynamic process feature is considered not only
-as a less-used feature but also a useless feature (highlighting that
-the MPI programming model is seen as {\em static}). By asking several
-questions how participants obtain MPI knowledge and experiences, it is
-revealed that MPI is a very difficult-to-use library.
+We have conducted a questionnaire survey and succeeded to gather more than 850
+participants from more than 40 countries and regions. By analyzing the collected
+data, we have put forward few interesting findings regarding the current status
+of MPI adoption. As for the MPI features, the dynamic process feature is
+considered not only as a less-used feature but also mostly as a useless feature
+(highlighting that the MPI programming model is seen as {\em static}). By asking
+several questions how participants obtain MPI knowledge and experiences, it is
+revealed that MPI is, at least perceived as a very difficult-to-use library.
 \comment{Most participants read the MPI standard only partially to check the
-  specification of MPI functions. Instead}
-Many MPI users desire to have
-practical programming guideline, online documents in
-hyper-text form, and useful sample programs. Most important
-(and most difficult) thing is those supplemental
-documents in any form must be up-to-dated and thorough. For the
-compatibility, many MPI users may accept to sacrifice the
-compatibility to get more performance.
+specification of MPI functions. Instead} Many MPI users point to a lack of
+documentation and would wish to have a practical programming guideline, online
+documents in hyper-text form, and useful sample programs, put forward and
+maintained by the MPI standardization committee. Most important (and most
+difficult) thing is those supplemental documents in any form must be up-to-dated
+and thorough. Regarding backward compatibility, many MPI users may accept to
+sacrifice some level of portability in exchange for more performance, an outcome
+at odds with the current thinking in the MPI Forum.
 
 All collected answers, the programs to analyze the survey data and to
-generate graphs, and all published reports are available at
+generate graphs, and all published reports are freely available at
 {\tt \url{https://github.com/bosilca/MPIsurvey.git}}.
 
 \section*{Acknowledgments}
 
-We thank to those who participated in this survey and those who
-helped us to distribute the questionnaire to their local
-communities. We especially thank to MPI Forum members who gave us many
-significant comments on the draft questionnaire.
-This research is partially supported by the
+We thank to those who participated in this survey and those who helped us to
+distribute the questionnaire to their local communities. We especially thank to
+MPI Forum members who gave us many significant comments on the draft
+questionnaire. This research is partially supported by the
 NCSA-Inria-ANL-BSC-JSC-Riken-UTK Joint-Laboratory for Extreme Scale
-Computing~\cite{JLESC}.
+Computing~\cite{JLESC}, with additional funding from different natioanl science
+agencies.
 
 \bibliography{ref}
 
@@ -1782,13 +1796,12 @@ abbreviations in square brackets, if any.
   \end{description}
 }
 
-\newpage
 \section{\Countries}
 \label{app:countries}
 
 \begin{table}[htb]%
 \begin{center}%
-\caption{Country}
+\caption{\Countries}
 {\footnotesize
 \begin{tabular}{l|c|r}%
 \hline%
