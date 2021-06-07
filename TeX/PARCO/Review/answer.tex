@@ -1,0 +1,643 @@
+\documentclass[11pt]{article}
+
+\long\def\comment#1{}
+\newcommand{\response}[2]{{\noindent\em #1}\\%
+  {\bf Response:} #2}
+\newcommand{\iresponse}[2]{{\item \em #1}\\%
+  {\bf Response:} #2}
+
+\begin{document}
+
+\noindent
+Dear Prof. \"{U}mit \c{C}ataly\"{u}rek,
+
+\vspace{5mm}
+
+Thanks for your comments. We have fixed all the issues based on the
+reviews. Please take our response to each reviewer comment below.
+
+\section*{Responses to Review 1}
+
+We would like to thank reviewer 1 for reviewing our paper.
+
+\response{
+  Since the paper is a non-traditional one, there is no technical
+  novelty in this work. The information provided is somewhat established
+  connotations (e.g., MPI is a hard standard to implement), however
+  there is some value to quantifying these beliefs with data. Hence,
+  even though the margin of new information in this paper is slim, I
+  still think the paper adds some value to the community.}
+         {This paper is a survey paper based on a traditional
+           questionnaire.  The method used in the paper is quite
+           common and there is no new technical insights in this paper.
+           However, the scale of the 
+           questionnaire targeting MPI is unprecedented and very
+           important in terms of
+           the number of participants who are geographically
+           wide-spread. As you know, the MPI standard is keep
+           evolving. We believe that it is about the time to know how
+           MPI is used and what is the problem when using MPI. Without
+           having clear and right view of these, how can MPI widely be accepted?
+           Connotations without having any backup data may lead to
+           wrong directions.
+           
+         One of the findings of this paper is that many MPI users are
+         sticking to the very basic functions, not knowing somewhat
+         newly introduced functions. Again, MPI is keep evolving and
+         getting more complex than ever. Will the newly introduced MPI
+         functions be accepted by those who are still using old MPI functions?
+
+         Most of the authors have been
+         involved in MPI related projects of their own and have
+         the experiences of attending MPI Forum meetings.  Like the
+         all of the other MPI Forum members, all of us
+         know MPI implementation is not easy at all but
+         each of us knows only small number of MPI users near by.
+         The sense of danger drove us to write this paper.
+
+         Reviewers claimed that the findings of this paper is
+         thin. This is because there is almost no contradictions to
+         connotations.  The most crucial part of this paper is that
+         these connotations are supported by the large-scale data.}
+
+\response{
+Overall, the paper needs a proofreading pass, and addressing the
+following comments could improve their readability:
+}
+{We would like to appreciate your detailed comments and we fixed all
+  proofreading issues.}
+
+\begin{enumerate}
+\iresponse{Please upfront define what (multiple) and (single) mean at the end
+of each option (e.g., MPI Experience (single)). I had to guess the
+meaning based on the context a lot later in the paper. It would be
+better to add a sentence describing how to read these
+options.}
+          {We added the description at the very first appearance of it.}
+  
+\iresponse{Similarly, describing AD and ST in Section 3 on page 2 (last
+sentence of the "Design" subsection) will not take up too much space
+but are necessary for improving readability. These are defined in
+Appendix as well, but if readers skip the Appendix, they will run the
+risk of not understand the messages.}
+{I am very sorry, I missed this comment. The ``AD'' and ``ST'' are
+  appeared in Section 4.1.}
+
+\iresponse{The text in the related work section can be converted into a table
+and significantly improve that section's readability. E.g., it is hard
+to remember what S, R, Q, etc., mean, and why does it matter what
+their goals are? Explaining in terms of questions that S and R survey
+categories cannot answer and where the strength of the Q category lies
+will better explain the motivation of this paper. I am missing the
+point of why there are so many categories and what their unique
+contributions are.}
+{I reorganized the whole problematic section.}
+
+\iresponse{It is not clear what the authors mean when they say, "There is a
+trade-off between the number of participants from each major
+contributor and the number of the major contributorsin the cross-tab
+arinalysis." Is "contributorsin" a typo? What is the trade-off? Which
+cross-tab comparisons are being referred to? }
+{I revised the text to reflect your comment.}
+
+\iresponse{Define cross-tab analysis before using it. I do not know if it is a
+standard term, and I assume most readers will not.}
+{I added the definition of cross-tab analysis.}
+
+\iresponse{"... may suggests ..." $\to$ "... may suggest ..." on page 8, the
+  paragraph right below Figure 18.}
+{I revised the text to reflect your comment.}
+
+\iresponse{Page 8: "In same time, UK participants overwhelmingly learned MPI
+from online sources, which usually translate by via practical
+examples." $\to$ "At the same time,..... translated via .."}
+{Updated.}
+
+\iresponse{Page 11: Section 5.7 -- ".... contributorshave ....." $\to$
+  "contributors have".}
+{Updated.}
+
+\end{enumerate}
+
+\section*{Responses to Review 2}
+
+We would like to thank reviewer 1 for reviewing our paper.
+
+\response{The authors present the results and an in-depth discussion
+  of an international MPI user survey performed between February 2019
+  and some time in 2020. Unlike prior user surveys, the described
+  survey was specifically designed to cover many countries and as such
+  paint a diverse picture of the landscape of MPI users. The authors
+  discuss each question thoroughly, however, in-depth correlation
+  analysis between the answers of the different questions does not
+  seem to have been done at large.}
+ {
+We developed a Python program to analyze answers. This program also
+produces the heat map graphs of any possible combinations of two
+questions in our questionnaire for cross-tab analysis. All heatmap
+graphs were checked and only the significant ones are shown in the
+paper. 
+ }
+
+\response{The paper is well structured and largely follows the
+  structure of the questionnaire, yet the language could be improved
+  in several places (see comments below). The chart visualizations are
+  well done, yet often they focus on a single question and and provide
+  only a single view on a specific question.}
+{
+           
+}
+
+\response{Especially the use of color in the bar charts does not feed
+  a specific purpose, and more advanced info-vis chart types (e.g.,
+  heatmaps) could improve the ink to information ratio.
+  Also it's often not clear why a specific chart type was
+  chosen for a specific question. Furthermore, information sometimes
+  presented in tables could have been combined and presented with
+  charts in a visual way.}
+{I converted Table 6, 7 and 8 to graphs.}
+
+\response{The questionaires used for the survey were specifically
+  designed to attract many participants and the survey seems to be the
+  largest of its kind in the near past. The methodology behind the
+  questionaire (which topics, how many questions per topic, how to
+  best formulate questions, etc.) should be discussed in a more
+  structured way, explaining which underlying information was the
+  target for a specific batch of questions.}
+{
+}
+
+\response{Overall, the work presented provides a view on how MPI is
+  used across the globe, yet many questions remain open. It presents a
+  valuable source of information for the MPI community, yet should
+  address the open questions and comments before publishing to unfold
+  its full potential. Furthermore, it would be good if the authors
+  also included an outlook sections on "lessons learned" from this
+  survey and what should be done differently in future surveys of this
+  kind.}
+{
+}
+
+\begin{enumerate}
+\iresponse{The authors used input on how to engineer the questionnaires
+  from two social scientists. Next to the limitation of overall
+  questions, which other factors shaped the design of the
+  questionaires?}
+{One of the important things when designing survey is to make
+  questions as easy-to-answer as possible, so that participants can
+  concentrate on the survey. Otherwise participants may give up.}
+
+\iresponse{If there is a limitation of questions, how could one
+  achieve a good coverage across all topics.}
+{I am very sorry, I do not have any particular answer for this question.}
+
+\iresponse{Why was I/O excluded, it seems that an opportunity was
+  missed to check whether developers are aware of MPI's ability to
+  parallelized their I/O (which at scale can easily become a
+  bottleneck for the whole application).} 
+{
+Yes, we agree I/O can be a severe bottleneck in some applications. We
+argued on this at the questionnaire design phase of this survey. One
+reason for excluding MPI-IO comes from the limit of the number of
+questions (30). Another reason is that the I/O issue often comes from
+the underlying file system, not MPI-IO. We thought it is very
+difficult for some MPI users to distinguish whether the I/O issue comes
+from the underlying file system or MPI-IO itself. This can be true
+when MPI users are domain experts but they lack system knowledge. And
+we decided not to have MPI-IO related questions.
+}
+
+\iresponse{Was the elimination of counting lines of code a suggestion
+  by the consulting professors? If so this might be an interesintg
+  take away for future designs of similar surveys.}
+{
+No, we, not the social scientists, decided not to have the question
+asking lines of code. Many numerical applications are large, but the
+code to call MPI routines can be very small. Thus, the size of a
+program may or may not correlate with the code size where calling MPI
+routine. We could ask participants to count the lines only calling MPI
+routines, but we wanted to make the questionnaire easy-to-answer by
+eliminating such effort. 
+}
+
+\iresponse{The end date of the survey is given with "until recently",
+  however, the publication data will be well in the future and the
+  data when this is read even further. A similar end like "Month Year"
+  should be given.}
+{I put exact month/year of the most recent answer.}
+
+\iresponse{The colors in the charts don't seem to be well suited for
+  color-blind or color-impaired readers.}
+{I changed the color set.}
+
+\iresponse{Try to avoid meta language, explaining your thought
+  process. For example: "One of the first questions we had to ask was
+  how to reach a largely international ..."  $\to$ "To reach a largely
+  international community, we ..." (more occasions of similar meta
+  language throughout the document)]}
+{blablabla}
+
+\iresponse{Why is some data given in Table form and other in chart
+  form. Try to convert as many tables into charts that actually
+  contain numbers, or tables that contain charts (e.g., inline
+  horizontal bar chart in the columns '\#Ans' and '\%'. A survey
+  evaluation is all about information discovery and visualization, so
+  it would be good to try to employ well seasoned chart types of the
+  info-vis community.}
+{Again, I converted Table 6, 7 and 8 to graphs.}
+
+\iresponse{What is the trade off between number of participants and
+  the number of contributors in the cross-tab analysis? This is
+  unclear and should be made more explicit. What was limited? Why was
+  the threshold of 50 chosen?}
+{The larger the major contributors, the smaller the number of
+  answers, this is what I meant. But, I agree, this statement was not
+  clear and I changed the wording.  The threshold was chosen to
+  include USA which plays very important role in the HPC field,
+  therefor we thought USA must be included in the major contributors.}
+
+\iresponse{Regarding the correlation of Figure 3, how could this
+  ambiguity be avoided in a future survey?}
+{We had expected to have more number of the AI choice, since AI is
+  getting the big concern nowadays. You may think that the numerical
+  app/lib dominates because this is a multi-answer question. However,
+  when I checked the raw data, the choice of the numerical app/lib has
+  334 answers, and the second largest is the combination of language and
+  numerical app/lib (only 48). So, we think Fig. 3 is representing the
+  participants profile. }
+
+\iresponse{Figure placement should NOT be inline but rather floating
+  top or bottom of a page. Text such as page 4 between Fig 4 and 5 are
+  easily overlooked and don't provide a good page flow.}
+{I updated the figure and table positions to place them at the top or
+  bottom, not inline.}
+
+\iresponse{It might be better to transform Table 4 into a
+  double-column float to have longer lines for the questions.}
+{It is a good idea, thank you. I converted the table.}
+
+\iresponse{Which data is referenced by "In the other major
+  contributors" (p.4)? "Europe:other"? This is ambiguous and should be
+  clarified.}
+{I modified the paragraph to clarify this.}
+
+\iresponse{Fig. 7: A feature like PMPI is quite specific to a single
+  community (tool bilders - with rare exceptions), so it seems awkward
+  to compare its use with other features that resemble a
+  specialization of well-used features (persistent)}
+{I am sorry, I do not agree with you about PMPI. PMPI is defined in the
+standard and is to provide a somewhat tricky but very strong mechanism
+for users to investigate how MPI routine are called. And we wanted to
+see how much popular among users PMPI is.}
+
+\iresponse{Fig. 7: Could Q7C9 be correlated with Q17C9? If so this
+  could explain why people of all skill levels use PMPI ... you just
+  have more or less experienced tool developers here. (Such questions
+  could be answered addressed by a more systemativ cross examination
+  of the different questions).}
+{Let me answer this comments, assuming Q3 asking self assessment MPI
+  skill and Q17 asking using MPI aspects. I checked the Q3-Q17 heatmap
+graph again, but the number of PMPI answers occupied very small
+fraction, and I could not find any obvious correlation between them.}
+
+\iresponse{With citing other books, tutorials and other online
+  resources, maybe a correlation of "what is used" with "what is
+  taught" can be found? This should be investigated. The claim: "The
+  MPI standard maybe too complex and leads to limited understanding"
+  (p.5) may not be the only conclusion that could be drawn from the
+  survey data.}
+{I checked the heatmaps of Q14-Q16 and Q14-Q17. The situation is very
+  similar to the above Q3-Q17. Those heatmap graphs reflects the
+  biased distribution of the answers and no significant correlations
+  can be found. When I firstly checked the generated heatmap graphs, I
+  was very disappointed because only some of them have significant
+  correlations which are shown in the paper.}
+
+\iresponse{The authors claim that by having a fixed boundaries and
+  conditions (p.6) leads to static MPI applications. However, the
+  boundaries are not what makes a program dynamic. A dynamic need for
+  computing resources (and proper re-balancing of such) can be present
+  in such static scientific domains. What is not investigated here is
+  that the operation of HPC systems (batch scheduling) often prohibits
+  the dynamic allocation of new resources for a running job. However,
+  with the survey data this can probably not be
+  investigated. (Potential question for a future survey?)} 
+{I agree with you about the usage of dynamic process creation and the
+  operation policy does not allow users to create processes dynamically.
+  However, in the current text does not deny the usage you pointed
+  out.}
+
+\iresponse{Also for future surveys: Maybe users are not aware that
+  SINGLE is the thread level that MPI\_Init uses. Does this correlate
+  with answers of "MPI-only" applications?}
+{I checked the cross-tab graph between Q17 asking thread model and
+  MPI+X. As the number of answering MPI only users ('No' in our
+  survey) is not large and we could not see any strong correlation
+  between them. }
+
+\iresponse{The percentage numbers in Table 8 don't add up to
+  100\%. What do they refer to?}
+{This is because there are many other multiple-answer combinations and
+only the top 7 combinations are listed in this table.}
+
+\iresponse{Page 8: "Portability, which translates into maintaining
+  backward compatibility across versions, ..." ... Portability is much
+  more than that and would in my mind first and foremost be a
+  portability across different MPI libraries and Hardware using the
+  same MPI version.}
+{I am very sorry on this point. This is my fault of using the word
+  'portability' in Q28, since we are talking on (backward) compatibility
+here. We changed the wording here.}
+
+\iresponse{Why is is interesting that the same number of people have
+  checked "read the full standard" and "never read the standard"?
+  Also, Figure 20 does not support this claim.}
+{UK is very interesting because it has both extremes, no other
+  countries exhibits the similar situation. Yes, the wording was wrong
+and I changed the text.}
+
+\iresponse{The authors remark that many users did not know about
+  Endpoints (a proposal never officially released with MPI and
+  currently abandoned?), yet maybe the questions should have been
+  rephrased not to ask about a specific solution but more on what
+  Endpoints was trying to address: "Do you whish MPI to be
+  thread-aware?" or "Do you wish an interface that helps with
+  performant multi-threaded interaction with the MPI library?"}
+{The endpoint topic was very actively discussed at the MPI Forum
+  meetings at that time. So we wanted to know how many users are
+  interested in or have ever heard of that term regardless how much
+  users understand it correctly. We are a bit
+  surprised because the percentage of endpoints are larger than that
+  we thought. }
+
+\iresponse{The authors identify a focus on MPI+CUDA as
+  "interesting". Why is this interesting? Which hypothesis could one
+  derive that would/should be tested by a future survey? (The authors
+  should extend the discussion here)}
+{I am sorry we can not go into more details here because none of us
+  has any strong connections with the Russian HPC community. }
+
+\end{enumerate}
+
+\response{Syntax/Grammar/Wording:}
+{We fixed everything pointed out.}
+
+\comment{
+=======================
+p.1, left col.:
+---------------
+would have the same $\to$ would have had the same
+a single question $\to$ only a single question
+many diverse community $\to$ many diverse communities
+
+p.1, right col.:
+feature differences of MPI users $\to$
+different use of MPI features among users across ...
+
+No comma between the two consulting professors
+... Illinois Univ. and Prof. ....
+
+p.2, left col.:
+---------------
+user a colon and inline enumeration:
+... three survey classes: (1) questionaire surveys ...; (2)
+application-oriented statistical surveyes ....; and (3)
+application-oriented statistical surveys .... 
+
+questionaire survey $\to$ questionaire surveys
+
+are become $\to$ are becoming
+
+Use the publications authors (Foo and Bar, Foo et al., etc.) as
+subject no the reference itself ...: 
+[6] statistically investigated $\to$ Laguna et al. [6] statistically
+investigated ... 
+
+features translates $\to$ features translate
+
+DOE Mini-apps $\to$ DOE mini-apps
+
+2 studies $\to$ two studies
+
+target of S is MPI programs $\to$ target of S are MPI programs
+
+target of R is MPI programs $\to$ target of R are MPI programs
+
+The social scientists $\to$ Name them explicitly again here:
+Poole and Ahmed, our consulting social scientists, ...
+
+limited around 30 $\to$ limited to around 30
+
+p.2, right col.:
+----------------
+
+China has $\to$ China had
+
+p.3, left col.:
+---------------
+distibuting fliers $\to$ distributing flyers
+
+contributorsin $\to$ contributors in
+
+p.3, right col.:
+----------------
+xxxxxx Figure 2, legend: spell out options. It's not immediately apparent
+what the options mean. 
+
+2 major contributors $\to$ two major contributors
+(numbers below and including 'twelve' should be spelled out)
+
+XXXXXX Before going into the details ... $\to$ avoid meta language
+
+community based word-of-the-mouth $\to$ community-based word-of-mouth
+
+XXXXXX "HPC-centered" is bleeding into the margin
+
+of self-evaluation $\to$ of the self-evaluation
+
+participants MPI skill $\to$ participants' MPI skill
+
+p.4, left col.:
+---------------
+do no rank $\to$ do not rank
+
+Japan followed closely has $\to$ Japan followed closely and has
+
+p.4, right col.:
+----------------
+was release in $\to$ was released in
+
+p.5, left col.:
+---------------
+it goes against the expected outcome $\to$
+it contradicts the expected outcome
+
+p.6, left col.:
+---------------
+creation spreads $\to$ creation involves
+
+"I don't know" vs. "No idea" $\to$ use "I don't know" consistently
+
+p.7, left col.:
+---------------
+
+dominates in all $\to$ dominate for all
+
+users community $\to$ user community
+
+have experienced writing $\to$ have experience with writing
+
+p.7, right col.:
+----------------
+XXXXXX Sentence structure problem:
+... that the approximately 3/4 of the target programs ...
+
+p.8, left col.:
+---------------
+the MPI alternative $\to$ an MPI alternative
+
+by better alternative $\to$ by a better alternative
+
+middle group who chose $\to$ middle group that chose
+
+excepting Russia $\to$ except Russia
+
+p.8, right col.:
+----------------
+accept incompatibility $\to$ accept incompatibilities
+
+in exchange of $\to$ in exchange for
+
+In same time $\to$ At the same time
+
+which usually translate by $\to$ which usually translates to
+
+p.9, left col.:
+---------------
+Improve sentence structure:
+There can be seen a weak correlation, ...
+
+(basically those who ... $\to$ (those who
+
+in text boxes lead to $\to$ in text boxes leads to
+
+p.9, right col.:
+----------------
+would have been led $\to$ would have led
+
+improve sentence structure:
+pinpointing to how time consuming master MPI is.
+
+master MPI $\to$ mastering MPI
+
+participants complaints $\to$ participants complaint
+
+Remove comma:
+Q3 (Fig.4), highlight ... $\to$ Q3 (Fig.4) hightlight
+
+p.10, left col.:
+---------------
+
+to be lots of room to tune MPI programs $\to$
+to be a lots of potential for tuning MPI programs
+
+performance become $\to$ performance becomes
+
+p.11, left col.:
+---------------
+This question tackles $\to$ This question addresses
+
+what we seen $\to$ what we have seen
+
+contributorshave $\to$ contributors have
+
+"by some standards" is unclear. By which standards?
+
+p.11, right col.:
+-----------------
+The high concern $\to$ The high focus on
+
+sound promising $\to$ sounds promising
+
+future of Japanese $\to$ future of the Japanese
+
+not new being $\to$ not new, being
+
+widely accepted $\to$ widely adopted
+
+p.12, left col.:
+----------------
+Another reason of $\to$ Another reason for
+
+Hard to understand:
+"There is no way for library functions ..." $\to$
+"There is no way for the implementation of low-level communication procedures
+to know whether they are employed as part of a higher-level data exchange
+pattern."
+
+receive[15] $\to$ receive [15]
+
+widely accepted $\to$ widely adopted
+
+If MPI Forum $\to$ If the MPI Forum
+
+agrees ... for $\to$ agrees ... on
+
+then MPI Forum $\to$ then the MPI Forum
+
+p.12, right col.:
+is, at least perceived as a ...$\to$
+is, at least perceived as, a ...
+}
+
+\section*{Responses to Review 2}
+
+\response{The results from this survey does not really provide any
+  new findings that were not already discovered with other smaller
+  surveys other than minor differences in user's experience based on
+  specific country or region. One of the outcome of this survey is a
+  suggestion to the MPI Forum to improve the educational effort to
+  bridge the gap between the features included in the standard to
+  their corresponding usage and familiarity.}
+         {This paper is a survey paper based on a traditional
+           questionnaire.  The method used in the paper is quite
+           common and there is no new technical insights in this paper.
+           However, the scale of the 
+           questionnaire targeting MPI is unprecedented and hopefully
+           results in more accurate than the others in terms of
+           statistics.
+           Therefor the findings of ours and theirs look similar, but
+           the nature of the underlying data is quite different.
+}
+
+\response{But, it is not clear how the MPI Forum can address this
+  issue, since the goal of any standardization body should be define
+  the standard. The MPI Forum already supports several activities such
+  as BoFs and there are a large number of books, free tutorials, and
+  other material available at most HPC centers, in addition to
+  workshops and tutorials dedicated to the use of MPI.}
+{Most of the authors have the experiences of attending MPI Forum
+  meetings.  They are having BOF meetings at SC, and many MPI Forum
+  members have the experiences of teaching MPI, lecturing MPI, and/or
+  writing MPI books. However, our survey reveals that many MPI users
+  are willing to have another form of MPI information, despite those
+  efforts. As the quote at Sec. 6.2 ``most of such web pages are
+  out-dated and not kept in sych with today’s web standards.'' tells,
+  most of the web pages and tutorial slides available online are
+  outdated. So many MPI users are longing to have consistent,
+  up-to-dated, well-structured teaching materials. This could only be done
+  by MPI Forum itself. 
+}
+
+\response{Data in Brief (optional): We invite you to convert your
+  supplementary data (or a part of it) into an additional journal
+  publication in Data in Brief, a multi-disciplinary open access
+  journal. Data in Brief articles are a fantastic way to describe
+  supplementary data and associated metadata, or full raw datasets
+  deposited in an external repository, which are otherwise
+  unnoticed. A Data in Brief article (which will be reviewed,
+  formatted, indexed, and given a DOI) will make your data easier to
+  find, reproduce, and cite.}
+{We are happy to do this.}
+
+\end{document}
