@@ -152,7 +152,7 @@
 
 \maketitle
 
-\section{Background}
+\section{Background}\label{sec:background}
 
 Existing studies on MPI uses are focused on a restricted target
 domain, such as the Exascale Computing Project (ECP)~\cite{ECP} study
@@ -1616,10 +1616,6 @@ Japanese HPC community might be in a difficult spot over the next decade.
 
 \section{Discussion}
 
-\subsection{Lessons Learned}
-
-blablabla
-
 \subsection{A constantly increasing standardization document}
 
 This survey reveals that some MPI features, which by most standards are not new\revision{}{,}
@@ -1704,6 +1700,39 @@ programming, and good (and certainly bad) MPI examples}.
   %
 \end{itemize}
 
+\revision{}{
+\subsection{Lessons Learned}
+
+\begin{description}
+
+\item[Simple Questionnaire]
+As described, we follow the advice of social scientists and we have
+only 30 questions which is much smaller than that of precedent
+surveys (Section~\ref{sec:background}). The ``no answer'' rate of each
+question is from zero (Q2) to 22\% (Q11). Especially, this rate of the 
+last question is only 2\% (18). This indicates that the questionnaire
+design was successful without having many withdrawals. 
+
+\item[Mailing List]
+First, the mailing list (ML) for announcing a survey must be selected
+in such a way that the ML subscribers and the target of the survey
+must be matched. Second, try using minor mailing lists (MLs) to
+collect answers. Most major MLs such as {\tt hpc-announce} have lots
+of traffic and most ML members simply discard most of the mails.
+
+\item[Using Online Forms]
+If your survey is targeting worldwide, then you must check if the
+online form you use can be accessed without any obstacles. Otherwise
+the number of answers might be biased by countries.
+
+\item[Reconsideration]
+One big reconsideration is that we should have had the question asking
+age ranges of the participants. This would have revealed if MPI users
+of a country or region consists of what generations.
+
+\end{description}
+}
+
 \section{Summary}
 
 We have conducted a questionnaire survey and succeeded to gather more than 850
@@ -1740,13 +1769,14 @@ agencies.
 
 \bibliography{ref}
 
+\comment{
 {\footnotesize
   \begin{description}
   \item[{[dataset][19]}] A. Hori, T. Ogura, E. Jeannot,
 G. Bosilca, MPI International Survey – GitHub Repository,
 \url{https://github.com/bosilca/MPIsurvey.git}, 2021.
   \end{description}
-}
+}}
 
 \appendix
 \section{List of Questions and Choices}
