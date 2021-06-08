@@ -215,6 +215,7 @@ collaborate in the JLESC framework.
       \hline
     \end{tabular}%
   \end{center}%
+\vspace{-3mm}
 \end{table}%
 
 To give an order of comparison with preceding studies, our MPI
@@ -378,6 +379,7 @@ this report are listed in ~\ref{app:questions}.
     \caption{Time series in first 90 days}
     \label{fig:time-series}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 One of the first questions we had to ask was how to reach a largely
@@ -430,20 +432,26 @@ workplaces in the last \revision{5}{five} years and not the nationality of the i
 participants.
 %
 \revision{}{
-The larger number of participants in our survey enables us to conduct
-cross-tab analysis between two questions to see if there is a
-correlation between the two questions. Doing so on each \mcountry,
-then each \mcountry must have enough 
-number of answers. The threshold of 50 
+The threshold of 50 
 participants was selected so that USA and Japan which have the big
 performance share in Top500 can be the
 \mcountries\ (Table~\ref{tab:countries}, \mcountries\ are in bold
-face). It was not our 
+face)\footnote{The sampling number of 50 is a little more than that of the case
+  satisfying 80\% confident level and 20\% error margin.}.
+
+The larger number of participants in our survey enables us to conduct
+cross-tab analysis between two questions to see if there is a
+correlation between the two questions. Our developed Python program
+produces cross-tab graphs of every possible combination of the two
+questions in our questionnaire survey. The cross-tab graphs showing
+obvious correlations will be shown in this paper.
+
+\comment{It was not our 
 intent to define this number as a satisfactory participation
 limit. Hence, some cross-tab analysis may not be reliable enough.
-However, it should be noted that this cross-tab analysis is possible
+However, it should be noted that this cross-tab analysis becomes possible
 because there are larger number of answers than those of precedent
-surveys. 
+surveys. }
 }
 %
 \begin{table}%
@@ -478,6 +486,7 @@ surveys.
   \multicolumn{2}{c}{\footnotesize (Nov. 2020)} \\%
 \end{tabular}%
 \end{center}%
+\vspace{-3mm}
 \end{table}%
 
 \subsection*{Participants' profile}
@@ -505,6 +514,7 @@ universities or governmental research institutes. \revision{}{There
     \caption{Q1: Occupations {\it(single)}}
     \label{fig:occupations}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:working-fields} shows the major field the participants are
@@ -527,6 +537,7 @@ with the rest of \mcountries.
     \caption{Q7: Working Fields {\it(multiple)}}
     \label{fig:working-fields}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 \section{Comparison with the ECP survey}\label{sec:ecp}
@@ -549,6 +560,7 @@ However, significant differences between the outcome of the two surveys arise.
     \caption{Q3: Self assessment of MPI Skill {\it(single)}}
     \label{fig:mpi-skill}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 First, and this mainly due to the larger ratio of participants from universities
@@ -574,6 +586,7 @@ indicated a low MPI-related skill.
     \caption{Q6: MPI Experience {\it(single)}}
     \label{fig:mpi-experience}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:mpi-experience} shows an interesting result, picturing the answers
@@ -710,6 +723,7 @@ subsections.
     \end{tabular}%
   \end{center}%
 \end{table*}%
+\vspace{-3mm}
 }
 
 \subsection{Layering MPI calls}\label{sec:mpi-calls}
@@ -721,6 +735,7 @@ subsections.
     \caption{Q21: Layering MPI calls {\it(single)}}
     \label{fig:layering-mpi-calls}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:layering-mpi-calls} shows the result of our survey and
@@ -763,6 +778,7 @@ the other \mcountries, the participants having a packing layer occupies
       \hline%
     \end{tabular}%
   \end{center}%
+\vspace{-3mm}
 \end{table}%
 
 \subsection{Using MPI Features}\label{sec:mpi-aspects}
@@ -792,6 +808,7 @@ outside a small, certainly dedicated crowd.
     \caption{Q17: Using MPI Aspects {\it(multiple)}}
     \label{fig:using-mpi-aspects}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 The most notable difference between the two surveys relates to the use of
@@ -842,6 +859,7 @@ better understanding.
     \caption{Using MPI Aspects}\label{fig:using-mpi-aspects-comp}%
   \end{center}
 \end{figure}
+\vspace{-3mm}
 }
 
 Fig.~\ref{fig:skill-and-aspects} is a heatmap representing the cross-tab
@@ -864,6 +882,7 @@ dynamic process, are almost independent from the MPI skill.
     \caption{Q3-Q16: MPI Skill {\it(single)} and Unknown MPI Features {\it(multiple)}}
     \label{fig:skill-and-aspects}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 A similar situation can be seen in the cross-tab analysis between Q6 and Q16
@@ -881,6 +900,7 @@ experienced MPI users may not easily catch up the newly introduced MPI features.
     \caption{Q6-Q16: MPI Experience {\it(single)} and Unknown MPI Features {\it(multiple)}}
     \label{fig:experience-and-aspects}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 This may indicate that the MPI standard is complex, and its understanding by the
@@ -905,6 +925,7 @@ be noted that this tendency is also reported in \cite{10.1145/3295500.3356176}.
     \caption{Q27: Useless Features {\it(multiple)}}
     \label{fig:useless-features}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 The dynamic process feature is on the border of process management and
@@ -947,6 +968,7 @@ experienced MPI users.
     \caption{Q18: Multi-threading {\it(multiple)}}
     \label{fig:multi-thread-reg}
   \end{center}
+\vspace{-3mm}
 \end{figure}
 
 \revision{
@@ -983,6 +1005,7 @@ experienced MPI users.
       \myquote{never used})}
     \label{fig:multi-thread}%
   \end{center}
+\vspace{-3mm}
 \end{figure}
 }           
 
@@ -1042,6 +1065,7 @@ indicate a well established knowledge of the MPI features.
     \caption{Multi-threading - Raw Answers}\label{tab:multi-thread-raw}%
     \label{fig:multi-thread-raw}%
   \end{center}
+\vspace{-3mm}
 \end{figure}
 }
 
@@ -1077,6 +1101,7 @@ investigation is needed to state a result.
       \caption{Q12: Using MPI Implementations {\it(multiple)}}
       \label{fig:using-implementations}
     \end{center}
+\vspace{-3mm}
   \end{figure}
 
 In order to understand how the usage of a particular MPI implementation came to
@@ -1109,6 +1134,7 @@ implementation.
       \caption{Q13: Choosing MPI Implementations {\it(single)}}
       \label{fig:choosing-implementation}
     \end{center}
+\vspace{-3mm}
   \end{figure}
 
 \subsection{MPI+X and Alternatives}
@@ -1130,6 +1156,7 @@ approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 \caption{Q22: MPI+X {\it(multiple)}}
 \label{fig:mpi-x}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 \begin{figure}[tb]
@@ -1139,6 +1166,7 @@ approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 \caption{Q24: MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-alternatives}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Without going in details about the features provided by MPI, it could be natural
@@ -1168,6 +1196,7 @@ similar across all \mcountries.
 \caption{Q22-Q24: MPI+X {\it(multiple)} and MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-x-and-alternatives}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:mpi-x-and-alternatives} shows the cross-tab analysis of Q22 and
@@ -1196,6 +1225,7 @@ Fig.~\ref{fig:compatibility} shows the expressed need for backward compatibility
 \caption{Q29: Performance vs. Compatibility {\it(single)}}
 \label{fig:performance-vs-compatibility}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 In Fig~\ref{fig:performance-vs-compatibility}, let's consider three groups; {\it
@@ -1215,6 +1245,7 @@ of compatibility does not cause a considerable burden.
 \caption{Q28: Backward Compatibility {\it(single)}}
 \label{fig:compatibility}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 As shown in Fig.~\ref{fig:compatibility}, around 40\% of participants answered
@@ -1242,6 +1273,7 @@ learned by writing MPI applications.
 \caption{Q10: Learning MPI {\it(multiple)}}
 \label{fig:learning-mpi}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:reading-standard} shows the familiarity of the participants with
@@ -1264,6 +1296,7 @@ which usually \revision{translate by}{translates to} via practical examples.
 \caption{Q9: Reading MPI Standard {\it(single)}}
 \label{fig:reading-standard}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 While the MPI standard is certainly not the best document for learning MPI, it
@@ -1282,6 +1315,7 @@ reading the standard partly because of checking the MPI specifications.
 \caption{Q14: Checking Specification {\it(multiple)}}
 \label{fig:checking-spec}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 It would have been interesting to have the cross-tab analysis between Q3 (MPI
@@ -1301,6 +1335,7 @@ analysis between Q3 and Q14. There can be seen a weak correlation, those who
 \caption{Q3-Q14: MPI Skill {\it(single)} and regular checking of the MPI Specification {\it(single)}}
 \label{fig:reading-standard-and-checking-spec}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Another interesting result can be seen in Fig.~\ref{fig:prog-skill} asking
@@ -1321,6 +1356,7 @@ different tendency from other \countries.
   programs)}
 \label{fig:prog-skill}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 \begin{figure}[tb]
@@ -1329,6 +1365,7 @@ different tendency from other \countries.
 \caption{Q19: Learning Obstacles {\it(multiple)}}
 \label{fig:learning-obstacles}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 \begin{figure}[tb]
@@ -1337,6 +1374,7 @@ different tendency from other \countries.
 \caption{Q19: Learning Obstacles - Text mining (WordCloud)}
 \label{fig:learning-obstacles-wc}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Generally speaking, allowing participants to freely answer questions in text
@@ -1382,6 +1420,7 @@ differences among implementations.}
 \caption{Q6-Q3: MPI Experience {\it(single)} and MPI Skill {\it single}}
 \label{fig:experience-and-skill}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 As shown in Fig.~\ref{fig:experience-and-skill}, the cross-tab heatmap graphs
@@ -1420,6 +1459,7 @@ participants of the other \countries\  chose
 \caption{Q15: MPI Programming Difficulty {\it(single)}}
 \label{fig:difficulty}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:tuning} has more divergence than Fig~\ref{fig:difficulty}. The
@@ -1440,6 +1480,7 @@ increasing percentage of performance \revision{become}{becomes} unobtainable.
 \caption{Q23: Performance Tuning {\it(single)}}
 \label{fig:tuning}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 \subsection{Missing Features and Semantics}
@@ -1470,6 +1511,7 @@ etc.)}.
 \caption{Q25: Features to improve {\it(single)}}
 \label{fig:missing-features}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Q26 is somewhat similar to Q25, but looking for more precise answers. This
@@ -1499,6 +1541,7 @@ Although there are relatively big disparity in the satisfaction (answering
 \caption{Q26: MPI Missing Semantics {\it(multiple)}}
 \label{fig:missing-semantics}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Finally, the least desired feature concerns the notion of endpoints, as
@@ -1573,6 +1616,10 @@ Japanese HPC community might be in a difficult spot over the next decade.
 
 \section{Discussion}
 
+\subsection{Lessons Learned}
+
+blablabla
+
 \subsection{A constantly increasing standardization document}
 
 This survey reveals that some MPI features, which by most standards are not new\revision{}{,}
@@ -1587,6 +1634,7 @@ standard and the acceptance of the features.
 \caption{Page sizes of MPI Standards}
 \label{fig:mpi-standards}
 \end{center}
+\vspace{-3mm}
 \end{figure}
 
 Fig.~\ref{fig:mpi-standards} shows the number of pages (in terms of PDF, not the
