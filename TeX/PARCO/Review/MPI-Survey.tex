@@ -1326,9 +1326,16 @@ different tendency from other \countries.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q19.pdf}
-\vspace{-2mm}
 \caption{Q19: Learning Obstacles {\it(multiple)}}
 \label{fig:learning-obstacles}
+\end{center}
+\end{figure}
+
+\begin{figure}[tb]
+\begin{center}
+\includegraphics[width=8.0cm]{Figs/Q19-others.pdf}
+\caption{Q19: Learning Obstacles - Text mining (WordCloud)}
+\label{fig:learning-obstacles-wc}
 \end{center}
 \end{figure}
 
@@ -1351,14 +1358,23 @@ Although the largest answer was one of the provided choices, \myquote{No
 obstacles,} we got an exceptional 111 \myquote{other} inputs.
 % Q4 and Q7 are the second largest (70), but these are because of the variety of
 % answers.
+\revision{
 After post-analysis, we can report that out of these, 
-\revision{more than 20 participants, 18\%, answered pinpointing}{20
-  (18\%) participants pinpointed} to how time consuming \revision{master}{mastering} MPI is. Many other
+more than 20 participants, 18\%, answered pinpointing
+to how time consuming mastering MPI is. Many other
 participants pointed out the need for more clear MPI programming guideline
 (\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation doc.},
 \myquote{performance guideline}, and so on, in their words). Some participants
 \revision{complaints}{complaint} about MPI implementations and the (performance or specification)
-differences among implementations.
+differences among implementations.}
+{
+  Fig.~\ref{fig:learning-obstacles-wc} shows the text mining result of
+  the free text inputs (using WordCloud\cite{wordcloud}, \footnote{WordCloud parameters: \tt
+    min\_word\_length=4, collocations=True,
+    collocation\_threshold=5,
+    max\_words=30}. As shown, \myquote{lack
+  (of) time} is highlighted.
+}
 
 \begin{figure}[tb]
 \begin{center}
