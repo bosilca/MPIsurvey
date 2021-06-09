@@ -375,7 +375,6 @@ this report are listed in ~\ref{app:questions}.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/TimeSeries.pdf}
-    \vspace{-2mm}
     \caption{Time series in first 90 days}
     \label{fig:time-series}
   \end{center}
@@ -470,13 +469,14 @@ surveys. }
   & Rank & \#Ans & [\%] & Rank & [\%] \\
   \hline%
   \hline%
-  {\bf Germany}   & 1 & 159 & 18.7 & 4  & 5.4  \\%
-  {\bf France}    & 2 & 125 & 14.7 & 5  & 3.7  \\%
-  {\bf Russia}    & 3 & 94  & 11.1 & 18 & 0.4  \\%
-  {\bf UK}        & 4 & 67  &  7.9 & 8  & 1.4  \\%
-  {\bf Japan}     & 5 & 64  &  7.5 & 2  & 24.4 \\%
-  {\bf USA}       & 6 & 58  &  6.8 & 1  & 27.5 \\%
-  {\bf Italy}     & 7 & 57  &  6.6 & 6  & 3.2  \\%
+  Germany         & 1 & 159 & 18.7 & 4  & 5.4  \\%
+  France          & 2 & 125 & 14.7 & 5  & 3.7  \\%
+  Russia          & 3 & 94  & 11.1 & 18 & 0.4  \\%
+  UK              & 4 & 67  &  7.9 & 8  & 1.4  \\%
+  Japan           & 5 & 64  &  7.5 & 2  & 24.4 \\%
+  USA             & 6 & 58  &  6.8 & 1  & 27.5 \\%
+  Italy           & 7 & 57  &  6.6 & 6  & 3.2  \\%
+  \cline{1-4}%
   Switzerland     & 8  & 40 &  5.8 & 10 & 1.1  \\%
   South Korea     & 9  & 27 &  3.2 & 13 & 0.8  \\%
   Austria         & 10 & 26 &  3.1 & 27 & 0.1  \\%
@@ -533,7 +533,6 @@ with the rest of \mcountries.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q7.pdf}
-    \vspace{-2mm}
     \caption{Q7: Working Fields {\it(multiple)}}
     \label{fig:working-fields}
   \end{center}
@@ -556,7 +555,6 @@ However, significant differences between the outcome of the two surveys arise.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q3.pdf}
-    \vspace{-2mm}
     \caption{Q3: Self assessment of MPI Skill {\it(single)}}
     \label{fig:mpi-skill}
   \end{center}
@@ -582,7 +580,6 @@ indicated a low MPI-related skill.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q6.pdf}
-    \vspace{-2mm}
     \caption{Q6: MPI Experience {\it(single)}}
     \label{fig:mpi-experience}
   \end{center}
@@ -664,7 +661,8 @@ subsections.
   \end{center}%
 \end{table}%
 }{
-\begin{table*}[tb]%
+  \begin{table*}[tb]%
+    \small
   \begin{center}%
     \caption{Comparable Questions}%
     \label{tab:comparable-questions}%
@@ -673,57 +671,59 @@ subsections.
       Topic & Our Survey & ECP Survey \\
       \hline
       \hline
-      \begin{minipage}[t]{0.13\hsize}
+      \begin{minipage}[t]{0.15\hsize}
         Layering MPI calls
         (\S~\ref{sec:mpi-calls})
       \end{minipage}
       &
-      \begin{minipage}[t]{0.39\hsize}
+      \begin{minipage}[t]{0.38\hsize}
         Q21: In most of your programs, do you pack MPI function calls into
         their own file or files to have your own abstraction layer for
         communication?  {\it(single)}
       \end{minipage}
       &
-      \begin{minipage}[t]{0.39\hsize}
+      \begin{minipage}[t]{0.38\hsize}
         Q22: Do you have an abstraction layer that hides the MPI calls? Or do
         most of your developers write MPI calls directly? {\it(single)}
       \end{minipage}
       \\
       \hline
-      \begin{minipage}[t]{0.13\hsize}
+      \begin{minipage}[t]{0.15\hsize}
         Using MPI Aspects
         (\S~\ref{sec:mpi-aspects})
       \end{minipage}
       &
-      \begin{minipage}[t]{0.39\hsize}
+      \begin{minipage}[t]{0.38\hsize}
         Q17: What aspects of the MPI standard do you use in your program in its
         current form? {\it(multiple)}
       \end{minipage}
       &
-      \begin{minipage}[t]{0.39\hsize}
+      \begin{minipage}[t]{0.38\hsize}
         Q35: What aspects of the MPI standard do you use in your application in
         its current form? {\it(multiple)}
       \end{minipage}
       \\
       \hline
-      \begin{minipage}[t]{0.13\hsize}
+      \begin{minipage}[t]{0.15\hsize}
         Multi-threading
         (\S~\ref{sec:mutil-threading})
       \end{minipage}
       &
-      \begin{minipage}[t]{0.39\hsize}
-        Q18: Which MPI thread support are you using? {\it(multiple)}
+      \begin{minipage}[t]{0.38\hsize}
+        Q18: Which MPI thread support are you using?\\%
+        {\it(multiple)}
       \end{minipage}
       &
-      \begin{minipage}[t]{0.39\hsize}
-        Q59: Which MPI threading option are you using? {\it(single)}
+      \begin{minipage}[t]{0.38\hsize}
+        Q59: Which MPI threading option are you using?\\%
+        {\it(single)}
       \end{minipage}
       \\
       \hline
     \end{tabular}%
   \end{center}%
-\end{table*}%
-\vspace{-3mm}
+  \vspace{-3mm}
+  \end{table*}%
 }
 
 \subsection{Layering MPI calls}\label{sec:mpi-calls}
@@ -731,7 +731,6 @@ subsections.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q21.pdf}
-    \vspace{-2mm}
     \caption{Q21: Layering MPI calls {\it(single)}}
     \label{fig:layering-mpi-calls}
   \end{center}
@@ -804,7 +803,6 @@ outside a small, certainly dedicated crowd.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q17.pdf}
-    \vspace{-2mm}
     \caption{Q17: Using MPI Aspects {\it(multiple)}}
     \label{fig:using-mpi-aspects}
   \end{center}
@@ -855,7 +853,6 @@ better understanding.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{Figs/MPI-Aspects.pdf}
-    \vspace{-2mm}
     \caption{Using MPI Aspects}\label{fig:using-mpi-aspects-comp}%
   \end{center}
 \end{figure}
@@ -921,7 +918,6 @@ be noted that this tendency is also reported in \cite{10.1145/3295500.3356176}.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q27.pdf}
-    \vspace{-2mm}
     \caption{Q27: Useless Features {\it(multiple)}}
     \label{fig:useless-features}
   \end{center}
@@ -964,7 +960,6 @@ experienced MPI users.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{R-scripts/Q18.pdf}
-    \vspace{-2mm}
     \caption{Q18: Multi-threading {\it(multiple)}}
     \label{fig:multi-thread-reg}
   \end{center}
@@ -998,8 +993,6 @@ experienced MPI users.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.5cm]{Figs/MultiThreading-ours-ECP.pdf}\\%
-    {\scriptsize ECP does not have the choices \myquote{SINGLE} and
-      \myquote{never used}}
     \caption{Multi-threading comparison
       (ECP does not have the choices \myquote{SINGLE} and
       \myquote{never used})}
@@ -1061,7 +1054,6 @@ indicate a well established knowledge of the MPI features.
 \begin{figure}[tb]
   \begin{center}
     \includegraphics[width=8.0cm]{Figs/MultiThreading-raw.pdf}
-    \vspace{-2mm}
     \caption{Multi-threading - Raw Answers}\label{tab:multi-thread-raw}%
     \label{fig:multi-thread-raw}%
   \end{center}
@@ -1097,7 +1089,6 @@ investigation is needed to state a result.
   \begin{figure}[tb]
     \begin{center}
       \includegraphics[width=8.0cm]{R-scripts/Q12.pdf}
-    \vspace{-2mm}
       \caption{Q12: Using MPI Implementations {\it(multiple)}}
       \label{fig:using-implementations}
     \end{center}
@@ -1130,7 +1121,6 @@ implementation.
   \begin{figure}[tb]
     \begin{center}
       \includegraphics[width=8.0cm]{R-scripts/Q13.pdf}
-      \vspace{-2mm}
       \caption{Q13: Choosing MPI Implementations {\it(single)}}
       \label{fig:choosing-implementation}
     \end{center}
@@ -1152,7 +1142,6 @@ approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q22.pdf}
-\vspace{-2mm}
 \caption{Q22: MPI+X {\it(multiple)}}
 \label{fig:mpi-x}
 \end{center}
@@ -1162,7 +1151,6 @@ approximately 3/4 of the target programs use the hybrid model of MPI+OpenMP.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q24.pdf}
-\vspace{-2mm}
 \caption{Q24: MPI Alternatives {\it(multiple)}}
 \label{fig:mpi-alternatives}
 \end{center}
@@ -1221,7 +1209,6 @@ Fig.~\ref{fig:compatibility} shows the expressed need for backward compatibility
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q29.pdf}
-\vspace{-2mm}
 \caption{Q29: Performance vs. Compatibility {\it(single)}}
 \label{fig:performance-vs-compatibility}
 \end{center}
@@ -1241,7 +1228,6 @@ of compatibility does not cause a considerable burden.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q28.pdf}
-\vspace{-2mm}
 \caption{Q28: Backward Compatibility {\it(single)}}
 \label{fig:compatibility}
 \end{center}
@@ -1269,7 +1255,6 @@ learned by writing MPI applications.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q10.pdf}
-\vspace{-2mm}
 \caption{Q10: Learning MPI {\it(multiple)}}
 \label{fig:learning-mpi}
 \end{center}
@@ -1292,7 +1277,6 @@ which usually \revision{translate by}{translates to} via practical examples.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q9.pdf}
-\vspace{-2mm}
 \caption{Q9: Reading MPI Standard {\it(single)}}
 \label{fig:reading-standard}
 \end{center}
@@ -1311,7 +1295,6 @@ reading the standard partly because of checking the MPI specifications.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q14.pdf}
-\vspace{-2mm}
 \caption{Q14: Checking Specification {\it(multiple)}}
 \label{fig:checking-spec}
 \end{center}
@@ -1370,8 +1353,9 @@ different tendency from other \countries.
 
 \begin{figure}[tb]
 \begin{center}
-\includegraphics[width=8.0cm]{Figs/Q19-others.pdf}
-\caption{Q19: Learning Obstacles - Text mining (WordCloud)}
+\includegraphics[width=8.7cm]{Figs/Q19-others.pdf}
+\caption{Q19: Learning Obstacles - Text mining of \myquote{Other} free
+text}
 \label{fig:learning-obstacles-wc}
 \end{center}
 \vspace{-3mm}
@@ -1405,14 +1389,12 @@ participants pointed out the need for more clear MPI programming guideline
 \myquote{performance guideline}, and so on, in their words). Some participants
 \revision{complaints}{complaint} about MPI implementations and the (performance or specification)
 differences among implementations.}
-{
-  Fig.~\ref{fig:learning-obstacles-wc} shows the text mining result of
-  the free text inputs (using WordCloud\cite{wordcloud}, \footnote{WordCloud parameters: \tt
-    min\_word\_length=4, collocations=True,
-    collocation\_threshold=5,
-    max\_words=30}. As shown, \myquote{lack
-  (of) time} is highlighted.
-}
+Fig.~\ref{fig:learning-obstacles-wc} shows the text mining result of
+the free text inputs
+(using WordCloud\cite{wordcloud}\footnote{WordCloud parameters: \tt
+  stopwords=None, min\_word\_length=4, collocations=True,
+  collocation\_threshold=5, max\_words=30}).
+As shown, ``lack (of) time'' is most highlighted.
 
 \begin{figure}[tb]
 \begin{center}
@@ -1455,7 +1437,6 @@ participants of the other \countries\  chose
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q15.pdf}
-\vspace{-2mm}
 \caption{Q15: MPI Programming Difficulty {\it(single)}}
 \label{fig:difficulty}
 \end{center}
@@ -1476,7 +1457,6 @@ increasing percentage of performance \revision{become}{becomes} unobtainable.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q23.pdf}
-\vspace{-2mm}
 \caption{Q23: Performance Tuning {\it(single)}}
 \label{fig:tuning}
 \end{center}
@@ -1507,7 +1487,6 @@ etc.)}.
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q25.pdf}
-\vspace{-2mm}
 \caption{Q25: Features to improve {\it(single)}}
 \label{fig:missing-features}
 \end{center}
@@ -1537,7 +1516,6 @@ Although there are relatively big disparity in the satisfaction (answering
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=8.0cm]{R-scripts/Q26.pdf}
-\vspace{-2mm}
 \caption{Q26: MPI Missing Semantics {\it(multiple)}}
 \label{fig:missing-semantics}
 \end{center}
@@ -1705,9 +1683,10 @@ programming, and good (and certainly bad) MPI examples}.
 
 \begin{description}
 
-\item[Simple Questionnaire]
+\item[Questionnaire Design]
 As described, we follow the advice of social scientists and we have
-only 30 questions which is much smaller than that of precedent
+only 30 easy-to-answer questions. This number is much smaller than
+that of precedent 
 surveys (Section~\ref{sec:background}). The ``no answer'' rate of each
 question is from zero (Q2) to 22\% (Q11). Especially, this rate of the 
 last question is only 2\% (18). This indicates that the questionnaire
@@ -1722,8 +1701,9 @@ of traffic and most ML members simply discard most of the mails.
 
 \item[Using Online Forms]
 If your survey is targeting worldwide, then you must check if the
-online form you use can be accessed without any obstacles. Otherwise
-the number of answers might be biased by countries.
+online form you use can be accessed without any obstacles from any 
+targets. Otherwise the number of answers might be biased. We should
+have noticed this from the beginning.
 
 \item[Reconsideration]
 One big reconsideration is that we should have had the question asking
@@ -2098,55 +2078,55 @@ abbreviations in square brackets, if any.
 \begin{center}%
 \caption{\Countries}
 {\footnotesize
-\begin{tabular}{l|c|r}%
+\begin{tabular}{c|l|r||c|l|r}%
 \hline%
-Country & Region Category & \# Participants \\%
+ & \Country & \#Ans & &\Country & \#Ans \\%
 \hline%
-Germany & Europe:Germany & 159\\%
-France & Europe:France & 125\\%
-Russia &  & 94\\%
-UK & Europe:UK & 67\\%
-Japan & & 64\\%
-USA & & 58\\%
-Italy & Europe:Italy & 57\\%
-Switzerland & Europe:others & 40\\%
-Korea, South &  & 27\\%
-Austria & Europe:others & 26\\%
-China & & 16\\%
-Sweden & Europe:others & 15\\%
-Spain & Europe:others & 14\\%
-India &  & 12\\%
-Poland & Europe:others & 10\\%
-Netherlands & Europe:others & 8\\%
-Brazil &  & 6\\%
-Denmark & Europe:others & 6\\%
-Czech Republic & Europe:others & 5\\%
-Luxembourg & Europe:others & 5\\%
-Canada &  & 4\\%
-Finland & Europe:others & 3\\%
-Argentina & & 3\\%
-Australia & & 3\\%
-Taiwan &  & 2\\%
-Serbia & Europe:others & 2\\%
-Pakistan &  & 2\\%
-Egypt &  & 2\\%
-Greece & Europe:others & 2\\%
-Belgium & Europe:others & 2\\%
-Tunisia &  & 1\\%
-Peru &  & 1\\%
-Singapore & & 1\\%
-Norway & Europe:others & 1\\%
-Mexico &  & 1\\%
-Denmark, Austria & Europe:others & 1\\%
-Croatia & Europe:others & 1\\%
-Portugal & Europe:others & 1\\%
-Estonia & Europe:others & 1\\%
-Saudi Arabia & & 1\\%
-UAE & & 1\\%
-Ukraine & Europe:others & 1\\%
+1 & Germany$\dagger$    & 159 &
+22 & Finland$\ddagger$  & 3\\%
+2 & France$\dagger$     & 125 &
+23 & Argentina          & 3\\%
+3 & Russia              & 94  &
+24 & Australia          & 3\\%
+4 & UK$\dagger$         & 67 &
+25 & Taiwan             & 2\\%
+5 & Japan               & 64 &
+26 & Serbia$\ddagger$   & 2\\%
+6 & USA                 & 58 &
+27 & Pakistan           & 2\\%
+7 & Italy$\dagger$      & 57 &
+28 & Egypt              & 2\\
+8 & Switzerland$\ddagger$ & 40 &
+29 & Greece$\ddagger$ & 2\\%
+9 & Korea, South        & 27 &
+30 & Belgium$\ddagger$  & 2\\%
+10 & Austria$\ddagger$  & 26 &
+31 & Tunisia            & 1\\%
+11 & China              & 16 &
+32 & Peru               & 1\\%
+12 & Sweden$\ddagger$   & 15 &
+33 & Singapore          & 1\\%
+13 & Spain$\ddagger$    & 14 &
+34 & Norway$\ddagger$   & 1\\%
+14 & India              & 12 &
+35 & Mexico             & 1\\%
+15 & Poland$\ddagger$   & 10 &
+36 & Denmark, Austria$\ddagger$ & 1\\%
+16 & Netherlands$\ddagger$ & 8 &
+37 & Croatia$\ddagger$  & 1\\%
+17 & Brazil             & 6 &
+38 & Portugal$\ddagger$ & 1\\%
+18 & Denmark$\ddagger$  & 6 &
+39 & Estonia$\ddagger$  & 1\\%
+19 & Czech Republic$\ddagger$ & 5 &
+40 & Saudi Arabia       & 1\\%
+20 & Luxembourg$\ddagger$ & 5 &
+41 & UAE                & 1\\%
+21 & Canada             & 4 &
+42 & Ukraine$\ddagger$  & 1\\%
 \hline%
-42 \countries & & 851  \\%
-\hline%
+\multicolumn{3}{l}{$\dagger$: Europe, $\ddagger$: Europe:others} &
+\multicolumn{3}{l}{42 \countries, 851 answers} \\
 \end{tabular}%
 }%
 \end{center}%
