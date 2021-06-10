@@ -333,7 +333,7 @@ following sections as appropriate.}
 
 \subsection*{Design}
 %
-\revision{The social scientists}{Poole and Ahmed, our consulting social
+\revision{The social scientists}{Prof. Poole and Ahmed, our consulting social
 scientists,} suggested that the number of questions must be
 limited \revision{}{to}
 around 30, to keep participants engaged and not to loose their concentration and
@@ -363,9 +363,10 @@ the MPI standardization body, as well as researchers from Inria and Riken Center
 for Computational Science (R-CCS).
 % We also interviewed with Dr. Kento Sato at R-CCS.
 The questionnaire was available online and receiving answers from February
-17, 2019 \revision{until recently}{and the most recent answer was June, 2020}. In fact, the two forms remain open to additional
-answers, but taking in account the rate of the contributions we do not expect
-the outcome to drastically change.
+17, 2019\revision{until recently}{}. In fact, the two forms remain open to additional 
+answers, \revision{but taking in account the rate of the contributions
+  we do not expect the outcome to drastically change}{but the answer
+  dated June, 2020 is the most recent one used in this paper}. 
 %  The most recent answer was obtained at June 22, 2020.
 All questions, their choices, and abbreviations of the choices used in
 this report are listed in ~\ref{app:questions}.
@@ -422,7 +423,7 @@ several conferences, with little positive outcome. While the root cause is still
 
 For the remaining of this report, geographical regions, either countries or
 regions, having more than 50 participants, are called {\bf major contributors}
-and are the object of cross-tab analysis. Such major contributors are Germany,
+and are the objectrevision{}{s} of cross-tab analysis. Such major contributors are Germany,
 France, Russia, UK, Japan, USA, Italy and the rest of European
 countries \revision{}{(denoted as ``{\it Europe
     others}''. Table~\ref{app:countries} lists all of them.)}. It
@@ -434,8 +435,7 @@ participants.
 The threshold of 50 
 participants was selected so that USA and Japan which have the big
 performance share in Top500 can be the
-\mcountries\ (Table~\ref{tab:countries}, \mcountries\ are in bold
-face)\footnote{The sampling number of 50 is a little more than that of the case
+\mcountries\ (Table~\ref{tab:countries})\footnote{The sampling number of 50 is a little more than that of the case
   satisfying 80\% confident level and 20\% error margin.}.
 
 The larger number of participants in our survey enables us to conduct
@@ -495,7 +495,7 @@ surveys. }
 Fig.~\ref{fig:occupations} shows the graph of Q1 regarding participants'
 occupation. As shown, the majority, roughly 80\% of participants are working at
 universities or governmental research institutes. \revision{}{There
-  are two type of questions, single-answer and multiple-answer
+  are two type of questions in our survey, single-answer and multiple-answer
   questions. This is single-answer question. Hereinafter
   ``{\it (single)}'' or ``{\it (double)}'' is denoted to distinguish them.}
 %
@@ -518,7 +518,8 @@ universities or governmental research institutes. \revision{}{There
   \end{center}
 \end{figure}
 
-Fig.~\ref{fig:working-fields} shows the major field the participants are
+Fig.~\ref{fig:working-fields} shows the major field\revision{}{s} the
+participants are 
 involved with, field selected among a set of provided choices.
 % result of asking \myquote{Which
 % fields are you mostly working in?}.
@@ -1013,8 +1014,9 @@ highest.
 
 Keeping in mind this question was a
 \revision{multiple-choice}{multiple-answer} question 
-\revision{Table~\ref{tab:multi-thread-raw}}{Fig.~\ref{fig:multi-thread-raw}} shows the top \revision{7}{seven} aw answers
-(combined answers \revision{}{, excluding \myquote{never user} and
+\revision{Table~\ref{tab:multi-thread-raw}}{Fig.~\ref{fig:multi-thread-raw}}
+shows the top \revision{7}{seven} raw answers
+(combined multiple answers\revision{}{, excluding \myquote{never user} and
   \myquote{no idea}}),
 with a coverage of about 85\% of the total answers.
 % These top 7 percentages occupy about 85\% in total.
@@ -1218,11 +1220,13 @@ Fig.~\ref{fig:compatibility} shows the expressed need for backward compatibility
 \end{center}
 \end{figure}
 
-In Fig~\ref{fig:performance-vs-compatibility}, let's consider three groups; {\it
-performance group} focused on \myquote{Performance} or \myquote{4}, {\it
-compatibility group} focused on \myquote{Portability} or \myquote{2}), and {\it
-middle group} \revision{who}{that} chose \myquote{3}. While the middle group, striking a balance
-between performance and compatibility dominates in most \mcountries\  (\revision{excepting}{except}
+In Fig~\ref{fig:performance-vs-compatibility}, let's consider three
+groups; ``performance group'' focused on \myquote{Performance} or
+  \myquote{4}, ``compatibility group'' focused on
+    \myquote{Portability} or \myquote{2}), and ``middle group''
+    \revision{who}{that} chose \myquote{3}. While the middle group,
+    striking a balance 
+between performance and compatibility dominates in most \mcountries\ (\revision{excepting}{except}
 Russia), the performance group tend to occupy a larger percentage. Regarding
 Russia, a large percentage of Russian participants answered \myquote{my program
 is too small} in Q21 (Fig.~\ref{fig:layering-mpi-calls}), in which case the lost
@@ -1305,8 +1309,8 @@ reading the standard partly because of checking the MPI specifications.
 \end{figure}
 
 It would have been interesting to have the cross-tab analysis between Q3 (MPI
-skill) and Q9 (reading MPI standard). Unfortunately the participants reading the
-standard partly dominates and the cross-tab analysis would not give us any clear
+skill) and Q9 (reading MPI standard). Unfortunately the participants
+\revision{reading the standard partly}{partly reading the standard} dominates and the cross-tab analysis would not give us any clear
 evidence.
 %
 Instead Fig.~\ref{fig:reading-standard-and-checking-spec} presents a cross-tab
@@ -1326,7 +1330,7 @@ analysis between Q3 and Q14. There can be seen a weak correlation, those who
 
 Another interesting result can be seen in Fig.~\ref{fig:prog-skill} asking
 \myquote{Rate your overall programming skill (non-MPI programs)}. People who
-auto-evaluate  high their programming skills (\revision{basically }{}those who chose 4 or
+auto-evaluate  high their programming skills (\revision{basically }{}those who chose \myquote{4} or
 more on the skills grade) account for more than 90\%. This indicates that MPI
 users are seasoned developers, or at least programmers with high programming
 skills. This might indicate that MPI programming requires specific skills whom
@@ -1382,18 +1386,19 @@ obstacles,} we got an exceptional 111 \myquote{other} inputs.
 % answers.
 After post-analysis, we can report that out of these, 
 more than 20 participants, 18\%, answered pinpointing
-to how time consuming mastering MPI is. Many other
-participants pointed out the need for more clear MPI programming guideline
-(\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation doc.},
-\myquote{performance guideline}, and so on, in their words). Some participants
-\revision{complaints}{complaint} about MPI implementations and the (performance or specification)
-differences among implementations.
+to how time consuming mastering MPI is.
 \revision{}{Fig.~\ref{fig:learning-obstacles-wc} shows the text mining result of
 the free text inputs
 (using WordCloud\footnote{WordCloud parameters: \tt
   stopwords=None, min\_word\_length=4, collocations=True,
   collocation\_threshold=5, max\_words=30}~\cite{wordcloud}).
 As shown, ``lack (of) time'' is most highlighted.}
+Many other
+participants pointed out the need for more clear MPI programming guideline
+(\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation doc.},
+\myquote{performance guideline}, and so on, in their words). Some participants
+\revision{complaints}{complaint} about MPI implementations and the (performance or specification)
+differences among implementations.
 
 \begin{figure}[tb]
 \begin{center}
@@ -1683,21 +1688,21 @@ programming, and good (and certainly bad) MPI examples}.
 \begin{description}
 
 \item[Questionnaire Design]
-As described, we follow the advice of social scientists and we have
+As described, we followed the advice of the social scientists and we have
 only 30 easy-to-answer questions. This number is much smaller than
 that of precedent 
 surveys (Section~\ref{sec:background}). The ``no answer'' rate of each
-question is from zero (Q2) to 22\% (Q11, asking reading MPI
+question varies from zero (Q2) to 22\% (Q11, asking reading MPI
 books). Especially, this rate of the  
 last question is only 2\% (18). This indicates that the questionnaire
 design was successful without having many withdrawals. The drawback of
-this is the narrow coverage of wide spectrum of MPI topics. 
+this is the narrow coverage of wide spectrum of the MPI topics. 
 
-\item[Mailing List]
-First, the mailing list (ML) for announcing a survey must be selected
+\item[Community Selection]
+First, the communities (mailing lists) for announcing a survey must be selected
 in such a way that the ML subscribers and the target of the survey
-must be matched. Second, try using minor mailing lists (MLs) to
-collect answers. Most major MLs such as {\tt hpc-announce} have lots
+must be matched. Second, try reaching local communities (minor mailing
+lists). Most major MLs such as {\tt hpc-announce} have lots 
 of traffic and most ML members simply discard most of the mails.
 
 \item[Using Online Forms]
