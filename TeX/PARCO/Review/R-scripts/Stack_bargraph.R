@@ -20,11 +20,13 @@ generate_graph <- function(input_csv = "./dat/Q7-simple.csv",
  names(T)[1]<-"X"
   
   #required to put overall on the top left corner
+#  Torder <- sort(as.vector(T$X),partial=8:9)
   Torder <- sort(as.vector(T$X),partial=8:9)
   
   T<- melt(T,id.var="X")
   
-  T <- arrange(mutate(T,X=factor(X,levels=Torder)),X)
+#  T <- arrange(mutate(T,X=factor(X,levels=Torder)),X)
+  T <- arrange(mutate(T,X=factor(X)),X)
   
   p<- ggplot(data=T,aes(x=X,y=value,fill=variable))+
     geom_col(aes(fill = variable), width = 0.7, position = position_stack(reverse = TRUE))+
@@ -42,11 +44,11 @@ generate_graph <- function(input_csv = "./dat/Q7-simple.csv",
   ggsave(output_pdf,height=10,width=20)
 }
 
-generate_graph(input_csv = "./dat/Q13-simple.csv", 
-               output_pdf = "./PARCO/Review/R-scripts/Q13.pdf")
-
 generate_graph(input_csv = "./dat/Q1-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q1.pdf")
+
+generate_graph(input_csv = "./dat/Q2-simple.csv", 
+               output_pdf = "./PARCO/Review/R-scripts/Q2.pdf")
 
 generate_graph(input_csv = "./dat/Q3-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q3.pdf")
@@ -54,21 +56,27 @@ generate_graph(input_csv = "./dat/Q3-simple.csv",
 generate_graph(input_csv = "./dat/Q6-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q6.pdf")
 
-generate_graph(input_csv = "./dat/Q21-simple.csv", 
-               output_pdf = "./PARCO/Review/R-scripts/Q21.pdf")
-
 generate_graph(input_csv = "./dat/Q9-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q9.pdf")
+
+generate_graph(input_csv = "./dat/Q10-simple.csv", 
+               output_pdf = "./PARCO/Review/R-scripts/Q10.pdf")
+
+generate_graph(input_csv = "./dat/Q13-simple.csv", 
+               output_pdf = "./PARCO/Review/R-scripts/Q13.pdf")
 
 generate_graph(input_csv = "./dat/Q15-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q15.pdf")
 
+generate_graph(input_csv = "./dat/Q21-simple.csv", 
+               output_pdf = "./PARCO/Review/R-scripts/Q21.pdf")
+
 generate_graph(input_csv = "./dat/Q23-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q23.pdf")
 
-generate_graph(input_csv = "./dat/Q29-simple.csv", 
-               output_pdf = "./PARCO/Review/R-scripts/Q29.pdf")
-
 generate_graph(input_csv = "./dat/Q28-simple.csv", 
                output_pdf = "./PARCO/Review/R-scripts/Q28.pdf")
+
+generate_graph(input_csv = "./dat/Q29-simple.csv", 
+               output_pdf = "./PARCO/Review/R-scripts/Q29.pdf")
 

@@ -7,6 +7,7 @@ PDF    = $(TARGET).pdf
 BBL    = $(TARGET).bbl
 
 GRAPHDIR = ../pdfs
+R_DIR = R-scripts/
 
 GRAPHS = $(GRAPHDIR)/TimeSeries.pdf \
 	 $(GRAPHDIR)/Q1.pdf \
@@ -35,9 +36,10 @@ GRAPHS = $(GRAPHDIR)/TimeSeries.pdf \
 	 $(GRAPHDIR)/Q26.pdf \
 	 $(GRAPHDIR)/Q27.pdf \
 	 $(GRAPHDIR)/Q28.pdf \
-	 $(GRAPHDIR)/Q29.pdf
+	 $(GRAPHDIR)/Q29.pdf \
+	 $(R_DIR)/TimeSeries.pdf 
 
-FIGS = $(shell ls Figs/*.pdf)
+FIGS = $(shell ls Figs/*.pdf R-scripts/*.pdf)
 
 all : $(PDF) answer.pdf
 
