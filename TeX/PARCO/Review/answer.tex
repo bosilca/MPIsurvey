@@ -36,7 +36,8 @@ response to each reviewer comment below.
            wide-spread. As you know, the MPI standard is keep
            evolving. We believe that it is about the time to know how
            MPI is used and what is the problem when using MPI. Without
-           having clear and right view of these, how can MPI widely be accepted?
+           having clear and right views of these, how can MPI widely
+           be accepted? 
            Connotations without having any backup data may lead to
            wrong directions.
 
@@ -81,8 +82,7 @@ sentence of the "Design" subsection) will not take up too much space
 but are necessary for improving readability. These are defined in
 Appendix as well, but if readers skip the Appendix, they will run the
 risk of not understand the messages.}
-{The ``AD'' and ``ST'' are now defined
-  in Section 4.1.}
+{The text is updated.}
 
 \iresponse{The text in the related work section can be converted into a table
 and significantly improve that section's readability. E.g., it is hard
@@ -131,11 +131,11 @@ examples." $\to$ "At the same time,..... translated via .."}
   analysis between the answers of the different questions does not
   seem to have been done at large.}
  {
-We developed a Python program to statistically analyze the answers. This program also
-produces the heat map graphs of any possible combinations of two
+Our developed Python program 
+produces a number of heat map graphs of any possible combinations of two
 questions in our questionnaire for cross-tab analysis. All heatmap
 graphs were checked and only the significant ones are shown in the
-paper.
+paper. The number of meaningful heatmap graphs is not large.
  }
 
 
@@ -150,7 +150,6 @@ paper.
  publication.  The charts are focused on a single question in order to
  avoid speculation on the correlations between answers.
 }
-
 
 \response{Especially the use of color in the bar charts does not feed
   a specific purpose, and more advanced info-vis chart types (e.g.,
@@ -227,7 +226,7 @@ we decided not to have MPI-IO related questions.
   take away for future designs of similar surveys.}
 {
 The decision to remove the counting of lines of code came from the
-computer scientists and not the social scientists.
+computer scientists (authors) and not the social scientists.
 Many numerical applications are large, but the
 code to call MPI routines can be very small. Thus, the size of a
 program may or may not correlate with the code size where calling MPI
@@ -314,7 +313,7 @@ see how popular among users PMPI is.}
   have more or less experienced tool developers here. (Such questions
   could be answered addressed by a more systemativ cross examination
   of the different questions).}
-{Let me answer this comments, assuming Q3 asking self assessment MPI
+{Let me answer this comment, assuming Q3 asking self assessment MPI
   skill and Q17 asking using MPI aspects. I checked the Q3-Q17 heatmap
 graph again, but the number of PMPI answers occupied very small
 fraction, and I could not find any obvious correlation between them.}
@@ -357,7 +356,8 @@ fraction, and I could not find any obvious correlation between them.}
 \iresponse{The percentage numbers in Table 8 don't add up to
   100\%. What do they refer to?}
 {This is because there are many other multiple-answer combinations and
-only the top 7 combinations are listed in this table.}
+only the top 7 combinations are listed in this table. I converted the
+table to a graph.}
 
 \iresponse{Page 8: "Portability, which translates into maintaining
   backward compatibility across versions, ..." ... Portability is much
@@ -393,7 +393,7 @@ and has beed changed.}
   "interesting". Why is this interesting? Which hypothesis could one
   derive that would/should be tested by a future survey? (The authors
   should extend the discussion here)}
-{I don't understand how this answer is related to the questions above. I am sorry we can not go into more details here because none of us
+{I don't understand how this answer is related to the questions above. I am sorry we cannot go into more details here because none of us
   has any strong connections with the Russian HPC community. }
 
 \end{enumerate}
