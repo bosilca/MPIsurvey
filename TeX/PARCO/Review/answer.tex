@@ -1,5 +1,11 @@
 \documentclass[11pt]{article}
 
+\usepackage[colorinlistoftodos]{todonotes}
+\setlength{\marginparwidth}{2cm}
+
+\newcommand{\emmanuel}[1]{\todo[size=\small,inline,color=cyan]{#1 \-- Emmanuel}}
+
+
 \long\def\comment#1{}
 \newcommand{\response}[2]{{\vspace{5mm}\noindent{\bf Comment:} \em #1}\\%
   {\bf Response:} #2}
@@ -28,7 +34,10 @@ response to each reviewer comment below.
   still think the paper adds some value to the community.}
          {This paper is a survey paper based on a traditional
            questionnaire.  The method used in the paper is quite
-           common and there is no new technical insights in this paper.
+           common and there is no new technical insights in this
+           paper.
+           \emmanuel{I would remove `` and there is no new technical insights in this
+           paper''.}
            However, the scale of the
            questionnaire targeting MPI is unprecedented and very
            important in terms of
@@ -137,7 +146,8 @@ questions in our questionnaire for cross-tab analysis. All heatmap
 graphs were checked and only the significant ones are shown in the
 paper. The number of meaningful heatmap graphs is not large.
  }
-
+\emmanuel{Do we want to publish all the data somewhere and provide a
+  link to it?}
 
 \response{The paper is well structured and largely follows the
   structure of the questionnaire, yet the language could be improved
@@ -168,7 +178,11 @@ paper. The number of meaningful heatmap graphs is not large.
   structured way, explaining which underlying information was the
   target for a specific batch of questions.}
 {
-Unfortunately there seems not to be such systematic way. We just
+  Unfortunately there seems not to be such systematic way.
+  \emmanuel{I would change the above sentence by :''We did not created
+    a new methodology for this work.''}  
+
+  We just
 followed the instructions which can be found everywhere.
 }
 
@@ -181,7 +195,7 @@ followed the instructions which can be found everywhere.
   survey and what should be done differently in future surveys of this
   kind.}
 {
-I added the ``Lessons Learned'' section.
+Thanks. We added the ``Lessons Learned'' section.
 }
 
 \begin{enumerate}
@@ -214,10 +228,12 @@ domain experts, the survey being targeted toward a larger and more diverse (in t
 MPI skills level) audience the answers would have been skewed by the lack of expertise.
 }
 \begin{comment}
- We thought it is very
+
+We thought it is very
 difficult for some MPI users to distinguish whether the I/O issue comes
 from the underlying file system or MPI-IO itself. This can be true
-when MPI users are domain experts but they lack system knowledge. And
+when MPI users are domain experts but they lack system
+knowledge. Hence, 
 we decided not to have MPI-IO related questions.
 \end{comment}
 
@@ -239,7 +255,7 @@ eliminating such effort.
   however, the publication data will be well in the future and the
   data when this is read even further. A similar end like "Month Year"
   should be given.}
-{This will be fixed on the final version.}
+{This will be fixed in the final version.}
 
 \iresponse{The colors in the charts don't seem to be well suited for
   color-blind or color-impaired readers.}
@@ -265,10 +281,10 @@ eliminating such effort.
   the number of contributors in the cross-tab analysis? This is
   unclear and should be made more explicit. What was limited? Why was
   the threshold of 50 chosen?}
-{I agree, this statement was not
-  clear and I changed the wording.  The threshold was chosen to
+{We agree, this statement was not
+  clear and we changed the wording.  The threshold was chosen to
   include USA which plays very important role in the HPC field,
-  therefor we thought USA must be included in the major
+  therefore we thought USA must be included in the major
   contributors. The sampling number of 50 is a little bit larger than
   that of the case satisfying 80\% confident level and 20\% error
   margin.} 
@@ -278,45 +294,7 @@ eliminating such effort.
 {We had expected to have more number of the AI choice, since AI is
   becoming a significant target for distributed aspects nowadays. You may think that the numerical
   app/lib dominates because this is a multi-answer question. However,
-  when I checked the raw data, the choice of the numerical app/lib has
-  334 answers, and the second largest is the combination of language and
-  numerical app/lib (only 48). So, we think Fig. 3 is representing the
-  participants profile. }
-
-\iresponse{Figure placement should NOT be inline but rather floating
-  top or bottom of a page. Text such as page 4 between Fig 4 and 5 are
-  easily overlooked and don't provide a good page flow.}
-{Figure and table positions have been updated to place them at the top or
-  bottom, not inline.}
-
-\iresponse{It might be better to transform Table 4 into a
-  double-column float to have longer lines for the questions.}
-{Excellent idea, thank you. Done.}
-
-\iresponse{Which data is referenced by "In the other major
-  contributors" (p.4)? "Europe:other"? This is ambiguous and should be
-  clarified.}
-{Fixed.}
-
-\iresponse{Fig. 7: A feature like PMPI is quite specific to a single
-  community (tool builders - with rare exceptions), so it seems awkward
-  to compare its use with other features that resemble a
-  specialization of well-used features (persistent)}
-{We are in complete disagreement with the reviewer regarding PMPI. PMPI is defined in the
-standard as a mean to provide a mechanism
-for users to investigate what/how MPI routine are called, and as a unique way to
-assess the performance of the communication part of the applications. We wanted to
-see how popular among users PMPI is.}
-
-\iresponse{Fig. 7: Could Q7C9 be correlated with Q17C9? If so this
-  could explain why people of all skill levels use PMPI ... you just
-  have more or less experienced tool developers here. (Such questions
-  could be answered addressed by a more systemativ cross examination
-  of the different questions).}
-{Let me answer this comment, assuming Q3 asking self assessment MPI
-  skill and Q17 asking using MPI aspects. I checked the Q3-Q17 heatmap
-graph again, but the number of PMPI answers occupied very small
-fraction, and I could not find any obvious correlation between them.}
+  when we could not find any obvious correlation between them.}
 
 \iresponse{With citing other books, tutorials and other online
   resources, maybe a correlation of "what is used" with "what is
@@ -324,11 +302,11 @@ fraction, and I could not find any obvious correlation between them.}
   MPI standard maybe too complex and leads to limited understanding"
   (p.5) may not be the only conclusion that could be drawn from the
   survey data.}
-{I checked the heatmaps of Q14-Q16 and Q14-Q17. The situation is very
+{We checked the heatmaps of Q14-Q16 and Q14-Q17. The situation is very
   similar to the above Q3-Q17. Those heatmap graphs reflects the
   biased distribution of the answers and no significant correlations
-  can be found. When I firstly checked the generated heatmap graphs, I
-  was very disappointed because only some of them have significant
+  can be found. When we firstly checked the generated heatmap graphs, we
+  were very disappointed because only some of them have significant
   correlations which are shown in the paper.}
 
 \iresponse{The authors claim that by having a fixed boundaries and
@@ -342,13 +320,13 @@ fraction, and I could not find any obvious correlation between them.}
   investigated. (Potential question for a future survey?)}
 {We agree with you about the usage of dynamic process creation and the
   operation policy does not allow users to create processes dynamically.
-  However, in the current text does not deny the usage you pointed
+  However, the current text does not deny the usage you pointed
   out.}
 
 \iresponse{Also for future surveys: Maybe users are not aware that
   SINGLE is the thread level that MPI\_Init uses. Does this correlate
   with answers of "MPI-only" applications?}
-{I checked the cross-tab graph between Q17 asking thread model and
+{We checked the cross-tab graph between Q17 asking thread model and
   MPI+X. As the number of answering MPI only users ('No' in our
   survey) is not large and we could not see any strong correlation
   between them. }
@@ -356,7 +334,7 @@ fraction, and I could not find any obvious correlation between them.}
 \iresponse{The percentage numbers in Table 8 don't add up to
   100\%. What do they refer to?}
 {This is because there are many other multiple-answer combinations and
-only the top 7 combinations are listed in this table. I converted the
+only the top 7 combinations are listed in this table. We converted the
 table to a graph.}
 
 \iresponse{Page 8: "Portability, which translates into maintaining
@@ -383,7 +361,7 @@ and has beed changed.}
   thread-aware?" or "Do you wish an interface that helps with
   performant multi-threaded interaction with the MPI library?"}
 {The endpoint topic was very actively discussed at the MPI Forum
-  meetings at that time. So we wanted to know how many users are
+  meetings at that time. Hence, we wanted to know how many users are
   interested in or have ever heard of that term regardless how much
   users understand it correctly. We are a bit
   surprised because the percentage of endpoints are larger than that
@@ -393,7 +371,8 @@ and has beed changed.}
   "interesting". Why is this interesting? Which hypothesis could one
   derive that would/should be tested by a future survey? (The authors
   should extend the discussion here)}
-{I don't understand how this answer is related to the questions above. I am sorry we cannot go into more details here because none of us
+{We don't understand how this answer is related to the questions
+  above. We are sorry we cannot go into more details here because none of us
   has any strong connections with the Russian HPC community. }
 
 \end{enumerate}
@@ -620,13 +599,15 @@ is, at least perceived as, a ...
   their corresponding usage and familiarity.}
          {This paper is a survey paper based on a traditional
            questionnaire.  The method used in the paper is quite
-           common and there is no new technical insights in this paper.
+           common.% and there is no new technical insights in this paper.
            However, the scale of the
            questionnaire targeting MPI is unprecedented and hopefully
            results in more accurate than the others in terms of
            statistics.
-           Therefor the findings of ours and theirs look similar, but
-           the nature of the underlying data is quite different.
+           Therefore the findings of ours and theirs look similar, but
+           the nature of the underlying data is quite
+           different. Overall, the originality of this work is that
+           the drawn conclusions are supported by worldwide data. 
 }
 
 \response{But, it is not clear how the MPI Forum can address this
@@ -643,7 +624,7 @@ is, at least perceived as, a ...
   efforts. As the quote at Sec. 6.2 ``most of such web pages are
   out-dated and not kept in sych with today’s web standards.'' tells,
   most of the web pages and tutorial slides available online are
-  outdated. So many MPI users are longing to have consistent,
+  outdated. Hence,  many MPI users are longing to have consistent,
   up-to-dated, well-structured teaching materials.
   %
   It is important to note that from the standpoint of the targeted community,
