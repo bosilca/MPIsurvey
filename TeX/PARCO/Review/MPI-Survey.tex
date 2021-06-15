@@ -1468,7 +1468,7 @@ most difficult part of writing an MPI program?} and
 Fig~\ref{fig:tuning} shows the result of Q23 asking \myquote{Is there any
 room for performance tuning in your MPI programs?} The largest part
 of US and UK participants chose \myquote{algorithm design} whilst the
-participants of the other \countries\  chose
+participants of the other \countries\ chose
 \myquote{Debugging}. In US, the second largest choice was
 \myquote{Domain Decomposition}. In Japan, the second largest is
 \myquote{Tuning}.
@@ -1728,7 +1728,7 @@ programming, and good (and certainly bad) MPI examples}.
 
 \begin{description}[leftmargin=0cm]
 
-\item[Questionnaire Design]
+\item[Design Strategy]
 Striking a balance between the number of questions and their coverage.
 We followed the advice of social scientists to maintain
 only 30 easy-to-answer questions, a number much smaller than prior
@@ -1740,6 +1740,16 @@ books), and is only 2\% for the last question.
 This may indicate that the questionnaire design was successful in
 maintaining the participants involved. The drawback is a reduced
 coverage of the wide spectrum of the MPI topics.
+%
+\item[Questionnaire Design]
+In general, to make a good questionnaire, designers must have a
+knowledge how the participants will react beforehand, however, this is
+very difficult in most cases and this survey is no exception. In
+retrospect, Q11 asking reading MPI
+books was the most useless, since we could not conclude any meaningful
+results from it. Conversely we should have had a question asking age
+ranges of participants. This would have revealed MPI users of a
+country or region belong to which generations. 
 
 \item[Reaching the Target Community]
 First, the communities (mailing lists, ML) for announcing a survey
@@ -1758,11 +1768,6 @@ can be accessed freely
 without any difficulties from all locations. Otherwise the number of
 answers might be biased.
 % We should have noticed this from the beginning.
-
-\item[Age Range]
-One big reconsideration is that we should have had a question about the
-age ranges of the participants. This would have revealed MPI users
-of a country or region belong to which generations.
 
 \end{description}
 }
@@ -1823,9 +1828,9 @@ The followings are the list of all questions associated with
 choices. The question numbers suffixed by asterisks (*) are
 multiple-choice questions. The choices are followed by corresponding
 abbreviations in square brackets, if any.
-\vspace{2mm}
 {\footnotesize
-  \begin{description}
+  \begin{description}[leftmargin=0cm]
+    \vspace{-1mm}
   \item[Q1:] What is your main occupation
     \begin{inparaenum}[{\bf C}1)]
     \item College/University [Univ],
@@ -2134,7 +2139,7 @@ abbreviations in square brackets, if any.
 \begin{table}[ht]%
 \begin{center}%
 \caption{\Countries}
-\vspace{-1.5mm}
+\vspace{-3mm}
 {\footnotesize
 \begin{tabular}{c|l|r||c|l|r}%
 \hline%
