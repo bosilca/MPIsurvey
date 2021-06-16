@@ -1,0 +1,111 @@
+I am too busy
+the message passing paradigm
+Difficulty to debug
+Efficient debugging knowledges
+Have not kept up with recent changes
+I don't need to master it
+I don't use it so often / Often I don't use it directly
+I have no time
+It requires time
+Lack of time
+No detailed and clear enough documents about internal implementation
+The issue is usually the support on supercomputers
+Time
+Today I use it only occasionally
+Too many runtime "optimisation" (implem choice) flags
+Understanding performance, making immediate communications asynchronous, ...
+difference of implementation and behavior depending on the system. One thing works perfectly on one system and breaks down on another due to vendor tweaks.
+few examples/tutorials available for advanced features such as one sided routines
+for very specific problems, tasks or optimizations, the implementations are not well documented enough
+lack of time
+seems target to Fortran 77 programmers
+type signatures of many prototypes suck (int for sizes, missing const qualifiers, for instance).
+Generally over-engineered IMO
+Lack in proper vendor/platform support
+MPI details are low priority in current tasks, done by colleagues
+MPI should allow doing in-place operations by specifying identical pointers for send and receive buffer
+No exception handling -\verb!>! Inconsisten states
+No immediate need to do so
+Non  Standardized MPI wrapper tools ( hydra process startup etc.)
+Performance differences between implementations.
+Problems with memory consumption
+Thinking in parallel paradigm
+Time limitations
+Undocumented behavior
+Unexpected running times of MPI routines such as slow MPI\_Comm\_create,...
+While send/recv and collectives are easy to start, the amount of specialized functions is sometimes hard to oversea
+but it needs a lot of time to exercise
+confusion between specification of MPI datatypes and standard Fortran types (e.g. the size of MPI Offset kind)
+how to get optimal performance
+i am supervising a group of developers
+implementation issues
+lack of performance guidelines
+no pressing need to master it
+no unified, simplified (i.e. for beginners) function documentation (with usage examples)
+not constantly writing MPI related code, hard getting back on track
+sometimes obscure behaviour (e.g. MPI\_Startall unable to deal with MPI\_REQUEST\_NULL among actual request objects)
+time
+time consuming
+too many similar functions
+Interfacing with external libraries (e.g. using pnetcdf with MPI is not trivial)
+Lack of time to learn MPI comprehensively
+Not enough time
+debug
+mastering parallel Input/Output
+time to spend on it
+Buggy implementations
+Discrepancies between specification and real implementations/implementation quirks
+I find the shared memory window API a bit confusing, and always have to relearn how to use it
+I know the subset of the standard required to achieve my goals.
+Making sense of the errors that are reported. Often they are not clear about the exact cause, especially when resources are exhausted.
+Need: I only use it when required for my work.
+Performance tuning is a black art
+Performance/application issues such as appropriate progression
+Theoretical problem does not map easily to distributed parallelism
+Time
+Too much else to do!
+performance portable  implentation specific workarounds for bugs
+unpredictable interactions between application and MPI implementation behaviour
+Debug
+Doesn't perform well with other systems and accelerators
+I am at the beginning of learning, so I cannot say yet.
+I do not develop too many MPI applications, and the ones I maintain do not need too much further parallel optimisation
+I do not write any but use them
+I mostly use the same things.  Presumably there are many other things, but I have not really needed those.
+It would be nice with a standard library of data structures (e.g., hash table with granulated locking/compare-and-swap)
+Light-weight simplified interface. Perhaps OO C++ wrapper.
+Modifying old MPI code.
+No reason to master it. If I propose using something fancy, I also have to demonstrate that it provides a performance or programmability benefit, while not degrading the implementation quality or performance on other MPI implementations.
+Removed C++ interface, exceptions!!!, int32 for most of counts, displ, etc.
+The practical details of using a certain MPI in a certain way on a certain system makes a lot of other wise simple things hard (debuggers, pinning, start up sanity, terminal IO, file IO, ..)
+Time limit
+difficulty with debugging
+lack of experience
+no good Java support
+not my main priority / lack of time
+Limited lectures/tutorials are available online
+Other work
+with the demand of production, it's difficult to spend significant time in learning and practising new APIs
+Difficult to reason performance numbers.
+Implementations based on the MPI specification depend on vendors.
+Many implementations.
+When it comes to a development of algorithms, the strategy of parallelism and  data/domain decomposition has a close relationship. This might make it harder to master MPI than other parallel paradigm.
+Subtleties related to performance, lack of vendor information on environment variables, proprietary communication subsystem
+GPU programming becomes too complicated
+I have no reason to improve my skills (right now)
+Lack of time
+Need time and appropriate book, which contains philosophy, ideas and solutions of rather complex tasks
+No good and free debuging tools
+No time to do so
+renovations of MPI implementation (e.g. VisualStudio), need to adjust environment according to them
+too busy with other tasks/duties
+finding examples for the new and advanced functions
+Difficulty of using outside C/Fortran
+In general carefully understanding all the calls and parameters
+Incomplete specifications that leave room for interpretation and force me to look into implementation source code therefore worrying me about portability across implementations
+Not enough work requires it
+Open-MPI is routinely buggy and prevents me from using MPI 3.0 as specified
+Open-MPI is routinely buggy and prevents me from using MPI 3.0 as specified
+Poor integration with threading libraries, slow adoption to new technologies
+Time to practice.
+incomplete specifications
