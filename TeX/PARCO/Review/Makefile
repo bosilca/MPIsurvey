@@ -46,7 +46,7 @@ all : $(PDF) answer.pdf
 answer.pdf: answer.tex
 	$(LATEX) answer
 
-$(PDF) : $(SRCS) $(BIBS) $(FIGS) Makefile
+$(PDF) : $(SRCS) $(BIBS) Makefile
 	$(LATEX) $(TARGET);
 	bibtex $(TARGET)
 	$(LATEX) $(TARGET);
