@@ -136,21 +136,21 @@
 
 \begin{abstract}
   The Message Passing Interface (MPI) plays a crucial part in the
-  parallel computing ecosystem, a driving force behind many of the
+  parallel computing ecosystem and is a driving force behind many
   high-performance computing (HPC) successes. To maintain its relevance
   to the user community---and in particular to the growing HPC community
   at large---the MPI standard needs to identify and understand the MPI
   users' concerns and expectations, and adapt
-  accordingly to continue to efficiently bridge the gap between users
-  and hardware. This questionnaire survey was conducted
+  accordingly to continue to bridge the gap between users
+  and hardware effectively. This questionnaire survey was conducted
   using two online questionnaire frameworks and has gathered more than 850
-  answers from 42 countries since February 2019.
+  responses from 42 countries since February 2019.
   % There are some predecessors of this kind of survey.
-  Some of preceding surveys of MPI uses are questionnaire surveys
+  Some previous surveys of MPI uses are questionnaire surveys
   like ours, while others are conducted either by analyzing MPI programs
   to reveal static behavior or by using profiling tools to analyze the dynamic runtime behavior of
   MPI jobs. Our survey is different from
-  other questionnaire surveys in terms of its larger number of participants
+  other questionnaire surveys in terms of its large number of participants
   and wide geographic spread. As a result, it is possible to
   illustrate the current status of MPI users more accurately and with a
   wider geographical distribution. In this report, we will show some
@@ -171,26 +171,26 @@ Existing studies on MPI uses are focused on a restricted target
 domain, such as the Exascale Computing Project (ECP)~\cite{ECP} study
 conducted in 2017~\cite{ECP-survey} that focused
 on MPI usage in the
-context of ECP applications and/or are geographically
+context of ECP applications that are geographically
 constrained to a single laboratory, funding agency or, at best,
 country. As such, they provide sporadic, disconnected views on the real
 uses of MPI across the world.
 %
 Simultaneously with
-the ECP study another survey was conducted in Japan targeting
-HPCI~\cite{HPCI} users which included several questions asking about
-MPI~\cite{hpci-user-survey}.  HPCI is an infrastructure for HPC users
-in Japan, which connects major supercomputers owned by universities and
+the 2017 ECP study another survey users, which included several questions asking about
+MPI, was conducted in Japan targeting
+HPCI~\cite{HPCI} ~\cite{hpci-user-survey}.  HPCI is an infrastructure for HPC users
+in Japan, which connects major supercomputers owned by universities with
 governmental research institutes. If both questionnaire surveys would
 have had the same questions, we could have compared the answers to reveal
-the differences between US and Japan MPI user
-communities. Unfortunately, only a single question was similar in both
+the differences between MPI user
+communities in the US and Japan. Unfortunately, only a single question was similar in both
 studies, limiting the correlations between the two surveys.
 
 These studies highlighted the need to conduct a larger, more comprehensive
-study reaching across many diverse communities of MPI users.
-Unlike earlier studies, we shifted the study's focus from
-the high-end HPC community and targeted a wider audience, and involved a larger
+study that reaches across many diverse communities of MPI users.
+Unlike earlier studies, we shifted the study's focus away from
+the high-end HPC community, targeted a wider audience and involved a larger
 spectrum of geographically distinct users. Since MPI has been a widely used
 vehicle for high-performance computing for decades, this larger-scale
 questionnaire survey is beneficial not only for deciding the future
@@ -198,7 +198,7 @@ direction of MPI, but also for understanding the feature differences of MPI
 users among countries and/or regions of the world.
 
 Our team started to conduct such a study as a project at
-JLESC~\cite{JLESC} which is an international research collaboration
+JLESC~\cite{JLESC}, which is an international research collaboration
 framework. The international nature of this survey matches the concept
 of JLESC, where most co-authors are active participants.
 % members of JLESC and responsible for their respective countries and/or regions.
@@ -234,7 +234,7 @@ Illinois Univ., and Prof. Iftekhar Ahmed at Univ. of North Texas
 \end{table}%
 
 To give an order of comparison with preceding studies, our MPI
-International Survey, ECP survey, and HPCI survey are summarized in
+International Survey, the ECP survey, and the HPCI survey are summarized in
 Table~\ref{tab:comparison}.
 
 \comment{
@@ -243,8 +243,8 @@ Table~\ref{tab:comparison}.
   \begin{description}
   \item[Geographic Target]\mbox{}\\
     The ECP survey targeted ECP members who are leading researchers and
-    application developers in the US. The ECP survey targeted high-end
-    users. Whereas our survey targets all MPI users from novices to experts.
+    application developers in the US. It survey targeted high-end
+    users; whereas, our survey targets all MPI users from novices to experts.
   \item[Number of participants]\mbox{}\\
     The number of participants of the ECP survey is 77. Because of the wider
     target of our survey, in terms of the scope of MPI expertise of
@@ -261,27 +261,27 @@ Table~\ref{tab:comparison}.
 \revision{
 The existing MPI-related surveys can be categorized in three survey classes;
 %
-\revision{}{(1)} questionnaire \revision{survey}{surveys} asking MPI users questions
-specifically to reflect the human understanding or
+\revision{}{(1)} questionnaire \revision{survey}{surveys} which ask MPI users questions that are 
+specifically designed to reflect the human understanding or
 knowledge of MPI capabilities\revision{,}{; (2)} %
 %
-application-oriented statistical surveys statically analyzing MPI programs and
+application-oriented statistical surveys analyzing MPI programs and
 classifying occurrences of MPI calls ({\em S})\revision{,}{;} %
 %
 and \revision{}{(3)} application-oriented statistical surveys analyzing MPI applications
 at runtime by using a profiling tool ({\em R}).
 
 Our survey and the ECP survey are examples of the {\em Q} category,
-and highlight, as mentioned above, the user understanding of MPI
-capabilities and knowledge of MPI features. They can more easily
-identify what new MPI features are \revision{become}{becoming} known by the users community, well before they start appearing in MPI applications.
+and highlight, as mentioned above, user understanding of MPI
+capabilities and knowledge of MPI features. These surveys
+identify what new MPI features are \revision{become}{becoming} known by the user community, well before they start appearing in MPI applications.
 % while \cite{https://doi.org/10.1002/cpe.5901} can be categorized as {\em S}, and \cite{8665758,10.1007/978-3-319-58667-0-12} are of class {\em R}.
 
 In the {\em S} category, \revision{}{Laguna aet al.}~\cite{10.1145/3295500.3356176} statically investigated
 110 open-source MPI programs. \revision{}{Nawrin et al.}~\cite{cpe-5901}
 investigated 14 MPI programs chosen from the ECP Proxy Applications Suite
 2.0~\cite{osti-1482870}. They offer a pragmatic view on the usage patterns of
-MPI function in existing applications, and can serve as an indicator of what MPI
+MPI function in existing applications and can serve as an indicator of what MPI
 features \revision{translates}{translate} into real usages.
 
 In the {\em R} category, \revision{}{Chunduri et al.}~\cite{8665758} collected and
@@ -315,9 +315,9 @@ The existing MPI-related surveys can be categorized in three survey classes;
 \end{description}
 
 Our survey and the ECP survey are examples of the {\it Questionnaire} category,
-and highlight, as mentioned above, the user understanding of MPI
+and highlight, as mentioned above, user understanding of MPI
 capabilities and knowledge of MPI features. They can more easily
-identify what new MPI features are becoming known by the users
+identify what new MPI features are becoming known by the user
 community, well before they start appearing in MPI applications.
 
 In the {\it Static Analysis} category, Laguna et
@@ -334,7 +334,7 @@ MPI jobs, with a smaller but still significantly distinct number of
 different applications. Klenk et
 al.~\cite{10.1007/978-3-319-58667-0-12} took a similar approach, but
 focuses on HPC applications and analyzed the behavior of DOE
-mini-apps based on the trace data which DOE made public. It is
+mini-apps based on the public DOE trace data. It is
 interesting to note that the target community for these
 two studies is significantly different, the second one
 looking at applications developed by a user community more inclined to
@@ -351,9 +351,9 @@ following sections as appropriate.}
 \revision{The social scientists}{Prof. Poole and Ahmed, our consulting social
 scientists,} suggested that the number of questions must be
 limited \revision{}{to}
-around 30, to keep participants engaged and not to loose their concentration and
-focus. This number is significantly smaller that those of ECP and HPCI surveys,
-forcing us to restrict the scope of the questions, and focus on few, critical
+around 30, to keep participants engaged and help maintain their concentration and
+focus. This number is significantly smaller than those of ECP and HPCI surveys,
+forcing us to restrict the scope of the questions and focus on a few critical
 aspects to the future of the MPI effort. As an example, we deliberately excluded
 some topics, such as MPI-IO, and instead focused on MPI communications.
 %\todo{I don't understand the next sentence}
@@ -362,15 +362,13 @@ some topics, such as MPI-IO, and instead focused on MPI communications.
 %some work, such as counting the lines of code, are eliminated.
 % AH rewrote, Jan 29
 We designed the questionnaire so that participants can answer questions
-as easyly as possible, and the questions which force participants to do
-extra work to answer the questions, such as counting the lines of
-code of their programs, are eliminated.
+as easily as possible, and the questions requiring extra work of participants, such as counting the lines of code in their programs, are eliminated.
 
 Similarly to the ECP questionnaire, we initially started with Google Forms to
 develop ours. Later in our project, and mostly for geopolitical reasons, we
 replicated the same questionnaire using Microsoft Forms for those who cannot
 access Google Forms. All graphs in this paper were generated using the
-aggregated data from both forms (Google and Microsoft) exported using a CSV
+aggregated data from both forms (Google and Microsoft), exported using a CSV
 format, and then manipulated using statistical tools developed in Python and R.
 
 The draft questionnaire was tested and validated by several active members of
@@ -379,7 +377,7 @@ for Computational Science (R-CCS).
 % We also interviewed with Dr. Kento Sato at R-CCS.
 \revision{}{
 The questionnaire was available online and receiving answers beginning February
-17, 2019 and the most recent answer was June, 2020. The two forms remain open to additional
+17, 2019 and the most recent answer was June 22, 2020. The two forms remain open to additional
 answers, but taking in account the rate of the contributions, we do not expect
 the outcome to drastically change.}
 %  The most recent answer was obtained at June 22, 2020.
@@ -398,7 +396,7 @@ this report are listed in ~\ref{app:questions}.
   \end{center}%
 \end{figure}
 
-One of the first challenges we had to consider was how to reach a largely
+One of the first challenges we had to consider was how to reach an
 international community of researchers and users quickly and
 efficiently while expecting significant contributions and feedback.
 %
@@ -408,9 +406,9 @@ extremely slow to arrive. In order to improve participation, we decided to
 approach the problem more locally and reached out to different collaborators and
 asked them to locally distribute the questionnaire inside their institutions,
 via their own distribution process (mailing list, forums, or different form of
-social platforms). As highlighted in Fig.~\ref{fig:time-series}, more localized
-means of distribution were highly beneficial, each one of the steps in the
-figure corresponding to a new distribution campaign to a new set of
+social platforms). As highlighted in Fig.~\ref{fig:time-series}, the more localized
+means of distribution were highly beneficial; each one of the steps in the
+figure corresponds to a new distribution campaign to a new set of
 institutions.
 
 % Soon after started, we realized the number of responses was not as many as we
@@ -422,14 +420,14 @@ institutions.
 
 This local distribution strategy worked well on some regions but
 did not work universally. Table~\ref{tab:countries} shows the number
-of participants in top 11 countries (all countries are listed in
+of participants in the top 11 countries (all countries are listed in
 \ref{app:countries}).
 The three major countries in Top500, USA, China and Japan, are not even in
-the top four in our survey. China, which, according to Top500, holds the most
-compute platforms among all countries, had only 18 participants including
+the top four in our survey responses. China, which holds the most
+compute platforms among all countries according to Top500, had only 18 participants including
 Taiwan (two). We tried to increase the number of participants from these
 countries as much as we could, making and distributing flyers at
-several conferences, with little positive outcome. While the root cause is still unclear, this pinpoints the need for alternative distribution schemes, especially in these locations.
+several conferences with little positive outcome. While the root cause is still unclear, this pinpoints the need for alternative distribution schemes, especially in these locations.
 %  Possibly because we could not reach the right influencing person to ask, or
 %  maybe because of % nationalities.
 
@@ -445,18 +443,18 @@ should be noted that the information used to define the \mcountry\ was not the n
 %
 \revision{}{
 The threshold of 50
-participants was selected so that USA and Japan which have the big
-performance share in Top500 can be the
+participants was selected so that USA and Japan which have the bigger
+performance share in Top500 are the
 \mcountries\ (Table~\ref{tab:countries})\footnote{The sampling number of 50 is a little more than that of the case
   satisfying 80\% confident level and 20\% error margin.}.
 
 The larger number of participants in our survey enables us to conduct
 cross-tab analysis between two questions to identify any
-correlation between the two questions. A number of cross-tab heatmap graphs of
+correlation between them. A number of cross-tab heatmap graphs of
 every possible combination of the two questions in our questionnaire
 survey are generated by our developed Python program and analyzed. The
 cross-tab graphs showing obvious correlations will be shown in this
-paper. It was very unfortunate that the number of such meaningful
+paper. Unfortunately, the number of meaningful
 cross-tab graphs was surprisingly small.
 
 \comment{It was not our
@@ -564,7 +562,7 @@ questions. We are
   going to clarify some points about the profiles of the participants
 in our survey.
 %
-Due to overlapping survey propagation means (emails, HPC-related mailing lists, and word-of-mouth), we can assume
+Due to overlapping survey distribution methods (emails, HPC-related mailing lists, and word-of-mouth), we can assume
 that some of the participants of our survey also participated in the ECP survey.
 However, significant differences between the outcome of the two surveys arise.
 
@@ -583,8 +581,7 @@ and national laboratories, it seems likely that the ECP survey contains more
 answers from expert MPI users or highly HPC-centered participants.
 % We assumed that the participants in the ECP survey have more
 % experience on MPI programming than the participants of ours.
-Fig.~\ref{fig:mpi-skill} shows the results of \revision{}{the} self-evaluation of the
-participants' MPI skill in our survey.  It is worth raising attention to the US
+Fig.~\ref{fig:mpi-skill} shows the results of \revision{}{the} participants' self-evaluation of their MPI skill in our survey. It is worth raising attention to the US
 case (right-most bar), where almost half of participants rate themselves as
 highly skilled MPI users (\myquote{5} or \myquote{High}), significantly ahead
 of any other \mcountries. Additionally, none of the US participants
@@ -608,14 +605,14 @@ about participants' expertise via the length of the interactions with the MPI
 world. The question was {\it How long have you been writing MPI programs?} and
 the choices are {\it more than 10 years} (denoted as \myquote{\textgreater 10}),
 \myquote{between 5 and 10 years} (denoted as \myquote{5-10}), \myquote{between 2
-and 5 years} (denoted as \myquote{2-5}) and \myquote{less than 2 years} (denoted
+and 5 years} (denoted as \myquote{2-5}), and \myquote{less than 2 years} (denoted
 as \myquote{\textless 2}). Interestingly only 9\% of US participants have less
 than \revision{2}{two} years MPI experience, but they do
 \revision{no}{not} rank their MPI expertise the lowest
 (Fig.~\ref {fig:mpi-skill}). Japan followed closely \revision{}{and} has the highest percentage
-in participants with more than \revision{10}{ten} years of experience
+of participants with more than \revision{10}{ten} years of experience
 and also the lowest
-percentage in those with less than \revision{2}{two} years experience. Russia, followed by
+percentage of those with less than \revision{2}{two} years experience. Russia, followed by
 Italy, has the highest percentage in less than \revision{5}{five} years experience (including the
 less than \revision{2}{two} years experience case).
 
@@ -757,11 +754,11 @@ subsections.
   \end{center}
 \end{figure}
 
-Fig.~\ref{fig:layering-mpi-calls} shows the result of our survey and
+Fig.~\ref{fig:layering-mpi-calls} shows the results of our survey and
 Table~\ref{tab:layering-mpi-calls} focuses on the comparison between our
 survey and the ECP survey. In the ECP survey, the participants are categorized
 into two groups; application development (AD) and system technology
-(ST). It is interesting that the percentage of the participants having
+(ST). Interestingly, the percentage of the participants having
 MPI layer(s) in our survey is roughly 50\%, even in the US, whilst the
 ratio of yes and no is approximately $6:4$ in the ECP survey.
 Having a closer look at Fig.~\ref{fig:layering-mpi-calls}, the answer,
@@ -807,9 +804,9 @@ The Q35 in the ECP survey and Q17 in our survey are equivalent
 questions, although the answer choices are somewhat
 different. Fig.~\ref{fig:using-mpi-aspects} shows the result of our
 survey and Fig.~\ref{fig:using-mpi-aspects-comp} shows the comparison
-between ECP's and ours on the same choices. As shown in
+between ECP's and ours with the same choices. As shown in
 Fig.\ref{fig:using-mpi-aspects}, the
-using aspects can be categorized in three groups; A) more frequently
+usage aspects can be categorized in three groups; A) more frequently
 used (point-to-point and collectives), B) second frequently used
 (\myquote{Datatypes}, \myquote{with OpenMP}, \myquote{Communicator}, and \myquote{One-sided}), and C) less
 frequently used (\myquote{PMPI}, \myquote{Persistent}, and
@@ -818,8 +815,8 @@ frequently used (\myquote{PMPI}, \myquote{Persistent}, and
 It should be noted that all these less frequently used features were already
 introduced and standardized in MPI 2.2 which was \revision{release}{released} in 2009. This is
 clearly a concerning factor for the popularity of some of the MPI features as
-despite the 10-year existence many of the features failed to get any traction
-outside a small, certainly dedicated crowd.
+many of the features failed to get any traction
+outside a small, certainly dedicated crowd, despite the 10-year existence .
 
 \begin{figure}[tb]
   \begin{center}
@@ -930,7 +927,7 @@ This may indicate that the MPI standard is complex, and its understanding by the
 general developer population remains limited. Even the most basic send/receive
 functions, although their API looks simple and natural, require deep knowledge
 of topics such as the possibility of deadlock, timing of buffer access, blocking/non-blocking,
-and so.
+and so on.
 
 Fig.~\ref{fig:useless-features} represents the answers regarding the MPI features
 perceived as unnecessary by the participants (Q27: \myquote{What MPI feature(s)
@@ -961,10 +958,10 @@ operation.
 %
 We also need to look at applications and their demands. Most of the
 scientific applications look at the scientific process on a set of fixed
-boundaries and conditions, and thus required a fixed number of processes in a
+boundaries and conditions, and thus require a fixed number of processes in a
 completely static world, one that does not grow or shrink. Few applications exit
 this mold, and the small number of developers working around these applications
-seem to not have been reached by the survey.
+do not seem to have been reached by the survey.
 
 % This complexity might make the use of the dynamic process creation hard and
 % impractical for MPI users and the un-usefulness of dynamic process may not come
@@ -1050,7 +1047,7 @@ with a coverage of about 85\% of the total answers.
 % These top 7 percentages occupy about 85\% in total.
 As nearly half of participants answered \myquote{never used} or \myquote{no idea},
 we will ignore these two choices in the remainder of this analysis. This is
-reflected in the numbers in parenthesis in this table which are the percentage
+reflected in the numbers in parenthesis in this table, which are the percentage
 of participants excluding those who answered \myquote{never used} or \myquote{no
 idea}. Half of threading-aware participants are using {\tt SINGLE} and/or {\tt
 MULTIPLE}. Although many participants ignore the thread mode, some participants
@@ -1100,7 +1097,7 @@ A similarly scattered trend has also been confirmed by other studies. Indeed,
 \cite{8665758} indicates approximately 75\% of their target executables (not
 number of jobs) on Mira (total of 68) are using {\tt SINGLE}, 15\% use {\tt
 FUNNELED} and 4\% use {\tt MULTIPLE}. Similarly, \cite{10.1145/3295500.3356176}
-indicate that approximately 60\% of their target programs use {\tt FUNNELED},
+indicates that approximately 60\% of their target programs use {\tt FUNNELED},
 30\% use {\tt MULTIPLE}, 20\% use {\tt SINGLE} and only few percent use {\tt
 SERIALIZED}. Thus, the thread support usage varies on each survey, and further
 investigation is needed to determine a clear result.
@@ -1112,13 +1109,13 @@ investigation is needed to determine a clear result.
  Fig.~\ref{fig:using-implementations} shows the usage of the different MPI
  implementations, (Q12 asking specifically which MPI implementation(s) the
  participants are using regularly). This result presents a coherent picture
- across the board, as Open~MPI, Intel MPI and MPICH, dominates \revision{in}{for} all
+ across the board, as Open~MPI, Intel MPI and MPICH, dominate \revision{in}{for} all
  \mcountries\ followed by MVAPICH. Outside these top contenders, a large
  disparity can be seen on the other implementations. Taking a look at the
- \myquote{other} choice, there are four (4) answers naming the \myquote{bullx
+ \myquote{other} choices, there are four (4) answers naming the \myquote{bullx
  MPI} and another four (4) using MadMPI~\cite{madmpi} in France, and 10 answers
  raising ParaStation MPI in Germany. The frequency of using Fujitsu MPI,
- ParaStation MPI, bullx MPI and others heavily depend on countries of
+ ParaStation MPI, bullx MPI, and others heavily depend on countries of
  participants and the countries where the MPI was developed.
 
   \begin{figure}[tb]
@@ -1131,19 +1128,18 @@ investigation is needed to determine a clear result.
     \end{center}
   \end{figure}
 
-In order to understand how the usage of a particular MPI implementation came to
-happen, we specifically asked the participants in Q13 \myquote{why did you
+In order to understand how users selected a particular MPI implementation, we specifically asked the participants in Q13 \myquote{why did you
 choose the MPI implementation(s)} and the answers are shown in
 Fig.~\ref{fig:choosing-implementation}.
 %
 One of the interesting outcomes from this question is the fact that more than
 half of the participants outside US have little to no choice in the selection of
 the MPI implementation, they have to use what is made available to them with the
-platform. For the rest of participants their choice seem to favor their
+platform. For the rest of participants, their choice seem to favor their
 familiarity with a particular implementation or past experiences with the
 community supporting their choice MPI implementation.
 %
-This clearly suggestus that MPI implementors must carefully build and support
+This clearly suggests that MPI implementers must carefully build and support
 their user communities in order to increase their implementation adoption.
 
 % The highest percentage of US participants selected \myquote{Familiar}. Many
@@ -1261,7 +1257,7 @@ groups; ``performance group'' focused on \myquote{Performance} or
     \myquote{Portability} or \myquote{2}), and ``middle group''
     \revision{who}{that} chose \myquote{3}. While the middle group,
     striking a balance
-between performance and compatibility dominates in most \mcountries\ (\revision{excepting}{except}
+between performance and compatibility, dominates in most \mcountries\ (\revision{excepting}{except}
 Russia), the performance group tend to occupy a larger percentage. Regarding
 Russia, a large percentage of Russian participants answered \myquote{my program
 is too small} in Q21 (Fig.~\ref{fig:layering-mpi-calls}), in which case the loss
@@ -1290,7 +1286,7 @@ Fig.~\ref{fig:learning-mpi} shows the percentages of how participants learned
 MPI. In this graph, \myquote{Other lec.} indicates the choice \myquote{Other
 lectures or tutorials (workplace, conference)}. The UK and Russia participants
 preferred to learn from online sources. The participants of Germany and other
-European countries preferred to have other form of lectures. The percentage of
+European countries preferred to have other forms of lectures. The percentage of
 reading \myquote{Books} in US is the highest. Taking a look at the other
 answers, 18 participants learned by reading existing code and 8 participants
 learned by writing MPI applications.
@@ -1331,7 +1327,7 @@ which usually translates via practical examples.
 While the MPI standard is certainly not the best document for learning MPI, it
 is the most valid and trusted source for checking the specification of the MPI
 API. Fig.~\ref{fig:checking-spec} shows the percentages of Q14 asking
-\myquote{How do you check MPI specifications when your are writing MPI
+\myquote{How do you check MPI specifications when you are writing MPI
 programs?} Most users are checking MPI specifications by reading online
 documentations (e.g., man pages), searching the Internet, and reading the standard.
 As shown in the previous figure (Fig.~\ref{fig:reading-standard}), users are
@@ -1428,7 +1424,7 @@ obstacles,} we got an exceptional 111 \myquote{other} inputs.
 % answers.
 After post-analysis, we can report that out of these,
 more than 20 participants, 18\%, answered pinpointing
-to how time consuming mastering MPI is. Many other
+to how time consuming it is to master MPI. Many other
 participants pointed out the need for more clear MPI programming guidelines
 (\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation doc.},
 \myquote{performance guideline}, and so on, in their words), while
@@ -1445,7 +1441,7 @@ Many other
 participants pointed out the need for more clear MPI programming guideline
 (\myquote{clear doc.}, \myquote{internal doc.}, \myquote{implementation doc.},
 \myquote{performance guideline}, and so on, in their words). Some participants
-\revision{complaints}{complaint} about MPI implementations and the (performance or specification)
+\revision{complaints}{complained} about MPI implementations and the (performance or specification)
 differences among implementations.
 
 \begin{figure}[tb]
@@ -1583,12 +1579,12 @@ Finally, the least desired feature concerns the notion of endpoints, as
 discussed in the MPI standardization effort. However, taking into account the
 extremely technical aspect of this question and it's intricate evolution in the
 standard, it might be possible that most people answering this question know
-little about this feature..
+little about this feature.
 
 \subsection{Notes on \Countries}
 
 In this subsection, we summarize our findings where some
-\revision{\countries have}{\countries\ have} showed
+\revision{\countries have}{\countries\ have} shown
 somewhat different results than the others.
 
 \subsubsection*{USA}
@@ -1603,21 +1599,21 @@ US has the highest percentages:
   (Fig.~\ref{fig:choosing-implementation})\revision{,}{;} and
 \item reading MPI books (Fig.~\ref{fig:learning-mpi})
 \end{enumerate*}
-among the \mcountries. All these results indicates that the MPI
+among the \mcountries. All these results indicate that the MPI
 users in US are, \revision{by some standards}{in a sense,} the most advanced.
 
 \subsubsection*{Russia}
 
-Russia is:
+Russia:
 \begin{enumerate*}
-\item having the second largest percentage of MPI users with less than 5
+\item has the second largest percentage of MPI users with less than 5
   years of MPI experience, a position it shares with Italy
   (Fig.~\ref{fig:mpi-experience})\revision{,}{;}
-\item having the largest percentage of (non-MPI) programming beginners
+\item has the largest percentage of (non-MPI) programming beginners
   (Fig:\ref{fig:prog-skill})\revision{,}{;}
-\item having the highest percentage of users assessing their MPI programs are
+\item has the highest percentage of users assessing that their MPI programs are
   well-tuned (Fig.~\ref{fig:difficulty})\revision{,}{;}
-\item having the highest percentage not knowing which thread level
+\item has the highest percentage of users not knowing which thread level
   they are using (Fig.~\ref{fig:multi-thread})\revision{,}{;} and
 \item the second highest \country, next to US, choosing the MPI+CUDA
   (Fig.~\ref{fig:mpi-x}).
@@ -1639,8 +1635,8 @@ whilst many participants of the other \countries\ are more concerned about
 
 Most notably, more than 50\% of Japanese MPI users have an extensive MPI
 experience, with more than 10 years. Having such a large mass of well seasoned
-MPI users {\revision{sound}{sounds} promising, however, it might also point to an imbalance in
-generations of users, and to a potential lack of younger MPI developers that
+MPI users {\revision{sound}{sounds} promising; however, it might also point to an imbalance in
+generations of users, and to a potential lack of younger MPI developers who
 will continue the work in the future.
 % the equally distributed answers is
 % desired, thinking the continuous alternation of generations.
@@ -1674,11 +1670,11 @@ content) plotted over the released dates. Not surprisingly, the number of pages
 increases with every new version of the standard. It is a natural thinking that
 the number of pages and the number of features are proportional.
 
-In many cases, the higher functionalities introduced by newer MPI standard yield
+In many cases, the additional functionalities introduced by newer MPI standards yield
 a higher degree of implementation freedom. An MPI implementation can be optimized by
 exploiting hardware resources without imposing significant effort on the MPI
 users. If only the most basic communication functions, send and receive, were
-provided by the MPI standard users would have to write their own higher-level
+provided by the MPI standard, users would have to write their own higher-level
 capabilities to cover other useful parallel constructs, such as collective
 functions, a difficult and challenging task even for experienced developers.
 % which are not easy if users wants optimize for the parallel machines they are using.
@@ -1687,11 +1683,11 @@ Another reason for the inflation is that MPI standard is the standard
 as a library. There is no way for the implementation of low-level communication procedures
 to know whether they are employed as part of a higher-level data exchange
 pattern. The higher abstracted
-functions can give a library more information of the higher-level information and
-thus the higher-level functions can be optimized. Tr\"{a}ff, et al., gives
+functions add more information on higher-level capabilities to a library, which
+allows the higher-level functions to be optimized. Tr\"{a}ff, et al., gives
 a formal analysis on this point~\cite{5184825}.
-This situation, to introduce higher-level capabilities into the standard,
-will keep increasing the standard.
+Introducing higher-level capabilities into the standard,
+will keep increasing the length of the standard.
 
 Hoefler et al., reported their idea to extract collective operation
 patterns from a series of communication primitives, send and
@@ -1715,7 +1711,7 @@ features have failed to gain traction and be widely adopted by the users.
 Furthermore, as indicated in Subsection~\ref{sec:learning-mpi}, many MPI users
 complain of a lack of time to hone or master MPI and of a lack of clear
 and understandable documentation. These findings suggest that there is a real
-difficulty for people to learn MPI and to write, efficient and error-free MPI programs.
+difficulty for people to learn MPI and to write efficient and error-free MPI programs.
 
 However, this can be  addressed with a stronger educational effort from the MPI
 standardization body. Indeed, it is very important to narrow the gap described in
@@ -1753,24 +1749,24 @@ The ``no answer'' rate of each
 question varies from zero (Q2) to 22\% (Q11, asking reading MPI
 books), and is only 2\% for the last question.
 This may indicate that the questionnaire design was successful in
-maintaining the participants involved. The drawback is a reduced
+maintaining the attention of the participants involved. The drawback is a reduced
 coverage of the wide spectrum of the MPI topics.
 
 \item[Questionnaire Design]
-In general, when designing a good questionnaire, designer must have
+In general, when designing a good questionnaire, the author must have
 some insights beforehand how the participants will react. However,
-this is very difficult in most cases and this survey is no
-exception. In retrospect, Q11 asking reading MPI
+this is very difficult in most cases, and this survey is no
+exception. In retrospect, Q11 which asked about reading MPI
 books was the most useless, since we could not conclude any meaningful
-results from it. Conversely we should have had a question asking age
+results from it. Conversely we should have had a question asking the age
 ranges of participants. This would have revealed the generation
 distributions of contributors.
 
 \item[Reaching Target Community]
 First, the means (mailing lists, MLs) for announcing a survey
-must be selected in such a way that the target community must be in reach.
-In many cases, major mailing lists, must be complemented with more local,
-as an example university based, where the traffic is more limited and
+must be selected in such a way that the target community is in reach.
+In many cases, major mailing lists, must be complemented with more local lists,
+such as university-based lists, where the traffic is more limited and
 users more attentive to the content of the messages.
 
 % ML subscribers and the target of the survey
@@ -1801,17 +1797,17 @@ We have conducted a questionnaire survey and gathered more than 850
 participants from more than 40 countries and regions. By analyzing the collected
 data, we have put forward few interesting findings regarding the current status
 of MPI adoption. As for the MPI features, the dynamic process feature is
-considered not only as a less-used feature but also mostly as a useless feature
+considered both a less-used feature, a mostly useless feature,
 highlighting that the MPI programming model is seen as {\em static}. By asking
 several questions about how participants obtain MPI knowledge and experiences, it is
-revealed that MPI is, at least perceived as a very difficult-to-use library.
+revealed that MPI is perceived to be a very difficult-to-use library.
 \comment{Most participants read the MPI standard only partially to check the
 specification of MPI functions. Instead} Many MPI users point to a lack of
 documentation and would prefer to have a practical programming guideline, online
 documents in hyper-text form, and useful sample programs, put forward and
 maintained by the MPI standardization committee. The most important (and most
 difficult) thing is maintaining thorough and up-to-date supplemental documents.
-Regarding backward compatibility, many MPI users may be willing to accept to
+Regarding backward compatibility, many MPI users may be willing to
 sacrifice some level of portability in exchange for more performance, an outcome
 at odds with the current thinking in the MPI Forum.
 
